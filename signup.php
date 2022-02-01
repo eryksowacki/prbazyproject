@@ -34,4 +34,16 @@ if(isset($_GET['name']))
 {
     echo "<script>let x = document.getElementById('imie'); x.value ='".$_GET['name']."';</script>";
 }
+// switch ($_GET) {
+//     case isset($_GET[]):
+//         # code...
+//         break;
+    
+//     default:
+//         # code...
+//         break;
+// }
+
+
+$url = strtok($url, '?')
 ?>
