@@ -16,10 +16,8 @@
             E-mail: <input type="email" name="email"> <br> <br>
             Hasło: <input type="password" name="password"> <br> <br>
             Potwierdź hasło: <input type="password" name="checkPassword"> <br> <br>
-            <input type="submit" value="Zaloguj się">   
+            <input type="submit" value="Zaloguj się">
         </form>
-        <br>
-        <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
     </div>
 </body>
 </html>
