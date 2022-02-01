@@ -10,11 +10,11 @@
 </head>
 <body>
     <div id="baner">
-        <form action="register.php" method="post">
-            Imię: <input type="text" name="name" id="imie"> <br> <br>
-            Nazwisko: <input type="text" name="surname" > <br> <br>
-            Wiek: <input type="number" name="age" > <br> <br>
-            E-mail: <input type="email" name="email" > <br> <br>
+        <form action="register.inc.php" method="post">
+            Imię: <input type="text" name="name" class="a"> <br> <br>
+            Nazwisko: <input type="text" name="surname" class="a"> <br> <br>
+            Wiek: <input type="number" name="age" class="a"> <br> <br>
+            E-mail: <input type="email" name="email" class="a"> <br> <br>
             Hasło: <input type="password" name="password" > <br> <br>
             Potwierdź hasło: <input type="password" name="checkPassword" >
             <?php
@@ -29,21 +29,19 @@
     </div>
 </body>
 </html>
+<script>let x;</script>
 <?php
-if(isset($_GET['name']))
+if(isset($_GET['emptyInput']))
 {
-    echo "<script>let x = document.getElementById('imie'); x.value ='".$_GET['name']."';</script>";
+    $i = 0;
+    foreach($_GET as $key => $value)
+    {
+        $value = trim($value);
+        if($value != "")
+        {
+            echo "<script>x = document.getElementsByClassName('a')[$i]; x.value ='".$value."';</script>";
+        }
+        $i += 1;
+    } 
 }
-// switch ($_GET) {
-//     case isset($_GET[]):
-//         # code...
-//         break;
-    
-//     default:
-//         # code...
-//         break;
-// }
-
-
-$url = strtok($url, '?')
 ?>

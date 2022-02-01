@@ -12,7 +12,7 @@
         <form action="login.php" method="post">
             Login: <input type="text" name="login"> <br> <br>
             Hasło: <input type="password" name="password"> <br> <br>
-            <input type="submit" value="Zaloguj się">   
+            <input type="submit" name="subimtSub" value="Zaloguj się">   
         </form>
         <br>
         <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
