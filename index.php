@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-    
+    <div id="baner">
+        <form action="login.php" method="post">
+            Login: <input type="text" name="login"> <br>
+            Hasło: <input type="password" name="password"> <br>
+        </form>
+    </div>
 </body>
 </html>
