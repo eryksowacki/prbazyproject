@@ -1,13 +1,13 @@
 <?php
     if(!isset($_POST))
     {
-        header("location: signup.php?unAuthorized=1");
+        header("Location: signup.php?unAuthorized=1");
     }
     else
     {
         if(empty($_POST['name']) || empty($_POST['surname']) || empty($_POST['age']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['checkPassword']))
         {
-            header("location: signup.php?emptyInput=1&malpa=$_POST[name]");
+            header("Location: signup.php?emptyInput=1&name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=$_POST[email]");
         }
         else
         {

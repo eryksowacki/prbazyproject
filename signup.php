@@ -24,14 +24,14 @@
                 }
             ?>
             <br><br>
-            <input type="submit" name="submitSub" value="Zarejestruj się">aaaa
+            <input type="submit" name="submitSub" value="Zarejestruj się">
         </form>
     </div>
 </body>
 </html>
 <?php
-if(isset($_GET['malpa']))
+if(isset($_GET['name']))
 {
-    echo "<script>let x = document.getElementById('imie'); x.value ='".$_GET['malpa']."';</script>";
+    echo "<script>let x = document.getElementById('imie'); x.value ='".$_GET['name']."';</script>";
 }
 ?>
