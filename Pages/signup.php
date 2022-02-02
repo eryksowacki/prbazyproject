@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="../Scripts/bootstrap.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,13 @@
             <input type="number" name="age" class="a" id="age"> <br> <br>
             <label for="email">E-mail</label>
             <input type="email" name="email" class="a" id="email"> <br> <br>
-            <label for="password">Hasło</label
+            <?php
+                if(isset($_GET['takenEmail']))
+                {
+                    echo "<span style='color: red'>Podany e-mail istnieje już w bazie!</span>";
+                }
+            ?>
+            <label for="password">Hasło</label>
             <input type="password" name="password" id="password"> <br> <br>
             <label for="chckpassword">Potwierdź hasło</label>
             <input type="password" name="checkPassword" id="chckpassword">
