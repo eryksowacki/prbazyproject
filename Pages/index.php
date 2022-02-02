@@ -22,9 +22,10 @@
             <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
         </div>
     </div>
+    <center>
     <div id="content">
         <h2>Szukaj trenera personalnego</h2>
-        <form action="index.php" method="post">
+        <form action="search_trainer.php" method="post">
         <h4>Miasto:</h4> <br>
         <input type="text" placeholder="Np. Poznań" name="city"> <br><br>
         <h4>Nazwa siłowni:</h4> <br>
@@ -35,7 +36,7 @@
             <option value="man">Mężczyzna</option>
         </select>
         <br><br>
-        <h4>Ocena:</h4> <br>
+        <h4>Opinia:</h4> <br>
         <input type="text" placeholder="od:" name="minTrainerMark"> <br><br>
         <input type="text" placeholder="do:" name="maxTrainerMark"> <br><br>
         <h4>Cena:</h4> <br>
@@ -44,6 +45,7 @@
         <input type="submit" value="Szukaj">
         </form>
     </div>
+    </center>
     <div id="footer">
         Projekt Aplikacje/Bazy <i>Eryk Sowacki & Oskar Wichtowski</i>
     </div>
