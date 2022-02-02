@@ -18,12 +18,18 @@
     </nav>
     <div>
         <form action="register.inc.php" method="post">
-            Imię: <input type="text" name="name" class="a"> <br> <br>
-            Nazwisko: <input type="text" name="surname" class="a"> <br> <br>
-            Wiek: <input type="number" name="age" class="a"> <br> <br>
-            E-mail: <input type="email" name="email" class="a"> <br> <br>
-            Hasło: <input type="password" name="password" > <br> <br>
-            Potwierdź hasło: <input type="password" name="checkPassword" >
+            <label for="name">Imię</label>
+            <input type="text" name="name" class="a" id="name"> <br> <br>
+            <label for="surname">Nazwisko</label>
+            <input type="text" name="surname" class="a" id="surname"> <br> <br>
+            <label for="age">Wiek</label>
+            <input type="number" name="age" class="a" id="age"> <br> <br>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" class="a" id="email"> <br> <br>
+            <label for="password">Hasło</label
+            <input type="password" name="password" id="password"> <br> <br>
+            <label for="chckpassword">Potwierdź hasło</label>
+            <input type="password" name="checkPassword" id="chckpassword">
             <?php
                 if(isset($_GET['invalidPasswd']))
                 {

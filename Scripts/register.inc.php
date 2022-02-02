@@ -38,7 +38,7 @@
                     }
                     else
                     {
-                        $sql = "INSERT INTO `customers` (`name`, `surname`, `age`, `email`, `password`) VALUES ('$_POST[name]', '$_POST[surname]', '$_POST[age]', '$_POST[email]', '$password')";
+                        $sql = "INSERT INTO `users` (`name`, `surname`, `age`, `email`, `password`) VALUES ('$_POST[name]', '$_POST[surname]', '$_POST[age]', '$_POST[email]', '$password')";
 
                         $result = $connect -> query($sql);
                         

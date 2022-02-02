@@ -21,26 +21,49 @@
     <div class="chart">
         <canvas id="myChart" style="width:400px; height:400px"></canvas>
     </div>
-    <div style="width: 500px">
-        <canvas id="iii" width="400" height="200"></canvas>
-     </div>
+
 </body>
 </html>
+<script>const weight = [];const date = [];</script>
 <?php
+    session_start();
     require_once 'connect_user.php';
-    $sql = "Select "
+    $_SESSION['user_id'] = 100;
+    $sql = "SELECT `weight` as `w`, `date` as `d` FROM `bmi` `b` where `bmi_id` = $_SESSION[user_id];";
+    $result = $connect -> query($sql);
+    echo "<script>";
+    while($row = mysqli_fetch_assoc($result))
+    {
+        echo "weight.push(".$row['w']."); date.push('".$row['d']."'); ";
+    }
+    echo "</script>";
 ?>
 <script>
     
+    function getRandomFillColor() 
+    {
+        return "#"+Math.floor(Math.random()*16777215).toString(16);
+    }
+    function addData(chart, label, data) 
+    {
+        chart.data.datasets.forEach((dataset) => {
+            for(let i = 0; i < data.length; i++)
+            {
+                chart.data.labels.push(label[i]);
+                dataset.data.push(data[i]);
+            }
+        });
+        chart.update();
+    } 
     const userProgressChart = {
         type: 'line',
         data: 
         {
-            labels: ['2020-11-12', '2020-11-15','2020-11-17', '2020-11-17', '2020-11-28', '2020-12-01', '2020-12-17'],
+            labels: [],
             datasets: 
             [{
                 labels: "This will be hidden",
-                data: [86,85,87, 90, 85, 84, 81],
+                data: [],
                 backgroundColor: 'black',
                 borderWidth: 2,
                 borderColor: 'lightgreen',
@@ -66,17 +89,14 @@
                     },
                     
                 },
-                xAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        min: 100,
-                    
-                    }
-                }],
+                
 
             }
         }
     };
     const canvs = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(canvs, userProgressChart);
+    addData(myChart, date, weight);
+
+
 </script>
