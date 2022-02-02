@@ -55,7 +55,7 @@
                 $bmi = "INSERT INTO `bmi` (`bmi_id`,`weight`) VALUES ('$i','$ileKilo');";
                 echo "<td>$ileKilo</td><td>$roznica</td></tr>";
                 
-                 $connect -> query($bmi);
+                //  $connect -> query($bmi);
             }
             else
             {
@@ -66,7 +66,7 @@
                 echo "<td>$ileKilo</td><td>$roznica</td></tr>";
                 $bmi = "INSERT INTO `bmi` (`bmi_id`,`weight`) VALUES ('$i','$ileKilo');";
 
-                 $connect -> query($bmi);
+                //  $connect -> query($/bmi);
             }
         }
         echo "</table>";
