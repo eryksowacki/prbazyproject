@@ -22,22 +22,27 @@
             <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
         </div>
     </div>
-    <div id="navi">
-        <div class="naviTale">
-            <a href="index.php">Strona Główna</a>
-        </div>
-        <div class="naviTale">
-            Trenerzy
-        </div>
-        <div class="naviTale">
-            Siłownie
-        </div>
-        <div class="naviTale">
-            Profil
-        </div>
-    </div>
     <div id="content">
-        Lorem ipsum
+        <h2>Szukaj trenera personalnego</h2>
+        <form action="index.php" method="post">
+        <h4>Miasto:</h4> <br>
+        <input type="text" placeholder="Np. Poznań" name="city"> <br><br>
+        <h4>Nazwa siłowni:</h4> <br>
+        <input type="text" placeholder="Np. Fabryka Formy" name="gymName"> <br><br>
+        <h4>Płeć trenera:</h4> <br>
+        <select name="trainerSex">
+            <option value="woman">Kobieta</option>
+            <option value="man">Mężczyzna</option>
+        </select>
+        <br><br>
+        <h4>Ocena:</h4> <br>
+        <input type="text" placeholder="od:" name="minTrainerMark"> <br><br>
+        <input type="text" placeholder="do:" name="maxTrainerMark"> <br><br>
+        <h4>Cena:</h4> <br>
+        <input type="text" placeholder="od" name="minPrize"> <br><br>
+        <input type="text" placeholder="do:" name="maxPrize"> <br><br>
+        <input type="submit" value="Szukaj">
+        </form>
     </div>
     <div id="footer">
         Projekt Aplikacje/Bazy <i>Eryk Sowacki & Oskar Wichtowski</i>
