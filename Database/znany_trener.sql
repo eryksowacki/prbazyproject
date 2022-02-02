@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 02 Lut 2022, 15:08
--- Wersja serwera: 10.4.17-MariaDB
--- Wersja PHP: 8.0.1
+-- Czas generowania: 02 Lut 2022, 20:25
+-- Wersja serwera: 10.4.19-MariaDB
+-- Wersja PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -910,7 +910,10 @@ CREATE TABLE `trainers` (
   `password` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
   `trainer_review_id` int(11) DEFAULT NULL,
   `name` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `surname` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL
+  `surname` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `city` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `gymName` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `prizePerHour` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 -- --------------------------------------------------------
@@ -1066,7 +1069,9 @@ INSERT INTO `users` (`user_id`, `profile_picture`, `email`, `password`, `name`, 
 (117, NULL, 'Jan.Janik5@outlook.pl', '000000', 'Jan', 'Janik', 32, 117),
 (118, NULL, 'Dordian.Zając2@onet.pl', '000000', 'Dordian', 'Zając', 45, 118),
 (119, NULL, 'Patrycja.Sobczyk3@interia.pl', '000000', 'Patrycja', 'Sobczyk', 36, 119),
-(120, NULL, 'Gaweł.Zioło0@o2.pl', '000000', 'Gaweł', 'Zioło', 23, 120);
+(120, NULL, 'Gaweł.Zioło0@o2.pl', '000000', 'Gaweł', 'Zioło', 23, 120),
+(362, NULL, 'eryk.sowacki@op.pl', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Eryk', 'Sowacki', 18, NULL),
+(363, NULL, 'oski@op.pl', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Oskar', 'Wichtowski', 19, NULL);
 
 -- --------------------------------------------------------
 
@@ -1141,7 +1146,7 @@ ALTER TABLE `usr_train`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=362;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=364;
 
 --
 -- Ograniczenia dla zrzutów tabel
