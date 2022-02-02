@@ -5,6 +5,4 @@
         $password = sha1($_POST['password']);
         require_once 'connect.php'; 
     }
-}
-
 ?>
