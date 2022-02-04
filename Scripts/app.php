@@ -34,69 +34,14 @@
     echo "<script>";
     while($row = mysqli_fetch_assoc($result))
     {
-        echo "weight.push(".$row['w']."); date.push('".$row['d']."'); ";
+        echo "weight.push(".$row['w']."); date.push('".substr($row['d'], 0, 10)."'); ";
+        $git = $row['d'];
     }
     echo "</script>";
 ?>
+<script src="chartApp.js"></script>
 <script>
     
-    function getRandomFillColor() 
-    {
-        return "#"+Math.floor(Math.random()*16777215).toString(16);
-    }
-    function addData(chart, label, data) 
-    {
-        chart.data.datasets.forEach((dataset) => {
-            for(let i = 0; i < data.length; i++)
-            {
-                chart.data.labels.push(label[i]);
-                dataset.data.push(data[i]);
-            }
-        });
-        chart.update();
-    } 
-    const userProgressChart = {
-        type: 'line',
-        data: 
-        {
-            labels: [],
-            datasets: 
-            [{
-                labels: "This will be hidden",
-                data: [],
-                backgroundColor: 'black',
-                borderWidth: 2,
-                borderColor: 'lightgreen',
-                tension: 0.3,
-            }],
-        },
-        options: 
-        {
-            responsive:true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-
-            scales: 
-            {
-                x:{
-                    title:{
-                        color:'black',
-                        display:true,
-                        text:'Day',
-                    },
-                    
-                },
-                
-
-            }
-        }
-    };
-    const canvs = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(canvs, userProgressChart);
+    const myChart = new Chart(canvas, userProgressChart);
     addData(myChart, date, weight);
-
-
 </script>
