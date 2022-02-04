@@ -3,39 +3,58 @@
 <html lang="pl">
 <head>
     <link rel="stylesheet" href="../Scripts/bootstrap.css">
+    <link rel="stylesheet" href="../Scripts/style.css">
+    <link rel="shortcut icon" href="../Images/WEBSITE IMAGES/LOGO.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register page</title>
+    <title>Rejestracja</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-dark" style="height:120px;">
-        <div class="container" style="margin-left:20px">
-            <a href="">
-                <img src="" alt="">
-            </a>
-        </div>
+    <nav class="navbar navbar-light bg-dark">
+            <div class="container" >
+                <a href="index.php">
+                    <img src="../Images/WEBSITE IMAGES/LOGO.png" alt="zdjęcie loga znany trener" id="logoImage">
+                </a>
+                <input type="text" name="" id="">
+            </div>
+        </nav>
+        <div>
     </nav>
     <div>
         <form action="register.inc.php" method="post">
-            <label for="name">Imię</label>
-            <input type="text" name="name" class="a" id="name"> <br> <br>
-            <label for="surname">Nazwisko</label>
-            <input type="text" name="surname" class="a" id="surname"> <br> <br>
-            <label for="age">Wiek</label>
-            <input type="number" name="age" class="a" id="age"> <br> <br>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" class="a" id="email"> <br> <br>
-            <?php
+            <div class="inputPosition">
+                <div class="field">
+                    <input type="text" name="name"  id="name" class="a inputLogin" placeholder=" "> 
+                    <label for="name" class="floating-label">Imię</label>
+                </div>
+                <div class="field">
+                    <input type="text" name="surname" id="surname" class="a inputLogin" placeholder=" "> 
+                    <label for="surname">Nazwisko</label>
+                </div>
+                <div class="field">
+                    <input type="number" name="age" id="age" class="a inputLogin" placeholder=" "> 
+                    <label for="age">Wiek</label>
+                </div>
+                <div class="field">
+                    <input type="email" name="email" id="email" class="a inputLogin" placeholder=" "> 
+                    <label for="email">E-mail</label>
+                </div>
+                <?php
                 if(isset($_GET['takenEmail']))
                 {
                     echo "<span style='color: red'>Podany e-mail istnieje już w bazie!</span>";
                 }
-            ?>
-            <label for="password">Hasło</label>
-            <input type="password" name="password" id="password"> <br> <br>
-            <label for="chckpassword">Potwierdź hasło</label>
-            <input type="password" name="checkPassword" id="chckpassword">
+                ?>
+                <div class="field">
+                    <input type="password" name="password" id="password" class="inputLogin" placeholder=" ">
+                    <label for="password">Hasło</label>
+                </div>
+                <div class="field">
+                    <input type="password" name="checkPassword" id="chckpassword" class="inputLogin" placeholder=" ">
+                    <label for="chckpassword">Potwierdź hasło</label>
+                </div>
+            </div>
             <?php
                 if(isset($_GET['invalidPasswd']))
                 {
