@@ -20,10 +20,6 @@
         </nav>
         <div>
     </nav>
-    <div id="header">
-        <div id="logo">
-            <!-- <img src="../Images/WEBSITE IMAGES/LOGO.png" alt="logo"> -->
-        </div>
         <div id="login">
             <form action="../Scripts/login.inc.php" method="post">
                 Login: <input type="text" name="login"> <br> <br>
