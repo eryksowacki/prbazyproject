@@ -28,7 +28,7 @@
 <?php
     session_start();
     require_once 'connect_user.php';
-    $_SESSION['user_id'] = 100;
+    $_SESSION['user_id'] = 77;
     $sql = "SELECT `weight` as `w`, `date` as `d` FROM `bmi` `b` where `bmi_id` = $_SESSION[user_id];";
     $result = $connect -> query($sql);
     echo "<script>";
