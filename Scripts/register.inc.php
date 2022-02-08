@@ -1,51 +1,75 @@
 <?php
     if(!isset($_POST))
     {
-        header("Location: ../Pages/signup.php?unAuthorized=1");
+        header("location: ../Pages/signup.php?unauthorizedAccess=1");
     }
     else
     {
-        if(empty($_POST['name']) || empty($_POST['surname']) || empty($_POST['age']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['checkPassword']))
+        $i = 0;
+        foreach($_POST as $key => $value) 
+        {
+            $_POST[$key] = trim($value);
+            $value = trim($value);
+
+            if(!isset($value) || !empty($value))
+            {
+                $i++;
+            }
+        }
+                if(count($_POST) != 8)
         {
             header("Location: ../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=$_POST[email]&emptyInput=");
         }
         else
         {
-            if($_POST['password'] !== $_POST['checkPassword'])
+            session_start();
+            if($_POST["token"] !== $_SESSION["token"])
             {
-                header('Location: ../Pages/signup.php?invalidPasswd=1');
+                header("Location: ../Pages/signup.php?nonAuthorizedToken=1");
             }
             else
             {
-                $password = sha1($_POST['password']);
 
-                require_once 'connect_user.php';
-                
-                if($connect -> connect_errno)
+                if($_POST['password'] !== $_POST['checkPassword'])
                 {
-                    echo "Błędne połączenie z bazą danych.";
-                }          
+                    header('Location: ../Pages/signup.php?invalidPasswd=1');
+                }
                 else
                 {
-                    $sql = "SELECT `email` FROM `users` where `email` like '$_POST[email]'";
-                    
-                    $result = $connect -> query($sql);
+                    $password = sha1($_POST['password']);
 
-                    if($result -> num_rows !== 0)
+                    require_once 'connect_user.php';
+                    
+                    if($connect -> connect_errno)
                     {
-                        header("Location: ../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=$_POST[email]&emptyInput=&takenEmail=1");
-                    }
+                        echo "Błędne połączenie z bazą danych.";
+                    }          
                     else
                     {
-                        $sql = "INSERT INTO `users` (`name`, `surname`, `age`, `email`, `password`) VALUES ('$_POST[name]', '$_POST[surname]', '$_POST[age]', '$_POST[email]', '$password')";
-
-                        $result = $connect -> query($sql);
+                        $sql = "SELECT `email` FROM `users` where `email` like '$_POST[email]'";
                         
-                        header('Location: ../Pages/index.php');
-                    }
+                        $result = $connect -> query($sql);
+
+                        if($result -> num_rows !== 0)
+                        {
+                            header("Location: ../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=&emptyInput=&takenEmail=");
+                        }
+                        else
+                        {   
+                            if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+                            {
+                                header("Location: ../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=&emptyInput=&emailValidateError=");
+                            }
+                            $result = mysqli_fetch_row($connect -> query("SELECT max(`bmi_id`)+1 from `users`;"))[0];
+                            $sql = "INSERT INTO `users` (`name`, `surname`, `age`, `email`, `password`,`bmi_id`) VALUES ('$_POST[name]', '$_POST[surname]', '$_POST[age]', '$_POST[email]', '$password','$result')";
+
+                            $result = $connect -> query($sql);
+                            
+                            header('Location: ../Pages/index.php');
+                        }
+                    }   
                 }
-                
-            }        
+            }
         }
     }
-?>
+    ?>
