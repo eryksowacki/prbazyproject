@@ -22,7 +22,7 @@
         <div>
     </nav>
     <div>
-        <form action="register.inc.php" method="post">
+        <form action="../Scripts/register.inc.php" method="post">
             <div class="inputPosition">
                 <div class="field">
                     <input type="text" name="name"  id="name" class="a inputLogin" placeholder=" "> 

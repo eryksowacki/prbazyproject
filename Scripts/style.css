@@ -120,3 +120,7 @@ label {
 .whole-page {
 	padding-bottom: 1000px;
 }
+
+.w-100{
+	filter: brightness(50%) !important;
+}
