@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../Scripts/bootstrap.css">
     <link rel="stylesheet" href="../Scripts/style.css">
     <link rel="shortcut icon" href="../Images/WEBSITE IMAGES/LOGO.png" type="image/x-icon">
+    <script src="..\node_modules\gsap\dist\gsap.min.js"></script>
+    <script src="..\node_modules\jquery\dist\jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +25,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <div class="btn-search-bar">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </div>
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -61,20 +65,20 @@
         <form action="../Scripts/register.inc.php" method="post">
             <div class="inputPosition">
                 <div class="image-register-promotion">
-                    <div class="">
-                        <img src="../Images/WEBSITE IMAGES/gym-icon-8.png" title="Ikona ciężarka typu Kettlebell" alt="Ikona ciężarka typu Kettlebell">
+                    <div class="icons">
+                        <img src="../Images/WEBSITE IMAGES/gym-icon-8.png" class="icon-1" title="Ikona ciężarka typu Kettlebell" alt="Ikona ciężarka typu Kettlebell">
                         <p>Osiągaj coraz lepsze wyniki</p>
                     </div>
                     <div class="">
-                        <img src="../Images/WEBSITE IMAGES/gym-icon-2.png" title="Ikona rowerka stacjonarnego" alt="Ikona rowerka stacjonarnego">
+                        <img src="../Images/WEBSITE IMAGES/gym-icon-2.png" class="icon-2" title="Ikona rowerka stacjonarnego" alt="Ikona rowerka stacjonarnego">
                         <p>Zwiększaj swoją wydolność</p>
                     </div>
                     <div class="">
-                        <img src="../Images/WEBSITE IMAGES/gym-icon-4.png" title="Ikona wagi" alt="Ikona wagi">
+                        <img src="../Images/WEBSITE IMAGES/gym-icon-4.png" class="icon-3" title="Ikona wagi" alt="Ikona wagi">
                         <p>Kontroluj swoją wagę</p>
                     </div>
                     <div class="">
-                        <img src="../Images/WEBSITE IMAGES/gym-icon-5.png" title="Ikona maty do ćwiczenia" alt="Ikona maty do ćwiczenia">
+                        <img src="../Images/WEBSITE IMAGES/gym-icon-5.png" class="icon-4" title="Ikona maty do ćwiczenia" alt="Ikona maty do ćwiczenia">
                         <p>Relaksuj się i odpoczywaj trenując</p>
                     </div>
                 </div>
@@ -134,6 +138,7 @@
     </div>
 </body>
 </html>
+<script src="gsap-button-animation.js"></script>
 <script>let x;</script>
 <?php
 if(isset($_GET['emptyInput']))
