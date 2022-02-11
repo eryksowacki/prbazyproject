@@ -17,10 +17,16 @@ tl.from(icons[0], 2, {x:-300, opacity:0})
     .from(icoParagraph[3],1,{opacity:0},"-=0.5");
 
 
+    
+    
+    
+    
 const labels = document.querySelectorAll(".floating-label");
-
 tl.from(labels, 0.8,{opacity:0,},"icons");
 // $(".icon-1").on("mouseover", function() 
 // {
 //     tl.to(icons[0],)
 // });
+
+
+

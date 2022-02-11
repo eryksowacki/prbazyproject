@@ -51,7 +51,7 @@
 
                         if($result -> num_rows !== 0)
                         {
-                            header("Location: .../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=&emptyInput=&takenEmail=");
+                            header("Location: ../../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=&emptyInput=&takenEmail=");
                         }
                         else
                         {   

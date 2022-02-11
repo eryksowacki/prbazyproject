@@ -1,16 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar-expand-lg navbar-nav bg-dark navbar-inverse navbar-fixed-top transparent">
         <div class="container-fluid">
-            <a href="index.php"><img src="../Images/WEBSITE IMAGES/LOGO.png" alt="zdjęcie loga znany trener" id="logoImage"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Szukaj siłowni lub trenerów..." aria-label="Search">
-                    <div class="btn-search-bar">
-                        <button class="btn btn-outline-success" type="submit">Szukaj</button>
-                    </div>
-                </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
@@ -19,23 +9,21 @@
                         <a class="nav-link" href="Trenerzy.php">Trenerzy</a>
                     </li>
                     <?php
+                        $_SESSION['user_id'] = 1;
                         if(!empty($_SESSION['user_id']))
                         {
                             echo <<< DROPDOWNUSER
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Moje konto</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="nav-link dropdown-toggle " href="mojekonto.php" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Moje konto</a>
+                                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                         <li>
-                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="mojekonto.php#myTrainers">Moi Trenerzy</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="mojekonto.php#myGyms">Moje Siłownie</a>
                                         </li>
                                         <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="mojeoferty.php">Moje Oferty</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -53,7 +41,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Regulamin.php">Regulamin</a>
                     </li>
+                    <li class="nav-item btn-group dropend dropdown-menu-right" >
+                        <button class="nav-link dropdown-toggle" id="nvbrdrpdwn" role="button" data-bs-toggle="dropdown-right" aria-expanded="false">Wyszukaj</button>
+                    </li>
                 </ul>
+                <div class="search">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Szukaj siłowni lub trenerów..." aria-label="Search">
+                        <div class="btn-search-bar">
+                            <button class="btn btn-outline-success" type="submit">Szukaj</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
