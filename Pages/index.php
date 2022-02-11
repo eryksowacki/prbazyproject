@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <link rel="shortcut icon" href="../Images/WEBSITE IMAGES/LOGO.png" type="image/x-icon">
-    <link rel="stylesheet" href="../Scripts/bootstrap-5.0.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../Scripts/style.css">
+  <link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css">
+    <link rel="stylesheet" href="..\Scripts\CSS\style.css">
+    <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
+    <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js"></script>
+    <script src="..\Scripts\node_modules\jquery\dist\jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +13,9 @@
 </head>
 <body>
     <div id="progress-bar"></div>
-    <!-- <nav class="navbar navbar-light bg-dark">
-            <div class="container" >
-                <a href="index.php">
-                    <img src="../Images/WEBSITE IMAGES/LOGO.png" alt="zdjęcie loga znany trener" id="logoImage">
-                </a>
-                <input type="text" name="" id="">
-            </div>
-        </nav>
-        <div>
-    </nav> -->
+    <?php
+        require_once('..\Scripts\PHP\navbar-content.php');
+    ?>
 
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -63,7 +58,7 @@
 
     <div id="page" class="whole-page">
         <div id="login">
-            <form action="../Scripts/login.inc.php" method="post">
+            <form action="..\Scripts\PHP\login.inc.php" method="post">
                 Login: <input type="text" name="login">
                 Hasło: <input type="password" name="password">
                 <input type="submit" name="submitSub" value="Zaloguj się">   
@@ -96,6 +91,6 @@
         <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
     </footer>
 </body>
-<script src="../Scripts/progressionBarApp.js"></script>
-<script src="../Scripts/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="..\Scripts\JS\progressionBarApp.js"></script>
+<script src="..\Scripts\CSS\bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 </html>

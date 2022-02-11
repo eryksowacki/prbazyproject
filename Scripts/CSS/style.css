@@ -4,10 +4,10 @@
 	align-items: center;
 	flex-direction: column;
 }
-#navbarSupportedContent > form{
+#navbarSupportedContent > form {
 	flex-direction: row;
 }
-.btn-search-bar{
+.btn-search-bar {
 	margin-left: 25px;
 }
 #logoImage {
@@ -26,16 +26,15 @@
 	outline: none;
 }
 
-#navbarSupportedContent> ul > li > a{
+#navbarSupportedContent > ul > li > a {
 	color: azure;
 }
-.navbar-collapse{
+.navbar-collapse {
 	justify-content: space-between;
 	align-content: stretch;
 }
 
-
-#navbarSupportedContent > form > input{
+#navbarSupportedContent > form > input {
 	margin-left: 75px;
 	width: 30rem;
 }
@@ -43,12 +42,12 @@
 .inputPosition {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	grid-auto-rows: minmax(550px,auto) ;
+	grid-auto-rows: minmax(550px, auto);
 	gap: 15px;
-	align-items: center
+	align-items: center;
 }
-input[type="submit"]{
-	margin-top: 25px;
+input[type='submit'] {
+	margin-top: 15px;
 }
 
 .field {
@@ -57,30 +56,35 @@ input[type="submit"]{
 	position: relative;
 }
 
-input[type=submit]:hover {
+input[type='submit']:hover {
 	transition: 1s;
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-	
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-.btn:hover{
+.btn:hover {
 	transition: 1.5s;
-	border:1px solid black;
+	border: 1px solid black;
 }
-.btn{
+.btn {
 	transition: 1.5s;
 }
 .button-29 {
 	align-items: center;
 	appearance: none;
-	background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+	background-image: radial-gradient(
+		100% 100% at 100% 0,
+		#5adaff 0,
+		#5468ff 100%
+	);
 	border: 0;
 	border-radius: 6px;
-	box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+	box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+		rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
 	box-sizing: border-box;
 	color: #fff;
 	cursor: pointer;
 	display: inline-flex;
-	font-family: "JetBrains Mono",monospace;
+	font-family: 'JetBrains Mono', monospace;
 	height: 48px;
 	justify-content: center;
 	line-height: 1;
@@ -91,68 +95,81 @@ input[type=submit]:hover {
 	position: relative;
 	text-align: left;
 	text-decoration: none;
-	transition: box-shadow 0.7s,transform 0.7s;
+	transition: box-shadow 0.7s, transform 0.7s;
 	user-select: none;
 	-webkit-user-select: none;
 	touch-action: manipulation;
 	white-space: nowrap;
-	will-change: box-shadow,transform;
+	will-change: box-shadow, transform;
 	font-size: 18px;
 	margin-left: 30px;
 	margin-right: 30px;
 	animation: floating_btn 2s;
 	animation-iteration-count: infinite;
 }
-
-.button-29:focus {
-	box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-}
-
 .button-29:hover {
-	box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+	animation-name: floating;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+		rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
 	transform: translateY(-2px);
 }
 
+@keyframes floating {
+	0% {
+		transform: translate(0, 0px);
+	}
+	50% {
+		transform: translate(0, 5px);
+	}
+	100% {
+		transform: translate(0, -0px);
+	}
+}
+.button-29:focus {
+	box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+		rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
 .button-29:active {
 	box-shadow: #3c4fe0 0 3px 7px inset;
 	transform: translateY(2px);
 }
 
-.input-positions-fields, .field > input{
+.input-positions-fields,
+.field > input {
 	background-color: #f8f9fa;
 	box-shadow: 0 0 0px 1000px #f8f9fa inset;
 }
-.input-containers{
+.input-containers {
 	width: fit-content;
 	margin-left: 30px;
 }
-.input-positions-fields{
+.input-positions-fields {
 	border-radius: 10px;
 	height: 475px;
-	filter:none;
+	filter: none;
 	display: grid;
-    justify-content: end;
+	justify-content: end;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	align-content:center;
+	align-content: center;
 }
-.image-register-promotion{
+.image-register-promotion {
 	display: grid;
 }
-.image-register-promotion > div > img{
+.image-register-promotion > div > img {
 	padding-left: 90px;
+	opacity: 1;
 }
-.image-register-promotion > div > p{
+.image-register-promotion > div > p {
 	display: inline;
 	font-size: 1.25rem;
 	margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
-    color: inherit;
-
+	font-weight: 500;
+	line-height: 1.2;
+	color: inherit;
 }
-
-
-
 
 label,
 .inputLogin {
@@ -161,7 +178,7 @@ label,
 	transform-origin: left bottom;
 }
 
-.inputLogin{
+.inputLogin {
 	width: fit-content;
 	border: 0px;
 	border-bottom: 1px solid black;
@@ -171,7 +188,6 @@ label,
 	margin-bottom: 0px;
 	width: 15rem;
 }
-
 
 .inputLogin:focus,
 .shortInputLogin:focus {
@@ -210,7 +226,21 @@ label {
 }
 
 .inputLogin:focus::-webkit-input-placeholder {
-	opacity: 1;
+	opacity: 0;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
+	width: 15px;
+}
+::-webkit-scrollbar-thumb {
+	background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+	border-radius: 20px;
+	opacity: 0;
+}
+::-webkit-scrollbar-track {
+	background-color: #f8f9fa;
+	border-radius: 20px;
 }
 
 .inputLogin:not(:placeholder-shown) + label,
@@ -218,12 +248,20 @@ label {
 	opacity: 1;
 	transform: translate(0, 0) scale(1);
 	cursor: default;
-	
 }
-
+#navbarSupportedContent > ul {
+	margin-right: 0 !important;
+}
 .inputLogin:not(:placeholder-shown) + label {
 	display: block;
 }
+
+.invalidInput {
+	color: red;
+	font-size: 80%;
+	margin: 0px;
+}
+
 #progress-bar {
 	position: fixed;
 	top: 0;
@@ -238,7 +276,21 @@ label {
 .whole-page {
 	padding-bottom: 1000px;
 }
-
-.w-100{
+.nav-item {
+	margin-right: 1rem;
+	padding: 0.125rem;
+}
+#navbarSupportedContent > ul > li > a:hover {
+	transition: 0.5s;
+	color: #6d7eff;
+}
+.w-100 {
 	filter: brightness(50%) !important;
+}
+.field:nth-child(6) {
+	margin-bottom: 15px;
+}
+.tos {
+	display: inline;
+	margin-left: 10px;
 }
