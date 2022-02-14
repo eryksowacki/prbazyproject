@@ -6,7 +6,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Trenerzy.php">Trenerzy</a>
+                        <a class="nav-link" href="trenerzy.php">Trenerzy</a>
                     </li>
                     <?php
                         $_SESSION['user_id'] = 1;
