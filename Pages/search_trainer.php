@@ -69,7 +69,27 @@
                 $connect -> close();
             }
 
-            
+        //     <div id="content" class="d-flex justify-content-center">
+        //     <h2>Szukaj trenera personalnego</h2>
+        //     <form action="search_trainer.php" method="post" class="d-flex">
+        //         <h4>Miasto:</h4>
+        //         <input type="text" placeholder="Np. Poznań" name="city">
+        //         <h4>Nazwa siłowni:</h4>
+        //         <input type="text" placeholder="Np. Fabryka Formy" name="gymName">
+        //         <h4>Płeć trenera:</h4>
+        //         <select name="trainerSex">
+        //             <option value="woman">Kobieta</option>
+        //             <option value="man">Mężczyzna</option>
+        //         </select>
+        //         <h4>Ocena:</h4>
+        //         <input type="text" placeholder="od:" name="minTrainerMark">
+        //         <input type="text" placeholder="do:" name="maxTrainerMark">
+        //         <h4>Cena:</h4>
+        //         <input type="text" placeholder="od" name="minPrize"> 
+        //         <input type="text" placeholder="do:" name="maxPrize">
+        //         <input type="submit" value="Szukaj">
+        //     </form>
+        // </div>
         ?>
     </center>
     <div id="footer">
