@@ -53,6 +53,14 @@
                         </div>
                     </form>
                 </div>
+                <div id="login">
+                    <form action="..\Scripts\PHP\login.inc.php" method="post">
+                        E-mail: <input type="text" name="login">
+                        Hasło: <input type="password" name="password">
+                        <input type="submit" name="submitSub" value="Zaloguj się">   
+                    </form>
+                    <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
+                </div>
             </div>
         </div>
     </nav>
