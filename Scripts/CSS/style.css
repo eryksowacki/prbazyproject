@@ -6,6 +6,7 @@
 }
 .search > form {
 	flex-direction: row;
+	margin-top: 15px;
 }
 .btn-search-bar {
 	margin-left: 25px;
@@ -19,6 +20,8 @@
 }
 #footer {
 	text-align: right;
+	position: relative;
+	margin-bottom: 0px;
 }
 
 .inputPosition input {
@@ -49,7 +52,7 @@
 	gap: 15px;
 	align-items: center;
 }
-input[type='submit'] {
+.floating {
 	margin-top: 15px;
 }
 
@@ -59,7 +62,7 @@ input[type='submit'] {
 	position: relative;
 }
 
-input[type='submit']:hover {
+.floating:hover {
 	transition: 1s;
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
 		0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -275,7 +278,6 @@ label {
 	padding-bottom: 1000px;
 }
 .nav-item {
-	margin-right: 1rem;
 	padding: 0.125rem;
 }
 .search > ul > li > a:hover {
@@ -309,6 +311,169 @@ label {
 .search {
 	opacity: 0;
 }
-.show {
-	transition: 3s ease-in-out;
+
+@media all and (min-width: 992px) {
+	.sidebar li {
+		position: relative;
+	}
+
+	.sidebar li .submenu {
+		display: none;
+		position: absolute;
+		left: 100%;
+		top: -7px;
+		min-width: 240px;
+	}
+
+	[dir='rtl'] .sidebar li .submenu {
+		right: 100%;
+		left: auto;
+	}
+}
+
+@media (max-width: 991px) {
+	.sidebar .submenu,
+	.sidebar .dropdown-menu {
+		position: static !important;
+		margin-left: 0.7rem;
+		margin-right: 0.7rem;
+		margin-bottom: 0.5rem;
+	}
+}
+
+.sidebar .nav-link {
+	font-weight: 500;
+	font-size: 120%;
+	color: var(--bs-dark);
+}
+
+nav.sidebar.card.py-2 {
+	display: grid;
+	width: 300px;
+	height: fit-content;
+	margin-top: 2rem;
+	margin-left: 2rem;
+}
+.myAccount {
+	display: grid;
+	grid-template-columns: 0.3fr 1fr;
+	grid-template-rows: 700px;
+	gap: 0px 2em;
+	grid-template-areas: '. .';
+	justify-items: center;
+}
+.userMain {
+	width: auto;
+	height: auto;
+	display: grid;
+	grid-column: 2;
+	grid-row: 1;
+	align-content: space-between;
+}
+.sidebar .nav-item {
+	padding: 1.2rem 0.5rem;
+	padding-left: 2rem;
+}
+.sidebar li:hover:first-child {
+	background: none;
+}
+.sidebar .nav-link:hover {
+	color: var(--bs-blue);
+}
+.link-text {
+	font-weight: 350 !important;
+}
+a {
+	cursor: pointer;
+}
+.nav-item-menu {
+	cursor: context-menu;
+	font-size: 150%;
+}
+.review-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	overflow-y: scroll;
+}
+
+.trainer-Picture {
+	width: 100px;
+	border-radius: 100%;
+	border: 0.125rem solid black;
+	background-color: black;
+	opacity: 98%;
+}
+.trainer-show {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	align-content: center;
+	background: linear-gradient(to bottom, #d5dee7 0%, #e8ebf2 50%, #e2e7ed 100%),
+		linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.02) 50%,
+			rgba(255, 255, 255, 0.02) 61%,
+			rgba(0, 0, 0, 0.02) 73%
+		),
+		linear-gradient(33deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+	background-blend-mode: normal, color-burn;
+	background-blend-mode: multiply, multiply;
+	padding: 30px;
+	border-radius: 50px;
+	margin: 25px 50px 25px 50px;
+}
+.trainer-show > p {
+	padding-right: 15px;
+	margin-bottom: 0px;
+}
+.trainer-show > img {
+	margin-right: 15px;
+}
+.trainer-show > p > a {
+	text-decoration: none;
+	color: black;
+	transition: 0.45s;
+}
+.trainer-show > p > a:hover {
+	transition: 0.3s;
+	color: whitesmoke;
+}
+b.hoverOnInfo {
+	transition: 0.2s;
+}
+b.hoverOnInfo:hover {
+	transition: 0.2s;
+	cursor: context-menu;
+	color: var(--bs-blue);
+}
+p.myTrainers {
+	margin-right: 1.5rem;
+	display: inline;
+}
+.selectIDK {
+	display: inline-block;
+	margin-bottom: 1rem;
+	margin-top: 0.5rem;
+	margin-right: 4rem;
+	padding: 0.3rem;
+}
+#reviewSubmit {
+	display: inline-block;
+	padding: 0.3rem;
+}
+
+textarea {
+	width: max-content;
+	resize: vertical;
+}
+.newWeight {
+	display: inline;
+	padding: 1rem 0rem 1rem 1rem;
+}
+p.newWeight {
+	margin-right: 0.5rem;
+}
+.weightInput {
+	padding: 0.125rem;
 }

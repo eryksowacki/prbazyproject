@@ -27,7 +27,7 @@
 
             if(!isset($_POST['city']) && !isset($_POST['gymName']) && !isset($_POST['trainerSex']) && !isset($_POST['minTrainerMark']) && !isset($_POST['maxTrainerMark']) && !isset($_POST['minPrize']) && !isset($_POST['maxPrize']))
             {
-                header('Location: index.php');
+                // header('Location: index.php');
             }
             else
             {

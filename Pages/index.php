@@ -4,7 +4,6 @@
   	<link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css">
     <link rel="stylesheet" href="..\Scripts\CSS\style.css">
     <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,13 +66,31 @@
             <h2>Szukaj trenera personalnego</h2>
             <form action="index.php" method="post" class="d-flex">
                 <h4>Miasto:</h4>
-                <input type="text" placeholder="Np. Poznań" name="city">
-                <h4>Nazwa siłowni:</h4>
-                <input type="text" placeholder="Np. Fabryka Formy" name="gymName">
+				<select name="gymName">
+					<?php
+						require_once '../Scripts/PHP/connect_user.php';
+						$gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
+						$result = $connect -> query($gymQuery);
+						while($currentRow =  mysqli_fetch_row($result))
+						{
+							echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
+						}
+					?>
+				</select>
+				<select name="city">
+					<?php
+						$cityQuery = "SELECT DISTINCT `city` FROM `gyms` ORDER BY `gym_id` ASC";
+						$result = $connect -> query($cityQuery);
+						while($currentRow =  mysqli_fetch_row($result))
+						{
+							echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
+						}
+					?>
+				</select>
                 <h4>Płeć trenera:</h4>
                 <select name="trainerSex">
-                    <option value="woman">Kobieta</option>
-                    <option value="man">Mężczyzna</option>
+                    <option value="female">Kobieta</option>
+                    <option value="male">Mężczyzna</option>
                 </select>
                 <h4>Ocena:</h4>
                 <input type="text" placeholder="od:" name="minTrainerMark">
@@ -89,10 +106,10 @@
         <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
     </footer>
 </body>
+</html>
 <script src="..\Scripts\JS\bootstrap-5.0.2-dist\js\bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
-
 <script src="..\Scripts\JS\progressionBarApp.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
-</html>
+

@@ -11,6 +11,7 @@ function addData(chart, label, data) {
 	});
 	chart.update();
 }
+let delayed;
 const canvas = document.getElementById('myChart').getContext('2d');
 let gradiant = canvas.createLinearGradient(0, 0, 0, 400);
 gradiant.addColorStop(0, getRandomFillColor());
@@ -28,12 +29,25 @@ const userProgressChart = {
 				borderColor: getRandomFillColor(),
 				fill: true,
 				backgroundColor: gradiant,
-				tension: 0.3,
+				tension: 0.35,
 			},
 		],
 	},
 	options: {
-		responsive: true,
+		hitRadius:30,
+		hoverRadius:18,
+		animation: {
+			onClomplete: () => {
+				delayed: true;
+			},
+			delay: (context) => {
+				let delay = 0;
+				if(context.type === 'data' && context.mode === 'default' && !delayed){
+					delay = context.dataIndex * 300 + context.dataIndex * 100;
+				}
+				return delay;
+			},
+		},
 		plugins: {
 			legend: {
 				display: false,
@@ -43,8 +57,7 @@ const userProgressChart = {
 			x: {
 				title: {
 					color: 'black',
-					display: true,
-					text: 'Day',
+					text: 'Dzień',
 				},
 			},
 			y: {
@@ -58,3 +71,5 @@ const userProgressChart = {
 		
 	},
 };
+let myChart = new Chart(canvas, userProgressChart);
+addData(myChart, date, weight);
