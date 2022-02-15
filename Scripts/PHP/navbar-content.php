@@ -6,7 +6,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="trenerzy.php">Trenerzy</a>
+                        <a class="nav-link" href="trainers.php">Trenerzy</a>
                     </li>
                     <?php
                         $_SESSION['user_id'] = 1;
@@ -14,16 +14,16 @@
                         {
                             echo <<< DROPDOWNUSER
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle " href="mojekonto.php" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Moje konto</a>
+                                    <a class="nav-link dropdown-toggle " href="myaccount.php" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Moje konto</a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                         <li>
-                                            <a class="dropdown-item" href="mojekonto.php#myTrainers">Moi Trenerzy</a>
+                                            <a class="dropdown-item" href="mytrainers.php#myTrainers">Moi Trenerzy</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="mojekonto.php#myGyms">Moje Siłownie</a>
+                                            <a class="dropdown-item" href="mygyms.php#myGyms">Moje Siłownie</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="mojeoferty.php">Moje Oferty</a>
+                                            <a class="dropdown-item" href="myoffers.php">Moje Oferty</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -39,7 +39,7 @@
                         }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="Regulamin.php">Regulamin</a>
+                        <a class="nav-link" href="statute.php">Regulamin</a>
                     </li>
                     <li class="nav-item btn-group dropend dropdown-menu-right" >
                         <button class="nav-link dropdown-toggle" id="nvbrdrpdwn" role="button" data-bs-toggle="dropdown-right" aria-expanded="false">Wyszukaj</button>
