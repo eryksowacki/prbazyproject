@@ -6,7 +6,6 @@
 }
 .search > form {
 	flex-direction: row;
-	margin-top: 15px;
 }
 .btn-search-bar {
 	margin-left: 25px;
