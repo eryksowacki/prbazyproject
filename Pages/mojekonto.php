@@ -78,8 +78,6 @@
                 </li>
             </ul>
         </nav>
-
-
         <div class="userMain">
             <div class="chart">
                 <h4>Mój progress na przestrzeni <?php echo $dayDiff;?></h4>
@@ -100,20 +98,20 @@
             <div class="review-block">
                 <div>
                     <?php
-                        $myTrainerReveiws = 
+                        $myTrainerReviews = 
                             "SELECT `trainers`.`name` as `n`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_id`
                             from `trainer_reviews`
                             join `trainers`
                             on `trainer_reviews`.`trainer_review_id` = `trainers`.`trainer_id`
                             where `trainer_reviews`.`user_id` = $_SESSION[user_id]";
-                        $result = $connect -> query($myTrainerReveiws);
+                        $result = $connect -> query($myTrainerReviews);
                         echo"<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=..\Scripts\PHP\deleteUser.php method=post><select class=selectIDK name=addReview>";
                         while($option =  $result -> fetch_assoc())
                         {
                             echo '<option value='."$option[trainer_id]>"."$option[n] $option[s]".'</option>';
                         }
                         echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'><br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
-                        $result = $connect -> query($myTrainerReveiws);
+                        $result = $connect -> query($myTrainerReviews);
                         while($currentRow = $result -> fetch_assoc())
                         {
                             echo <<< USERREVIEW
@@ -170,7 +168,6 @@
                                 FROM `usr_train` 
                                 WHERE `user_id` = $_SESSION[user_id];";
                         
-                        
                         $result = $connect -> query($sql);
                         $assoc= array();
                         $dzien_tyg_pl = array('Monday' => 'Poniedziałek',
@@ -217,12 +214,10 @@
                             echo "</div>";
                             if($currDay == date("d",strtotime($f)))
                             {
-
                                 echo "<script>const curDay = document.querySelector('.mySchedual > div > div:nth-child($currDay)');
                                 curDay.style.backgroundColor = '#045de9';
                                 curDay.style.backgroundImage = 'linear-gradient(315deg, #045de9 0%, #09c6f9 74%)';</script>";
                             }
-                            
                         }
                     ?>
                 </div>
