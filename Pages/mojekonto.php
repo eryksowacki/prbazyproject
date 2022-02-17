@@ -88,7 +88,7 @@
                     <form action="..\Scripts\PHP\addWeightEntry.php" method="post">
                         <h4 class="newWeight">Dodaj nowy wpis</h4>
                         <p class="newWeight">Moja aktualna waga (kg):</p>
-                        <input type="number" name="weight" class='weightInput' id='weightValue' max="300" min="0">
+                        <input type="number" name="weight" class='weightInput' id='weightValue' max="300" min="0" value="">
                         <input type="submit" class='weightInput' value="Prześlij">
                     </form>
                 </div>
@@ -246,5 +246,5 @@
 <script src="..\Scripts\JS\chartApp.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\gsap-myaccount-animations.js" crossorigin="anonymous"></script>
 <script>
-    document.querySelector("#weightValue").innerText = weight[weight.length - 1];
+    document.querySelector("#weightValue").value = weight[weight.length - 1];
 </script>
