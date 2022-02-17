@@ -14,11 +14,9 @@
 	<!-- <div id="progress-bar"></div>
     <div id="page" class="whole-page">
     </div> -->
-    <footer id="footer">
 		<?php
 			require_once '..\Scripts\PHP\page_look_footer.php';
 		?>
-    </footer>
 </body>
 	<?php
 		require_once '..\Scripts\PHP\page_look_scripts.php';
