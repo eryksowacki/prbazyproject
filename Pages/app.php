@@ -9,25 +9,26 @@
         :root{
             --bs-blue: #0d6efd;
         }
-        .asd{
+        .gridInGrid{
             display: grid; 
             grid-auto-flow: row; 
             grid-template-columns: repeat(7, auto); 
             grid-template-rows: repeat(4, auto); 
-            gap: 2em 1.125em; 
             grid-template-areas: 
                 ". . . . . ."
                 ". . . . . ."
                 ". . . . . ."
                 ". . . . . ."; 
-        }
-        
-        .grid{
-            display: grid;
+            justify-content: center;
+            gap: 1.2rem 0.25rem;
         }
         .calendar{
             height:4rem;
-            background-image: linear-gradient(to top, #b3ffab 0%, #12fff7 100%);
+            display: grid;
+
+            width: max-content;
+            background-color: #6a93cb;
+            background-image: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%); 
             border-radius:16px;
             padding:1em;
         }
@@ -36,16 +37,16 @@
             width:fit-content;
             margin:0px;
             margin-left:2rem;
-            
 
         }
         h4 > p:hover{
-            transition:0.3s;
-            font-weight:500;
+            transition:0.45s;
             color:var(--bs-blue);
             cursor:context-menu;
         }
         h4{
+            transition:0.45s;
+
             font-weight:400;
             margin:0px;
         }
@@ -60,30 +61,22 @@
         }
         .freeDay:hover{
             transition:0.3s;
+            font-weight:400;
             opacity: 1;
-        }
-        .hiddenText{
-            user-select: none;
-            display:none;
-            position: absolute;
-            background: black;
-            height: max-content;
-            width: 150px;
-            padding:6px;
-            margin: 30px;
-            border-radius:10px;
-            z-index: -1;
-            color:white;
         }
     </style>    
 </head>
 <body>
-    <div class="asd">
+    <div class="gridInGrid">
         <?php
             date_default_timezone_set("UTC");
-            $d = date("Y-06-1");
-            $howLong = 30 - date("d");
-            $howLong = date("d") + $howLong;
+            $d = date("Y-m-d");
+            $howLong = date("d",strtotime(date("Y-m-t",  strtotime($d))));
+            // Day of the last date 
+            // $howLong = date("d", $lastdate);
+
+            // $howLong = date("d") - date("m");
+            // $howLong = date("d") + $howLong;
             $_SESSION['user_id'] = 18;
             $connect = @new mysqli("localhost", "root", "", "znany_trener");
 
@@ -107,7 +100,7 @@
             for ($i=0; $i < $howLong ; $i++) 
             { 
                 $f = date("Y-m-d",strtotime("+$i day", strtotime($d)));
-                echo "<div class='calendar grid'>";
+                echo "<div class='calendar '>";
                 $dzien_tyg = date("l",strtotime("+$i day", strtotime($d)));
                 echo "<b>$f $dzien_tyg_pl[$dzien_tyg]</b>";
                
@@ -129,7 +122,7 @@
                 }
                 if($tmp == count($assoc)){
 
-                    echo "<p class=freeDay>Dzień wolny</p><div class=hiddenText>Kliknij podwójnie aby dodać swój trening</div>";
+                    echo "<p class=freeDay>Dzień wolny</p>";
                     $assoc = [];
                 }
                 else
@@ -152,26 +145,52 @@
 <script>
     let dayAnimation = document.querySelectorAll('.calendar');
     const tl = gsap.timeline();
-    tl.fromTo(dayAnimation[0],1,{y:-10,opacity:0},{y:0,opacity:1})
-        .fromTo(dayAnimation[1],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[2],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[3],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[4],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[5],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[6],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[7],1,{y:10,opacity:0},{y:0,opacity:1},"+=1")
-        .fromTo(dayAnimation[8],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[9],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[10],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[11],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[12],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[13],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[14],1,{y:10,opacity:0},{y:0,opacity:1},"+=1")
-        .fromTo(dayAnimation[15],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[16],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[17],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[18],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[19],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
-        .fromTo(dayAnimation[20],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+    const from = {y:-10,opacity:0}; 
+    const to = {y:0,opacity:1};
 
+    tl.fromTo(dayAnimation[0],0.75,from,to)
+        .fromTo(dayAnimation[1],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[2],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[3],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[4],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[5],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[6],0.75,from,to,"-=0.75")
+
+        .fromTo(dayAnimation[7],0.75,from,to)
+        .fromTo(dayAnimation[8],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[9],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[10],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[11],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[12],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[13],0.75,from,to,"-=0.75")
+
+        .fromTo(dayAnimation[14],0.75,from,to)
+        .fromTo(dayAnimation[15],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[16],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[17],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[18],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[19],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[20],0.75,from,to,"-=0.75")
+
+        .fromTo(dayAnimation[21],0.75,from,to)
+        .fromTo(dayAnimation[22],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[23],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[24],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[25],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[26],0.75,from,to,"-=0.75")
+        .fromTo(dayAnimation[27],0.75,from,to,"-=0.75")
+
+        .fromTo(dayAnimation[28],0.75,from,to);
+        if(typeof dayAnimation[29] != "undefined")
+        {
+            gsap.fromTo(dayAnimation[29],0.75,from,to,"-=0.5");
+            if(typeof dayAnimation[30] != "undefined")
+            {
+                gsap.fromTo(dayAnimation[30],0.75,from,to,"-=0.5");
+                if(typeof dayAnimation[31] != "undefined")
+                {
+                    gsap.fromTo(dayAnimation[31],0.75,from,to,"-=0.5");
+                }
+            }
+        }
 </script>

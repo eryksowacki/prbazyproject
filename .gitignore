@@ -1,5 +1,2 @@
 node_modules/prettier
-package-lock.json
-.package-lock.json
-package.json
 .gitignore

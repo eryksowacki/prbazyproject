@@ -20,7 +20,6 @@
 #footer {
 	text-align: right;
 	position: relative;
-	margin-bottom: 0px;
 }
 
 .inputPosition input {
@@ -28,9 +27,16 @@
 	outline: none;
 }
 
-#navbarSupportedContent > ul > li > * {
-	color: azure;
+#navbarSupportedContent > ul > li > *,
+.sessionInfo {
+	color: azure !important;
+	font-size: 120%;
 }
+#navbarSupportedContent > ul > li > a:hover,
+#nvbrdrpdwn:hover {
+	color: var(--bs-blue) !important;
+}
+
 .navbar-collapse {
 	justify-content: space-between;
 	align-content: stretch;
@@ -281,12 +287,10 @@ label {
 }
 .search > ul > li > a:hover {
 	transition: 0.5s;
-	color: #6d7eff;
 }
 .w-100 {
 	filter: brightness(50%) !important;
-	width: 100%;
-	height: 100%;
+	height: 91.8vh;
 }
 .field:nth-child(6) {
 	margin-bottom: 15px;
@@ -356,7 +360,7 @@ nav.sidebar.card.py-2 {
 .myAccount {
 	display: grid;
 	grid-template-columns: 0.3fr 1fr;
-	grid-template-rows: 700px;
+	grid-template-rows: 750px;
 	gap: 0px 2em;
 	grid-template-areas: '. .';
 	justify-items: center;
@@ -475,4 +479,77 @@ p.newWeight {
 }
 .weightInput {
 	padding: 0.125rem;
+}
+
+.gridInGrid {
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-columns: repeat(7, max-content);
+	grid-template-rows: repeat(4, max-content);
+	grid-template-areas:
+		'. . . . . . .'
+		'. . . . . . .'
+		'. . . . . . .'
+		'. . . . . . .';
+	justify-content: center;
+	gap: 1.05rem 0.25rem;
+}
+
+.calendar {
+	display: grid;
+	height: 120px;
+	width: 180px;
+	background-color: #6a93cb;
+	background-image: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
+	border-radius: 16px;
+	padding: 1em;
+}
+
+.treningType {
+	transition: 0.45s;
+	font-weight: 400;
+	margin: 0px;
+	font-size: inherit;
+}
+.trainingDesc {
+	transition: 0.3s;
+	width: fit-content;
+	margin: 0px;
+	margin-left: 2rem;
+}
+.trainingDesc:hover {
+	transition: 0.45s;
+	color: var(--bs-blue);
+	cursor: context-menu;
+}
+.freeDay {
+	margin: 0px;
+	opacity: 0.7;
+	cursor: context-menu;
+	transition: 0.3s;
+	user-select: none;
+}
+.freeDay:hover {
+	transition: 0.3s;
+	font-weight: 400;
+	opacity: 1;
+}
+.sessionInfo {
+	position: absolute;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	right: 20px;
+}
+.linkSession {
+	color: azure !important;
+}
+.linkSession:hover {
+	color: var(--bs-blue) !important;
+}
+.userPfp {
+	height: 75px;
+	border-radius: 100%;
+	margin-right: 15px;
+	border: 2px solid var(--bs-blue);
 }

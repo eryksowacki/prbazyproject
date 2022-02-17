@@ -35,7 +35,8 @@ const userProgressChart = {
 	},
 	options: {
 		hitRadius:30,
-		hoverRadius:18,
+		responsive:true,
+		hoverRadius:12,
 		animation: {
 			onClomplete: () => {
 				delayed: true;

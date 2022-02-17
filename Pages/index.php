@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -21,17 +24,17 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-			<img class="d-block w-100" src="../Images/WEBSITE IMAGES/carouserl-img1.png" alt="Obraz promocyjny siłowni. Kobiety robią martwy ciąg">
-			<div class="carousel-caption d-none d-md-block">
-				<h5>Zadbaj o swoją forme</h5>
-				<p>Z naszymi trenerami możesz osiągnąć wszystko!</p>
-			</div>
+				<img class="d-block w-100" src="../Images/WEBSITE IMAGES/carouserl-img1.png" alt="Obraz promocyjny siłowni. Kobiety robią martwy ciąg">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Zadbaj o swoją forme</h5>
+					<p>Z naszymi trenerami możesz osiągnąć wszystko!</p>
+				</div>
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="../Images/WEBSITE IMAGES/carouserl-img2.png" alt="Obraz promocyjny siłowni. Podgląd siłowni">
 				<div class="carousel-caption d-none d-md-block">
-				<h5>Odwiedzaj nowe siłownie!</h5>
-				<p>I znajdź tą najbardziej sprzyjającą Tobie</p>
+					<h5>Odwiedzaj nowe siłownie!</h5>
+					<p>I znajdź tą najbardziej sprzyjającą Tobie</p>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -112,4 +115,3 @@
 <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\progressionBarApp.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
-
