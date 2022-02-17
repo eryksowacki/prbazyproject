@@ -85,7 +85,7 @@
             $howLong = 30 - date("d");
             $howLong = date("d") + $howLong;
             $_SESSION['user_id'] = 18;
-            $connect = @new mysqli("localhost", "user_znany_trener", "GxvjFNXBaCxOA9Zd", "znany_trener");
+            $connect = @new mysqli("localhost", "root", "", "znany_trener");
 
             $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
                     FROM `usr_train` 
@@ -150,21 +150,28 @@
 <script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
 <script>
-    const addEventDay = document.querySelectorAll(".freeDay");
-    for (let i = 0; i < addEventDay.length; i++) 
-    {
-        $(addEventDay[i]).on("mouseenter", function(){  
-            let sibling = addEventDay[i].nextElementSibling;
-            gsap.to(sibling,0.45,{y:35,autoAlpha:1,zIndex:1,display:"block"});
-                
-        });
-        $(addEventDay[i]).on("mouseleave", function(){  
-            let sibling = addEventDay[i].nextElementSibling;
-            gsap.to(sibling,0.45,{autoAlpha:0,zIndex:-1,y:0,display:"none"})
-        });
-        $(addEventDay[i]).on("dblclick",function() {
-
-        });
-    }
+    let dayAnimation = document.querySelectorAll('.calendar');
+    const tl = gsap.timeline();
+    tl.fromTo(dayAnimation[0],1,{y:-10,opacity:0},{y:0,opacity:1})
+        .fromTo(dayAnimation[1],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[2],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[3],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[4],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[5],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[6],1,{y:-10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[7],1,{y:10,opacity:0},{y:0,opacity:1},"+=1")
+        .fromTo(dayAnimation[8],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[9],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[10],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[11],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[12],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[13],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[14],1,{y:10,opacity:0},{y:0,opacity:1},"+=1")
+        .fromTo(dayAnimation[15],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[16],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[17],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[18],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[19],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
+        .fromTo(dayAnimation[20],1,{y:10,opacity:0},{y:0,opacity:1},"-=1")
 
 </script>
