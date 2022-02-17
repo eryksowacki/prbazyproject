@@ -39,7 +39,7 @@
     }
     echo "</script>";
 ?>
-<script src="chartApp.js"></script>
+<script src="..\JS\chartApp.js"></script>
 <script>
 
     const myChart = new Chart(canvas, userProgressChart);

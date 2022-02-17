@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css" crossorigin="anonymous">
     <link rel="stylesheet" href="..\Scripts\CSS\style.css" crossorigin="anonymous">
     <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
-    <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
-    <script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,11 +78,11 @@
                             }
                         ?>
                         <div class="field">
-                            <input type="password" name="password" id="password" class="inputLogin" placeholder=" ">
+                            <input type="password" name="password" id="password" class="inputLogin" placeholder=" " autocomplete="on">
                             <label for="password" class="floating-label">Hasło</label>
                         </div>
                         <div class="field">
-                            <input type="password" name="checkPassword" id="chckpassword" class="inputLogin" placeholder=" ">
+                            <input type="password" name="checkPassword" id="chckpassword" class="inputLogin" placeholder=" " autocomplete="on">
                             <label for="chckpassword" class="floating-label">Potwierdź hasło</label>
                             <?php
                                 if(isset($_GET['invalidPasswd']) )
@@ -103,6 +101,9 @@
     </div>
 </body>
 </html>
+<script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
+<script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
+<script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
 <?php
     if(empty($_GET))
     {
@@ -110,14 +111,14 @@
     }
     if(isset($_GET['emptyInput']))
     {
-        echo "<script>let x;</script>";
+        echo "<script>let inputAddon;</script>";
         $i = 0;
         foreach($_GET as $key => $value)
         {
             $value = trim($value);
             if($value != "")
             {
-                echo "<script>x = document.getElementsByClassName('a')[$i]; x.value ='".$value."';</script>";
+                echo "<script>inputAddon = document.getElementsByClassName('a')[$i]; inputAddon.value ='".$value."';</script>";
             }
             $i += 1;
         } 

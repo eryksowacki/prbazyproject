@@ -9,7 +9,7 @@
         $i = 0;
         foreach($_POST as $key => $value) 
         {
-            $_POST[$key] = trim($value);
+            $_POST[$key] = htmlspecialchars(trim($value));
             $value = trim($value);
 
             if(isset($value) && !empty($value))
@@ -17,8 +17,14 @@
                 $i++;
             }
         }
+<<<<<<< HEAD
         if(count($_POST) != 9)
         {
+=======
+        if(count($_POST) != $i)
+        {
+            
+>>>>>>> userPage
             header("Location: ../../Pages/signup.php?name=$_POST[name]&surname=$_POST[surname]&age=$_POST[age]&email=$_POST[email]&emptyInput=");
         }
         else
@@ -32,6 +38,10 @@
                 if($_POST['password'] !== $_POST['checkPassword'])
                 {
                     header('Location: ../../Pages/signup.php?invalidPasswd=1');
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> userPage
                 }
                 else
                 {
@@ -72,4 +82,4 @@
             }
         }
     }
-    ?>
+?>
