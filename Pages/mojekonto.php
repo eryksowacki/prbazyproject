@@ -2,7 +2,6 @@
 <?php
     session_start();
     require_once '..\Scripts\PHP\connect_user.php';
-    $_SESSION['user_id'] = 18;
     $sql = "SELECT `weight` as `w`, `date` as `d` FROM `bmi` `b` where `bmi_id` = $_SESSION[user_id] order by `d` asc;";
     $result = $connect -> query($sql);
     echo "<script> const weight = [];const date = [];";
@@ -30,6 +29,10 @@
 <head>
     <link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css">
     <link rel="stylesheet" href="..\Scripts\CSS\style.css">
+    <script src="..\Scripts\JS\bootstrap-5.0.2-dist\js\bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
+    <script src="..\Scripts\node_modules\chart.js\dist\chart.min.js" crossorigin="anonymous"></script>
+    <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,12 +88,15 @@
                     <form action="..\Scripts\PHP\addWeightEntry.php" method="post">
                         <h4 class="newWeight">Dodaj nowy wpis</h4>
                         <p class="newWeight">Moja aktualna waga (kg):</p>
-                        <input type="number" name="weight" class='weightInput' max="300" min="0">
+                        <input type="number" name="weight" class='weightInput' id='weightValue' max="300" min="0">
                         <input type="submit" class='weightInput' value="Prześlij">
                     </form>
                 </div>
             </div>
-
+            <script>
+                const wholeChart = document.querySelector(".chart");
+                wholeChart.style.display = 'none';
+            </script>
             <div class="review-block">
                 <div>
                     <?php
@@ -121,115 +127,124 @@
                                 </div>
                             USERREVIEW;
                         }
-                        
                     ?>
                 </div>
             </div>
+            <script>
+                const reviewsBlock = document.querySelector('.review-block');
+                reviewsBlock.style.display = 'none';
+            </script>      
 
             <div class="mySchedual">
                 <h4>Mój rozkład treningów</h4>
+                <?php
+                if(isset($_GET['calendar']) && count($_GET) === 1) 
+                {
+                    echo<<< ASD
+                        <script>
+                            const mySchedual = document.querySelector('.mySchedual');
+                            gsap.to(mySchedual,0.65,{y:30,autoAlpha:1,display:"block"});
+                        </script>    
+                    ASD; 
+                }
+                else
+                {
+                    echo<<< ASD
+                        <script>
+                            const mySchedual = document.querySelector('.mySchedual');
+                            mySchedual.style.display = 'none';
+                        </script>    
+                    ASD;
+                }
+                ?>
+                
+                <div class="gridInGrid">
+                    <?php
+                        date_default_timezone_set("UTC");
+                        $d = date("Y-m-01");
+                        $howLong = date("d",strtotime(date("Y-m-t",  strtotime($d))));
+                        $currDay = date("d",strtotime("+1 day"));
+                        $connect = @new mysqli("localhost", "user_znany_trener", "GxvjFNXBaCxOA9Zd", "znany_trener");
+
+                        $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
+                                FROM `usr_train` 
+                                WHERE `user_id` = $_SESSION[user_id];";
+                        
+                        
+                        $result = $connect -> query($sql);
+                        $assoc= array();
+                        $dzien_tyg_pl = array('Monday' => 'Poniedziałek',
+                        'Tuesday' => 'Wtorek', 
+                        'Wednesday' => 'Środa', 
+                        'Thursday' => 'Czwartek', 
+                        'Friday' => 'Piątek', 
+                        'Saturday' => 'Sobota', 
+                        'Sunday' => 'Niedziela');
+                        $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
+                        FROM `usr_train` 
+                        WHERE `user_id` = $_SESSION[user_id];";
+                        for ($i=-1; $i < $howLong + 3 ; $i++) 
+                        { 
+                            $f = date("Y-m-d",strtotime("+$i day", strtotime($d)));
+                            echo "<div class='calendar'>";
+                            $dzien_tyg = date("l",strtotime("+$i day", strtotime($d)));
+                            echo "<b>$f</b><b>$dzien_tyg_pl[$dzien_tyg]</b>";
+                        
+                            $tmp = 0;
+                            $result = $connect -> query($sql);
+
+                            while($row = $result -> fetch_assoc())
+                            {   
+                                if($row['date'] === $f)
+                                {
+                                    echo "<h4 class=treningType>Typ treningu: <p class=trainingDesc>$row[training_descript]</p></h4>";
+                                }
+                                else
+                                {
+                                    $tmp++;
+                                }
+                                array_push($assoc,$row['date']);
+                            }
+                            if($tmp == count($assoc)){
+
+                                echo "<p class=freeDay>Dzień wolny</p>";
+                                $assoc = [];
+                            }
+                            else
+                            {
+                                $assoc = [];
+                            }
+                            echo "</div>";
+                            if($currDay == date("d",strtotime($f)))
+                            {
+
+                                echo "<script>const curDay = document.querySelector('.mySchedual > div > div:nth-child($currDay)');
+                                curDay.style.backgroundColor = '#045de9';
+                                curDay.style.backgroundImage = 'linear-gradient(315deg, #045de9 0%, #09c6f9 74%)';</script>";
+                            }
+                            
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
+
     <footer id="footer">
         <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
     </footer>
 </body>
 </html>
-<script src="..\Scripts\JS\bootstrap-5.0.2-dist\js\bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\node_modules\chart.js\dist\chart.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
+<?php
+    if(isset($_GET['calendar']) && count($_GET) === 1) 
+    {
+        echo "<script src='..\Scripts\JS\gsap-effortless-calendar-animation.js'></script>";
+    }
+?>
 <script src="..\Scripts\JS\nav-link.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\chartApp.js" crossorigin="anonymous"></script>
+<script src="..\Scripts\JS\gsap-myaccount-animations.js" crossorigin="anonymous"></script>
 <script>
-
-    const chartBtn = document.querySelector("#weightProggress");
-    const wholeChart = document.querySelector(".chart");
-    const reviewsBlock = document.querySelector('.review-block');
-    const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
-    const mySchedual = document.querySelector('.mySchedual');
-    mySchedual.style.display = 'none';
-    wholeChart.style.display = 'none';
-    reviewsBlock.style.display = 'none';
-
-
-
-
-
-
-     // TRAINER REVIEWS
-     $('#myTrainerReviews').on("click", function() {
-        if(reviewsBlock.style.display != 'none')
-        {
-            gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
-        }
-        else
-        {
-            if(wholeChart.style.display != 'block')
-            {
-                gsap.to(reviewsBlock,0.65,{y:20,autoAlpha:1,display:"block"}); 
-            }
-            else
-            {
-                gsap.to(wholeChart,0.5,{y:0,opacity:0}); // chart
-                setTimeout(() => {
-                    wholeChart.style.display = 'none';
-                    gsap.to(reviewsBlock,0.65,{y:20,autoAlpha:1,display:"block"}); // rev
-                }, 700);
-            }
-        }
-    });
-    
-
-    $(chartBtn).on("click", function() {
-        gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-        gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-
-        if(wholeChart.style.display != 'none')
-        {
-            gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // if displaying click again to peacefully turn off
-            setTimeout(() => {
-                wholeChart.style.display = 'none';
-            }, 700);
-        }
-        else                                            // else display block after 700ms
-        {
-            myChart.destroy()
-            gsap.to(wholeChart,0.5,{y:10,autoAlpha:1,display: 'block'});    // chart
-            wholeChart.style.display = 'block';
-            myChart = new Chart(canvas, userProgressChart);
-        }
-    });
-    
-
-    
-
-
-
-
-    $(myTrainingSchedule).on('click', function (){
-        if(mySchedual.style.display != 'none') 
-        {
-            gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});
-        }
-        else
-        {
-            gsap.to(wholeChart,0.5,{y:0,opacity:0}); // chart
-            gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
-            setTimeout(() => {
-                wholeChart.style.display = 'none';
-            }, 700);
-            gsap.to(mySchedual,0.65,{y:20,autoAlpha:1,display:"block"});
-        }
-    });
-
-
-
-
-
-
-
-
+    document.querySelector("#weightValue").innerText = weight[weight.length - 1];
 </script>
