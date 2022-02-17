@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "chart.js": "^3.7.0",
+    "chartjs": "^0.3.24",
+    "gsap": "^3.9.1",
+    "jquery": "^3.6.0"
+  }
+}

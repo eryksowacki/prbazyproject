@@ -245,6 +245,4 @@
 <script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\chartApp.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\gsap-myaccount-animations.js" crossorigin="anonymous"></script>
-<script>
-    document.querySelector("#weightValue").value = weight[weight.length - 1];
-</script>
+<script> document.querySelector("#weightValue").value = weight[weight.length - 1]; </script>
