@@ -4,38 +4,18 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<<<<<<< HEAD
-  	<?php
-		require_once '..\Scripts\PHP\page_look_head.php';
-	?>
-=======
   	<link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css">
     <link rel="stylesheet" href="..\Scripts\CSS\style.css">
     <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
->>>>>>> userPage
     <title>Znany trener</title>
 </head>
 <body>
 	<?php
 		require_once('..\Scripts\PHP\navbar-content.php');
-		require_once('..\Scripts\PHP\page_look_slider.php');
 	?>
-<<<<<<< HEAD
-	<!-- <div id="progress-bar"></div>
-    <div id="page" class="whole-page">
-    </div> -->
-		<?php
-			require_once '..\Scripts\PHP\page_look_footer.php';
-		?>
-</body>
-	<?php
-		require_once '..\Scripts\PHP\page_look_scripts.php';
-	?>
-</html>
-=======
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -135,4 +115,3 @@
 <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\progressionBarApp.js" crossorigin="anonymous"></script>
 <script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
->>>>>>> userPage
