@@ -41,17 +41,31 @@ tl.fromTo(dayAnimation[0],0.75,from,to)
 .fromTo(dayAnimation[31],0.75,from,to,"-=0.75")
 .fromTo(dayAnimation[32],0.75,from,to,"-=0.75");
 
-if(typeof dayAnimation[33] != "undefined")
-{
-    gsap.fromTo(dayAnimation[33],0.75,from,to,"-=0.5");
-    if(typeof dayAnimation[34] != "undefined")
-    {
-        gsap.fromTo(dayAnimation[34],0.75,from,to,"-=0.5");
-        if(typeof dayAnimation[35] != "undefined")
-        {
-            gsap.fromTo(dayAnimation[35],0.75,from,to,"-=0.5");
+if (typeof dayAnimation[32] == "undefined") {
+    // pass
+}
+
+else {
+    gsap.fromTo(dayAnimation[32], 0.75, from, to, "-=0.75");
+    if (typeof dayAnimation[33] == "undefined") {
+        // pass
+    }
+
+    else {
+        gsap.fromTo(dayAnimation[33], 0.75, from, to, "-=0.75");
+        if (typeof dayAnimation[34] == "undefined") {
+            // pass
+        }
+
+        else {
+            gsap.fromTo(dayAnimation[34], 0.75, from, to, "-=0.75");
+            if (typeof dayAnimation[35] == "undefined") {
+                // pass
+            }
+
+            else {
+                gsap.fromTo(dayAnimation[35], 0.75, from, to, "-=0.75");
+            }
         }
     }
 }
-
-
