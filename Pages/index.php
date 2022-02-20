@@ -71,22 +71,22 @@
                 <h4>Miasto:</h4>
 				<select name="gymName">
 					<?php
-						require_once '../Scripts/PHP/connect_user.php';
-						$gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
-						$result = $connect -> query($gymQuery);
-						while($currentRow =  mysqli_fetch_row($result))
+						// require_once '../Scripts/PHP/connect_user.php';
+						// $gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
+						// $result = $connect -> query($gymQuery);
+						// while($currentRow =  mysqli_fetch_row($result))
 						{
-							echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
+							// echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
 						}
 					?>
 				</select>
 				<select name="city">
 					<?php
-						$cityQuery = "SELECT DISTINCT `city` FROM `gyms` ORDER BY `gym_id` ASC";
-						$result = $connect -> query($cityQuery);
-						while($currentRow =  mysqli_fetch_row($result))
+						// $cityQuery = "SELECT DISTINCT `city` FROM `gyms` ORDER BY `gym_id` ASC";
+						// $result = $connect -> query($cityQuery);
+						// while($currentRow =  mysqli_fetch_row($result))
 						{
-							echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
+							// echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
 						}
 					?>
 				</select>

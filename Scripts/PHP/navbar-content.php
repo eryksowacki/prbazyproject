@@ -1,4 +1,3 @@
-<!-- <?php print_r($_SESSION); ?> -->
 <nav class="navbar-expand-lg navbar-nav bg-dark navbar-inverse navbar-fixed-top transparent">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,7 +46,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Regulamin.php">Regulamin</a>
                 </li>
-                <li class="nav-item btn-group dropend dropdown-menu-right dupa">
+                <li class="nav-item btn-group dropend dropdown-menu-right">
                     <button class="nav-link dropdown-toggle" id="nvbrdrpdwn" role="button" data-bs-toggle="dropdown-right" aria-expanded="false">Wyszukaj</button>
                     <div class="search">
                         <form class="d-flex">

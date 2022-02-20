@@ -290,7 +290,6 @@ label {
 }
 .w-100 {
 	filter: brightness(50%) !important;
-	height: 91.8vh;
 }
 .field:nth-child(6) {
 	margin-bottom: 15px;
@@ -552,4 +551,9 @@ p.newWeight {
 	border-radius: 100%;
 	margin-right: 15px;
 	border: 2px solid var(--bs-blue);
+}
+
+.carousel {
+	position: relative;
+	width: 100%;
 }

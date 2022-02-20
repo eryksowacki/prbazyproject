@@ -1,14 +1,22 @@
-function checkWidth(params) 
+function checkWidth() 
 {   
     let navbar = document.querySelector('.navbar-nav').getBoundingClientRect().right;
     let p = document.querySelector('.sidebar').getBoundingClientRect().right;
     let f = document.querySelector('.gridInGrid').getBoundingClientRect().right;
-    if (p + f + 24 != navbar) {
-        let m = document.querySelectorAll(".calendar");
+    let m = document.querySelectorAll(".calendar");
+    console.log(p + f + 24 != navbar && m[0].offsetWidth > 120);
+    console.log(m[0].offsetWidth+ " " +  120);
+    if (p + f + 24 != navbar && m[0].offsetWidth >= 120) 
+    {
         let cellWidth = parseInt((navbar - p) / 7 - 24);
         for (let i = 0; i < m.length; i++) {
             m[i].style.width = cellWidth + "px";
         }
+        
+    }
+    if(m[0].offsetWidth == 120 )
+    {
+        m[0].style.width = "121px";
     }
 }
 
