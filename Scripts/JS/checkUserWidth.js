@@ -8,4 +8,3 @@ if (p + f + 24 != navbar) {
         m[i].style.width = cellWidth + "px";
     }
 }
-

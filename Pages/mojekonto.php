@@ -6,7 +6,7 @@
     $result = $connect -> query($sql);
     echo "<script> const weight = [];const date = [];";
     $i = 0;
-    while($row = mysqli_fetch_assoc($result))
+    while($row = $result -> fetch_assoc())
     {
         if($i == 0){
             $date = $row['d'];
@@ -166,9 +166,12 @@
                         $d = date("Y-m-01");
                         $howLong = date("d",strtotime(date("Y-m-t",  strtotime($d))));
                         $currDay = date("d",strtotime("+1 day"));
+                        $connect = @new mysqli("localhost", "root", "", "znany_trener");
+
                         $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
                                 FROM `usr_train` 
                                 WHERE `user_id` = $_SESSION[user_id];";
+                        
                         
                         $result = $connect -> query($sql);
                         $assoc= array();
@@ -223,8 +226,7 @@
                             }
                             
                         }
-                        echo "<script src='..\Scripts\JS\checkUserWidth.js'></script>";
-
+                        echo "<script src='..\Scripts\JS\checkUserWidth.js' crossorigin='anonymous'></script>";
                     ?>
                 </div>
             </div>
@@ -236,17 +238,16 @@
     </footer>
 </body>
 </html>
-
-<script src="..\Scripts\JS\bootstrap-5.0.2-dist\js\bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\chartApp.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\gsap-myaccount-animations.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\nav-link.js" crossorigin="anonymous"></script>
-
 <?php
     if(isset($_GET['calendar']) && count($_GET) === 1) 
     {
-        echo "<script src='../Scripts/JS/gsap-calendar-animation.js'></script>";
+        echo "<script src='..\Scripts\JS\gsap-effortless-calendar-animation.js'></script>";
     }
 ?>
+<script src="..\Scripts\JS\nav-link.js" crossorigin="anonymous"></script>
+<script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
+<script src="..\Scripts\JS\chartApp.js" crossorigin="anonymous"></script>
+<script src="..\Scripts\JS\gsap-myaccount-animations.js" crossorigin="anonymous"></script>
+
+    
+<script></script>

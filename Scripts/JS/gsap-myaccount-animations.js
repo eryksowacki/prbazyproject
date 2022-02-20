@@ -1,27 +1,23 @@
-function checkUserWidth()
-{
+function checkWidth(params) 
+{   
     let navbar = document.querySelector('.navbar-nav').getBoundingClientRect().right;
     let p = document.querySelector('.sidebar').getBoundingClientRect().right;
     let f = document.querySelector('.gridInGrid').getBoundingClientRect().right;
-    if(p + f + 24 != navbar)
-    {
+    if (p + f + 24 != navbar) {
         let m = document.querySelectorAll(".calendar");
         let cellWidth = parseInt((navbar - p) / 7 - 24);
-        for(let i = 0; i < m.length; i++)
-        {
-            m[i].style.width = cellWidth+"px";
+        for (let i = 0; i < m.length; i++) {
+            m[i].style.width = cellWidth + "px";
         }
     }
 }
 
 
-
-
 const chartBtn = document.querySelector("#weightProggress");
 const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
-const trainReviews = document.querySelector('#myTrainerReviews');
+
 // TRAINER REVIEWS
-$(trainReviews).on("click", function() {
+$('#myTrainerReviews').on("click", function() {
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     gsap.to(wholeChart,0.5,{y:0,opacity:0}); // chart
     if(reviewsBlock.style.display != 'none')
@@ -54,7 +50,7 @@ $(chartBtn).on("click", function() {
         setTimeout(() => {
             myChart.destroy()
             gsap.to(wholeChart,0.5,{y:10,autoAlpha:1,display: 'block'});    // chart
-            wholeChart.style.display = 'block'; 
+            wholeChart.style.display = 'block';
             myChart = new Chart(canvas, userProgressChart);
         }, 700);
 
@@ -72,17 +68,16 @@ $(myTrainingSchedule).on('click', function (){
     {
         gsap.to(wholeChart,0.5,{y:0,opacity:0}); // chart
         gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
-        checkUserWidth();
         setTimeout(() => {
             wholeChart.style.display = 'none';
             gsap.to(mySchedual,0.65,{y:20,autoAlpha:1,display:"block"});
-
-        }, 1000);
+            calendarAnimation();
+        }, 700);
     }
 });
 
 document.querySelector("#weightValue").value = weight[weight.length - 1];
 window.onresize = function() 
 {
-    checkUserWidth();
-};
+    checkWidth();    
+}

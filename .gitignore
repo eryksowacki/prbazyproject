@@ -1,2 +1,6 @@
 node_modules/prettier
+<<<<<<< HEAD
 .gitignore
+=======
+.gitignoregit 
+>>>>>>> 979a40e3942ad37c3f8793965bfde66129fcab28
