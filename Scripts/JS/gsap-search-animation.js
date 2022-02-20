@@ -11,7 +11,7 @@ $("#nvbrdrpdwn").on('click' ,function()
     else
     {
         $("#search-bar").prop('disabled', false);
-        gsap.to(search, 1, {autoAlpha:1,display:"inline"});
+        gsap.to(search, 1, {autoAlpha:1,display:"flex"});
     }
 });
 

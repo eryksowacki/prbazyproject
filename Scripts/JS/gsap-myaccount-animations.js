@@ -1,4 +1,4 @@
-function checkWidth(params) 
+function checkWidth() 
 {   
     let navbar = document.querySelector('.navbar-nav').getBoundingClientRect().right;
     let p = document.querySelector('.sidebar').getBoundingClientRect().right;
@@ -19,7 +19,7 @@ const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
 // TRAINER REVIEWS
 $('#myTrainerReviews').on("click", function() {
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-    gsap.to(wholeChart,0.5,{y:0,opacity:0}); // chart
+    gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
     if(reviewsBlock.style.display != 'none')
     {
         gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
@@ -49,7 +49,7 @@ $(chartBtn).on("click", function() {
     {
         setTimeout(() => {
             myChart.destroy()
-            gsap.to(wholeChart,0.5,{y:10,autoAlpha:1,display: 'block'});    // chart
+            gsap.fromTo(wholeChart,0.5,{y:-10,autoAlpha:0,display: 'none'},{y:0,autoAlpha:1,display: 'block',marginTop: 10});    // chart
             wholeChart.style.display = 'block';
             myChart = new Chart(canvas, userProgressChart);
         }, 700);
@@ -66,7 +66,7 @@ $(myTrainingSchedule).on('click', function (){
     }
     else
     {
-        gsap.to(wholeChart,0.5,{y:0,opacity:0}); // chart
+        gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
         gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
         setTimeout(() => {
             wholeChart.style.display = 'none';

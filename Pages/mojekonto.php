@@ -103,16 +103,16 @@
                 <div>
                     <?php
                         $myTrainerReveiws = 
-                            "SELECT `trainers`.`name` as `n`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_id`
+                            "SELECT `trainers`.`name` as `n`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
                             from `trainer_reviews`
                             join `trainers`
-                            on `trainer_reviews`.`trainer_review_id` = `trainers`.`trainer_id`
+                            on `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
                             where `trainer_reviews`.`user_id` = $_SESSION[user_id]";
                         $result = $connect -> query($myTrainerReveiws);
-                        echo"<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=..\Scripts\PHP\deleteUser.php method=post><select class=selectIDK name=addReview>";
+                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=..\Scripts\PHP\deleteUser.php method=post><select class=selectIDK name=addReview>";
                         while($option =  $result -> fetch_assoc())
                         {
-                            echo '<option value='."$option[trainer_id]>"."$option[n] $option[s]".'</option>';
+                            echo '<option value='."$option[trainer_ids]>"."$option[n] $option[s]".'</option>';
                         }
                         echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'><br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
                         $result = $connect -> query($myTrainerReveiws);
@@ -125,38 +125,51 @@
                                     <p>Nazwisko: <b class='hoverOnInfo'>$currentRow[s]</b></p>
                                     <p>Ocena: <b class='hoverOnInfo'>$currentRow[trainer_mark]</b></p>
                                     <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[trainer_review_descript]</b></p>
-                                    <p><a href="..\Scripts\PHP\delete_review?trainer_id=$currentRow[trainer_id]">Usuń recenzję</a></p>
+                                    <p><a href="..\Scripts\PHP\delete_review?review_id=$currentRow[review_ids]">Usuń recenzję</a></p>
                                 </div>
                             USERREVIEW;
+                        }
+                        if(isset($_GET['reviews']) && count($_GET) === 1)
+                        {
+                            echo<<< REVIEWS
+                                <script>
+                                    const reviewsBlock = document.querySelector('.review-block');
+                                    gsap.to(reviewsBlock,0.65,{y:20,autoAlpha:1,display:"flex"});  
+                                </script> 
+                            REVIEWS;
+                        }
+                        else
+                        {
+                            echo<<< REVIEWS
+                                <script>
+                                    const reviewsBlock = document.querySelector('.review-block');
+                                    reviewsBlock.style.display = 'none'; 
+                                </script> 
+                            REVIEWS;
                         }
                     ?>
                 </div>
             </div>
-            <script>
-                const reviewsBlock = document.querySelector('.review-block');
-                reviewsBlock.style.display = 'none';
-            </script>      
-
             <div class="mySchedual">
                 <h4>Mój rozkład treningów</h4>
                 <?php
                 if(isset($_GET['calendar']) && count($_GET) === 1) 
                 {
-                    echo<<< ASD
+                    echo<<< CALENDAR
                         <script>
                             const mySchedual = document.querySelector('.mySchedual');
                             gsap.to(mySchedual,0.65,{y:30,autoAlpha:1,display:"block"});
                         </script>    
-                    ASD; 
+                    CALENDAR; 
                 }
                 else
                 {
-                    echo<<< ASD
+                    echo<<< CALENDAR
                         <script>
                             const mySchedual = document.querySelector('.mySchedual');
                             mySchedual.style.display = 'none';
                         </script>    
-                    ASD;
+                    CALENDAR;
                 }
                 ?>
                 

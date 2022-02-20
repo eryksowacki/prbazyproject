@@ -393,7 +393,8 @@ a {
 	cursor: context-menu;
 	font-size: 150%;
 }
-.review-block {
+.review-block 
+{
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -552,4 +553,7 @@ p.newWeight {
 	border-radius: 100%;
 	margin-right: 15px;
 	border: 2px solid var(--bs-blue);
+}
+.chart{
+	width: 800px;
 }
