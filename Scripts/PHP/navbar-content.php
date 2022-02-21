@@ -7,7 +7,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Trenerzy.php">Trenerzy</a>
+                    <a class="nav-link" href="trenerzy.php">Trenerzy</a>
                 </li>
                 <?php
                     if(isset($_SESSION['user_id']))
@@ -45,7 +45,7 @@
                     }
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="Regulamin.php">Regulamin</a>
+                    <a class="nav-link" href="regulamin.php">Regulamin</a>
                 </li>
                 <li class="nav-item btn-group dropend dropdown-menu-right dupa">
                     <button class="nav-link dropdown-toggle" id="nvbrdrpdwn" role="button" data-bs-toggle="dropdown-right" aria-expanded="false">Wyszukaj</button>
