@@ -78,7 +78,7 @@
             // $howLong = date("d") - date("m");
             // $howLong = date("d") + $howLong;
             $_SESSION['user_id'] = 18;
-            $connect = @new mysqli("localhost", "user_znany_trener", "GxvjFNXBaCxOA9Zd", "znany_trener");
+            $connect = @new mysqli("localhost", "root", "", "znany_trener");
 
             $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
                     FROM `usr_train` 

@@ -1,2 +1,6 @@
 node_modules/prettier
+<<<<<<< HEAD
 .gitignore
+=======
+.gitignoregit 
+>>>>>>> bsBranch

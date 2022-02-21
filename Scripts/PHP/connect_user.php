@@ -1,7 +1,7 @@
 <?php
     if(!empty($_POST) || isset($_SESSION['user_id']))
     {
-        $connect = @new mysqli("localhost", "user_znany_trener", "GxvjFNXBaCxOA9Zd", "znany_trener");
+        $connect = @new mysqli("localhost", "root", "", "znany_trener");
     }
     else
     {

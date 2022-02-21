@@ -393,7 +393,8 @@ a {
 	cursor: context-menu;
 	font-size: 150%;
 }
-.review-block {
+.review-block 
+{
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -454,12 +455,15 @@ p.myTrainers {
 	margin-right: 1.5rem;
 	display: inline;
 }
-.selectIDK {
+.trainerSelect {
 	display: inline-block;
 	margin-bottom: 1rem;
 	margin-top: 0.5rem;
 	margin-right: 4rem;
 	padding: 0.3rem;
+}
+.trainerMark{
+	margin-left: 4rem;
 }
 #reviewSubmit {
 	display: inline-block;
@@ -552,4 +556,7 @@ p.newWeight {
 	border-radius: 100%;
 	margin-right: 15px;
 	border: 2px solid var(--bs-blue);
+}
+.chart{
+	width: 800px;
 }
