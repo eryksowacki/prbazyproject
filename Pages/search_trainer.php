@@ -21,9 +21,15 @@
             }
             else
             {
-                
+                $gymName = $_POST['gymName'];
+                $city = $_POST['city'];
+                $trainerSex = $_POST['trainerSex'];
+                $minMark = $_POST['minTrainerMark'];
+                $maxMark = $_POST['maxTrainerMark'];
+                $minPrize = $_POST['minPrize'];
+                $maxPrize = $_POST['maxPrize'];
 
-                $sql = "";
+                $sql = "SELECT * FROM `trainers` where `` like $gymName and `` like $city and `` like $trainerSex and `` between $minMark and $maxMark and `` between $minPrize and $maxPrize";
             }
         ?>
     </div>

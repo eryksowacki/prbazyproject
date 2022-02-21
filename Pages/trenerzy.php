@@ -13,7 +13,7 @@
     <div id="content" class="d-flex justify-content-center">
         <h2>Szukaj trenera personalnego</h2>
             <form action="search_trainer.php" method="post" class="d-flex">
-            <h4>Miasto:</h4>
+                <h4>Siłownia:</h4>
 			<select name="gymName">
 				<?php
 					require_once '../Scripts/PHP/connect_user.php';
@@ -25,6 +25,7 @@
 						    }
 				?>
 			</select>
+            <h4>Miasto:</h4>
 			<select name="city">
 				<?php
 					$cityQuery = "SELECT DISTINCT `city` FROM `gyms` ORDER BY `gym_id` ASC";
@@ -39,6 +40,11 @@
             <select name="trainerSex">
                 <option value="female">Kobieta</option>
                 <option value="male">Mężczyzna</option>
+            </select>
+            <h4>Specjalizacja:</h4>
+           TODO:<select name="specialization">
+                <option value="">Kobieta</option>
+                <option value="">Mężczyzna</option>
             </select>
             <h4>Ocena:</h4>
             <input type="text" placeholder="od:" name="minTrainerMark">
