@@ -22,13 +22,13 @@ $('#myTrainerReviews').on("click", function() {
     gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
     if(reviewsBlock.style.display != 'none')
     {
-        gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
+        gsap.to(reviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
     }
     else
     {
         setTimeout(() => {
             wholeChart.style.display = 'none';
-            gsap.to(reviewsBlock,0.65,{y:20,autoAlpha:1,display:"block"}); 
+            gsap.fromTo(reviewsBlock,0.65,{y:-20},{y:0,autoAlpha:1,display:"block"}); 
         },700);
     }
 });

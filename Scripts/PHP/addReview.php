@@ -5,7 +5,7 @@
         exit();
     }
     foreach ($_POST as $key => $value) {
-        $_POST[$key] = htmlspecialchars($value[$key])
+        $_POST[$key] = htmlspecialchars($value[$key]);
     }
     $newWeight = htmlspecialchars($_POST['weight']);
     $_POST['mark'];
@@ -19,7 +19,7 @@
     $newReview = $connect->prepare("INSERT INTO `trainer_reviews`(`review_id`, `trainer_id`, `trainer_mark`, `trainer_review_descript`, `user_id`) 
                 VALUES (NULL,':trainer_id',':trainer_mark',':train_descript','user_id');");
     $newEntry -> execute(array('trainer_id' => $_POST['trainer_id'],'trainer_mark' => $_POST['mark']],'train_descript' => $newWeight, 'user_id' => $_SESSION['user_id']));
-    header('Location: ' . $_SERVER['HTTP_REFERER']."?reviews");
+    // header('Location: ' . $_SERVER['HTTP_REFERER']."?reviews");
     
 
 

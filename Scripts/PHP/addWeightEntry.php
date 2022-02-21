@@ -17,17 +17,14 @@
     catch(PDOException $e) 
     {
         $connect = null;
-        header("Location: ../../Pages/mojekonto.php?Error=$e->getMessage()");
+        header("Location: ..\..\Pages\mojekonto.php?Error=$e->getMessage()");
     }   
 
-    $newEntry = $connect->prepare("INSERT INTO `bmi`(`bmi_id`, `weight`, `date`, `id`) VALUES (':bmi_id',':weight',':date',NULL)");
-    $newEntry -> execute(array('bmi_id' => $_SESSION['user_id'],'weight' => $newWeight, 'date' => date("H:i:s")));
-    $newEntry = $newEntry -> fetchAll(PDO::FETCH_ASSOC);
+    $newEntry = $connect->prepare("INSERT INTO `bmi`(`bmi_id`, `weight`) VALUES (:bmi_id, :weigght)");
+    $newEntry->bindParam(':bmi_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $newEntry->bindParam(':weigght', $newWeight);
+    $newEntry -> execute();
     
-    header('Location: ' . $_SERVER['HTTP_REFERER']."?progress");
-
-
-        
-    
+    header('Location: ..\..\Pages\mojekonto.php?progress');
     
 ?>

@@ -90,15 +90,32 @@
                     <form action="..\Scripts\PHP\addWeightEntry.php" method="post">
                         <h4 class="newWeight">Dodaj nowy wpis</h4>
                         <p class="newWeight">Moja aktualna waga (kg):</p>
-                        <input type="number" name="weight" class='weightInput' id='weightValue' max="300" min="0" value="">
+                        <input type="number" name="weight" class='weightInput' id='weightValue' step="0.1" max="300" min="0" value="">
                         <input type="submit" class='weightInput' value="Prześlij">
                     </form>
                 </div>
             </div>
-            <script>
-                const wholeChart = document.querySelector(".chart");
-                wholeChart.style.display = 'none';
-            </script>
+            <?php
+                if(isset($_GET['progress']) && count($_GET) === 1)
+                {
+                    echo<<< CHART
+                        <script>
+                            const wholeChart = document.querySelector(".chart");
+                            wholeChart.style.display = 'block';
+                        </script> 
+                    CHART;
+                }
+                else
+                {
+                    echo<<< CHART
+                        <script>
+                            const wholeChart = document.querySelector(".chart");
+                            wholeChart.style.display = 'none';
+                        </script>
+                    CHART;
+                }
+            ?>
+            
             <div class="review-block">
                 <div>
                     <?php
