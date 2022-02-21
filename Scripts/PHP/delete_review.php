@@ -15,7 +15,7 @@
     catch(PDOException $e) 
     {
         $connect = null;
-        header("Location: ../../Pages/login.php?Error=$e->getMessage()");
+        header("Location: ../../Pages/mojekonto.php?Error=$e->getMessage()");
     }   
 
     $userTrainersId = $connect->prepare("SELECT DISTINCT `review_id` FROM `trainer_reviews` WHERE `user_id` = :user_id");
@@ -36,10 +36,9 @@
             $tmp -> execute(['review_id' => $id]);
             $result = $tmp -> fetchAll(PDO::FETCH_ASSOC);
             $reviewId = $result[0]['review_id'];
-            echo $reviewId;
             $userTrainersId = $connect -> prepare("DELETE FROM `trainer_reviews` WHERE `review_id` = :review_id");
             $userTrainersId -> execute(['review_id' => $reviewId]);
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: '.$_SERVER['HTTP_REFERER'].'?reviews');
 
         }
     }

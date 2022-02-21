@@ -109,12 +109,19 @@
                             on `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
                             where `trainer_reviews`.`user_id` = $_SESSION[user_id]";
                         $result = $connect -> query($myTrainerReveiws);
-                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=..\Scripts\PHP\deleteUser.php method=post><select class=selectIDK name=addReview>";
+                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=..\Scripts\PHP\addReview.php method=post>";
+                        echo "<select class=trainerSelect name=trainer_id>";
                         while($option =  $result -> fetch_assoc())
                         {
                             echo '<option value='."$option[trainer_ids]>"."$option[n] $option[s]".'</option>';
                         }
-                        echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'><br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
+                        echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'>";
+                        echo '<select name="mark" class="trainerSelect trainerMark">';
+                        for ($i=0; $i < 6; $i++) 
+                        { 
+                            echo "<option value=$i>$i</option>";
+                        }
+                        echo "</select><br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
                         $result = $connect -> query($myTrainerReveiws);
                         while($currentRow = $result -> fetch_assoc())
                         {
@@ -175,7 +182,7 @@
                 
                 <div class="gridInGrid">
                     <?php
-                        date_default_timezone_set("UTC");
+                        date_default_timezone_set("Europe/Warsaw");
                         $d = date("Y-m-01");
                         $howLong = date("d",strtotime(date("Y-m-t",  strtotime($d))));
                         $currDay = date("d",strtotime("+1 day"));

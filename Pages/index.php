@@ -71,7 +71,8 @@
                 <h4>Miasto:</h4>
 				<select name="gymName">
 					<?php
-						require_once '../Scripts/PHP/connect_user.php';
+						$connect = @new mysqli("localhost", "root", "", "znany_trener");
+
 						$gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
 						$result = $connect -> query($gymQuery);
 						while($currentRow =  mysqli_fetch_row($result))

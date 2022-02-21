@@ -19,7 +19,7 @@
         }
         if(count($_POST) != $i)
         {   
-            // header("Location: ../../Pages/login.php?email=$_POST[email]&emptyInput=");
+            header("Location: ../../Pages/login.php?email=$_POST[email]&emptyInput=");
         }
         else
         {
@@ -29,12 +29,12 @@
             }
             else
             {
-                try{
+                try
+                {
                     $connect = new PDO("mysql:host=localhost;dbname=znany_trener", "root", "");
                     $connect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
                     $connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
                 }
                 catch(PDOException $e) 
                 {
