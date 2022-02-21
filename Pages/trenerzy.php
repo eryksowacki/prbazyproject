@@ -12,7 +12,7 @@
     ?>
     <div id="content" class="d-flex justify-content-center">
         <h2>Szukaj trenera personalnego</h2>
-            <form action="index.php" method="post" class="d-flex">
+            <form action="search_trainer.php" method="post" class="d-flex">
             <h4>Miasto:</h4>
 			<select name="gymName">
 				<?php
