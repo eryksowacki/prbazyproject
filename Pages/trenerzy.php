@@ -36,15 +36,16 @@
 					}
 				?>
 			</select>
-            <h4>Płeć trenera:</h4>
-            <select name="trainerSex">
-                <option value="female">Kobieta</option>
-                <option value="male">Mężczyzna</option>
-            </select>
             <h4>Specjalizacja:</h4>
-           TODO:<select name="specialization">
-                <option value="">Kobieta</option>
-                <option value="">Mężczyzna</option>
+            <select name="specialization">
+                <?php
+                    $specQuery = "SELECT DISTINCT `specialization` FROM `trainers`";
+                    $result = $connect -> query($specQuery);
+                    while($specialization = mysqli_fetch_row($result))
+                    {
+                        echo "<option value='$specialization[0]'>$specialization[0]</option>";
+                    }
+                ?>
             </select>
             <h4>Ocena:</h4>
             <input type="text" placeholder="od:" name="minTrainerMark">

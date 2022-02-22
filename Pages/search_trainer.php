@@ -15,22 +15,28 @@
         <?php
             require_once '../Scripts/PHP/connect_user.php';
 
-            if($connect -> connect_ernno)
+            if($connect -> connect_errno)
             {
                 echo "Błędne połączenie z bazą danych";
             }
             else
             {
-                $gymName = $_POST['gymName'];
-                $city = $_POST['city'];
-                $trainerSex = $_POST['trainerSex'];
-                TODO:$trainerSpec = $_POST['specialization'];
-                $minMark = $_POST['minTrainerMark'];
-                $maxMark = $_POST['maxTrainerMark'];
-                $minPrize = $_POST['minPrize'];
-                $maxPrize = $_POST['maxPrize'];
+                $sql = "SELECT DISTINCT `name`, `surname`, `prize_per_hour`, `profile_picture`, `specialization`, `gym_name` FROM `trainer_reviews` inner join `trainers` on `trainer_reviews`.`trainer_review_id`=`trainers`.`trainer_review_id` inner join `gyms` on `trainers`.`gym_id`=`gyms`.`gym_id` where `gym_name` like '$_POST[gymName]' and `city` like '$_POST[city]' and `trainer_mark` in($_POST[minTrainerMark],$_POST[maxTrainerMark]) and `prize_per_hour` between $_POST[minPrize] and $_POST[maxPrize]";
 
-                $sql = "SELECT * FROM `trainers` where `` like $gymName and `` like $city and `` like $trainerSex and `` between $minMark and $maxMark and `` between $minPrize and $maxPrize";
+                $result = $connect -> query($sql);
+
+                while($trainer = $result -> fetch_assoc())
+                {
+                    echo <<< TRAINER
+                    <div>
+                        Imię i nazwisko: $trainer[name] $trainer[surname] <br> <br>
+                        <img src="../Images/TRAINERS IMAGES/$trainer[profile_picture]" alt="trainer"> <br> <br>
+                        Specjalizacja: $trainer[specialization] <br> <br>
+                        Siłownia: $trainer[gym_name] <br> <br>
+                        Cena za godzinę: $trainer[prize_per_hour] <br> <br>
+                    </div>
+TRAINER;
+                }                
             }
         ?>
     </div>
