@@ -1,4 +1,3 @@
-<!-- <?php print_r($_SESSION); ?> -->
 <nav class="navbar-expand-lg navbar-nav bg-dark navbar-inverse navbar-fixed-top transparent">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,7 +29,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        DROPDOWNUSER;
+DROPDOWNUSER;
                     }
                     else
                     {
@@ -41,7 +40,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="signup.php">Zarejestruj się</a>
                             </li>
-                        REGISTER;
+REGISTER;
                     }
                 ?>
                 <li class="nav-item">
@@ -58,27 +57,55 @@
                         </form>
                     </div>
                 </li>
-            </ul>
 
             <?php
                 if(isset($_SESSION['user_id']))
                 {
-                    echo <<<SESSION
+                    echo "</ul>";
+                    echo <<< SESSION
                         <li class="nav-item sessionInfo">
                             <a class="nav-link linkSession" href="mojekonto.php?accountPer">Witaj $_SESSION[name]</a>
                             
-                    SESSION;
+SESSION;
                     if($_SESSION['profile_picture'] != NULL)
                     {
-                        echo "<img class='userPfp' src='..\Images\USER IMAGES/$_SESSION[profile_picture]' alt='cipa'></li>";
+                        echo "<img class='userPfp' src='..\Images\USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
                     }
                     else
                     {
+                        
                         echo "</li>";
                     }
                 }
+                else
+                {
+                    // echo <<< NAVLOGIN
+                    //     <li class="nav-item dropdown">
+                //             <a class="nav-link dropdown-toggle dropdown-toggler" href="login.php" id="navbarDropdown" aria-expanded="false">Szybkie logowanie</a>
+                //             <ul class="dropdown-menu dropdown-quicklo" aria-labelledby="navbarDropdown">
+                //             <form action="" method="post">    
+                //                 <li>
+                //                     <div class="field">
+                //                     <input type="email" name="email" id="email" class="inputLogin navUserInput" placeholder=" ">
+                //                     <label for="email" class="floating-label-ql">Email</label>
+                //                     </div>
+                //                 </li>
+                //                 <li>
+                //                     <div class="field">
+                //                     <input type="password" name="password" id="password" class="inputLogin navUserInput" placeholder=" ">
+                //                     <label  abel for="password" class="floating-label-ql">Hasło</label>
+                //                     </div>
+                //                 </li>
+                //                 <li>
+                //                     <input type="submit" value="Prześlij">
+                //                 </li>
+                //             </ul>
+                //         </li>
+                    // </ul>
+                    
+// NAVLOGIN;
+                }
             ?>
-
         </div>
     </div>
     

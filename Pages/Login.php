@@ -15,10 +15,12 @@
         require_once ('..\Scripts\PHP\navbar-content.php');
     ?>
     <form action="..\Scripts\PHP\login.inc.php" method="post">    
-        <input type="text" name="email" value="oskar.wichtowski3@gmail.com">
-        <input type="text" name="password" value="ppp">
+        <input type="email" name="email" value="oskar.wichtowski3@gmail.com">
+        <input type="password" name="password" value="ppp">
         <input type="text" name="token" value="<?php echo $_SESSION["token"];?>" hidden>
         <input type="submit" value="Prześlij">
     </form>  
 </body>
 </html>
+
+<script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
