@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Czas generowania: 18 Lut 2022, 00:43
--- Wersja serwera: 10.4.17-MariaDB
--- Wersja PHP: 8.0.1
+-- Host: 127.0.0.1:3306
+-- Czas generowania: 22 Lut 2022, 08:25
+-- Wersja serwera: 8.0.27
+-- Wersja PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,15 @@ SET time_zone = "+00:00";
 -- Struktura tabeli dla tabeli `bmi`
 --
 
-CREATE TABLE `bmi` (
-  `bmi_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `bmi`;
+CREATE TABLE IF NOT EXISTS `bmi` (
+  `bmi_id` int NOT NULL,
   `weight` float NOT NULL,
-  `date` datetime NOT NULL DEFAULT current_timestamp(),
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  KEY `bmi_id` (`bmi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3315 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `bmi`
@@ -589,7 +592,6 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (547, 81, '2022-02-05 13:57:08', 548),
 (548, 65, '2022-02-05 13:57:08', 549),
 (549, 109, '2022-02-05 13:57:08', 550),
-(0, 67.8, '2022-02-05 13:57:59', 551),
 (1, 50.1, '2022-02-05 13:57:59', 552),
 (2, 109.8, '2022-02-05 13:57:59', 553),
 (3, 69.7, '2022-02-05 13:57:59', 554),
@@ -1139,7 +1141,6 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (547, 81, '2022-02-05 13:58:00', 1098),
 (548, 64.1, '2022-02-05 13:58:00', 1099),
 (549, 107.2, '2022-02-05 13:58:00', 1100),
-(0, 67.2, '2022-02-05 13:59:12', 1101),
 (1, 50.4, '2022-02-05 13:59:12', 1102),
 (2, 110, '2022-02-05 13:59:12', 1103),
 (3, 69.7, '2022-02-05 13:59:12', 1104),
@@ -1353,10 +1354,10 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (211, 82, '2022-02-05 13:59:12', 1312),
 (212, 54.3, '2022-02-05 13:59:12', 1313),
 (213, 97.4, '2022-02-05 13:59:12', 1314),
-(214, 99.3, '2022-02-05 13:59:12', 1315);
-INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
+(214, 99.3, '2022-02-05 13:59:12', 1315),
 (215, 89, '2022-02-05 13:59:12', 1316),
-(216, 100, '2022-02-05 13:59:12', 1317),
+(216, 100, '2022-02-05 13:59:12', 1317);
+INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (217, 71.8, '2022-02-05 13:59:12', 1318),
 (218, 46.7, '2022-02-05 13:59:12', 1319),
 (219, 73.7, '2022-02-05 13:59:12', 1320),
@@ -1597,7 +1598,6 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (454, 64.4, '2022-02-05 13:59:12', 1555),
 (455, 102.2, '2022-02-05 13:59:12', 1556),
 (456, 89.2, '2022-02-05 13:59:12', 1557),
-(0, 66.1, '2022-02-05 13:59:12', 1558),
 (457, 62.3, '2022-02-05 13:59:12', 1559),
 (1, 53.5, '2022-02-05 13:59:12', 1560),
 (458, 52.2, '2022-02-05 13:59:12', 1561),
@@ -2141,7 +2141,6 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (448, 96.2, '2022-02-05 13:59:13', 2099),
 (449, 84.1, '2022-02-05 13:59:13', 2100),
 (450, 83, '2022-02-05 13:59:13', 2101),
-(0, 69.9, '2022-02-05 13:59:13', 2102),
 (451, 95.8, '2022-02-05 13:59:13', 2103),
 (1, 52.9, '2022-02-05 13:59:13', 2104),
 (452, 55.9, '2022-02-05 13:59:13', 2105),
@@ -2608,12 +2607,12 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (365, 75.3, '2022-02-05 13:59:14', 2566),
 (366, 82.7, '2022-02-05 13:59:14', 2567),
 (367, 85.6, '2022-02-05 13:59:14', 2568),
-(368, 99.1, '2022-02-05 13:59:14', 2569);
-INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
+(368, 99.1, '2022-02-05 13:59:14', 2569),
 (369, 68, '2022-02-05 13:59:14', 2570),
 (370, 83.8, '2022-02-05 13:59:14', 2571),
 (371, 80.2, '2022-02-05 13:59:14', 2572),
-(372, 93.8, '2022-02-05 13:59:14', 2573),
+(372, 93.8, '2022-02-05 13:59:14', 2573);
+INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (373, 82.5, '2022-02-05 13:59:14', 2574),
 (374, 50.2, '2022-02-05 13:59:14', 2575),
 (375, 78.2, '2022-02-05 13:59:14', 2576),
@@ -3341,7 +3340,14 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (547, 81.3, '2022-02-05 13:59:14', 3298),
 (548, 68.2, '2022-02-05 13:59:14', 3299),
 (549, 114.6, '2022-02-05 13:59:14', 3300),
-(18, 85, '2022-02-28 02:17:02', 3301);
+(18, 85, '2022-02-28 02:17:02', 3301),
+(0, 66.6, '2022-02-21 15:00:52', 3303),
+(0, 66, '2022-02-21 15:01:07', 3304),
+(0, 71, '2022-02-21 15:01:39', 3306),
+(0, 70, '2022-02-21 15:03:08', 3310),
+(0, 62.9, '2022-02-21 15:05:24', 3311),
+(0, 62, '2022-02-21 15:06:50', 3312),
+(0, 66.4, '2022-02-21 15:09:12', 3314);
 
 -- --------------------------------------------------------
 
@@ -3349,11 +3355,13 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 -- Struktura tabeli dla tabeli `gyms`
 --
 
-CREATE TABLE `gyms` (
-  `gym_id` int(11) NOT NULL,
-  `gym_name` varchar(255) COLLATE utf8_polish_ci DEFAULT NULL,
-  `city` varchar(50) COLLATE utf8_polish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+DROP TABLE IF EXISTS `gyms`;
+CREATE TABLE IF NOT EXISTS `gyms` (
+  `gym_id` int NOT NULL,
+  `gym_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `city` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  PRIMARY KEY (`gym_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `gyms`
@@ -3463,13 +3471,17 @@ INSERT INTO `gyms` (`gym_id`, `gym_name`, `city`) VALUES
 -- Struktura tabeli dla tabeli `gym_reviews`
 --
 
-CREATE TABLE `gym_reviews` (
-  `gym_review_id` int(11) NOT NULL,
-  `gym_mark` int(11) DEFAULT NULL,
-  `gym_review_descript` varchar(250) COLLATE utf8_polish_ci DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `gym_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+DROP TABLE IF EXISTS `gym_reviews`;
+CREATE TABLE IF NOT EXISTS `gym_reviews` (
+  `gym_review_id` int NOT NULL,
+  `gym_mark` int DEFAULT NULL,
+  `gym_review_descript` varchar(250) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `gym_id` int NOT NULL,
+  PRIMARY KEY (`gym_review_id`),
+  KEY `user_id` (`user_id`),
+  KEY `gym_id` (`gym_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `gym_reviews`
@@ -4034,18 +4046,22 @@ INSERT INTO `gym_reviews` (`gym_review_id`, `gym_mark`, `gym_review_descript`, `
 -- Struktura tabeli dla tabeli `trainers`
 --
 
-CREATE TABLE `trainers` (
-  `trainer_id` int(11) NOT NULL,
-  `specialization` varchar(50) COLLATE utf8_polish_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `password` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `gym_id` int(11) NOT NULL,
-  `trainer_review_id` int(11) DEFAULT NULL,
-  `name` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `surname` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+DROP TABLE IF EXISTS `trainers`;
+CREATE TABLE IF NOT EXISTS `trainers` (
+  `trainer_id` int NOT NULL,
+  `specialization` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `gym_id` int NOT NULL,
+  `trainer_review_id` int DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `surname` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
   `prize_per_hour` double NOT NULL,
-  `profile_picture` varchar(100) COLLATE utf8_polish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+  `profile_picture` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  PRIMARY KEY (`trainer_id`),
+  KEY `trainer_review_id` (`trainer_review_id`),
+  KEY `gym_id` (`gym_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `trainers`
@@ -4180,285 +4196,290 @@ INSERT INTO `trainers` (`trainer_id`, `specialization`, `email`, `password`, `gy
 -- Struktura tabeli dla tabeli `trainer_reviews`
 --
 
-CREATE TABLE `trainer_reviews` (
-  `trainer_review_id` int(11) NOT NULL,
-  `trainer_mark` int(11) DEFAULT NULL,
-  `trainer_review_descript` varchar(350) COLLATE utf8mb4_bin DEFAULT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+DROP TABLE IF EXISTS `trainer_reviews`;
+CREATE TABLE IF NOT EXISTS `trainer_reviews` (
+  `review_id` int NOT NULL AUTO_INCREMENT,
+  `trainer_id` int NOT NULL,
+  `trainer_mark` int DEFAULT NULL,
+  `trainer_review_descript` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`review_id`),
+  KEY `trainer_review_id` (`trainer_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Zrzut danych tabeli `trainer_reviews`
 --
 
-INSERT INTO `trainer_reviews` (`trainer_review_id`, `trainer_mark`, `trainer_review_descript`, `user_id`) VALUES
-(8, 5, 'Fajny gość', 0),
-(61, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 6),
-(106, 4, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 16),
-(74, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 57),
-(64, 4, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 68),
-(37, 5, 'Nie korzysta z typowych szablonów treningowych, a każdy trening jest intensywny, aż parują szyby :)', 70),
-(101, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 81),
-(95, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 103),
-(28, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 119),
-(0, 4, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 148),
-(120, 5, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 184),
-(105, 5, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 242),
-(28, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 277),
-(23, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 289),
-(95, 5, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 302),
-(49, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 477),
-(107, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 499),
-(111, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 506),
-(9, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 523),
-(85, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 14),
-(88, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 22),
-(111, 5, 'Profesjonalnym podejściem i zaangażowaniem motywuje najlepiej na świecie.', 24),
-(74, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 37),
-(59, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 85),
-(92, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 99),
-(42, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 145),
-(58, 4, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 146),
-(69, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 177),
-(71, 5, 'Bardzo polecam 🙂', 233),
-(19, 5, 'Bardzo polecam 🙂', 247),
-(78, 5, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 275),
-(119, 4, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 314),
-(103, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 323),
-(14, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 340),
-(119, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 380),
-(12, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 388),
-(54, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 405),
-(44, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 422),
-(106, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 500),
-(118, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 504),
-(11, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 101),
-(17, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 129),
-(89, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 174),
-(77, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 189),
-(100, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 281),
-(25, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 331),
-(4, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 339),
-(13, 5, 'Polecam wszystkim treningi z Active Life', 361),
-(32, 4, 'Bardzo polecam 🙂', 391),
-(114, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 457),
-(1, 4, 'Bardzo polecam 🙂', 466),
-(87, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 527),
-(7, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 546),
-(43, 5, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 64),
-(17, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 107),
-(101, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 127),
-(120, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 216),
-(71, 4, 'SIŁA MASA RZEŹBA !!!!', 233),
-(38, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 322),
-(103, 5, 'To trener z charyzmą 😎', 323),
-(13, 5, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 376),
-(27, 4, 'REWELACJA!!', 428),
-(82, 5, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 432),
-(76, 4, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 444),
-(70, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 510),
-(54, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 532),
-(106, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 105),
-(58, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 146),
-(97, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 165),
-(37, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 182),
-(3, 5, 'REWELACJA!!', 287),
-(110, 4, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 335),
-(13, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 427),
-(100, 4, 'SIŁA MASA RZEŹBA !!!!', 458),
-(81, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 475),
-(110, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 487),
-(107, 5, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 520),
-(81, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 79),
-(77, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 110),
-(42, 4, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 111),
-(58, 4, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 146),
-(81, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 147),
-(108, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 160),
-(66, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 168),
-(22, 5, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 206),
-(89, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 238),
-(40, 5, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 279),
-(54, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 280),
-(100, 4, 'To trener z charyzmą 😎', 281),
-(82, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 332),
-(33, 4, 'Bardzo polecam 🙂', 370),
-(44, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 411),
-(88, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 417),
-(41, 4, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 438),
-(76, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 444),
-(29, 5, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 498),
-(118, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 504),
-(62, 4, 'REWELACJA!!', 526),
-(38, 5, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 547),
-(35, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 28),
-(48, 4, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 42),
-(104, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 135),
-(77, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 258),
-(23, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 271),
-(14, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 340),
-(14, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 342),
-(18, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 385),
-(50, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 396),
-(72, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 468),
-(52, 4, 'To trener z charyzmą 😎', 521),
-(70, 5, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 19),
-(75, 5, 'REWELACJA!!', 54),
-(59, 4, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 130),
-(54, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 143),
-(28, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 246),
-(74, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 306),
-(117, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 317),
-(28, 4, 'Polecam wszystkim treningi z Active Life', 369),
-(9, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 404),
-(110, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 487),
-(52, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 544),
-(119, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 11),
-(76, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 18),
-(88, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 22),
-(101, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 81),
-(73, 4, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 83),
-(54, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 186),
-(88, 4, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 203),
-(19, 4, 'To trener z charyzmą 😎', 228),
-(66, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 259),
-(68, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 286),
-(3, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 287),
-(110, 5, 'To trener z charyzmą 😎', 421),
-(113, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 445),
-(119, 5, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 11),
-(81, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 58),
-(18, 5, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 69),
-(105, 4, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 71),
-(56, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 122),
-(54, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 143),
-(4, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 157),
-(98, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 176),
-(5, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 195),
-(88, 4, 'Bardzo polecam 🙂', 203),
-(55, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 205),
-(119, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 314),
-(14, 4, 'Bardzo polecam 🙂', 340),
-(94, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 343),
-(112, 4, 'Profesjonalnym podejściem i zaangażowaniem motywuje najlepiej na świecie.', 356),
-(42, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 364),
-(55, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 368),
-(119, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 390),
-(27, 4, 'To trener z charyzmą 😎', 392),
-(1, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 466),
-(11, 5, 'SIŁA MASA RZEŹBA !!!!', 27),
-(84, 4, 'Bardzo polecam 🙂', 62),
-(54, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 143),
-(72, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 348),
-(23, 5, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 434),
-(91, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 464),
-(48, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 496),
-(36, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 12),
-(49, 4, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 38),
-(7, 4, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 51),
-(81, 4, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 79),
-(82, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 180),
-(18, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 232),
-(101, 5, 'SIŁA MASA RZEŹBA !!!!', 266),
-(34, 5, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 316),
-(45, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 324),
-(50, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 341),
-(12, 5, 'Gorąco polecam współpracę z Mateuszem! Studnia wiedzy, punktualność, indywidualne podejście do treningów - to tylko kilka cech, które mogę wymienić.', 345),
-(62, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 497),
-(74, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 511),
-(79, 5, 'To trener z charyzmą 😎', 543),
-(14, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 29),
-(51, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 55),
-(11, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 65),
-(77, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 113),
-(75, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 120),
-(55, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 205),
-(101, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 209),
-(18, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 232),
-(120, 5, 'Bardzo polecam 🙂', 250),
-(119, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 307),
-(109, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 309),
-(66, 4, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 338),
-(109, 5, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 398),
-(98, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 401),
-(3, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 414),
-(80, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 80),
-(101, 4, 'Polecam wszystkim treningi z Active Life', 81),
-(118, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 93),
-(36, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 98),
-(79, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 170),
-(88, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 203),
-(77, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 258),
-(91, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 326),
-(94, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 343),
-(112, 4, 'To trener z charyzmą 😎', 356),
-(2, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 395),
-(54, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 405),
-(5, 5, 'Nie korzysta z typowych szablonów treningowych, a każdy trening jest intensywny, aż parują szyby :)', 448),
-(9, 5, 'Bardzo polecam 🙂', 494),
-(13, 5, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 542),
-(67, 5, 'REWELACJA!!', 84),
-(56, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 122),
-(104, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 135),
-(88, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 203),
-(114, 4, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 208),
-(60, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 231),
-(60, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 319),
-(107, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 351),
-(43, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 382),
-(119, 4, 'Profesjonalnym podejściem i zaangażowaniem motywuje najlepiej na świecie.', 397),
-(52, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 423),
-(6, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 518),
-(9, 4, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 523),
-(114, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 535),
-(24, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 549),
-(88, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 22),
-(16, 4, 'To trener z charyzmą 😎', 25),
-(15, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 89),
-(113, 4, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 90),
-(56, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 122),
-(59, 4, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 130),
-(79, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 170),
-(59, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 187),
-(24, 5, 'Bardzo polecam 🙂', 197),
-(19, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 228),
-(20, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 274),
-(72, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 348),
-(55, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 368),
-(102, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 429),
-(96, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 437),
-(107, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 499),
-(107, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 7),
-(99, 5, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 26),
-(80, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 80),
-(67, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 84),
-(27, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 97),
-(58, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 140),
-(20, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 200),
-(16, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 255),
-(67, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 260),
-(24, 4, 'To trener z charyzmą 😎', 267),
-(111, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 272),
-(7, 4, 'Polecam wszystkim treningi z Active Life', 305),
-(61, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 310),
-(8, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 325),
-(44, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 357),
-(51, 4, 'Nie korzysta z typowych szablonów treningowych, a każdy trening jest intensywny, aż parują szyby :)', 377),
-(110, 4, 'Bardzo polecam 🙂', 421),
-(72, 4, 'Bardzo polecam 🙂', 446),
-(105, 4, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 35),
-(84, 4, 'REWELACJA!!', 62),
-(58, 4, 'Gorąco polecam współpracę z Mateuszem! Studnia wiedzy, punktualność, indywidualne podejście do treningów - to tylko kilka cech, które mogę wymienić.', 73),
-(95, 5, 'SIŁA MASA RZEŹBA !!!!', 78),
-(34, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 87),
-(31, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 112),
-(46, 4, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 204),
-(22, 4, 'Polecam wszystkim treningi z Active Life', 206),
-(101, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 221),
-(74, 4, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 306),
-(64, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 330),
-(51, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 377),
-(24, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 549);
+INSERT INTO `trainer_reviews` (`review_id`, `trainer_id`, `trainer_mark`, `trainer_review_descript`, `user_id`) VALUES
+(2, 103, 5, 'To trener z charyzmą 😎', 323),
+(3, 61, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 6),
+(4, 13, 5, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 376),
+(5, 106, 4, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 16),
+(6, 77, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 113),
+(7, 27, 4, 'REWELACJA!!', 428),
+(8, 74, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 57),
+(9, 75, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 120),
+(10, 82, 5, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 432),
+(11, 55, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 205),
+(12, 76, 4, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 444),
+(13, 64, 4, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 68),
+(14, 101, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 209),
+(15, 70, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 510),
+(16, 18, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 232),
+(17, 54, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 532),
+(18, 120, 5, 'Bardzo polecam 🙂', 250),
+(19, 106, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 105),
+(20, 119, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 307),
+(21, 109, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 309),
+(22, 58, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 146),
+(23, 66, 4, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 338),
+(24, 37, 5, 'Nie korzysta z typowych szablonów treningowych, a każdy trening jest intensywny, aż parują szyby :)', 70),
+(25, 109, 5, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 398),
+(26, 97, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 165),
+(27, 101, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 81),
+(28, 95, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 103),
+(29, 28, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 119),
+(30, 0, 4, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 148),
+(31, 98, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 401),
+(32, 3, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 414),
+(33, 80, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 80),
+(34, 101, 4, 'Polecam wszystkim treningi z Active Life', 81),
+(35, 118, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 93),
+(36, 36, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 98),
+(37, 79, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 170),
+(38, 88, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 203),
+(39, 77, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 258),
+(40, 91, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 326),
+(41, 94, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 343),
+(42, 112, 4, 'To trener z charyzmą 😎', 356),
+(43, 2, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 395),
+(44, 54, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 405),
+(45, 37, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 182),
+(46, 3, 5, 'REWELACJA!!', 287),
+(47, 110, 4, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 335),
+(48, 13, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 427),
+(49, 100, 4, 'SIŁA MASA RZEŹBA !!!!', 458),
+(50, 81, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 475),
+(51, 110, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 487),
+(52, 107, 5, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 520),
+(53, 81, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 79),
+(54, 77, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 110),
+(55, 42, 4, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 111),
+(56, 58, 4, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 146),
+(57, 81, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 147),
+(58, 108, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 160),
+(59, 66, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 168),
+(60, 22, 5, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 206),
+(61, 89, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 238),
+(62, 40, 5, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 279),
+(63, 54, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 280),
+(64, 100, 4, 'To trener z charyzmą 😎', 281),
+(65, 82, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 332),
+(66, 33, 4, 'Bardzo polecam 🙂', 370),
+(67, 44, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 411),
+(68, 88, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 417),
+(69, 41, 4, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 438),
+(70, 76, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 444),
+(71, 29, 5, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 498),
+(72, 118, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 504),
+(73, 62, 4, 'REWELACJA!!', 526),
+(74, 38, 5, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 547),
+(75, 35, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 28),
+(76, 48, 4, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 42),
+(77, 104, 4, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 135),
+(78, 77, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 258),
+(79, 23, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 271),
+(80, 14, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 340),
+(81, 14, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 342),
+(82, 18, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 385),
+(83, 50, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 396),
+(84, 72, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 468),
+(85, 52, 4, 'To trener z charyzmą 😎', 521),
+(86, 70, 5, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 19),
+(87, 75, 5, 'REWELACJA!!', 54),
+(88, 59, 4, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 130),
+(89, 54, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 143),
+(90, 28, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 246),
+(91, 74, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 306),
+(92, 117, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 317),
+(93, 28, 4, 'Polecam wszystkim treningi z Active Life', 369),
+(94, 9, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 404),
+(95, 110, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 487),
+(96, 52, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 544),
+(97, 119, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 11),
+(98, 76, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 18),
+(99, 88, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 22),
+(100, 101, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 81),
+(101, 73, 4, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 83),
+(102, 54, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 186),
+(103, 88, 4, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 203),
+(104, 19, 4, 'To trener z charyzmą 😎', 228),
+(105, 66, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 259),
+(106, 68, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 286),
+(107, 3, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 287),
+(108, 110, 5, 'To trener z charyzmą 😎', 421),
+(109, 113, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 445),
+(110, 119, 5, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 11),
+(111, 81, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 58),
+(112, 18, 5, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 69),
+(113, 105, 4, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 71),
+(114, 56, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 122),
+(115, 54, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 143),
+(116, 4, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 157),
+(117, 98, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 176),
+(118, 5, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 195),
+(119, 88, 4, 'Bardzo polecam 🙂', 203),
+(120, 55, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 205),
+(121, 119, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 314),
+(122, 14, 4, 'Bardzo polecam 🙂', 340),
+(123, 94, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 343),
+(124, 112, 4, 'Profesjonalnym podejściem i zaangażowaniem motywuje najlepiej na świecie.', 356),
+(125, 42, 4, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 364),
+(126, 55, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 368),
+(127, 119, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 390),
+(128, 27, 4, 'To trener z charyzmą 😎', 392),
+(129, 1, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 466),
+(130, 11, 5, 'SIŁA MASA RZEŹBA !!!!', 27),
+(131, 84, 4, 'Bardzo polecam 🙂', 62),
+(132, 54, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 143),
+(133, 72, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 348),
+(134, 23, 5, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 434),
+(135, 91, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 464),
+(136, 48, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 496),
+(137, 36, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 12),
+(138, 49, 4, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 38),
+(139, 7, 4, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 51),
+(140, 81, 4, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 79),
+(141, 82, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 180),
+(142, 18, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 232),
+(143, 101, 5, 'SIŁA MASA RZEŹBA !!!!', 266),
+(144, 34, 5, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 316),
+(145, 45, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 324),
+(146, 50, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 341),
+(147, 12, 5, 'Gorąco polecam współpracę z Mateuszem! Studnia wiedzy, punktualność, indywidualne podejście do treningów - to tylko kilka cech, które mogę wymienić.', 345),
+(148, 62, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 497),
+(149, 74, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 511),
+(150, 79, 5, 'To trener z charyzmą 😎', 543),
+(151, 14, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 29),
+(152, 51, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 55),
+(153, 11, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 65),
+(154, 5, 5, 'Nie korzysta z typowych szablonów treningowych, a każdy trening jest intensywny, aż parują szyby :)', 448),
+(155, 120, 5, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 184),
+(156, 9, 5, 'Bardzo polecam 🙂', 494),
+(157, 105, 5, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 242),
+(158, 13, 5, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 542),
+(159, 28, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 277),
+(160, 23, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 289),
+(161, 95, 5, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 302),
+(162, 49, 5, 'Doskonały trener! Zarówno do zajęć indywidualnych i grupowych.', 477),
+(163, 107, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 499),
+(164, 67, 5, 'REWELACJA!!', 84),
+(165, 56, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 122),
+(166, 104, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 135),
+(167, 88, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 203),
+(168, 114, 4, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 208),
+(169, 60, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 231),
+(170, 60, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 319),
+(171, 107, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 351),
+(172, 43, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 382),
+(173, 119, 4, 'Profesjonalnym podejściem i zaangażowaniem motywuje najlepiej na świecie.', 397),
+(174, 52, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 423),
+(175, 6, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 518),
+(176, 9, 4, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 523),
+(177, 114, 4, 'Profesjonalizm, znakomite poczucie humoru i porządny wycisk! ', 535),
+(178, 24, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 549),
+(179, 88, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 22),
+(180, 16, 4, 'To trener z charyzmą 😎', 25),
+(181, 15, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 89),
+(182, 113, 4, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 90),
+(183, 56, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 122),
+(184, 59, 4, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 130),
+(185, 79, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 170),
+(186, 59, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 187),
+(187, 24, 5, 'Bardzo polecam 🙂', 197),
+(188, 19, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 228),
+(189, 20, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 274),
+(190, 72, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 348),
+(191, 55, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 368),
+(192, 102, 5, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 429),
+(193, 96, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 437),
+(194, 107, 5, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 499),
+(195, 107, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 7),
+(196, 99, 5, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 26),
+(197, 80, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 80),
+(198, 67, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 84),
+(199, 27, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 97),
+(200, 58, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 140),
+(201, 20, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 200),
+(202, 16, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 255),
+(203, 67, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 260),
+(204, 24, 4, 'To trener z charyzmą 😎', 267),
+(205, 111, 5, 'Fajna atmosfera – w takim towarzystwie człowiek nawet ma radochę , że się umęczy – bardzo dobrze przygotowane ćwiczenia dla osób po urazach', 272),
+(206, 7, 4, 'Polecam wszystkim treningi z Active Life', 305),
+(207, 61, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 310),
+(208, 8, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 325),
+(209, 44, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 357),
+(210, 51, 4, 'Nie korzysta z typowych szablonów treningowych, a każdy trening jest intensywny, aż parują szyby :)', 377),
+(211, 110, 4, 'Bardzo polecam 🙂', 421),
+(212, 72, 4, 'Bardzo polecam 🙂', 446),
+(213, 105, 4, 'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów', 35),
+(214, 84, 4, 'REWELACJA!!', 62),
+(215, 58, 4, 'Gorąco polecam współpracę z Mateuszem! Studnia wiedzy, punktualność, indywidualne podejście do treningów - to tylko kilka cech, które mogę wymienić.', 73),
+(216, 95, 5, 'SIŁA MASA RZEŹBA !!!!', 78),
+(217, 34, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 87),
+(218, 31, 5, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 112),
+(219, 46, 4, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 204),
+(220, 22, 4, 'Polecam wszystkim treningi z Active Life', 206),
+(221, 101, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 221),
+(222, 74, 4, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 306),
+(223, 64, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 330),
+(224, 51, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 377),
+(225, 24, 5, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 549),
+(226, 111, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 506),
+(227, 9, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 523),
+(228, 85, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 14),
+(229, 88, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 22),
+(230, 111, 5, 'Profesjonalnym podejściem i zaangażowaniem motywuje najlepiej na świecie.', 24),
+(231, 74, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 37),
+(232, 59, 5, 'Mateusz się bardzo dobrym doświadczonym trenerem chodź wyglada młodo 🙂', 85),
+(233, 92, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 99),
+(234, 42, 4, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 145),
+(235, 58, 4, 'Pracować miałam przyjemność na co dzień przez 9 miesięcy, dam sobie rękę uciąć za tego Pana. Jestem pewna, że jeszcze o nim będzie głośno.', 146),
+(236, 69, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 177),
+(237, 71, 5, 'Bardzo polecam 🙂', 233),
+(238, 19, 5, 'Bardzo polecam 🙂', 247),
+(239, 78, 5, 'Z czystym sumieniem mogę polecić ich usługi wszystkim, którzy chcą lepiej się poczuć, zrzucić zbędne kilogramy i być w dobrej formie', 275),
+(240, 119, 4, 'Świetny trener z ogromną wiedzą, pozytywnym nastawieniem i poczuciem humoru, każdy trening jest rzetelnie rozpisany.', 314),
+(241, 103, 5, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 323),
+(242, 14, 4, 'Otwarty, uśmiechnięty, z wielkim poczuciem humoru i dystansem do siebie.', 340),
+(243, 119, 4, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 380),
+(244, 12, 4, 'Profesjonalizm widać w każdym calu!Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!', 388),
+(245, 54, 5, 'Super trener, trenujemy razem od sierpnia. Profesjonalne podejście do treningów i luzna atmosfera na siłce. Jako początkujący nie czuję sie zagubiony z ćwiczeniami i Mateusz daje sporo rad dotyczących zdrowego trybu odżywiania i prowadzenia treningów', 405),
+(246, 44, 4, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 422),
+(247, 106, 4, 'Polecam każdemu, kto chce się za siebie zabrać', 500),
+(248, 118, 4, 'Współpraca z Bartkiem spełniła moje najśmielsze oczekiwania.', 504),
+(249, 11, 5, 'Daje mega wycisk, super cwiczenia i nadzor poprawnego ich wykonywania.', 101),
+(250, 17, 5, 'Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3', 129),
+(251, 89, 5, ' Podchodzi do sprawy profesjonalnie i każdego trenującego traktuje indywidualnie.', 174),
+(252, 77, 5, 'Trener personalny godny polecenia. Podchodzi do osoby indywidualnie.', 189),
+(253, 100, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 281),
+(254, 25, 4, 'Rewelacja! Trenuję z nimi już półtora roku.', 331),
+(255, 4, 4, 'Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam', 339),
+(256, 13, 5, 'Polecam wszystkim treningi z Active Life', 361),
+(257, 32, 4, 'Bardzo polecam 🙂', 391),
+(258, 114, 4, 'Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.', 457),
+(259, 1, 4, 'Bardzo polecam 🙂', 466),
+(260, 87, 5, 'Dobra energia, poczucie humoru, ale i konsekwencja, której wymaga nie tylko od siebie, ale od klienta!!', 527),
+(261, 7, 4, 'Jako trener okazał się wymagający kiedy trzeba, dopingujący gdy brak sił, a jego kreatywność do wymyślania nowych ćwiczeń czyni go trenerem niezawodnym.', 546),
+(262, 43, 5, 'Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji', 64),
+(263, 17, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 107),
+(264, 101, 5, 'Polecam każdemu, kto chce się za siebie zabrać', 127),
+(265, 120, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 216),
+(266, 71, 4, 'SIŁA MASA RZEŹBA !!!!', 233),
+(267, 38, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 322),
+(268, 18, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 0);
 
 -- --------------------------------------------------------
 
@@ -4466,16 +4487,19 @@ INSERT INTO `trainer_reviews` (`trainer_review_id`, `trainer_mark`, `trainer_rev
 -- Struktura tabeli dla tabeli `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `profile_picture` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `password` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `name` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `surname` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `bmi_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `profile_picture` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `surname` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `bmi_id` int DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `bmi_id` (`bmi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=563 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `users`
@@ -5042,13 +5066,17 @@ INSERT INTO `users` (`user_id`, `profile_picture`, `email`, `password`, `name`, 
 -- Struktura tabeli dla tabeli `usr_train`
 --
 
-CREATE TABLE `usr_train` (
-  `user_id` int(11) DEFAULT NULL,
-  `trainer_id` int(11) DEFAULT NULL,
-  `training_date` datetime DEFAULT current_timestamp(),
-  `training_descript` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
-  `gym_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+DROP TABLE IF EXISTS `usr_train`;
+CREATE TABLE IF NOT EXISTS `usr_train` (
+  `user_id` int DEFAULT NULL,
+  `trainer_id` int DEFAULT NULL,
+  `training_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `training_descript` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+  `gym_id` int DEFAULT NULL,
+  KEY `user_id` (`user_id`,`trainer_id`,`gym_id`),
+  KEY `trainer_id` (`trainer_id`),
+  KEY `gym_id` (`gym_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `usr_train`
@@ -7806,78 +7834,8 @@ INSERT INTO `usr_train` (`user_id`, `trainer_id`, `training_date`, `training_des
 (546, 7, '2022-06-20 20:30:00', 'Kondycyjny', 0),
 (547, 38, '2022-06-21 17:30:00', 'Oporowy', 1),
 (548, 77, '2022-06-22 18:30:00', 'Full Body Workout', 5),
-(549, 24, '2022-06-17 15:30:00', 'Crossfit', 5);
-
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indeksy dla tabeli `bmi`
---
-ALTER TABLE `bmi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `bmi_id` (`bmi_id`);
-
---
--- Indeksy dla tabeli `gyms`
---
-ALTER TABLE `gyms`
-  ADD PRIMARY KEY (`gym_id`);
-
---
--- Indeksy dla tabeli `gym_reviews`
---
-ALTER TABLE `gym_reviews`
-  ADD PRIMARY KEY (`gym_review_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `gym_id` (`gym_id`);
-
---
--- Indeksy dla tabeli `trainers`
---
-ALTER TABLE `trainers`
-  ADD PRIMARY KEY (`trainer_id`),
-  ADD KEY `trainer_review_id` (`trainer_review_id`),
-  ADD KEY `gym_id` (`gym_id`);
-
---
--- Indeksy dla tabeli `trainer_reviews`
---
-ALTER TABLE `trainer_reviews`
-  ADD KEY `trainer_review_id` (`trainer_review_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indeksy dla tabeli `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `bmi_id` (`bmi_id`);
-
---
--- Indeksy dla tabeli `usr_train`
---
-ALTER TABLE `usr_train`
-  ADD KEY `user_id` (`user_id`,`trainer_id`,`gym_id`),
-  ADD KEY `trainer_id` (`trainer_id`),
-  ADD KEY `gym_id` (`gym_id`);
-
---
--- AUTO_INCREMENT dla zrzuconych tabel
---
-
---
--- AUTO_INCREMENT dla tabeli `bmi`
---
-ALTER TABLE `bmi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3302;
-
---
--- AUTO_INCREMENT dla tabeli `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
+(549, 24, '2022-06-17 15:30:00', 'Crossfit', 5),
+(0, 18, '2022-02-20 14:54:05', 'Bouldering', 7);
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -7906,7 +7864,7 @@ ALTER TABLE `trainers`
 -- Ograniczenia dla tabeli `trainer_reviews`
 --
 ALTER TABLE `trainer_reviews`
-  ADD CONSTRAINT `trainer_reviews_ibfk_1` FOREIGN KEY (`trainer_review_id`) REFERENCES `trainers` (`trainer_review_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `trainer_reviews_ibfk_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainers` (`trainer_review_id`) ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `usr_train`
