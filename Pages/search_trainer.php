@@ -24,6 +24,7 @@
                 $gymName = $_POST['gymName'];
                 $city = $_POST['city'];
                 $trainerSex = $_POST['trainerSex'];
+                TODO:$trainerSpec = $_POST['specialization'];
                 $minMark = $_POST['minTrainerMark'];
                 $maxMark = $_POST['maxTrainerMark'];
                 $minPrize = $_POST['minPrize'];
