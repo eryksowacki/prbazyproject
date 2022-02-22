@@ -27,16 +27,10 @@
 ?>
 <html lang="pl">
 <head>
-    <link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css">
-    <link rel="stylesheet" href="..\Scripts\CSS\style.css">
-    <script src="..\Scripts\JS\bootstrap-5.0.2-dist\js\bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
+     <?php
+        require_once ("..\Scripts\PHP\page_look_head.php");
+     ?>
     <script src="..\Scripts\node_modules\chart.js\dist\chart.min.js" crossorigin="anonymous"></script>
-    <script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moje konto</title>
 </head>
 
@@ -52,16 +46,16 @@
                     <h2 class="nav-link">Menu</h2>
                 </li>
                 <li class="nav-item nav-item-list">
-                    <a class="nav-link my-gyms" href="#myGyms">Moje siłownie<b class="float-end">&raquo;</b> </a>
+                    <a class="nav-link my-gyms" href="myGyms.php">Moje siłownie<b class="float-end">&raquo;</b> </a>
                     <ul class="submenu dropdown-menu submenu-dropdown-frst">
-                        <li><a class="nav-link link-text" href="#myGyms">Siłownie</a></li>
-                        <li><a class="nav-link link-text" href="#">Recenzje siłowni</a></li>
+                        <li><a class="nav-link link-text" href="myGyms.php">Siłownie</a></li>
+                        <li><a class="nav-link link-text" href="gymsReviews.php">Recenzje siłowni</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-list">
                     <a class="nav-link my-trainers" href="#">Moi Trenerzy<b class="float-end">&raquo;</b> </a>
                     <ul class="submenu dropdown-menu submenu-dropdown-sec">
-                        <li><a class="nav-link link-text" href="trainers.php">Trenerzy</a></li>
+                        <li><a class="nav-link link-text" href="trenerzy.php">Trenerzy</a></li>
                         <li><a class="nav-link link-text expandable" id="myTrainerReviews">Recenzje trenerów</a></li>
                         <li><a class="nav-link link-text" id="myTrainingSchedule">Rozkład treningów</a></li>
                     </ul>

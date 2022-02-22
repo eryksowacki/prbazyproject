@@ -8,12 +8,12 @@
 </head>
 <body>
     <ol>
-        <li>Chuj</li>
-        <li>Dupa</li>
-        <li>Kurwa</li>
-        <li>Cipa</li>
-        <li>Ruchanie</li>
-        <li>Czaisz byniu?</li>
+        <li>Nie</li>
+        <li>Wiem</li>
+        <li>Co</li>
+        <li>Tu</li>
+        <li>Było</li>
+        <li>Miłego dnia</li>
     </ol>
 </body>
     <?php

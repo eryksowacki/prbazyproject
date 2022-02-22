@@ -3,10 +3,10 @@
     session_start();
     $_SESSION["token"] = bin2hex(openssl_random_pseudo_bytes(16));
 ?>
-<html lang="en">
+<html lang="pl">
 <head>
     <?php
-        require_once ("..\Scripts\PHP\page_look_head.php")
+        require_once ("..\Scripts\PHP\page_look_head.php");
     ?>
 </head>
 <body>
