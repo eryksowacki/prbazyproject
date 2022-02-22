@@ -117,8 +117,7 @@
             <div class="review-block">
                 <div>
                     <?php
-                        $myTrainerReveiws = 
-                            "SELECT `trainers`.`name` as `n`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
+                        $myTrainerReveiws = "SELECT `trainers`.`name` as `n`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
                             from `trainer_reviews`
                             join `trainers`
                             on `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
