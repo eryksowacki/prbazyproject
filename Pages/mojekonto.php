@@ -130,15 +130,16 @@
                         echo "<select class=trainerSelect name=trainer_id>";
                         while($option =  $result -> fetch_assoc())
                         {
-                            echo '<option value='."$option[trainer_ids]>"."$option[n] $option[s]".'</option>';
+                            echo "<option value=$option[review_ids]>$option[n] $option[s]</option>";
                         }
-                        echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'>";
+                        echo "</select>";
                         echo '<select name="mark" class="trainerSelect trainerMark">';
                         for ($i=0; $i < 6; $i++) 
                         { 
                             echo "<option value=$i>$i</option>";
                         }
-                        echo "</select><br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
+                        echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'>
+                        <br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
                         $result = $connect -> query($myTrainerReveiws);
                         while($currentRow = $result -> fetch_assoc())
                         {
@@ -158,7 +159,7 @@
                             echo<<< REVIEWS
                                 <script>
                                     const reviewsBlock = document.querySelector('.review-block');
-                                    gsap.to(reviewsBlock,0.65,{y:20,autoAlpha:1,display:"flex"});  
+                                    gsap.fromTo(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"},{y:10,autoAlpha:1,display:"flex"});  
                                 </script> 
                             REVIEWS;
                         }

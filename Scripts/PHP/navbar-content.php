@@ -58,7 +58,7 @@
                         </form>
                     </div>
                 </li>
-                </ul>
+            </ul>
 
             <?php
                 if(isset($_SESSION['user_id']))

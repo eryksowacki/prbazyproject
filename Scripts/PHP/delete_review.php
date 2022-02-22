@@ -38,7 +38,7 @@
             $reviewId = $result[0]['review_id'];
             $userTrainersId = $connect -> prepare("DELETE FROM `trainer_reviews` WHERE `review_id` = :review_id");
             $userTrainersId -> execute(['review_id' => $reviewId]);
-            header('Location: '.$_SERVER['HTTP_REFERER'].'?reviews');
+            header('Location: ..\..\Pages\mojekonto.php?reviews');
 
         }
     }
