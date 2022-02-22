@@ -21,7 +21,7 @@
             }
             else
             {
-                $sql = "SELECT DISTINCT `name`, `surname`, `prize_per_hour`, `profile_picture`, `specialization`, `gym_name` FROM `trainer_reviews` inner join `trainers` on `trainer_reviews`.`trainer_review_id`=`trainers`.`trainer_review_id` inner join `gyms` on `trainers`.`gym_id`=`gyms`.`gym_id` where `gym_name` like '$_POST[gymName]' and `city` like '$_POST[city]' and `trainer_mark` in($_POST[minTrainerMark],$_POST[maxTrainerMark]) and `prize_per_hour` between $_POST[minPrize] and $_POST[maxPrize]";
+                $sql = "SELECT DISTINCT `name`, `surname`, `prize_per_hour`, `profile_picture`, `specialization`, `gym_name` FROM `trainer_reviews` inner join `trainers` on `trainer_reviews`.`trainer_id`=`trainers`.`trainer_review_id` inner join `gyms` on `trainers`.`gym_id`=`gyms`.`gym_id` where `gym_name` like '$_POST[gymName]' and `city` like '$_POST[city]' and `trainer_mark` in($_POST[minTrainerMark],$_POST[maxTrainerMark]) and `prize_per_hour` between $_POST[minPrize] and $_POST[maxPrize]";
 
                 $result = $connect -> query($sql);
 
