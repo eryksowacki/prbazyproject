@@ -35,24 +35,48 @@ DROPDOWNUSER;
                     {
                         echo <<< REGISTER
                             <li class="nav-item">
-                                <a class="nav-link" href="Login.php">Zaloguj się</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="signup.php">Zarejestruj się</a>
                             </li>
 REGISTER;
+                        if(substr($_SERVER['REQUEST_URI'], 40,9) !== "login.php")
+                        {
+                            echo <<< NAVLOGIN
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle dropdown-toggler" href="login.php" id="navbarDropdown" aria-expanded="false">Zaloguj się </a>
+                                <ul class="dropdown-menu dropdown-quicklog" aria-labelledby="navbarDropdown">
+                                    <form action="..\Scripts\PHP\login.inc.php" method="post">    
+                                        <li>
+                                            <div class="field">
+                                            <input type="email" name="email" id="email" class="navUserInput" placeholder=" ">
+                                            <label for="email" class="floating-label-ql">Email</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="field">
+                                            <input type="password" name="password" id="password" class="navUserInput" placeholder=" ">
+                                            <label for="password" class="floating-label-ql">Hasło</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <input type="submit" value="Prześlij">
+                                        </li>
+                                    </form>
+                                </ul>
+                            </li>
+NAVLOGIN;
+                        }
                     }
                 ?>
                 <li class="nav-item">
                     <a class="nav-link" href="Regulamin.php">Regulamin</a>
                 </li>
-                <li class="nav-item btn-group dropend dropdown-menu-right dupa">
+                <li class="nav-item btn-group dropend dropdown-menu-right">
                     <button class="nav-link dropdown-toggle" id="nvbrdrpdwn" role="button" data-bs-toggle="dropdown-right" aria-expanded="false">Wyszukaj</button>
                     <div class="search">
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" id="search-bar" disabled placeholder="Szukaj siłowni lub trenerów..." aria-label="Search">
                             <div class="btn-search-bar">
-                                <button class="btn btn-outline-success" type="submit">Szukaj</button>
+                                <input class="btn btn-outline-success" id="search-button" type="submit">
                             </div>
                         </form>
                     </div>
@@ -77,36 +101,12 @@ SESSION;
                         echo "</li>";
                     }
                 }
-                else
-                {
-                    // echo <<< NAVLOGIN
-                    //     <li class="nav-item dropdown">
-                //             <a class="nav-link dropdown-toggle dropdown-toggler" href="login.php" id="navbarDropdown" aria-expanded="false">Szybkie logowanie</a>
-                //             <ul class="dropdown-menu dropdown-quicklo" aria-labelledby="navbarDropdown">
-                //             <form action="" method="post">    
-                //                 <li>
-                //                     <div class="field">
-                //                     <input type="email" name="email" id="email" class="inputLogin navUserInput" placeholder=" ">
-                //                     <label for="email" class="floating-label-ql">Email</label>
-                //                     </div>
-                //                 </li>
-                //                 <li>
-                //                     <div class="field">
-                //                     <input type="password" name="password" id="password" class="inputLogin navUserInput" placeholder=" ">
-                //                     <label  abel for="password" class="floating-label-ql">Hasło</label>
-                //                     </div>
-                //                 </li>
-                //                 <li>
-                //                     <input type="submit" value="Prześlij">
-                //                 </li>
-                //             </ul>
-                //         </li>
-                    // </ul>
-                    
-// NAVLOGIN;
-                }
+
             ?>
         </div>
     </div>
     
 </nav>
+<?php
+
+?>

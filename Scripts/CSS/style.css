@@ -29,7 +29,7 @@
 
 #navbarSupportedContent > ul > li > *,
 .sessionInfo {
-	color: azure 	;
+	color: azure;
 	font-size: 120%;
 }
 #navbarSupportedContent > ul > li > a:hover,
@@ -149,7 +149,7 @@
 }
 
 .input-positions-fields,
-.field > input {
+.field > .inputLogin {
 	background-color: #f8f9fa;
 	box-shadow: 0 0 0px 1000px #f8f9fa inset;
 }
@@ -228,7 +228,9 @@ label {
 .inputLogin:-webkit-autofill {
 	background-color: white;
 }
-
+.inputLogin:autofill {
+	background-color: white;
+}
 .inputLogin::-webkit-input-placeholder {
 	opacity: 0;
 	transition: inherit;
@@ -392,8 +394,7 @@ a {
 	cursor: context-menu;
 	font-size: 150%;
 }
-.review-block 
-{
+.review-block {
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow-y: scroll;
@@ -460,9 +461,8 @@ p.myTrainers {
 	margin-right: 4rem;
 	padding: 0.3rem;
 	padding-right: 1rem;
-
 }
-.trainerMark{
+.trainerMark {
 	margin-left: 4rem;
 }
 #reviewSubmit {
@@ -558,30 +558,54 @@ p.newWeight {
 	margin-right: 15px;
 	border: 2px solid var(--bs-blue);
 }
-.chart{
+.chart {
 	width: 800px;
 }
-.logInInputs{
+.floating-label-ql {
+	padding: 0px;
+	margin-left: 0.8rem;
+	padding-top: 8px;
+	padding-bottom: 7px;
+	outline: none;
+}
+.logInInputs {
 	margin-left: auto;
 	display: flex;
-	flex-flow:row-reverse;
-    align-items: center;
+	flex-flow: row-reverse;
+	align-items: center;
 }
-.navUserInput{
+.navUserInput {
 	width: 20rem;
 	color: black !important;
-	padding: 0.125rem;
+	outline: none;
+	background-color: white;
 }
-.navbar-nav{
+.navbar-nav {
 	align-items: center;
-
 }
-.navUserInput:first-of-type{
+/* .navUserInput:first-of-type {
 	margin-right: 1rem;
-}
-.dropdown-quicklog{
-	width: max-content;
-}
-.floating-label-ql{
+} */
+
+.floating-label-ql {
 	color: black;
+}
+.navUserInput:placeholder-shown + label {
+	opacity: 1;
+	cursor: text;
+	max-width: fit-content;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transform: translate(0, 2.5rem) scale(1.5);
+}
+.navUserInput:not(:placeholder-shown) + label,
+.navUserInput:focus + label {
+	opacity: 1;
+	transform: translate(16rem, 2rem) scale(1);
+	background-color: white;
+	cursor: default;
+}
+.navUserInput:not(:placeholder-shown) + label {
+	display: block;
 }
