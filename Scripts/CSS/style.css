@@ -395,7 +395,6 @@ a {
 }
 .review-block 
 {
-	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow-y: scroll;
@@ -461,6 +460,8 @@ p.myTrainers {
 	margin-top: 0.5rem;
 	margin-right: 4rem;
 	padding: 0.3rem;
+	padding-right: 1rem;
+
 }
 .trainerMark{
 	margin-left: 4rem;

@@ -1,14 +1,16 @@
 <?php
-    if(!$id = filter_input(INPUT_POST, 'weight', FILTER_VALIDATE_FLOAT)) 
+    session_start();
+    if(!$id = filter_input(INPUT_POST, 'mark', FILTER_VALIDATE_INT)) 
     {
-        header("HTTP/2.0 400 Bad Request");
-        exit();
+        // header("HTTP/2.0 400 Bad Request");
+        // exit();
     }
-    foreach ($_POST as $key => $value) {
-        $_POST[$key] = htmlspecialchars($value[$key]);
+    var_dump($_POST);
+
+    foreach ($_POST as $key => $value) 
+    {
+        $_POST[$key] = htmlspecialchars($_POST[$key]);
     }
-    $newWeight = htmlspecialchars($_POST['weight']);
-    $_POST['mark'];
     try
     {
         $connect = new PDO("mysql:host=localhost;dbname=znany_trener", "root", "");
@@ -16,10 +18,23 @@
         $connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-    $newReview = $connect->prepare("INSERT INTO `trainer_reviews`(`review_id`, `trainer_id`, `trainer_mark`, `trainer_review_descript`, `user_id`) 
-                VALUES (NULL,':trainer_id',':trainer_mark',':train_descript','user_id');");
-    $newEntry -> execute(array('trainer_id' => $_POST['trainer_id'],'trainer_mark' => $_POST['mark']],'train_descript' => $newWeight, 'user_id' => $_SESSION['user_id']));
-    // header('Location: ' . $_SERVER['HTTP_REFERER']."?reviews");
+    catch(PDOException $e) 
+    {
+        $connect = null;
+        header("Location: ..\..\Pages\mojekonto.php?Error=$e->getMessage()");
+    }
+
+    $newReview = $connect->prepare("INSERT INTO `trainer_reviews`(`trainer_id`, `trainer_mark`, `trainer_review_descript`, `user_id`) 
+    VALUES (:trainer_id,:trainer_mark,:train_descript,:usr_id);");
+    $newReview->bindParam(':trainer_id', $_POST['trainer_id'], PDO::PARAM_INT);
+    $newReview->bindParam(':trainer_mark', $_POST['mark'], PDO::PARAM_INT);
+    $newReview->bindParam(':train_descript', $_POST['train_descript'], PDO::PARAM_STR);
+    $newReview->bindParam(':usr_id', $_SESSION['user_id'], PDO::PARAM_INT);
+
+
+
+    $newReview -> execute();
+    // header('Location: ..\..\Pages\mojekonto.php?reviews');
     
 
 
