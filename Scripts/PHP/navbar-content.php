@@ -93,22 +93,13 @@ NAVLOGIN;
 SESSION;
                     if($_SESSION['profile_picture'] != NULL)
                     {
-<<<<<<< HEAD
-                        echo "<img class='userPfp' src='..\Images\USER IMAGES/$_SESSION[profile_picture]' alt='cipaXDDDDDDDDDDD'></li>";
-=======
                         echo "<img class='userPfp' src='..\Images\USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
->>>>>>> bsBranch
                     }
                     else
                     {
-                        
                         echo "</li>";
                     }
                 }
-<<<<<<< HEAD
-=======
-
->>>>>>> bsBranch
             ?>
         </div>
     </div>

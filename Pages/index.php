@@ -56,7 +56,7 @@
 	</div>
 	<div id="progress-bar"></div>
 	
-    <div id="page" class="whole-page">
+    <!--<div id="page" class="whole-page">
         <div id="login">
             <form action="..\Scripts\PHP\login.inc.php" method="post">
                 Login: <input type="text" name="login">
@@ -103,9 +103,9 @@
                 <input type="text" placeholder="od" name="minPrize"> 
                 <input type="text" placeholder="do:" name="maxPrize">
                 <input type="submit" value="Szukaj">
-            </form>
+            </form> 
         </div>
-    </div>
+    </div> -->
     <footer id="footer">
         <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
     </footer>
