@@ -8,7 +8,7 @@
 	flex-direction: row;
 }
 .btn-search-bar {
-	margin-left: 25px;
+	margin-right: 25px;
 }
 #logoImage {
 	height: 100px;
@@ -29,7 +29,7 @@
 
 #navbarSupportedContent > ul > li > *,
 .sessionInfo {
-	color: azure !important;
+	color: azure;
 	font-size: 120%;
 }
 #navbarSupportedContent > ul > li > a:hover,
@@ -149,7 +149,7 @@
 }
 
 .input-positions-fields,
-.field > input {
+.field > .inputLogin {
 	background-color: #f8f9fa;
 	box-shadow: 0 0 0px 1000px #f8f9fa inset;
 }
@@ -229,7 +229,7 @@ label {
 	background-color: white;
 }
 .inputLogin:autofill {
-	background-color: white !important;
+	background-color: white;
 }
 .inputLogin::-webkit-input-placeholder {
 	opacity: 0;
@@ -313,6 +313,7 @@ label {
 }
 .search {
 	opacity: 0;
+	display: flex;
 }
 
 @media all and (min-width: 992px) {
@@ -393,8 +394,7 @@ a {
 	cursor: context-menu;
 	font-size: 150%;
 }
-.review-block 
-{
+.review-block {
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow-y: scroll;
@@ -461,9 +461,8 @@ p.myTrainers {
 	margin-right: 4rem;
 	padding: 0.3rem;
 	padding-right: 1rem;
-
 }
-.trainerMark{
+.trainerMark {
 	margin-left: 4rem;
 }
 #reviewSubmit {
@@ -554,10 +553,85 @@ p.newWeight {
 }
 .userPfp {
 	height: 75px;
+	width: 75px;
 	border-radius: 100%;
 	margin-right: 15px;
 	border: 2px solid var(--bs-blue);
 }
-.chart{
+.chart {
 	width: 800px;
+}
+.floating-label-ql {
+	padding: 0px;
+	margin-left: 0.8rem;
+	padding-top: 8px;
+	padding-bottom: 7px;
+	outline: none;
+}
+.logInInputs {
+	margin-left: auto;
+	display: flex;
+	flex-flow: row-reverse;
+	align-items: center;
+}
+.navUserInput {
+	width: 20rem;
+	color: black !important;
+	outline: none;
+	background-color: white;
+}
+.navbar-nav {
+	align-items: center;
+}
+/* .navUserInput:first-of-type {
+	margin-right: 1rem;
+} */
+
+.floating-label-ql {
+	color: black;
+}
+.navUserInput:placeholder-shown + label {
+	opacity: 1;
+	cursor: text;
+	max-width: fit-content;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transform: translate(0, 2.5rem) scale(1.5);
+}
+.navUserInput:not(:placeholder-shown) + label,
+.navUserInput:focus + label {
+	opacity: 1;
+	transform: translate(16rem, 2rem) scale(1);
+	background-color: white;
+	cursor: default;
+}
+.navUserInput:not(:placeholder-shown) + label {
+	display: block;
+}
+.horizontalOption{
+	display: inline-block;
+}
+.chartTypes{
+	height: 68px;
+	outline: none;
+	margin-top:1rem;
+	padding-left:11px;
+}
+.chartTypes > option{
+	padding: 10px;
+	margin:12px;
+	height: fit-content;
+}
+.chartTypes > option:active{
+	background-color: var(--bs-blue);
+	color: white;
+}
+.chartTypes > option:hover{
+	background-color: var(--bs-blue);
+	color: white;
+}
+.typesContainer{
+	margin: 0 auto;
+    width: fit-content;
 }

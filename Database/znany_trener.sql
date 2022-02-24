@@ -3,11 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Czas generowania: 22 Lut 2022, 08:25
--- Wersja serwera: 8.0.27
--- Wersja PHP: 7.4.26
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -4506,9 +4501,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `profile_picture`, `email`, `password`, `name`, `surname`, `age`, `bmi_id`) VALUES
-(0, 'zodd.png', 'oskar.wichtowski3@gmail.com', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Oskar', 'Wichtowski', 20, 0),
-(1, NULL, 'Grzegorz.Kruk5@outlook.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Grzegorz', 'Kruk', 46, 1),
-(2, NULL, 'Wiktoria.Urbaniak3@interia.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Wiktoria', 'Urbaniak', 23, 2),
+(0, 'zodd.gif', 'oskar.wichtowski3@gmail.com', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Oskar', 'Wichtowski', 20, 0),
+(1, 'skull.gif', 'Grzegorz.Kruk5@outlook.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Grzegorz', 'Kruk', 46, 1),
+(2, 'speed.gif', 'ishowspeed@speed.com', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'IShow', 'Speed', 23, 2),
 (3, NULL, 'Edmund.Janik7@zoho.com', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Edmund', 'Janik', 23, 3),
 (4, NULL, 'Grzegorz.Kruk4@int.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Grzegorz', 'Kruk', 36, 4),
 (5, NULL, 'Wiktoria.Walczak1@wp.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Wiktoria', 'Walczak', 31, 5),
@@ -5058,7 +5053,7 @@ INSERT INTO `users` (`user_id`, `profile_picture`, `email`, `password`, `name`, 
 (548, NULL, 'Gracjan.Jurek3@interia.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Gracjan', 'Jurek', 35, 548),
 (549, NULL, 'Weronika.Zioło3@interia.pl', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Weronika', 'Zioło', 30, 549),
 (550, NULL, 'adrian.cwel3@gmail.com', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Adrian', 'Cwelski', 30, 551),
-(551, NULL, 'ryszard.pejson92@slums.attack', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Rychu', 'Peja', 49, 550);
+(551, 'to_ja_ryszard.gif', 'ryszard.pejson92@slums.attack', 'b3054ff0797ff0b2bbce03ec897fe63e0b6490e0', 'Rychu', 'Peja', 49, 550);
 
 -- --------------------------------------------------------
 

@@ -75,7 +75,7 @@
         <div class="userMain">
             <div class="chart">
                 <h4>Mój progress na przestrzeni <?php echo $dayDiff;?></h4>
-                <div style="width: 100%;height: max-content;">
+                <div style="width: 800px; height:400px;">
                     <canvas id="myChart" ></canvas>
                 </div>
                 <div id="addEntry">
@@ -86,7 +86,56 @@
                         <input type="submit" class='weightInput' value="Prześlij">
                     </form>
                 </div>
+                <div class="typesContainer">
+                    <select class="chartTypes" multiple>
+                        <option value="line" class="horizontalOption">Liniowy</option>
+                        <option value="bar" class="horizontalOption">Kolumnowy</option>
+                        <option value="bubble" class="horizontalOption">Bąbelkowy</option>
+                        <option value="scatter" class="horizontalOption">Scatter</option>
+                    </select>
+                </div>
             </div>
+            <script>
+                $(".chartTypes > option").on("dblclick", function() {
+                    switch (document.querySelector(".chartTypes").value) {
+                        case "line":
+                            change("line");
+                            break;
+                        case "bar":
+                            change("bar");
+                            break;
+                        case "bubble":
+                            change("bubble");
+                            break;
+                        case "scatter":
+                            change("scatter");
+                            break;
+                        default:
+                            break;    
+                    }
+                });
+                function change(newType) 
+                {
+                    let canvas = document.getElementById("myChart").getContext("2d");
+                    if(myChart) 
+                    {
+                        myChart.destroy();
+                    }
+
+                    if(newType == 'scatter')
+                    {
+                        userProgressChart.options.scales.y.min = 0; 
+                    }
+                    else
+                    {
+                        userProgressChart.options.scales.y.min = Math.min(weight);
+                    }
+                    let temp = jQuery.extend(true, {}, userProgressChart);
+                    temp.type = newType;
+                    myChart = new Chart(canvas, temp);
+                };
+
+            </script>
             <?php
                 if(isset($_GET['progress']) && count($_GET) === 1)
                 {
