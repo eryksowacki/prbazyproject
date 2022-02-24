@@ -609,3 +609,29 @@ p.newWeight {
 .navUserInput:not(:placeholder-shown) + label {
 	display: block;
 }
+.horizontalOption{
+	display: inline-block;
+}
+.chartTypes{
+	height: 68px;
+	outline: none;
+	margin-top:1rem;
+	padding-left:11px;
+}
+.chartTypes > option{
+	padding: 10px;
+	margin:12px;
+	height: fit-content;
+}
+.chartTypes > option:active{
+	background-color: var(--bs-blue);
+	color: white;
+}
+.chartTypes > option:hover{
+	background-color: var(--bs-blue);
+	color: white;
+}
+.typesContainer{
+	margin: 0 auto;
+    width: fit-content;
+}

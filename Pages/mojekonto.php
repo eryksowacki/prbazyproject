@@ -94,16 +94,18 @@
                         <input type="submit" class='weightInput' value="Prześlij">
                     </form>
                 </div>
-                <select id="chartTypes" multiple>
-                    <option value='line'>Liniowy</option>
-                    <option value='bar'>Kolumnowy</option>
-                    <option value="bubble">Bąbelki</option>
-                    <option value="scatter">Scatter</option>
-                </select>
+                <div class="typesContainer">
+                    <select class="chartTypes" multiple>
+                        <option value="line" class="horizontalOption">Liniowy</option>
+                        <option value="bar" class="horizontalOption">Kolumnowy</option>
+                        <option value="bubble" class="horizontalOption">Bąbelkowy</option>
+                        <option value="scatter" class="horizontalOption">Scatter</option>
+                    </select>
+                </div>
             </div>
             <script>
-                $("#chartTypes > option").on("dblclick", function() {
-                    switch (document.querySelector("#chartTypes").value) {
+                $(".chartTypes > option").on("dblclick", function() {
+                    switch (document.querySelector(".chartTypes").value) {
                         case "line":
                             change("line");
                             break;
