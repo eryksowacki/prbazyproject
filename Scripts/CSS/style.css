@@ -28,7 +28,7 @@
 }
 
 #navbarSupportedContent > ul > li > *,
-.sessionInfo {
+.sessionInfo, .jnosdf {
 	color: azure;
 	font-size: 120%;
 }
@@ -605,6 +605,8 @@ p.newWeight {
 	transform: translate(16rem, 2rem) scale(1);
 	background-color: white;
 	cursor: default;
+	width: max-content;
+
 }
 .navUserInput:not(:placeholder-shown) + label {
 	display: block;
