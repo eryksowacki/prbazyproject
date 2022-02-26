@@ -28,7 +28,7 @@
                                         <a class="dropdown-item" href="mojeoferty.php">Moje Oferty</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="..\Scripts\PHP\logout.php">Wyloguj mnie</a>
+                                        <a class="dropdown-item" href="Scripts/PHP/logout.inc.php">Wyloguj mnie</a>
                                     </li>
                                 </ul>
                             </li>
@@ -64,7 +64,7 @@ REGISTER;
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle dropdown-toggler" href="login.php" id="navbarDropdown" aria-expanded="false">Zaloguj się </a>
                                     <ul class="dropdown-menu dropdown-quicklog" aria-labelledby="navbarDropdown">
-                                        <form action="..\Scripts\PHP\login.inc.php" method="post">    
+                                        <form action="Scripts\PHP\login.inc.php" method="post">    
                                             <li>
                                                 <div class="field">
                                                 <input type="email" name="email" id="email" class="navUserInput" placeholder=" ">
@@ -100,11 +100,10 @@ NAVLOGIN;
 SESSION;
                     if($_SESSION['profile_picture'] != NULL)
                     {
-                        echo "<img class='userPfp' src='..\Images\USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
+                        echo "<img class='userPfp' src='Images\USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
                     }
                     else
                     {
-                        
                         echo "</li>";
                     }
                 }
@@ -112,8 +111,4 @@ SESSION;
             ?>
         </div>
     </div>
-    
 </nav>
-<?php
-    echo strpos($_SERVER['REQUEST_URI'], "login.php") ;
-?>

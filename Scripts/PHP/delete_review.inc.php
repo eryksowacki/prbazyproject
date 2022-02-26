@@ -6,7 +6,7 @@
         exit();
     }
     try{
-        $connect = new PDO("mysql:host=localhost;dbname=znany_trener", "root", "");
+        $connect = $connect = new PDO("mysql:dbname=id18439949_znanytrener;host=localhost;", "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
         $connect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         $connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -15,17 +15,15 @@
     catch(PDOException $e) 
     {
         $connect = null;
-        header("Location: ../../Pages/mojekonto.php?Error=$e->getMessage()");
+        header("Location: ../../mojekonto.php?Error=$e->getMessage()");
     }   
 
     $userTrainersId = $connect->prepare("SELECT DISTINCT `review_id` FROM `trainer_reviews` WHERE `user_id` = :user_id");
     $userTrainersId -> execute(['user_id' => $_SESSION['user_id']]);
     $usersReviewId = $userTrainersId -> fetchAll(PDO::FETCH_ASSOC);
     $i = 0;
-    // USER ID = 0
     foreach ($usersReviewId as $key => $value) 
     {
-        // USERS TRAINERS
         if($value['review_id'] !== $id)
         {
             $i++;
@@ -38,14 +36,14 @@
             $reviewId = $result[0]['review_id'];
             $userTrainersId = $connect -> prepare("DELETE FROM `trainer_reviews` WHERE `review_id` = :review_id");
             $userTrainersId -> execute(['review_id' => $reviewId]);
-            header('Location: ..\..\Pages\mojekonto.php?reviews');
+            header('Location: ../../mojekonto.php?reviews');
 
         }
     }
     $connect = null;
     if(count($usersReviewId) === $i)
     {
-        header('Location: ../../Pages/index.php');
+        header('Location: ../../index.php');
         exit();
     }
 ?>
