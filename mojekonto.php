@@ -1,6 +1,9 @@
-<!DOCTYPE html>
 <?php
     session_start();
+    if(!isset($_SESSION['user_id']) || !empty($_SESSION['user_id']))
+    {
+        header('Location: index.php');
+    }
     $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
     $sql = "SELECT `weight` as `w`, `date` as `d` FROM `bmi` `b` where `bmi_id` = $_SESSION[user_id] order by `d` asc;";
     $result = $connect -> query($sql);
@@ -25,17 +28,18 @@
     $interval = $origin->diff($target);
     $dayDiff =  $interval -> format('%a dni');
 ?>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <?php
-        require_once "Scripts/PHP/page_look_head.php";
+        require_once 'Scripts/PHP/page_look_head.php';
     ?>
     <title>Moje konto</title>
 </head>
 
 <body>
     <?php
-        require_once 'Scripts\PHP\navbar-content.php';
+        require_once 'Scripts/PHP/navbar-content.php';
     ?>
     <div class="grid myAccount">
 
