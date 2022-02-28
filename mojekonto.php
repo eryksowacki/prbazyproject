@@ -1,7 +1,10 @@
-<!DOCTYPE html>
 <?php
     session_start();
-    require_once '..\Scripts\PHP\connect_user.php';
+    if(!isset($_SESSION['user_id']) || !empty($_SESSION['user_id']))
+    {
+        header('Location: index.php');
+    }
+    $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
     $sql = "SELECT `weight` as `w`, `date` as `d` FROM `bmi` `b` where `bmi_id` = $_SESSION[user_id] order by `d` asc;";
     $result = $connect -> query($sql);
     echo "<script> const weight = [];const date = [];";
@@ -25,18 +28,18 @@
     $interval = $origin->diff($target);
     $dayDiff =  $interval -> format('%a dni');
 ?>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-     <?php
-        require_once ("..\Scripts\PHP\page_look_head.php");
-     ?>
-    <script src="..\Scripts\node_modules\chart.js\dist\chart.min.js" crossorigin="anonymous"></script>
+    <?php
+        require_once 'Scripts/PHP/page_look_head.php';
+    ?>
     <title>Moje konto</title>
 </head>
 
 <body>
     <?php
-        require_once('..\Scripts\PHP\navbar-content.php');
+        require_once 'Scripts/PHP/navbar-content.php';
     ?>
     <div class="grid myAccount">
 
@@ -79,7 +82,7 @@
                     <canvas id="myChart" ></canvas>
                 </div>
                 <div id="addEntry">
-                    <form action="..\Scripts\PHP\addWeightEntry.php" method="post">
+                    <form action="Scripts\PHP\addWeightEntry.inc.php" method="post">
                         <h4 class="newWeight">Dodaj nowy wpis</h4>
                         <p class="newWeight">Moja aktualna waga (kg):</p>
                         <input type="number" name="weight" class='weightInput' id='weightValue' step="0.1" max="300" min="0" value="">
@@ -160,37 +163,45 @@
             <div class="review-block">
                 <div>
                     <?php
-                        $myTrainerReveiws = "SELECT `trainers`.`name` as `n`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
-                            from `trainer_reviews`
-                            join `trainers`
-                            on `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
-                            where `trainer_reviews`.`user_id` = $_SESSION[user_id]";
+                        $myTrainerReveiws = 
+                            "SELECT `trainers`.`name` as `n`,`trainers`.`trainer_id` as `t_id`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
+                            FROM `trainer_reviews`
+                            JOIN `trainers`
+                            ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
+                            WHERE `trainer_reviews`.`user_id` = $_SESSION[user_id]
+                            GROUP BY `trainers`.`trainer_id` ";
                         $result = $connect -> query($myTrainerReveiws);
-                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=..\Scripts\PHP\addReview.php method=post>";
+                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addReview.inc.php method=post>";
                         echo "<select class=trainerSelect name=trainer_id>";
                         while($option =  $result -> fetch_assoc())
                         {
-                            echo "<option value=$option[review_ids]>$option[n] $option[s]</option>";
+                            echo "<option value=$option[t_id]>$option[n] $option[s]</option>";
                         }
                         echo "</select>";
                         echo '<select name="mark" class="trainerSelect trainerMark">';
-                        for ($i=0; $i < 6; $i++) 
+                        for ($i=1; $i < 6; $i++) 
                         { 
-                            echo "<option value=$i>$i</option>";
+                            echo "<option value=$i >$i</option>";
                         }
-                        echo "</select><input type=submit id=reviewSubmit value='Prześlij nową recenzję'>
+                        echo "</select><input type=submit id=reviewSubmit class=button-19 value='Prześlij nową recenzję'>
                         <br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
+                        $myTrainerReveiws = 
+                            "SELECT `trainers`.`name` as `n`,`trainers`.`trainer_id` as `t_id`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
+                            FROM `trainer_reviews`
+                            JOIN `trainers`
+                            ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
+                            WHERE `trainer_reviews`.`user_id` = $_SESSION[user_id]";
                         $result = $connect -> query($myTrainerReveiws);
                         while($currentRow = $result -> fetch_assoc())
                         {
                             echo <<< USERREVIEW
                                 <div class='trainer-show'>
-                                    <img src='..\Images\TRAINERS IMAGES/$currentRow[profile_picture]' class='d-flex trainer-Picture'>
+                                    <img src='Images\TRAINERS IMAGES/$currentRow[profile_picture]' class='d-flex trainer-Picture'>
                                     <p>Imię: <b class='hoverOnInfo'>$currentRow[n]</b></p>                                
                                     <p>Nazwisko: <b class='hoverOnInfo'>$currentRow[s]</b></p>
                                     <p>Ocena: <b class='hoverOnInfo'>$currentRow[trainer_mark]</b></p>
                                     <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[trainer_review_descript]</b></p>
-                                    <p><a href="..\Scripts\PHP\delete_review?review_id=$currentRow[review_ids]">Usuń recenzję</a></p>
+                                    <p><a href="Scripts\PHP\delete_review.inc.php?review_id=$currentRow[review_ids]">Usuń recenzję</a></p>
                                 </div>
                             USERREVIEW;
                         }
@@ -244,8 +255,6 @@
                         $d = date("Y-m-01");
                         $howLong = date("d",strtotime(date("Y-m-t",  strtotime($d))));
                         $currDay = date("d",strtotime("+1 day"));
-                        $connect = @new mysqli("localhost", "root", "", "znany_trener");
-
                         $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
                                 FROM `usr_train` 
                                 WHERE `user_id` = $_SESSION[user_id];";
@@ -301,7 +310,7 @@
                                 curDay.style.backgroundImage = 'linear-gradient(315deg, #045de9 0%, #09c6f9 74%)';</script>";
                             }
                         }
-                        echo "<script src='..\Scripts\JS\checkUserWidth.js' crossorigin='anonymous'></script>";
+                        echo "<script src='Scripts\JS\checkUserWidth.js' crossorigin='anonymous'></script>";
                     ?>
                 </div>
             </div>
@@ -316,10 +325,13 @@
 <?php
     if(isset($_GET['calendar']) && count($_GET) === 1) 
     {
-        echo "<script src='..\Scripts\JS\gsap-effortless-calendar-animation.js'></script>";
+        echo "<script src='Scripts/JS/gsap-effortless-calendar-animation.js'></script>";
     }
 ?>
-<script src="..\Scripts\JS\nav-link.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\chartApp.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\gsap-myaccount-animations.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/nav-link.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/chartApp.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/gsap-myaccount-animations.js" crossorigin="anonymous"></script>
+
+    
+<script></script>

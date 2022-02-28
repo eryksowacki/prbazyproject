@@ -1,19 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `znany_trener`
+-- Baza danych: `id18439949_znanytrener`
 --
 
 -- --------------------------------------------------------
@@ -22,15 +19,12 @@ SET time_zone = "+00:00";
 -- Struktura tabeli dla tabeli `bmi`
 --
 
-DROP TABLE IF EXISTS `bmi`;
-CREATE TABLE IF NOT EXISTS `bmi` (
-  `bmi_id` int NOT NULL,
+CREATE TABLE `bmi` (
+  `bmi_id` int(11) NOT NULL,
   `weight` float NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`),
-  KEY `bmi_id` (`bmi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3315 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `bmi`
@@ -3342,7 +3336,9 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 (0, 70, '2022-02-21 15:03:08', 3310),
 (0, 62.9, '2022-02-21 15:05:24', 3311),
 (0, 62, '2022-02-21 15:06:50', 3312),
-(0, 66.4, '2022-02-21 15:09:12', 3314);
+(0, 66.4, '2022-02-21 15:09:12', 3314),
+(0, 65, '2022-02-26 14:52:22', 3315),
+(0, 63, '2022-02-26 14:52:41', 3316);
 
 -- --------------------------------------------------------
 
@@ -3350,13 +3346,11 @@ INSERT INTO `bmi` (`bmi_id`, `weight`, `date`, `id`) VALUES
 -- Struktura tabeli dla tabeli `gyms`
 --
 
-DROP TABLE IF EXISTS `gyms`;
-CREATE TABLE IF NOT EXISTS `gyms` (
-  `gym_id` int NOT NULL,
-  `gym_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `city` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  PRIMARY KEY (`gym_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+CREATE TABLE `gyms` (
+  `gym_id` int(11) NOT NULL,
+  `gym_name` varchar(255) COLLATE utf8_polish_ci DEFAULT NULL,
+  `city` varchar(50) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `gyms`
@@ -3466,17 +3460,13 @@ INSERT INTO `gyms` (`gym_id`, `gym_name`, `city`) VALUES
 -- Struktura tabeli dla tabeli `gym_reviews`
 --
 
-DROP TABLE IF EXISTS `gym_reviews`;
-CREATE TABLE IF NOT EXISTS `gym_reviews` (
-  `gym_review_id` int NOT NULL,
-  `gym_mark` int DEFAULT NULL,
-  `gym_review_descript` varchar(250) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `user_id` int NOT NULL,
-  `gym_id` int NOT NULL,
-  PRIMARY KEY (`gym_review_id`),
-  KEY `user_id` (`user_id`),
-  KEY `gym_id` (`gym_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+CREATE TABLE `gym_reviews` (
+  `gym_review_id` int(11) NOT NULL,
+  `gym_mark` int(11) DEFAULT NULL,
+  `gym_review_descript` varchar(250) COLLATE utf8_polish_ci DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `gym_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `gym_reviews`
@@ -4041,149 +4031,144 @@ INSERT INTO `gym_reviews` (`gym_review_id`, `gym_mark`, `gym_review_descript`, `
 -- Struktura tabeli dla tabeli `trainers`
 --
 
-DROP TABLE IF EXISTS `trainers`;
-CREATE TABLE IF NOT EXISTS `trainers` (
-  `trainer_id` int NOT NULL,
-  `specialization` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `gym_id` int NOT NULL,
-  `trainer_review_id` int DEFAULT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `surname` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
+CREATE TABLE `trainers` (
+  `trainer_id` int(11) NOT NULL,
+  `specialization` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `password` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `gym_id` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `surname` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
   `prize_per_hour` double NOT NULL,
-  `profile_picture` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  PRIMARY KEY (`trainer_id`),
-  KEY `trainer_review_id` (`trainer_review_id`),
-  KEY `gym_id` (`gym_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+  `profile_picture` varchar(100) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `trainers`
 --
 
-INSERT INTO `trainers` (`trainer_id`, `specialization`, `email`, `password`, `gym_id`, `trainer_review_id`, `name`, `surname`, `prize_per_hour`, `profile_picture`) VALUES
-(0, 'Fitness', 'Olaf.Czarnec8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 0, 'Olaf', 'Czarnec', 110, 'image (22).jpg'),
-(1, 'Fitness', 'Kira.Wieczorek7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 1, 'Kira', 'Wieczorek', 150, 'image (0).jpg'),
-(2, 'Bouldering', 'Grzegorz.Wróbel8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 2, 'Grzegorz', 'Wróbel', 150, 'image (23).jpg'),
-(3, 'Pilates', 'Anita.Czarnec2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 3, 'Anita', 'Czarnec', 80, 'image (1).jpg'),
-(4, 'Aerobik', 'Anastazja.Jurek9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 4, 'Anastazja', 'Jurek', 150, 'image (2).jpg'),
-(5, 'Kalistenika', 'Hjacynt.Szczepaniak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 5, 'Hjacynt', 'Szczepaniak', 90, 'image (24).jpg'),
-(6, 'Aerobik', 'Denis.Rybak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 6, 'Denis', 'Rybak', 90, 'image (25).jpg'),
-(7, 'Gimnastyka sportowa', 'Wiktoria.Jurek4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 7, 'Wiktoria', 'Jurek', 150, 'image (3).jpg'),
-(8, 'Aerobik', 'Róża.Nowak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 8, 'Róża', 'Nowak', 130, 'image (4).jpg'),
-(9, 'Aerobik', 'Paweł.Kaczmarczyk2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 9, 'Paweł', 'Kaczmarczyk', 130, 'image (26).jpg'),
-(10, 'Pilates', 'Dordian.Rybak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 10, 'Dordian', 'Rybak', 90, 'image (27).jpg'),
-(11, 'Kalistenika', 'Róża.Urbaniak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 11, 'Róża', 'Urbaniak', 110, 'image (5).jpg'),
-(12, 'Lekkoatletyka', 'Bożena.Kot5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 12, 'Bożena', 'Kot', 90, 'image (6).jpg'),
-(13, 'Bouldering', 'Gracjan.Zając3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 13, 'Gracjan', 'Zając', 80, 'image (28).jpg'),
-(14, 'Gimnastyka sportowa', 'Anastazja.Jurek0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 14, 'Anastazja', 'Jurek', 120, 'image (7).jpg'),
-(15, 'Fitness', 'Dominik.Szulc8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 15, 'Dominik', 'Szulc', 110, 'image (29).jpg'),
-(16, 'Bouldering', 'Patrycja.Przybysz2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 16, 'Patrycja', 'Przybysz', 130, 'image (8).jpg'),
-(17, 'Fitness', 'Krzysztof.Kruk0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 17, 'Krzysztof', 'Kruk', 90, 'image (30).jpg'),
-(18, 'Bouldering', 'Jan.Mazur7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 18, 'Jan', 'Mazur', 150, 'image (31).jpg'),
-(19, 'Kulturystyka', 'Michał.Sowa4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 19, 'Michał', 'Sowa', 110, 'image (32).jpg'),
-(20, 'Aerobik', 'Róża.Janik5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 20, 'Róża', 'Janik', 130, 'image (9).jpg'),
-(21, 'Crossfit', 'Edward.Mazur7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 21, 'Edward', 'Mazur', 150, 'image (33).jpg'),
-(22, 'Lekkoatletyka', 'Jakub.Woźniak2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 22, 'Jakub', 'Woźniak', 100, 'image (34).jpg'),
-(23, 'Pliometryka', 'Gracjan.Filipiak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 23, 'Gracjan', 'Filipiak', 130, 'image (35).jpg'),
-(24, 'Fitness', 'Ferdynand.Rybak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 24, 'Ferdynand', 'Rybak', 150, 'image (36).jpg'),
-(25, 'Crossfit', 'Gaweł.Jurek5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 25, 'Gaweł', 'Jurek', 150, 'image (37).jpg'),
-(26, 'Pliometryka', 'Jan.Nowak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 26, 'Jan', 'Nowak', 110, 'image (38).jpg'),
-(27, 'Kulturystyka', 'Iga.Szczepaniak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 27, 'Iga', 'Szczepaniak', 100, 'image (10).jpg'),
-(28, 'MMA', 'Bożena.Mamro3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 28, 'Bożena', 'Mamro', 80, 'image (11).jpg'),
-(29, 'Aerobik', 'Jan.Kowalczyk0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 29, 'Jan', 'Kowalczyk', 100, 'image (39).jpg'),
-(30, 'Fitness', 'Felicja.Czarnec8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 30, 'Felicja', 'Czarnec', 150, 'image (12).jpg'),
-(31, 'Pliometryka', 'Ferdynand.Walczak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 31, 'Ferdynand', 'Walczak', 120, 'image (40).jpg'),
-(32, 'Bouldering', 'Gaweł.Pawlak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 32, 'Gaweł', 'Pawlak', 150, 'image (64).jpg'),
-(33, 'Lekkoatletyka', 'Kira.Urbaniak2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 33, 'Kira', 'Urbaniak', 80, 'image (13).jpg'),
-(34, 'Pilates', 'Gracjan.Kruk2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 34, 'Gracjan', 'Kruk', 100, 'image (65).jpg'),
-(35, 'Bouldering', 'Iga.Pawlak1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 35, 'Iga', 'Pawlak', 80, 'image (14).jpg'),
-(36, 'Lekkoatletyka', 'Jakub.Mazur5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 36, 'Jakub', 'Mazur', 90, 'image (66).jpg'),
-(37, 'Pliometryka', 'Kira.Walczak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 37, 'Kira', 'Walczak', 130, 'image (15).jpg'),
-(38, 'Kalistenika', 'Jacek.Walczak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 38, 'Jacek', 'Walczak', 150, 'image (67).jpg'),
-(39, 'MMA', 'Żaneta.Wieczorek9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 39, 'Żaneta', 'Wieczorek', 120, 'image (16).jpg'),
-(40, 'Bouldering', 'Jan.Woźniak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 40, 'Jan', 'Woźniak', 120, 'image (68).jpg'),
-(41, 'MMA', 'Jakub.Wójcik1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 41, 'Jakub', 'Wójcik', 120, 'image (69).jpg'),
-(42, 'Gimnastyka sportowa', 'Anita.Kruk2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 42, 'Anita', 'Kruk', 120, 'image (17).jpg'),
-(43, 'Gimnastyka sportowa', 'Michał.Szulc6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 43, 'Michał', 'Szulc', 130, 'image (70).jpg'),
-(44, 'Bouldering', 'Jan.Kowalczyk5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 44, 'Jan', 'Kowalczyk', 150, 'image (71).jpg'),
-(45, 'Pilates', 'Ferdynand.Skwara1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 45, 'Ferdynand', 'Skwara', 150, 'image (72).jpg'),
-(46, 'Gimnastyka sportowa', 'Krzysztof.Kot8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 46, 'Krzysztof', 'Kot', 100, 'image (73).jpg'),
-(47, 'Pliometryka', 'Patrycja.Skwara1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 47, 'Patrycja', 'Skwara', 110, 'image (18).jpg'),
-(48, 'Gimnastyka sportowa', 'Patrycja.Rybak7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 48, 'Patrycja', 'Rybak', 120, 'image (19).jpg'),
-(49, 'Pliometryka', 'Gracjan.Klimek2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 49, 'Gracjan', 'Klimek', 90, 'image (74).jpg'),
-(50, 'Gimnastyka sportowa', 'Róża.Szulc7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 50, 'Róża', 'Szulc', 120, 'image (20).jpg'),
-(51, 'Lekkoatletyka', 'Jacek.Król5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 51, 'Jacek', 'Król', 130, 'image (75).jpg'),
-(52, 'Pliometryka', 'Weronika.Olejniczak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 52, 'Weronika', 'Olejniczak', 90, 'image (41).jpg'),
-(53, 'Kulturystyka', 'Gracjan.Wójcik3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 53, 'Gracjan', 'Wójcik', 110, 'image (76).jpg'),
-(54, 'Lekkoatletyka', 'Wiktoria.Wawrzyniak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 54, 'Wiktoria', 'Wawrzyniak', 120, 'image (42).jpg'),
-(55, 'Aerobik', 'Jakub.Szczepaniak7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 55, 'Jakub', 'Szczepaniak', 110, 'image (77).jpg'),
-(56, 'Lekkoatletyka', 'Jakub.Szulc5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 56, 'Jakub', 'Szulc', 130, 'image (78).jpg'),
-(57, 'Pliometryka', 'Grzegorz.Zając9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 57, 'Grzegorz', 'Zając', 130, 'image (79).jpg'),
-(58, 'Gimnastyka sportowa', 'Dominik.Filipiak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 58, 'Dominik', 'Filipiak', 100, 'image (80).jpg'),
-(59, 'Kulturystyka', 'Gaweł.Filipiak2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 59, 'Gaweł', 'Filipiak', 110, 'image (81).jpg'),
-(60, 'Gimnastyka sportowa', 'Edward.Łukasik7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 60, 'Edward', 'Łukasik', 120, 'image (82).jpg'),
-(61, 'Aerobik', 'Julia.Kurek0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 61, 'Julia', 'Kurek', 80, 'image (43).jpg'),
-(62, 'Crossfit', 'Anastazja.Mamro6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 62, 'Anastazja', 'Mamro', 130, 'image (44).jpg'),
-(63, 'Aerobik', 'Edmund.Mamro6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 63, 'Edmund', 'Mamro', 130, 'image (83).jpg'),
-(64, 'Lekkoatletyka', 'Iga.Kot1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 64, 'Iga', 'Kot', 80, 'image (45).jpg'),
-(65, 'Pliometryka', 'Dominik.Sobczyk6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 65, 'Dominik', 'Sobczyk', 100, 'image (84).jpg'),
-(66, 'Kalistenika', 'Ryszard.Zając9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 66, 'Ryszard', 'Zając', 80, 'image (85).jpg'),
-(67, 'Fitness', 'Edmund.Wieczorek6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 67, 'Edmund', 'Wieczorek', 90, 'image (86).jpg'),
-(68, 'Aerobik', 'Gaweł.Łukasik0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 68, 'Gaweł', 'Łukasik', 110, 'image (87).jpg'),
-(69, 'Gimnastyka sportowa', 'Jan.Olejniczak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 69, 'Jan', 'Olejniczak', 100, 'image (88).jpg'),
-(70, 'Kalistenika', 'Anita.Kubiak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 70, 'Anita', 'Kubiak', 80, 'image (46).jpg'),
-(71, 'Gimnastyka sportowa', 'Gracjan.Zioło7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 71, 'Gracjan', 'Zioło', 120, 'image (89).jpg'),
-(72, 'Pliometryka', 'Grzegorz.Klimek4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 72, 'Grzegorz', 'Klimek', 100, 'image (90).jpg'),
-(73, 'Lekkoatletyka', 'Gracjan.Przybysz2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 73, 'Gracjan', 'Przybysz', 150, 'image (91).jpg'),
-(74, 'Crossfit', 'Krzysztof.Olejniczak8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 74, 'Krzysztof', 'Olejniczak', 130, 'image (92).jpg'),
-(75, 'Bouldering', 'Dordian.Łukasik9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 75, 'Dordian', 'Łukasik', 90, 'image (93).jpg'),
-(76, 'Gimnastyka sportowa', 'Jan.Zioło5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 76, 'Jan', 'Zioło', 80, 'image (94).jpg'),
-(77, 'Fitness', 'Jacek.Przybysz3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 77, 'Jacek', 'Przybysz', 90, 'image (95).jpg'),
-(78, 'Fitness', 'Hjacynt.Mamro0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 78, 'Hjacynt', 'Mamro', 80, 'image (96).jpg'),
-(79, 'Lekkoatletyka', 'Felicja.Nowak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 79, 'Felicja', 'Nowak', 90, 'image (47).jpg'),
-(80, 'Aerobik', 'Jakub.Mazur1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 80, 'Jakub', 'Mazur', 120, 'image (97).jpg'),
-(81, 'Kalistenika', 'Felicja.Przybysz9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 81, 'Felicja', 'Przybysz', 80, 'image (48).jpg'),
-(82, 'Kalistenika', 'Grzegorz.Filipiak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 82, 'Grzegorz', 'Filipiak', 90, 'image (98).jpg'),
-(83, 'Lekkoatletyka', 'Hubert.Szczepaniak1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 83, 'Hubert', 'Szczepaniak', 120, 'image (99).jpg'),
-(84, 'Bouldering', 'Felicja.Mazur6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 84, 'Felicja', 'Mazur', 120, 'image (49).jpg'),
-(85, 'Kulturystyka', 'Felicja.Czarnec2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 85, 'Felicja', 'Czarnec', 80, 'image (50).jpg'),
-(86, 'Bouldering', 'Grzegorz.Zając4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 86, 'Grzegorz', 'Zając', 110, 'image (100).jpg'),
-(87, 'Gimnastyka sportowa', 'Iga.Walczak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 87, 'Iga', 'Walczak', 110, 'image (51).jpg'),
-(88, 'Aerobik', 'Gracjan.Skwara5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 88, 'Gracjan', 'Skwara', 150, 'image (101).jpg'),
-(89, 'Kalistenika', 'Weronika.Janik5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 89, 'Weronika', 'Janik', 100, 'image (52).jpg'),
-(90, 'Bouldering', 'Wiktoria.Kot1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 90, 'Wiktoria', 'Kot', 90, 'image (53).jpg'),
-(91, 'Fitness', 'January.Mazur9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 91, 'January', 'Mazur', 80, 'image (102).jpg'),
-(92, 'Bouldering', 'Julia.Łukasik1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 92, 'Julia', 'Łukasik', 90, 'image (54).jpg'),
-(93, 'Fitness', 'Matylda.Klimek9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 93, 'Matylda', 'Klimek', 90, 'image (55).jpg'),
-(94, 'Aerobik', 'Krzysztof.Skwara1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 94, 'Krzysztof', 'Skwara', 90, 'image (103).jpg'),
-(95, 'Fitness', 'Paweł.Walczak8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 95, 'Paweł', 'Walczak', 100, 'image (104).jpg'),
-(96, 'Kalistenika', 'Jacek.Walczak1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 96, 'Jacek', 'Walczak', 90, 'image (105).jpg'),
-(97, 'Kalistenika', 'Iga.Szulc2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 97, 'Iga', 'Szulc', 150, 'image (56).jpg'),
-(98, 'Pilates', 'Kira.Wróbel8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 98, 'Kira', 'Wróbel', 100, 'image (57).jpg'),
-(99, 'Crossfit', 'Gracjan.Janik2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 99, 'Gracjan', 'Janik', 120, 'image (106).jpg'),
-(100, 'Gimnastyka sportowa', 'Grzegorz.Kowalczyk6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 100, 'Grzegorz', 'Kowalczyk', 90, 'image (107).jpg'),
-(101, 'Kalistenika', 'Krzysztof.Nowak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 101, 'Krzysztof', 'Nowak', 120, 'image (108).jpg'),
-(102, 'Crossfit', 'Matylda.Zioło2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 102, 'Matylda', 'Zioło', 80, 'image (58).jpg'),
-(103, 'Crossfit', 'Jacek.Sowa7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 103, 'Jacek', 'Sowa', 130, 'image (109).jpg'),
-(104, 'Pilates', 'Felicja.Zając3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 104, 'Felicja', 'Zając', 120, 'image (59).jpg'),
-(105, 'Kalistenika', 'Hubert.Sowa7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 105, 'Hubert', 'Sowa', 130, 'image (110).jpg'),
-(106, 'Bouldering', 'Jan.Kurek1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 106, 'Jan', 'Kurek', 120, 'image (111).jpg'),
-(107, 'Gimnastyka sportowa', 'Anastazja.Kruk1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 107, 'Anastazja', 'Kruk', 90, 'image (60).jpg'),
-(108, 'Kalistenika', 'Weronika.Łukasik7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 108, 'Weronika', 'Łukasik', 100, 'image (61).jpg'),
-(109, 'Lekkoatletyka', 'Jakub.Wróbel6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 109, 'Jakub', 'Wróbel', 90, 'image (112).jpg'),
-(110, 'Bouldering', 'Zuzanna.Pawlak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 110, 'Zuzanna', 'Pawlak', 80, 'image (62).jpg'),
-(111, 'MMA', 'Dordian.Urbaniak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 111, 'Dordian', 'Urbaniak', 110, 'image (113).jpg'),
-(112, 'Lekkoatletyka', 'Paweł.Filipiak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 112, 'Paweł', 'Filipiak', 120, 'image (114).jpg'),
-(113, 'Kulturystyka', 'Denis.Klimek6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 113, 'Denis', 'Klimek', 150, 'image (115).jpg'),
-(114, 'Fitness', 'Dordian.Kurek8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 114, 'Dordian', 'Kurek', 150, 'image (116).jpg'),
-(115, 'Crossfit', 'Dordian.Król1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 115, 'Dordian', 'Król', 130, 'image (117).jpg'),
-(116, 'Kalistenika', 'Jan.Kruk0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 116, 'Jan', 'Kruk', 100, 'image (118).jpg'),
-(117, 'MMA', 'Zuzanna.Wójcik8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 117, 'Zuzanna', 'Wójcik', 150, 'image (63).jpg'),
-(118, 'Crossfit', 'Gracjan.Olejniczak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 118, 'Gracjan', 'Olejniczak', 110, 'image (119).jpg'),
-(119, 'Lekkoatletyka', 'Ryszard.Wawrzyniak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 119, 'Ryszard', 'Wawrzyniak', 90, 'image (120).jpg'),
-(120, 'MMA', 'Gracjan.Skwara5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 120, 'Gracjan', 'Skwara', 150, 'image (121).jpg');
+INSERT INTO `trainers` (`trainer_id`, `specialization`, `email`, `password`, `gym_id`, `name`, `surname`, `prize_per_hour`, `profile_picture`) VALUES
+(0, 'Fitness', 'Olaf.Czarnec8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 'Olaf', 'Czarnec', 110, 'image (22).jpg'),
+(1, 'Fitness', 'Kira.Wieczorek7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Kira', 'Wieczorek', 150, 'image (0).jpg'),
+(2, 'Bouldering', 'Grzegorz.Wróbel8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Grzegorz', 'Wróbel', 150, 'image (23).jpg'),
+(3, 'Pilates', 'Anita.Czarnec2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Anita', 'Czarnec', 80, 'image (1).jpg'),
+(4, 'Aerobik', 'Anastazja.Jurek9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Anastazja', 'Jurek', 150, 'image (2).jpg'),
+(5, 'Kalistenika', 'Hjacynt.Szczepaniak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Hjacynt', 'Szczepaniak', 90, 'image (24).jpg'),
+(6, 'Aerobik', 'Denis.Rybak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Denis', 'Rybak', 90, 'image (25).jpg'),
+(7, 'Gimnastyka sportowa', 'Wiktoria.Jurek4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Wiktoria', 'Jurek', 150, 'image (3).jpg'),
+(8, 'Aerobik', 'Róża.Nowak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Róża', 'Nowak', 130, 'image (4).jpg'),
+(9, 'Aerobik', 'Paweł.Kaczmarczyk2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Paweł', 'Kaczmarczyk', 130, 'image (26).jpg'),
+(10, 'Pilates', 'Dordian.Rybak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Dordian', 'Rybak', 90, 'image (27).jpg'),
+(11, 'Kalistenika', 'Róża.Urbaniak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Róża', 'Urbaniak', 110, 'image (5).jpg'),
+(12, 'Lekkoatletyka', 'Bożena.Kot5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Bożena', 'Kot', 90, 'image (6).jpg'),
+(13, 'Bouldering', 'Gracjan.Zając3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Gracjan', 'Zając', 80, 'image (28).jpg'),
+(14, 'Gimnastyka sportowa', 'Anastazja.Jurek0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Anastazja', 'Jurek', 120, 'image (7).jpg'),
+(15, 'Fitness', 'Dominik.Szulc8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Dominik', 'Szulc', 110, 'image (29).jpg'),
+(16, 'Bouldering', 'Patrycja.Przybysz2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Patrycja', 'Przybysz', 130, 'image (8).jpg'),
+(17, 'Fitness', 'Krzysztof.Kruk0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Krzysztof', 'Kruk', 90, 'image (30).jpg'),
+(18, 'Bouldering', 'Jan.Mazur7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Jan', 'Mazur', 150, 'image (31).jpg'),
+(19, 'Kulturystyka', 'Michał.Sowa4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Michał', 'Sowa', 110, 'image (32).jpg'),
+(20, 'Aerobik', 'Róża.Janik5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Róża', 'Janik', 130, 'image (9).jpg'),
+(21, 'Crossfit', 'Edward.Mazur7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Edward', 'Mazur', 150, 'image (33).jpg'),
+(22, 'Lekkoatletyka', 'Jakub.Woźniak2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Jakub', 'Woźniak', 100, 'image (34).jpg'),
+(23, 'Pliometryka', 'Gracjan.Filipiak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Gracjan', 'Filipiak', 130, 'image (35).jpg'),
+(24, 'Fitness', 'Ferdynand.Rybak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Ferdynand', 'Rybak', 150, 'image (36).jpg'),
+(25, 'Crossfit', 'Gaweł.Jurek5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Gaweł', 'Jurek', 150, 'image (37).jpg'),
+(26, 'Pliometryka', 'Jan.Nowak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Jan', 'Nowak', 110, 'image (38).jpg'),
+(27, 'Kulturystyka', 'Iga.Szczepaniak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 'Iga', 'Szczepaniak', 100, 'image (10).jpg'),
+(28, 'MMA', 'Bożena.Mamro3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Bożena', 'Mamro', 80, 'image (11).jpg'),
+(29, 'Aerobik', 'Jan.Kowalczyk0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Jan', 'Kowalczyk', 100, 'image (39).jpg'),
+(30, 'Fitness', 'Felicja.Czarnec8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Felicja', 'Czarnec', 150, 'image (12).jpg'),
+(31, 'Pliometryka', 'Ferdynand.Walczak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Ferdynand', 'Walczak', 120, 'image (40).jpg'),
+(32, 'Bouldering', 'Gaweł.Pawlak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Gaweł', 'Pawlak', 150, 'image (64).jpg'),
+(33, 'Lekkoatletyka', 'Kira.Urbaniak2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Kira', 'Urbaniak', 80, 'image (13).jpg'),
+(34, 'Pilates', 'Gracjan.Kruk2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Gracjan', 'Kruk', 100, 'image (65).jpg'),
+(35, 'Bouldering', 'Iga.Pawlak1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Iga', 'Pawlak', 80, 'image (14).jpg'),
+(36, 'Lekkoatletyka', 'Jakub.Mazur5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Jakub', 'Mazur', 90, 'image (66).jpg'),
+(37, 'Pliometryka', 'Kira.Walczak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Kira', 'Walczak', 130, 'image (15).jpg'),
+(38, 'Kalistenika', 'Jacek.Walczak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Jacek', 'Walczak', 150, 'image (67).jpg'),
+(39, 'MMA', 'Żaneta.Wieczorek9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Żaneta', 'Wieczorek', 120, 'image (16).jpg'),
+(40, 'Bouldering', 'Jan.Woźniak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Jan', 'Woźniak', 120, 'image (68).jpg'),
+(41, 'MMA', 'Jakub.Wójcik1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Jakub', 'Wójcik', 120, 'image (69).jpg'),
+(42, 'Gimnastyka sportowa', 'Anita.Kruk2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Anita', 'Kruk', 120, 'image (17).jpg'),
+(43, 'Gimnastyka sportowa', 'Michał.Szulc6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Michał', 'Szulc', 130, 'image (70).jpg'),
+(44, 'Bouldering', 'Jan.Kowalczyk5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Jan', 'Kowalczyk', 150, 'image (71).jpg'),
+(45, 'Pilates', 'Ferdynand.Skwara1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Ferdynand', 'Skwara', 150, 'image (72).jpg'),
+(46, 'Gimnastyka sportowa', 'Krzysztof.Kot8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Krzysztof', 'Kot', 100, 'image (73).jpg'),
+(47, 'Pliometryka', 'Patrycja.Skwara1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Patrycja', 'Skwara', 110, 'image (18).jpg'),
+(48, 'Gimnastyka sportowa', 'Patrycja.Rybak7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Patrycja', 'Rybak', 120, 'image (19).jpg'),
+(49, 'Pliometryka', 'Gracjan.Klimek2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Gracjan', 'Klimek', 90, 'image (74).jpg'),
+(50, 'Gimnastyka sportowa', 'Róża.Szulc7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Róża', 'Szulc', 120, 'image (20).jpg'),
+(51, 'Lekkoatletyka', 'Jacek.Król5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Jacek', 'Król', 130, 'image (75).jpg'),
+(52, 'Pliometryka', 'Weronika.Olejniczak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Weronika', 'Olejniczak', 90, 'image (41).jpg'),
+(53, 'Kulturystyka', 'Gracjan.Wójcik3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Gracjan', 'Wójcik', 110, 'image (76).jpg'),
+(54, 'Lekkoatletyka', 'Wiktoria.Wawrzyniak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 'Wiktoria', 'Wawrzyniak', 120, 'image (42).jpg'),
+(55, 'Aerobik', 'Jakub.Szczepaniak7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Jakub', 'Szczepaniak', 110, 'image (77).jpg'),
+(56, 'Lekkoatletyka', 'Jakub.Szulc5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 'Jakub', 'Szulc', 130, 'image (78).jpg'),
+(57, 'Pliometryka', 'Grzegorz.Zając9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Grzegorz', 'Zając', 130, 'image (79).jpg'),
+(58, 'Gimnastyka sportowa', 'Dominik.Filipiak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Dominik', 'Filipiak', 100, 'image (80).jpg'),
+(59, 'Kulturystyka', 'Gaweł.Filipiak2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Gaweł', 'Filipiak', 110, 'image (81).jpg'),
+(60, 'Gimnastyka sportowa', 'Edward.Łukasik7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Edward', 'Łukasik', 120, 'image (82).jpg'),
+(61, 'Aerobik', 'Julia.Kurek0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Julia', 'Kurek', 80, 'image (43).jpg'),
+(62, 'Crossfit', 'Anastazja.Mamro6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Anastazja', 'Mamro', 130, 'image (44).jpg'),
+(63, 'Aerobik', 'Edmund.Mamro6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 'Edmund', 'Mamro', 130, 'image (83).jpg'),
+(64, 'Lekkoatletyka', 'Iga.Kot1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Iga', 'Kot', 80, 'image (45).jpg'),
+(65, 'Pliometryka', 'Dominik.Sobczyk6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 4, 'Dominik', 'Sobczyk', 100, 'image (84).jpg'),
+(66, 'Kalistenika', 'Ryszard.Zając9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Ryszard', 'Zając', 80, 'image (85).jpg'),
+(67, 'Fitness', 'Edmund.Wieczorek6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Edmund', 'Wieczorek', 90, 'image (86).jpg'),
+(68, 'Aerobik', 'Gaweł.Łukasik0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Gaweł', 'Łukasik', 110, 'image (87).jpg'),
+(69, 'Gimnastyka sportowa', 'Jan.Olejniczak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Jan', 'Olejniczak', 100, 'image (88).jpg'),
+(70, 'Kalistenika', 'Anita.Kubiak4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Anita', 'Kubiak', 80, 'image (46).jpg'),
+(71, 'Gimnastyka sportowa', 'Gracjan.Zioło7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Gracjan', 'Zioło', 120, 'image (89).jpg'),
+(72, 'Pliometryka', 'Grzegorz.Klimek4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Grzegorz', 'Klimek', 100, 'image (90).jpg'),
+(73, 'Lekkoatletyka', 'Gracjan.Przybysz2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Gracjan', 'Przybysz', 150, 'image (91).jpg'),
+(74, 'Crossfit', 'Krzysztof.Olejniczak8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Krzysztof', 'Olejniczak', 130, 'image (92).jpg'),
+(75, 'Bouldering', 'Dordian.Łukasik9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Dordian', 'Łukasik', 90, 'image (93).jpg'),
+(76, 'Gimnastyka sportowa', 'Jan.Zioło5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Jan', 'Zioło', 80, 'image (94).jpg'),
+(77, 'Fitness', 'Jacek.Przybysz3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Jacek', 'Przybysz', 90, 'image (95).jpg'),
+(78, 'Fitness', 'Hjacynt.Mamro0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Hjacynt', 'Mamro', 80, 'image (96).jpg'),
+(79, 'Lekkoatletyka', 'Felicja.Nowak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Felicja', 'Nowak', 90, 'image (47).jpg'),
+(80, 'Aerobik', 'Jakub.Mazur1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Jakub', 'Mazur', 120, 'image (97).jpg'),
+(81, 'Kalistenika', 'Felicja.Przybysz9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Felicja', 'Przybysz', 80, 'image (48).jpg'),
+(82, 'Kalistenika', 'Grzegorz.Filipiak5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Grzegorz', 'Filipiak', 90, 'image (98).jpg'),
+(83, 'Lekkoatletyka', 'Hubert.Szczepaniak1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Hubert', 'Szczepaniak', 120, 'image (99).jpg'),
+(84, 'Bouldering', 'Felicja.Mazur6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Felicja', 'Mazur', 120, 'image (49).jpg'),
+(85, 'Kulturystyka', 'Felicja.Czarnec2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Felicja', 'Czarnec', 80, 'image (50).jpg'),
+(86, 'Bouldering', 'Grzegorz.Zając4@int.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Grzegorz', 'Zając', 110, 'image (100).jpg'),
+(87, 'Gimnastyka sportowa', 'Iga.Walczak6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Iga', 'Walczak', 110, 'image (51).jpg'),
+(88, 'Aerobik', 'Gracjan.Skwara5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Gracjan', 'Skwara', 150, 'image (101).jpg'),
+(89, 'Kalistenika', 'Weronika.Janik5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Weronika', 'Janik', 100, 'image (52).jpg'),
+(90, 'Bouldering', 'Wiktoria.Kot1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Wiktoria', 'Kot', 90, 'image (53).jpg'),
+(91, 'Fitness', 'January.Mazur9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'January', 'Mazur', 80, 'image (102).jpg'),
+(92, 'Bouldering', 'Julia.Łukasik1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Julia', 'Łukasik', 90, 'image (54).jpg'),
+(93, 'Fitness', 'Matylda.Klimek9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Matylda', 'Klimek', 90, 'image (55).jpg'),
+(94, 'Aerobik', 'Krzysztof.Skwara1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Krzysztof', 'Skwara', 90, 'image (103).jpg'),
+(95, 'Fitness', 'Paweł.Walczak8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Paweł', 'Walczak', 100, 'image (104).jpg'),
+(96, 'Kalistenika', 'Jacek.Walczak1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Jacek', 'Walczak', 90, 'image (105).jpg'),
+(97, 'Kalistenika', 'Iga.Szulc2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Iga', 'Szulc', 150, 'image (56).jpg'),
+(98, 'Pilates', 'Kira.Wróbel8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Kira', 'Wróbel', 100, 'image (57).jpg'),
+(99, 'Crossfit', 'Gracjan.Janik2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Gracjan', 'Janik', 120, 'image (106).jpg'),
+(100, 'Gimnastyka sportowa', 'Grzegorz.Kowalczyk6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Grzegorz', 'Kowalczyk', 90, 'image (107).jpg'),
+(101, 'Kalistenika', 'Krzysztof.Nowak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Krzysztof', 'Nowak', 120, 'image (108).jpg'),
+(102, 'Crossfit', 'Matylda.Zioło2@onet.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Matylda', 'Zioło', 80, 'image (58).jpg'),
+(103, 'Crossfit', 'Jacek.Sowa7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Jacek', 'Sowa', 130, 'image (109).jpg'),
+(104, 'Pilates', 'Felicja.Zając3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Felicja', 'Zając', 120, 'image (59).jpg'),
+(105, 'Kalistenika', 'Hubert.Sowa7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Hubert', 'Sowa', 130, 'image (110).jpg'),
+(106, 'Bouldering', 'Jan.Kurek1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Jan', 'Kurek', 120, 'image (111).jpg'),
+(107, 'Gimnastyka sportowa', 'Anastazja.Kruk1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 5, 'Anastazja', 'Kruk', 90, 'image (60).jpg'),
+(108, 'Kalistenika', 'Weronika.Łukasik7@zoho.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Weronika', 'Łukasik', 100, 'image (61).jpg'),
+(109, 'Lekkoatletyka', 'Jakub.Wróbel6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Jakub', 'Wróbel', 90, 'image (112).jpg'),
+(110, 'Bouldering', 'Zuzanna.Pawlak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Zuzanna', 'Pawlak', 80, 'image (62).jpg'),
+(111, 'MMA', 'Dordian.Urbaniak9@protonmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 2, 'Dordian', 'Urbaniak', 110, 'image (113).jpg'),
+(112, 'Lekkoatletyka', 'Paweł.Filipiak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Paweł', 'Filipiak', 120, 'image (114).jpg'),
+(113, 'Kulturystyka', 'Denis.Klimek6@hover.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 7, 'Denis', 'Klimek', 150, 'image (115).jpg'),
+(114, 'Fitness', 'Dordian.Kurek8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Dordian', 'Kurek', 150, 'image (116).jpg'),
+(115, 'Crossfit', 'Dordian.Król1@wp.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Dordian', 'Król', 130, 'image (117).jpg'),
+(116, 'Kalistenika', 'Jan.Kruk0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 3, 'Jan', 'Kruk', 100, 'image (118).jpg'),
+(117, 'MMA', 'Zuzanna.Wójcik8@gmail.com', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Zuzanna', 'Wójcik', 150, 'image (63).jpg'),
+(118, 'Crossfit', 'Gracjan.Olejniczak3@interia.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 1, 'Gracjan', 'Olejniczak', 110, 'image (119).jpg'),
+(119, 'Lekkoatletyka', 'Ryszard.Wawrzyniak0@o2.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 0, 'Ryszard', 'Wawrzyniak', 90, 'image (120).jpg'),
+(120, 'MMA', 'Gracjan.Skwara5@outlook.pl', 'c984aed014aec7623a54f0591da07a85fd4b762d', 6, 'Gracjan', 'Skwara', 150, 'image (121).jpg');
 
 -- --------------------------------------------------------
 
@@ -4191,17 +4176,13 @@ INSERT INTO `trainers` (`trainer_id`, `specialization`, `email`, `password`, `gy
 -- Struktura tabeli dla tabeli `trainer_reviews`
 --
 
-DROP TABLE IF EXISTS `trainer_reviews`;
-CREATE TABLE IF NOT EXISTS `trainer_reviews` (
-  `review_id` int NOT NULL AUTO_INCREMENT,
-  `trainer_id` int NOT NULL,
-  `trainer_mark` int DEFAULT NULL,
-  `trainer_review_descript` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `user_id` int NOT NULL,
-  PRIMARY KEY (`review_id`),
-  KEY `trainer_review_id` (`trainer_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `trainer_reviews` (
+  `review_id` int(11) NOT NULL,
+  `trainer_id` int(11) NOT NULL,
+  `trainer_mark` int(11) DEFAULT NULL,
+  `trainer_review_descript` varchar(350) COLLATE utf8mb4_bin DEFAULT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Zrzut danych tabeli `trainer_reviews`
@@ -4474,7 +4455,8 @@ INSERT INTO `trainer_reviews` (`review_id`, `trainer_id`, `trainer_mark`, `train
 (265, 120, 4, 'Ćwiczenia rozpisane i wytłumaczone. W razie jakis pytan zawsze pomaga.', 216),
 (266, 71, 4, 'SIŁA MASA RZEŹBA !!!!', 233),
 (267, 38, 5, 'Trening trwał 4 miesiące i przez ten czas udało się w pewnym stopniu zwalczyć moje lenistwo i schudnąć kilka kilogramów', 322),
-(268, 18, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 0);
+(268, 18, 5, 'Polecam 🙂 świetny instruktor 🙂 można liczyć na naprawdę fachową i skuteczną poradę o czym przekonałam się osobiście 🙂', 0),
+(313, 18, 1, 'Jebać Psy', 0);
 
 -- --------------------------------------------------------
 
@@ -4482,19 +4464,16 @@ INSERT INTO `trainer_reviews` (`review_id`, `trainer_id`, `trainer_mark`, `train
 -- Struktura tabeli dla tabeli `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int NOT NULL AUTO_INCREMENT,
-  `profile_picture` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `surname` varchar(50) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `age` int DEFAULT NULL,
-  `bmi_id` int DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  KEY `bmi_id` (`bmi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=563 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `profile_picture` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `password` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `surname` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `bmi_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `users`
@@ -5061,17 +5040,13 @@ INSERT INTO `users` (`user_id`, `profile_picture`, `email`, `password`, `name`, 
 -- Struktura tabeli dla tabeli `usr_train`
 --
 
-DROP TABLE IF EXISTS `usr_train`;
-CREATE TABLE IF NOT EXISTS `usr_train` (
-  `user_id` int DEFAULT NULL,
-  `trainer_id` int DEFAULT NULL,
-  `training_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `training_descript` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT NULL,
-  `gym_id` int DEFAULT NULL,
-  KEY `user_id` (`user_id`,`trainer_id`,`gym_id`),
-  KEY `trainer_id` (`trainer_id`),
-  KEY `gym_id` (`gym_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+CREATE TABLE `usr_train` (
+  `user_id` int(11) DEFAULT NULL,
+  `trainer_id` int(11) DEFAULT NULL,
+  `training_date` datetime DEFAULT current_timestamp(),
+  `training_descript` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL,
+  `gym_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `usr_train`
@@ -7833,6 +7808,83 @@ INSERT INTO `usr_train` (`user_id`, `trainer_id`, `training_date`, `training_des
 (0, 18, '2022-02-20 14:54:05', 'Bouldering', 7);
 
 --
+-- Indeksy dla zrzutów tabel
+--
+
+--
+-- Indeksy dla tabeli `bmi`
+--
+ALTER TABLE `bmi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bmi_id` (`bmi_id`);
+
+--
+-- Indeksy dla tabeli `gyms`
+--
+ALTER TABLE `gyms`
+  ADD PRIMARY KEY (`gym_id`);
+
+--
+-- Indeksy dla tabeli `gym_reviews`
+--
+ALTER TABLE `gym_reviews`
+  ADD PRIMARY KEY (`gym_review_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `gym_id` (`gym_id`);
+
+--
+-- Indeksy dla tabeli `trainers`
+--
+ALTER TABLE `trainers`
+  ADD PRIMARY KEY (`trainer_id`),
+  ADD KEY `gym_id` (`gym_id`);
+
+--
+-- Indeksy dla tabeli `trainer_reviews`
+--
+ALTER TABLE `trainer_reviews`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `trainer_review_id` (`trainer_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indeksy dla tabeli `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `bmi_id` (`bmi_id`);
+
+--
+-- Indeksy dla tabeli `usr_train`
+--
+ALTER TABLE `usr_train`
+  ADD KEY `user_id` (`user_id`,`trainer_id`,`gym_id`),
+  ADD KEY `trainer_id` (`trainer_id`),
+  ADD KEY `gym_id` (`gym_id`);
+
+--
+-- AUTO_INCREMENT dla zrzuconych tabel
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `bmi`
+--
+ALTER TABLE `bmi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3317;
+
+--
+-- AUTO_INCREMENT dla tabeli `trainer_reviews`
+--
+ALTER TABLE `trainer_reviews`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=314;
+
+--
+-- AUTO_INCREMENT dla tabeli `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
+
+--
 -- Ograniczenia dla zrzutów tabel
 --
 
@@ -7854,12 +7906,6 @@ ALTER TABLE `gym_reviews`
 --
 ALTER TABLE `trainers`
   ADD CONSTRAINT `trainers_ibfk_1` FOREIGN KEY (`gym_id`) REFERENCES `gyms` (`gym_id`) ON UPDATE CASCADE;
-
---
--- Ograniczenia dla tabeli `trainer_reviews`
---
-ALTER TABLE `trainer_reviews`
-  ADD CONSTRAINT `trainer_reviews_ibfk_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainers` (`trainer_review_id`) ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `usr_train`

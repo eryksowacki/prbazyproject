@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_POST))
     {
-        // header("location: ../../Pages/login.php?unauthorizedAccess=1");
+        header("location: ../../login.php?unauthorizedAccess=1");
     }
     else
     {
@@ -19,19 +19,19 @@
         }
         if(count($_POST) != $i)
         {   
-            header("Location: ../../Pages/login.php?email=$_POST[email]&emptyInput=");
+            header("Location: ../../login.php?email=$_POST[email]&emptyInput=");
         }
         else
         {
             if($_POST['token'] !== $_SESSION['token'])
             {
-                header("Location: ../../Pages/login.php?nonAuthorizedToken=1");
+                header("Location: ../../login.php?nonAuthorizedToken=1");
             }
             else
             {
                 try
                 {
-                    $connect = new PDO("mysql:host=localhost;dbname=znany_trener", "root", "");
+                    $connect = $connect = new PDO("mysql:dbname=id18439949_znanytrener;host=localhost;", "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
                     $connect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
                     $connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -39,15 +39,11 @@
                 catch(PDOException $e) 
                 {
                     $connect = null;
-                    header("Location: ../../Pages/login.php?Error=$e->getMessage()");
+                    header("Location: ../../login.php?Error=$e->getMessage()");
                 }
     
                 $email = $_POST["email"];
-                $userPassword = sha1($_POST['password']);
-
-                echo "$email $userPassword<br>";
-                // require_once "connect_user.php";   
-                
+                $userPassword = sha1($_POST['password']);                
                 $sqlQuery = 'SELECT * FROM `users` WHERE `email` = :email';
                 $stmt = $connect -> prepare($sqlQuery);
                 $stmt -> execute(['email' => $email]);
@@ -55,7 +51,7 @@
                 if($rowCount !== 1)
                 {
                     $connect = null;
-                    header('Location: ../../Pages/login.php?noEmail=1');
+                    header('Location: ../../login.php?noEmail=1');
                 }
                 else
                 {
@@ -63,7 +59,7 @@
                     if($userPassword !== $result -> password)
                     {
                         $connect = null;
-                        header('Location: ../../Pages/login.php?wrongPasswd=1');
+                        header('Location: ../../login.php?wrongPasswd=1');
                     }
                     else
                     {             
@@ -71,7 +67,12 @@
                         $_SESSION['profile_picture']= $result -> profile_picture;
                         $_SESSION['user_id'] = $result -> user_id;
                         $connect = null;
+<<<<<<< HEAD
                         header('Location: ../../Pages/index.php');
+=======
+                        header('Location: ../../index.php');
+                        
+>>>>>>> bsBranch
                     }
                 }
             }

@@ -5,36 +5,33 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <link rel="stylesheet" href="..\Scripts\CSS\bootstrap-5.0.2-dist\css\bootstrap.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="..\Scripts\CSS\style.css" crossorigin="anonymous">
-    <link rel="shortcut icon" href="..\Images\WEBSITE IMAGES\LOGO.png" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+        require_once 'Scripts/PHP/page_look_head.php';
+    ?>
     <title>Rejestracja</title>
 </head>
 <body>
     <?php
-        require_once('..\Scripts\PHP\navbar-content.php');
+        require_once 'Scripts/PHP/navbar-content.php';
     ?>
 
     <div>
         <div class="inputPosition">
             <div class="image-register-promotion">
                 <div class="icon-promotion">
-                    <img src="..\Images/WEBSITE IMAGES\gym-icon-8.png" class="icons icon-1" title="Ikona ciężarka typu Kettlebell" alt="Ikona ciężarka typu Kettlebell">
+                    <img src="Images/WEBSITE IMAGES/gym-icon-8.png" class="icons icon-1" title="Ikona ciężarka typu Kettlebell" alt="Ikona ciężarka typu Kettlebell">
                     <p>Osiągaj coraz lepsze wyniki</p>
                 </div>
                 <div class="icon-promotion">
-                    <img src="..\Images/WEBSITE IMAGES\gym-icon-2.png" class="icons icon-2" title="Ikona rowerka stacjonarnego" alt="Ikona rowerka stacjonarnego">
+                    <img src="Images/WEBSITE IMAGES/gym-icon-2.png" class="icons icon-2" title="Ikona rowerka stacjonarnego" alt="Ikona rowerka stacjonarnego">
                     <p>Zwiększaj swoją wydolność</p>
                 </div>
                 <div class="icon-promotion">
-                    <img src="..\Images/WEBSITE IMAGES\gym-icon-4.png" class="icons icon-3" title="Ikona wagi" alt="Ikona wagi">
+                    <img src="Images/WEBSITE IMAGES/gym-icon-4.png" class="icons icon-3" title="Ikona wagi" alt="Ikona wagi">
                     <p>Kontroluj swoją wagę</p>
                 </div>
                 <div class="icon-promotion">
-                    <img src="..\Images\WEBSITE IMAGES\gym-icon-5.png" class="icons icon-4" title="Ikona maty do ćwiczenia" alt="Ikona maty do ćwiczenia">
+                    <img src="Images/WEBSITE IMAGES/gym-icon-5.png" class="icons icon-4" title="Ikona maty do ćwiczenia" alt="Ikona maty do ćwiczenia">
                     <p>Relaksuj się i odpoczywaj trenując</p>
                 </div>
             </div>
@@ -101,13 +98,11 @@
     </div>
 </body>
 </html>
-<script src="..\Scripts\node_modules\gsap\dist\gsap.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\node_modules\jquery\dist\jquery.min.js" crossorigin="anonymous"></script>
-<script src="..\Scripts\JS\gsap-search-animation.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
 <?php
     if(empty($_GET))
     {
-    echo "<script src='..\Scripts\JS\gsap-signup-animation.js' crossorigin='anonymous'></script>";
+        echo "<script src='Scripts/JS/gsap-signup-animation.js' crossorigin='anonymous'></script>";
     }
     if(isset($_GET['emptyInput']))
     {
