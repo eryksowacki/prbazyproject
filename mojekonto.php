@@ -366,8 +366,8 @@
         </div>
     </div>
 
-    <footer id="footer">
-        <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
+    <footer class="footer">
+        <p class="footerText">Projekt Aplikacje internetowe / Bazy danych <i><a href="https://github.com/eryksowacki">Eryk Sowacki</a></i> & <i><a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></p>
     </footer>
 </body>
 </html>
