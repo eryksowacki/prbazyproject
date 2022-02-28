@@ -31,19 +31,18 @@
         $connect = null;
         header("Location: ../../mojekonto.php?Error=$e->getMessage()");
     }
-    var_dump($_POST);
     $newTraining = $connect->prepare("INSERT INTO `usr_train` (`user_id`, `training_date`, `training_descript`, `gym_id`) 
     VALUES (:user_id, :training_date, :training_descript, :gym_id)");
     $dateTime = $_POST["date"].$_POST["time"];
     $dateTime = strtotime($dateTime);
     $dateTime = date('Y-m-d h:i:s', $dateTime);
-    echo $dateTime;
-    $newTraining -> bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    var_dump($_POST);
+        $newTraining -> bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
     $newTraining -> bindParam(':training_date', $dateTime); 
     $newTraining -> bindParam(':training_descript', $_POST["descript"]);
     $newTraining -> bindParam(':gym_id', $_POST["gym_id"]);
     $newTraining -> execute();
     $connect = null;
     
-    header('Location: ../../app.php?calendar');
+    header('Location: ../../mojekonto.php?calendar');
 ?>

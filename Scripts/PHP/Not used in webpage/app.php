@@ -165,21 +165,9 @@
         </form>
     </div>
     <script>
-        // document.querySelector('.addTraining').style.display = 'none';
-        // document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.addTraining').style.display = 'none';
+        document.querySelector('.overlay').style.display = 'none';
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -258,42 +246,7 @@ SCRIPT;
 </div>
 </body>
 </html>
-<script>
-const dayBlock = document.querySelectorAll(".calendar > b");
-const calendarBlock = document.querySelectorAll(".calendar");
-const freeDay = document.querySelectorAll(".freeDay");
-const training = document.querySelector('.addTraining');
-const overlay = document.querySelector('.overlay');
 
-for (let i = 0; i < amountDays; i++) 
-{
-    $(freeDay[i]).on('click', function()
-    {
-        let dayOfNewTraining  = freeDay[i].previousElementSibling.outerText.substring(0,10);
-        gsap.to(training,0.55,{autoAlpha:1,display:'block',zIndex:99});
-        gsap.to(overlay,0.55,{autoAlpha:1,display:'block',zIndex:99});
-
-        $(overlay).on('click',function(e)
-        {   
-            if(training.contains(e.target))
-            {
-            } 
-            else
-            {
-                console.log('asfasf');
-                gsap.to(training,0.55,{autoAlpha:0,display:'none'});
-                gsap.to(overlay,0.55,{autoAlpha:0,display:'none'});
-
-            }
-        });
-        document.querySelector("#dateInput").value = dayOfNewTraining;
-
-        
-    });
-    
-}
-
-</script>
 <script>
     // let dayAnimation = document.querySelectorAll('.calendar');
     // const tl = gsap.timeline();

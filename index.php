@@ -54,7 +54,7 @@
 	<div id="progress-bar"></div>
 	
     <div id="page" class="whole-page">
-        <div id="login">
+        <!-- <div id="login">
             <form action="Scripts/PHP/login.inc.php" method="post">
                 Login: <input type="text" name="login">
                 Hasło: <input type="password" name="password">
@@ -62,7 +62,7 @@
             </form>
             <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
         </div>
-        <div id="content" class="d-flex justify-content-center">
+        <div id="content" class="d-flex justify-content-center"> -->
             <!-- <h2>Szukaj trenera personalnego</h2>
             <form action="index.php" method="post" class="d-flex">
                 <h4>Miasto:</h4>
@@ -101,9 +101,12 @@
                 <input type="submit" value="Szukaj">
             </form>
         </div> -->
+		<div class="imagePanelLeft">
+			<img src="" alt="" >
+		</div>
     </div> 
-    <footer id="footer">
-        <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
+    <footer class="footer">
+        <span class="footerText">Projekt Aplikacje/Bazy &copy;<i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
     </footer>
 </body>
 </html>
