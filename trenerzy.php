@@ -2,13 +2,13 @@
 <html lang="pl">
 <head>
     <?php
-        require_once '..\Scripts\PHP\page_look_head.php';
+        require_once 'Scripts/PHP/page_look_head.php';
     ?>
     <title>Trenerzy</title>
 </head>
 <body>
     <?php
-        require_once '..\Scripts\PHP\navbar-content.php';
+        require_once 'Scripts/PHP/navbar-content.php';
     ?>
     <div id="content" class="d-flex justify-content-center">
         <h2>Szukaj trenera personalnego</h2>
@@ -16,7 +16,7 @@
                 <h4>Siłownia:</h4>
 			<select name="gymName">
 				<?php
-					require_once '../Scripts/PHP/connect_user.php';
+					require_once 'Scripts/PHP/Not used in webpage/connect_user.php';
 				    	$gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
 						$result = $connect -> query($gymQuery);
 					    	while($currentRow =  mysqli_fetch_row($result))
@@ -58,11 +58,11 @@
     </div>
     <footer id="footer">
         <?php
-            require_once '..\Scripts\PHP\page_look_footer.php';
+            require_once 'Scripts/PHP/page_look_footer.php';
         ?>
     </footer>
 </body>
     <?php
-        require_once '..\Scripts\PHP\page_look_scripts.php';
+        require_once 'Scripts/PHP/page_look_scripts.php';
     ?>
 </html>

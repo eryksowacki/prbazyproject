@@ -87,24 +87,7 @@ NAVLOGIN;
                         }
                     }
                 ?>
-<<<<<<< HEAD
-                <li class="nav-item">
-                    <a class="nav-link" href="regulamin.php">Regulamin</a>
-                </li>
-                <li class="nav-item btn-group dropend dropdown-menu-right">
-                    <button class="nav-link dropdown-toggle" id="nvbrdrpdwn" role="button" data-bs-toggle="dropdown-right" aria-expanded="false">Wyszukaj</button>
-                    <div class="search">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" id="search-bar" disabled placeholder="Szukaj siłowni lub trenerów..." aria-label="Search">
-                            <div class="btn-search-bar">
-                                <input class="btn btn-outline-success" id="search-button" type="submit">
-                            </div>
-                        </form>
-                    </div>
-                </li>
-=======
                 
->>>>>>> bsBranch
 
             <?php
                 if(isset($_SESSION['user_id']))

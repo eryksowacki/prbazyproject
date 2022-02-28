@@ -67,12 +67,8 @@
                         $_SESSION['profile_picture']= $result -> profile_picture;
                         $_SESSION['user_id'] = $result -> user_id;
                         $connect = null;
-<<<<<<< HEAD
-                        header('Location: ../../Pages/index.php');
-=======
                         header('Location: ../../index.php');
                         
->>>>>>> bsBranch
                     }
                 }
             }

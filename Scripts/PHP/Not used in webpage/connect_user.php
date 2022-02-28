@@ -1,14 +1,10 @@
 <?php
-<<<<<<< HEAD:Scripts/PHP/connect_user.php
-    $connect = @new mysqli("localhost", "root", "", "znany_trener");
-=======
     if(!empty($_POST) || isset($_SESSION['user_id']))
     {
-        $connect = @new mysqli("localhost", "root", "", "znany_trener");
+        $connect = @new mysqli("localhost", "id18439949_znanytrenerusername'@'localhost", 'sy>[$Fo8]+!n^cVN', "id18439949_znanytrener");
     }
     else
     {
         header("location: ..\..\signup.php?unauthorizedAccess=1");
     }
->>>>>>> bsBranch:Scripts/PHP/Not used in webpage/connect_user.php
 ?>
