@@ -86,11 +86,8 @@ REGISTER;
 NAVLOGIN;
                         }
                     }
-<<<<<<< HEAD
-=======
                 ?>
             <?php
->>>>>>> bsBranch
                 if(isset($_SESSION['user_id']))
                 {
                     echo "</ul>";
