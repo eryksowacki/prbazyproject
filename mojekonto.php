@@ -122,7 +122,7 @@
             <div class="chart">
                 <h4>Mój progress na przestrzeni <?php echo $dayDiff;?></h4>
                 <div style="width: 800px; height:400px;">
-                    <canvas id="myChart" ></canvas>
+                    <canvas id="myChart"></canvas>
                 </div>
                 <div id="addEntry">
                     <form action="Scripts\PHP\addWeightEntry.inc.php" method="post">
@@ -137,51 +137,12 @@
                         <option value="line" class="horizontalOption">Liniowy</option>
                         <option value="bar" class="horizontalOption">Kolumnowy</option>
                         <option value="bubble" class="horizontalOption">Bąbelkowy</option>
-                        <option value="scatter" class="horizontalOption">Scatter</option>
+                        <option value="scatter" class="horizontalOption">Ściana</option>
                     </select>
                 </div>
             </div>
-            <script>
-                $(".chartTypes > option").on("dblclick", function() {
-                    switch (document.querySelector(".chartTypes").value) {
-                        case "line":
-                            change("line");
-                            break;
-                        case "bar":
-                            change("bar");
-                            break;
-                        case "bubble":
-                            change("bubble");
-                            break;
-                        case "scatter":
-                            change("scatter");
-                            break;
-                        default:
-                            break;    
-                    }
-                });
-                function change(newType) 
-                {
-                    let canvas = document.getElementById("myChart").getContext("2d");
-                    if(myChart) 
-                    {
-                        myChart.destroy();
-                    }
-
-                    if(newType == 'scatter')
-                    {
-                        userProgressChart.options.scales.y.min = 0; 
-                    }
-                    else
-                    {
-                        userProgressChart.options.scales.y.min = Math.min(weight);
-                    }
-                    let temp = jQuery.extend(true, {}, userProgressChart);
-                    temp.type = newType;
-                    myChart = new Chart(canvas, temp);
-                };
-
-            </script>
+            
+            
             <?php
                 if(isset($_GET['progress']) && count($_GET) === 1)
                 {
@@ -366,10 +327,11 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p class="footerText">Projekt Aplikacje internetowe / Bazy danych <i><a href="https://github.com/eryksowacki">Eryk Sowacki</a></i> & <i><a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></p>
-    </footer>
+    <?php
+        require_once 'Scripts/PHP/page_look_footer.php';
+    ?>
 </body>
+
 </html>
 <?php
     if(isset($_GET['calendar']) && count($_GET) === 1) 
@@ -377,10 +339,79 @@
         echo "<script src='Scripts/JS/gsap-effortless-calendar-animation.js'></script>";
     }
 ?>
+
 <script src="Scripts/JS/nav-link.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/chartApp.js" crossorigin="anonymous"></script>
-<script src="Scripts/JS/gsap-myaccount-animations.js" crossorigin="anonymous"></script>
+<script>
+    function changeChartSwitch(switcher)
+    {
+        switch (switcher) {
+            case "line":
+                change("line");
+                break;
+            case "bar":
+                change("bar");
+                break;
+            case "bubble":
+                change("bubble");
+                break;
+            case "scatter":
+                change("scatter");
+                break;
+            default:
+                change("line");
+                break;    
+        }
+    }
+    $(".chartTypes > option").on("dblclick", function() {
+        changeChartSwitch(document.querySelector(".chartTypes").value);
+    });
+    function change(newType) 
+    {
+        let canvas = document.getElementById("myChart").getContext("2d");
+        if(myChart instanceof Chart) 
+        {
+            myChart.destroy();
+        }
+
+        if(newType == 'scatter')
+        {
+            userProgressChart.options.scales.y.min = 0; 
+        }
+        else
+        {
+            userProgressChart.options.scales.y.min = Math.min(weight);
+        }
+        let temp = jQuery.extend(true, {}, userProgressChart);
+        temp.type = newType;
+        myChart = new Chart(canvas, temp);
+    }
+    function getCookie(cname) 
+    {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) 
+        {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') 
+            {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) 
+            {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    const cookieChartChange = getCookie('favChart');
+    changeChartSwitch(cookieChartChange)
+    
+    
+    
+</script>
 
 <script>
     const dayBlock = document.querySelectorAll(".calendar > b");
@@ -416,4 +447,6 @@
         });
         
     }
+    
 </script>
+<script src="Scripts/JS/gsap-myaccount-animations.js" crossorigin="anonymous"></script>

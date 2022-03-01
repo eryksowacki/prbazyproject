@@ -20,7 +20,9 @@
         <input type="text" name="token" value="<?php echo $_SESSION["token"];?>" hidden>
         <input type="submit" value="Prześlij">
     </form>  
+    <?php
+        require_once 'Scripts/PHP/page_look_footer.php';
+    ?>    
 </body>
 </html>
-
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>

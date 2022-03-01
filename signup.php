@@ -96,6 +96,9 @@
             </form>
         </div>
     </div>
+    <?php
+        require_once 'Scripts/PHP/page_look_footer.php';
+    ?>
 </body>
 </html>
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>

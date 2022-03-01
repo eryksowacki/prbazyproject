@@ -11,7 +11,26 @@ function checkWidth()
         }
     }
 }
-
+function changeChartSwitch(switcher)
+{
+    switch(switcher) {
+        case "line":
+            return change("line");
+            break;
+        case "bar":
+            return change("bar");
+            break;
+        case "bubble":
+            return change("bubble");
+            break;
+        case "scatter":
+            return change("scatter");
+            break;
+        default:
+            return change("line");
+            break;    
+    }
+}
 
 const chartBtn = document.querySelector("#weightProggress");
 const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
@@ -41,6 +60,7 @@ $(chartBtn).on("click", function() {
     if(wholeChart.style.display != 'none')
     {
         gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // if displaying click again to peacefully turn off
+        
         setTimeout(() => {
             wholeChart.style.display = 'none';
         }, 700);
@@ -48,7 +68,11 @@ $(chartBtn).on("click", function() {
     else                                            // else display block after 700ms
     {
         setTimeout(() => {
-            myChart.destroy()
+            if(myChart instanceof Chart) 
+            {
+                changeChartSwitch(cookieChartChange);
+            }
+            myChart.destroy();
             gsap.fromTo(wholeChart,0.5,{y:-10,autoAlpha:0,display: 'none'},{y:0,autoAlpha:1,display: 'block',marginTop: 10});    // chart
             wholeChart.style.display = 'block';
             myChart = new Chart(canvas, userProgressChart);
@@ -71,7 +95,6 @@ $(myTrainingSchedule).on('click', function (){
         setTimeout(() => {
             wholeChart.style.display = 'none';
             gsap.to(mySchedual,0.65,{y:20,autoAlpha:1,display:"block"});
-            calendarAnimation();
         }, 700);
     }
 });

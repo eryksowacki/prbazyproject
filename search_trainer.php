@@ -72,8 +72,8 @@
             
         ?>
     </center>
-    <div id="footer">
-        Projekt Aplikacje/Bazy <i>Eryk Sowacki & Oskar Wichtowski</i>
-    </div>
+    <?php
+        require_once 'Scripts/PHP/page_look_footer.php';
+    ?>
 </body>
 </html>

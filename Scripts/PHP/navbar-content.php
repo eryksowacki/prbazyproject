@@ -6,10 +6,10 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Trenerzy.php">Trenerzy</a>
+                    <a class="nav-link" href="search_trainer.php">Trenerzy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Regulamin.php">Regulamin</a>
+                    <a class="nav-link" href="regulamin.php">Regulamin</a>
                 </li>
                 <?php
                     if(isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
@@ -17,7 +17,7 @@
                         echo <<< DROPDOWNUSER
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle dropdown-toggler" href="mojekonto.php" id="navbarDropdown" aria-expanded="false">Moje konto</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
                                         <a class="dropdown-item" href="mojekonto.php?calendar">Kalendarz treningów</a>
                                     </li>

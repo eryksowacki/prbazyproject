@@ -105,9 +105,9 @@
 			<img src="" alt="" >
 		</div>
     </div> 
-    <footer class="footer">
-        <span class="footerText">Projekt Aplikacje/Bazy &copy;<i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
-    </footer>
+    <?php
+        require_once 'Scripts/PHP/page_look_footer.php';
+    ?>
 </body>
 </html>
 <script src="Scripts/JS/progressionBarApp.js" crossorigin="anonymous"></script>
