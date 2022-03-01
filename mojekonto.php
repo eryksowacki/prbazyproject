@@ -75,6 +75,49 @@
                 </li>
             </ul>
         </nav>
+
+        <div class="overlay">
+        </div>
+        <div class="addTraining">
+            <form action="Scripts/PHP/addNewTraining.inc.php" method="post">
+                <p class="paragraph">Data</p>
+                <input type="date" name="date" id="dateInput">
+                <p class="paragraph">Godzina</p>
+                <input type="time" name="time" id="time" value="12:00">
+                <?php
+                    $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
+
+                    $_SESSION["user_id"] = 0;
+
+                    $myGyms = "SELECT `gym_name`,`gyms`.`gym_id` as `g_id`,`city`
+                    FROM `usr_train`
+                    JOIN `gyms`
+                    on `usr_train`.`gym_id` = `gyms`.`gym_id`
+                    WHERE `user_id` = $_SESSION[user_id]
+                    GROUP by `gyms`.`gym_id` ;";
+                    $result = $connect -> query($myGyms);
+                    echo "<p class='paragraph'>Siłownia</p><select name=gym_id>";
+                    while($option =  $result -> fetch_assoc())
+                    {   
+                        echo "<option value='$option[g_id]'>$option[gym_name] $option[city]</option>";
+                    }
+                    echo "</select>";
+                    $descriptions = "SELECT `training_descript` FROM `usr_train`group by `training_descript` ORDER BY `training_descript`  ASC;";
+                    $result = $connect -> query($descriptions);
+                    echo "<p class='paragraph'>Opis treningiu</p><select name=descript>";
+                    while ($option = $result -> fetch_assoc()) 
+                    {
+                        echo "<option value='$option[training_descript]'>$option[training_descript]</option>";
+                    }
+                    echo "</select>";
+                ?>
+                <input type="submit" value="Prześlij">
+            </form>
+        </div>
+        <script>
+            document.querySelector('.addTraining').style.display = 'none';
+            document.querySelector('.overlay').style.display = 'none';
+        </script>
         <div class="userMain">
             <div class="chart">
                 <h4>Mój progress na przestrzeni <?php echo $dayDiff;?></h4>
@@ -248,13 +291,13 @@
                     CALENDAR;
                 }
                 ?>
-                
+                    
                 <div class="gridInGrid">
                     <?php
                         date_default_timezone_set("Europe/Warsaw");
                         $d = date("Y-m-01");
                         $howLong = date("d",strtotime(date("Y-m-t",  strtotime($d))));
-                        $currDay = date("d",strtotime("+1 day"));
+                        $currDay = date("Y-m-d");
                         $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
                                 FROM `usr_train` 
                                 WHERE `user_id` = $_SESSION[user_id];";
@@ -271,9 +314,11 @@
                         $sql = "SELECT `trainer_id`,date(`training_date`) as `date`,`training_descript`,`gym_id` 
                         FROM `usr_train` 
                         WHERE `user_id` = $_SESSION[user_id];";
+                        echo "<script>const amountDays = $howLong</script>";
                         for ($i=-1; $i < $howLong + 3 ; $i++) 
                         { 
-                            $f = date("Y-m-d",strtotime("+$i day", strtotime($d)));
+                            $p = $i+1;
+                            $f = date("Y-m-d",strtotime("+$p day", strtotime($d)));
                             echo "<div class='calendar'>";
                             $dzien_tyg = date("l",strtotime("+$i day", strtotime($d)));
                             echo "<b>$f</b><b>$dzien_tyg_pl[$dzien_tyg]</b>";
@@ -303,9 +348,12 @@
                                 $assoc = [];
                             }
                             echo "</div>";
-                            if($currDay == date("d",strtotime($f)))
+                            // echo date("Y-m-d",strtotime($f)) == $currDay;
+                            if(date("Y-m-d",strtotime($f)) == $currDay)
                             {
-                                echo "<script>const curDay = document.querySelector('.mySchedual > div > div:nth-child($currDay)');
+                                $aposgh = date('d',strtotime($currDay));
+                                $aposgh += 1;
+                                echo "<script>const curDay = document.querySelector('.mySchedual > div > div:nth-child($aposgh)');
                                 curDay.style.backgroundColor = '#045de9';
                                 curDay.style.backgroundImage = 'linear-gradient(315deg, #045de9 0%, #09c6f9 74%)';</script>";
                             }
@@ -317,8 +365,8 @@
         </div>
     </div>
 
-    <footer id="footer">
-        <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
+    <footer class="footer">
+        <p class="footerText">Projekt Aplikacje internetowe / Bazy danych <i><a href="https://github.com/eryksowacki">Eryk Sowacki</a></i> & <i><a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></p>
     </footer>
 </body>
 </html>
@@ -332,3 +380,39 @@
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/chartApp.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/gsap-myaccount-animations.js" crossorigin="anonymous"></script>
+
+<script>
+    const dayBlock = document.querySelectorAll(".calendar > b");
+    const calendarBlock = document.querySelectorAll(".calendar");
+    const freeDay = document.querySelectorAll(".freeDay");
+    const training = document.querySelector('.addTraining');
+    const overlay = document.querySelector('.overlay');
+
+    for (let i = 0; i < amountDays; i++) 
+    {
+        $(freeDay[i]).on('click', function()
+        {
+            let dayOfNewTraining  = freeDay[i].previousElementSibling.previousElementSibling.outerText.substring(0,10);
+            console.log(dayOfNewTraining);
+            gsap.to(training,0.55,{autoAlpha:1,display:'block',zIndex:99});
+            gsap.to(overlay,0.55,{autoAlpha:1,display:'block',zIndex:99});
+
+            $(overlay).on('click',function(e)
+            {   
+                if(training.contains(e.target))
+                {
+                    console.log(dayOfNewTraining);
+                } 
+                else
+                {
+                    gsap.to(training,0.55,{autoAlpha:0,display:'none'});
+                    gsap.to(overlay,0.55,{autoAlpha:0,display:'none'});
+                }
+            });
+            document.querySelector("#dateInput").value = dayOfNewTraining;
+
+            
+        });
+        
+    }
+</script>

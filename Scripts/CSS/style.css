@@ -17,9 +17,17 @@
 .container {
 	margin-left: 20px;
 }
-#footer {
+.footer {
 	text-align: right;
+	height: 150px;
 	position: relative;
+	margin-top: 10%;
+	background-color: var(--bs-gray-dark);
+	color: var(--bs-white);
+}
+.footerText {
+	margin-right: 10px;
+	padding: 10px;
 }
 
 .inputPosition input {
@@ -53,7 +61,7 @@
 }
 .inputPosition {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-columns: 1fr 1.3fr 0.3fr;
 	grid-auto-rows: minmax(550px, auto);
 	gap: 15px;
 	align-items: center;
@@ -179,7 +187,7 @@
 	display: grid;
 }
 .image-register-promotion > div > img {
-	padding-left: 90px;
+	padding-left: 10%;
 	opacity: 1;
 }
 .image-register-promotion > div > p {
@@ -578,6 +586,42 @@ p.newWeight {
 	font-weight: 400;
 	opacity: 1;
 }
+.addTraining {
+	width: max-content;
+	height: max-content;
+	background-color: #6a93cb;
+	background-image: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
+	border-radius: 16px;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	top: 40%;
+	padding: 1.125rem;
+}
+.overlay {
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.addTraining > form {
+	display: grid;
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(4, auto);
+	grid-template-rows: repeat(3, auto);
+	align-items: baseline;
+	gap: 1em 2em;
+}
+.addTraining > form > * {
+	padding: 0.125rem;
+	outline: none;
+	transition: all 0.2s;
+}
+
 .sessionInfo {
 	display: flex;
 	flex-direction: row-reverse;

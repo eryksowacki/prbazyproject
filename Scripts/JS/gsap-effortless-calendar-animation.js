@@ -38,8 +38,7 @@ tl.fromTo(dayAnimation[0],0.75,from,to)
 .fromTo(dayAnimation[28],0.75,from,to)
 .fromTo(dayAnimation[29],0.75,from,to,"-=0.75")
 .fromTo(dayAnimation[30],0.75,from,to,"-=0.75")
-.fromTo(dayAnimation[31],0.75,from,to,"-=0.75")
-.fromTo(dayAnimation[32],0.75,from,to,"-=0.75");
+.fromTo(dayAnimation[31],0.75,from,to,"-=0.75");
 
 if (typeof dayAnimation[32] == "undefined") {
     // pass

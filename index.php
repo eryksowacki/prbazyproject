@@ -53,8 +53,8 @@
 	</div>
 	<div id="progress-bar"></div>
     </div> 
-    <footer id="footer">
-        <span id="footerText">Projekt Aplikacje/Bazy <i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
+    <footer class="footer">
+        <span class="footerText">Projekt Aplikacje/Bazy &copy;<i>Eryk Sowacki & <a href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></span>
     </footer>
 </body>
 </html>

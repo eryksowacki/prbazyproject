@@ -12,7 +12,7 @@
                     <a class="nav-link" href="regulamin.php">Regulamin</a>
                 </li>
                 <?php
-                    if(isset($_SESSION['user_id']))
+                    if(isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
                     {
                         echo <<< DROPDOWNUSER
                             <li class="nav-item dropdown">
@@ -47,7 +47,7 @@ DROPDOWNUSER;
                     </div>
                 </li>
                <?php
-                    if(!isset($_SESSION['user_id']))
+                    if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
                     {
                         echo <<< REGISTER
                             <li class="nav-item">
@@ -56,7 +56,7 @@ DROPDOWNUSER;
 REGISTER;
                         if(strpos($_SERVER['REQUEST_URI'], "login.php") != 0)
                         {
-                            //dfnjawo
+                            // dfnjawo
                         }
                         else
                         {
@@ -67,13 +67,13 @@ REGISTER;
                                         <form action="Scripts\PHP\login.inc.php" method="post">    
                                             <li>
                                                 <div class="field">
-                                                <input type="email" name="email" id="email" class="navUserInput" placeholder=" ">
+                                                <input type="email" name="email" id="email" class="navUserInput" placeholder=" " autocompleate='off'>
                                                 <label for="email" class="floating-label-ql">Email</label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="field">
-                                                <input type="password" name="password" id="password" class="navUserInput" placeholder=" ">
+                                                <input type="password" name="password" id="password" class="navUserInput" placeholder=" " autocompleate='on'>
                                                 <label for="password" class="floating-label-ql">Hasło</label>
                                                 </div>
                                             </li>
@@ -86,6 +86,11 @@ REGISTER;
 NAVLOGIN;
                         }
                     }
+<<<<<<< HEAD
+=======
+                ?>
+            <?php
+>>>>>>> bsBranch
                 if(isset($_SESSION['user_id']))
                 {
                     echo "</ul>";
