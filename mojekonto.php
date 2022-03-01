@@ -410,9 +410,6 @@
                 }
             });
             document.querySelector("#dateInput").value = dayOfNewTraining;
-
-            
         });
-        
     }
 </script>
