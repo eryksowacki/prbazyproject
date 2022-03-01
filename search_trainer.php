@@ -2,18 +2,18 @@
 <html lang="pl">
 <head>
     <?php
-        require_once '..\Scripts\PHP\page_look_head.php';
+        require_once 'Scripts/PHP/page_look_head.php';
     ?>
     <title>Wyszukiwani trenerzy</title>
 </head>
 <body>
     <?php
-        require_once '..\Scripts\PHP\navbar-content.php';
+        require_once 'Scripts/PHP/navbar-content.php';
     ?>
     <div id="content" class="d-flex justify-content-center">
         <h2>Trenerzy personalni</h2>
         <?php
-            require_once '../Scripts/PHP/connect_user.php';
+            require_once 'Scripts/PHP/connect.php';
 
             if($connect -> connect_errno)
             {

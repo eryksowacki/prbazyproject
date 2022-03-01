@@ -68,7 +68,7 @@
                     <a class="nav-link expandable" id='weightProggress'> Mój progress</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" >Moje BMI</a>
+                    <a class="nav-link" href="myBmi.php">Moje BMI</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">Personalizacja konta</a>
@@ -332,6 +332,3 @@
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/chartApp.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/gsap-myaccount-animations.js" crossorigin="anonymous"></script>
-
-    
-<script></script>

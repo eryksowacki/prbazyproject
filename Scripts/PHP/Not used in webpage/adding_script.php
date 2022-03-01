@@ -1,12 +1,12 @@
 <?php
-       $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
+    require_once '../../connect.php';
+
     if($connect -> connect_errno)
     {
         echo "Błędne połączenie z bazą danych.";
     }
     else
     {   
-        
         // $nameList = array("Patrycja","Olaf","Grzegorz","Michał","Zuzanna","Jakub","Julia","Hubert","Dominik","Krzysztof","Anastazja","Bożena","Żaneta","Jan","Róża","Matylda","Weronika",
         //     'Anita','Denis','Edward','Edmund','Ferdynand','Ryszard','Gaweł','Gracjan','Paweł','Hjacynt','Jacek','January','Dordian','Felicja','Iga',"Wiktoria","Kira");
         // $surnameList = array('Nowak','Woźniak','Kowalczyk','Wójcik','Król','Zając','Wieczorek','Wróbel','Pawlak','Walczak','Janik','Szczepaniak','Kaczmarczyk','Szulc','Przybysz','Filipiak','Jurek',
@@ -99,11 +99,8 @@
         //     }
         //     $trainers = "INSERT INTO `trainers` (`trainer_id`,`specialization`, `email`, `password`, `trainer_review_id`, `name`, `surname`, `gym_id`, `prize_per_hour`)
         //     VALUES ('$i','$spe','$email','$pass','$i','$name','$surname','$gym','$mon');";
-
         //     //  $connect -> query($trainers);
-
         // }
-
 
         // $trainings = ['Full Body Workout','Split','O stałej intensywności','Interwałowy','Core','Crossfit','Pilates','Oporowy','Wytrzymałościowy','Kondycyjny','Obwodowy','Funkcjonalny','Relaksacyjny'];
         // for($i = 0; $i < 550; $i++)
@@ -124,9 +121,6 @@
             
         // }
         
-
-
-       
         // $opinions = ['Bardzo dobry trener, Pozdrawiam' ,'Polacem trenera Olafa, dzięki niemu poprawiłem moje techniki podnoszenia ciężarów',
         // "Minęło kilka miesięcy i dzięki Pani Marzenie widać efekty! <3", 'Profesjonalizm widać w każdym calu!'."Wiedza merytoryczna poparta praktyką sprawia, mistrzostwo!","Trenerka doskonale rozumieme czego potrzebuje, Pozdrawiam",
         // "Tak, gorąco polecam trenerów, którzy znają się na treningu, prowadzą pod kontem żywienia i suplementacji", "Szczerze, z całego serca polecam trenerską załogę. Mnóstwo motywacji, pomysłów i energii otrzymuje za każdym razem, jak jestem na treningu.",
@@ -172,11 +166,6 @@
         //     $repeat = $opinion;
         // } 
         
-
-
-
-
-
         // $cities = ['Warszawa','Kraków','Poznań','Gdańsk','Lublin','Łódź','Wrocław','Toruń','Szczecin','Olsztyn','Katowice','Bydgoszcz'];
         // $gyms = ['McFit','CityFit','Calypso Fitness Club','S4 Fitness Club','Fitness Platinium','Pure Jatomi','Fitness24Seven','Fit for Free'];
         // $id = 0;
@@ -190,10 +179,7 @@
         //         $id++;
         //     }
         // }
-        
-
-
-
+  
         // $gyms = ['McFit','CityFit','Calypso Fitness Club','S4 Fitness Club','Fitness Platinium','Pure Jatomi','Fitness24Seven','Fit for Free'];
         // $gym_review1 = ['Szczerze mówiąc myślę że to jeden z gorszych klubów.','Bardzo duże braki w sprzątaniu','Automat na napoje nie działa. Wrzuciłem monetę napoju nie dostałem, pieniędzy też nie. Tragedia',
         // 'Wróciłem po przerwie i brak kart parkingowych, szafki rozpieprzone, steppery wszystkie zepsute. Żenada','Przyszedlem, postalem na recepcji poklikalem przycisk wezwij trenera i nikt nawet nie przyszedl.','Grzyb na sufitach i pod prysznicami',
@@ -220,9 +206,6 @@
         // 'Dobry duzy klub z parkingiem. Duza powierzchnia ze sprzetem do treningu silowego jak i kardio.😄😄','Ładna, zadbana siłownia, dużo sprzętu, przemiła obsługa 😁.','Naprawdę bardzo duży wybór sprzętu zarówno do kardio jak i ciężarów. Całe miejsce sprytnie i ciekawie podzielone na różne strefy ćwiczeń',
         // 'Popsuło się przez pandemie, lecz ciężary nadal ważą tyle samo a to najważniejsze 😁😁.','obsługa bardzo miła i trenerzy którzy zawsze pomogą.','Super! Mało osób, czysto, dużo dobrego sprzętu - polecam gorąco 😄😄',];
         // // echo count($gym_review1)," ",count($gym_review2)," ",count($gym_review3)," ",count($gym_review4)," ",count($gym_review5);
-        
-        
-        
         
         
         // for($i = 0; $i < 550; $i++)
@@ -257,16 +240,6 @@
         
         /*
         */
-
-
-
-
-
-
-
-
-
-
 
     //    $femaleTrainers =  "SELECT `profile_picture`,`trainer_id` FROM `trainers` WHERE `name` like '%a';";      
     //    $result = $connect -> query($femaleTrainers);
@@ -349,22 +322,5 @@
     //     $update = "UPDATE `gym_reviews` SET `gym_id`=$row[1] WHERE `gym_review_id` = $i";
     //     $result = $connect -> query($update);
     // }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     } 
 ?>
-
- 

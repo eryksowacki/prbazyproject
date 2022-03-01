@@ -3,7 +3,7 @@
 <head>
     <?php
         require_once 'Scripts/PHP/page_look_head.php';
-    ?>
+    ?>  
     <title>Trenerzy</title>
 </head>
 <body>
@@ -16,7 +16,8 @@
                 <h4>Siłownia:</h4>
 			<select name="gymName">
 				<?php
-					require_once 'Scripts/PHP/Not used in webpage/connect_user.php';
+                    $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
+                        
 				    	$gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
 						$result = $connect -> query($gymQuery);
 					    	while($currentRow =  mysqli_fetch_row($result))

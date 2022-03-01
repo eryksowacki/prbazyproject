@@ -35,7 +35,7 @@
                     <p>Relaksuj się i odpoczywaj trenując</p>
                 </div>
             </div>
-            <form action="..\Scripts\PHP\register.inc.php" method="post">
+            <form action="Scripts/PHP/register.inc.php" method="post">
                 <div class="input-positions-fields">
                     <div class="">
 

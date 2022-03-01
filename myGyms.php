@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once '..\Scripts\PHP\connect_user.php';
+    require_once 'Scripts/PHP/connect.php';
 
     if($connect -> connect_errno)
     {

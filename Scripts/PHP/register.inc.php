@@ -39,7 +39,7 @@
                 {
                     $password = sha1($_POST['password']);
 
-                    $connect = $connect = new mysqli('id18439949_znanytrener','localhost;', "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
+                    require_once 'connect.php';
 
                     if($connect -> connect_errno)
                     {
