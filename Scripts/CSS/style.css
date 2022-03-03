@@ -24,40 +24,30 @@
 	background-color: var(--bs-gray-dark);
 	color: var(--bs-white);
 }
-.authors{
+.authors {
 	text-align: right;
-
 }
 .footerText {
 	margin-right: 10px;
 	padding: 10px;
 }
-.contact{
-	height:90px;
+.contact {
+	height: 90px;
 	text-align: right;
-
 }
-.contactButton{
+.contactButton {
 	background-color: #2876f9;
 	background-image: linear-gradient(315deg, #2876f9 0%, #6d17cb 74%);
-	color:whitesmoke;
+	color: whitesmoke;
 	padding: 1rem 3rem 1rem 3rem;
 	border-radius: 10px;
-	font-size:130%;
+	font-size: 130%;
 	transition: 0.3s;
 }
-.contactButton:hover{
+.contactButton:hover {
 	color: black;
 	transition: 0.3s;
 }
-
-
-
-
-
-
-
-
 
 .inputPosition input {
 	text-align: left;
@@ -66,20 +56,29 @@
 
 #navbarSupportedContent > ul > li > *,
 .sessionInfo,
-.jnosdf {
-	color: azure;
+.jnosdfm,
+.navbar-itemos {
+	color: azure !important;
 	font-size: 120%;
 }
+
 #navbarSupportedContent > ul > li > a:hover,
-#nvbrdrpdwn:hover {
+#nvbrdrpdwn:hover,
+.navbar-itemos:hover {
 	color: var(--bs-blue) !important;
 }
-
+.login-wrapper {
+	z-index: 99;
+}
 .navbar-collapse {
 	justify-content: space-between;
 	align-content: stretch;
 }
 
+.dropdown-quicklog {
+	position: absolute !important;
+	transform: translate(-170px, 0px);
+}
 .search > form > input {
 	width: 30rem;
 }
@@ -336,7 +335,6 @@ label {
 }
 .w-100 {
 	filter: brightness(50%) !important;
-	height: 91.8vh;
 }
 .field:nth-child(6) {
 	margin-bottom: 15px;
@@ -715,7 +713,6 @@ p.newWeight {
 .navUserInput:focus + label {
 	opacity: 1;
 	transform: translate(16rem, 2rem) scale(1);
-	background-color: white;
 	cursor: default;
 	width: max-content;
 }
@@ -752,15 +749,11 @@ form.d-flex {
 	margin-bottom: 0px;
 }
 
-
-
-
-
 .wrapper {
 	display: inline-flex;
-  }
-  
-  .wrapper .icon {
+}
+
+.wrapper .icon {
 	position: relative;
 	background-color: #ffffff;
 	border-radius: 50%;
@@ -776,9 +769,9 @@ form.d-flex {
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  
-  .wrapper .tooltip {
+}
+
+.wrapper .tooltip {
 	position: absolute;
 	top: 0;
 	font-size: 14px;
@@ -790,11 +783,11 @@ form.d-flex {
 	opacity: 0;
 	pointer-events: none;
 	transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  
-  .wrapper .tooltip::before {
+}
+
+.wrapper .tooltip::before {
 	position: absolute;
-	content: "";
+	content: '';
 	height: 8px;
 	width: 8px;
 	background-color: #ffffff;
@@ -802,59 +795,77 @@ form.d-flex {
 	left: 50%;
 	transform: translate(-50%) rotate(45deg);
 	transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  .footerImages{
-	  border-radius: 10%;
-	  width: 40px;
-  }
-.github > .tooltip{
-	display: inline;
-    width: max-content;
 }
-  .wrapper .icon:hover .tooltip {
+.footerImages {
+	border-radius: 10%;
+	width: 40px;
+}
+.github > .tooltip {
+	display: inline;
+	width: max-content;
+}
+.wrapper .icon:hover .tooltip {
 	top: -45px;
 	opacity: 1;
 	visibility: visible;
 	pointer-events: auto;
-  }
-  
-  .wrapper .icon:hover span,
-  .wrapper .icon:hover .tooltip {
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
 	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-  }
-  
-  .wrapper .facebook:hover,
-  .wrapper .facebook:hover .tooltip,
-  .wrapper .facebook:hover .tooltip::before {
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
 	background-color: #3b5999;
 	color: #ffffff;
-  }
-  
-  .wrapper .twitter:hover,
-  .wrapper .twitter:hover .tooltip,
-  .wrapper .twitter:hover .tooltip::before {
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
 	background-color: #46c1f6;
 	color: #ffffff;
-  }
-  
-  .wrapper .instagram:hover,
-  .wrapper .instagram:hover .tooltip,
-  .wrapper .instagram:hover .tooltip::before {
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
 	background-color: #e1306c;
 	color: #ffffff;
-  }
-  
-  .wrapper .github:hover,
-  .wrapper .github:hover .tooltip,
-  .wrapper .github:hover .tooltip::before {
+}
+
+.wrapper .github:hover,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip::before {
 	background-color: #333333;
 	color: #ffffff;
-  }
-  
-  .wrapper .youtube:hover,
-  .wrapper .youtube:hover .tooltip,
-  .wrapper .youtube:hover .tooltip::before {
+}
+
+.wrapper .youtube:hover,
+.wrapper .youtube:hover .tooltip,
+.wrapper .youtube:hover .tooltip::before {
 	background-color: #de463b;
 	color: #ffffff;
-  }
-  
+}
+.navbar-nav .navbar-itemos {
+	padding: 0.5rem 1rem !important;
+}
+.quicklog-input {
+	padding: 10px;
+}
+#carouselExampleCaptions {
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+.carousel-inner {
+	border-radius: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.dropdown-menu {
+	z-index: 99;
+}
