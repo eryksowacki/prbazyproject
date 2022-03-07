@@ -868,17 +868,38 @@ form.d-flex {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
-nav.navbar-nav,.dropdown-menu{
+nav.navbar-nav,
+.dropdown-menu {
 	z-index: 9999;
-} 
-.trainingPromotionPanel{
+}
+.trainingPromotionPanel {
 	width: auto;
 	height: auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 }
-.panelControl{
-	width:22%;
-	height:390px;
+.panelControl {
+	width: 22%;
+	height: 450px;
+	cursor: pointer;
+	transform-origin: right;
+}
+.panelControl > img {
+	height: -webkit-fill-available;
+	width: -webkit-fill-available;
+	margin: 0 auto;
+}
+.replace {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+}
+.pictureButton {
+	position: relative;
+	padding: 10px 20px;
+}
+.replace > p {
+	transform: rotateY(90deg);
+	transform-origin: right;
 }

@@ -107,40 +107,50 @@
             </form>
         </div> -->
 		<div class="trainingPromotionPanel">
-			<div class="panelControl piss" >
+			<div class="panelControl piss">
+				<div class="replace">
+					<p>Popraw wytrzymałość, kondycję i zdolność do regeneracji dzięki najwyższej jakości sprzętowi jak bieżnie, orbitreki, steppery czy ergometry.</p>
+				</div>
 				<img src="Images/WEBSITE IMAGES/enterGymWorld.png" class="poop" alt="">
 			</div>
 			<div class="panelControl piss">
+				<div class="replace">
+					<p>Trenuj wszystkie partie mięśniowe korzystając z 30 różnych typów maszyn najlepszej jakości.</p>
+				</div>
 				<img src="Images/WEBSITE IMAGES/mashinka.png" class="poop" alt="">
 			</div>
 			<div class="panelControl piss">
+				<div class="replace">
+					<p>Szlifuj formę z najlepszymi trenerami, poczuj autentyczną motywację i dynamikę w grupie.</p>
+				</div>
 				<img src="Images/WEBSITE IMAGES/groupWorkout.png" class="poop" alt="">
 			</div>
 			<div class="panelControl piss">
 				<div class="replace">
-					<h1>Dupa</h1>
+					<p>Uwolnij energię i popraw siłę dzięki hantlom, sztangom i wielu wariantom ćwiczeń na ławkach.</p>
 				</div>
 				<img src="Images/WEBSITE IMAGES/deadlifting.png" class="poop" alt="">
 			</div>
 		</div>
 		<script>
-			let replace = document.querySelector(".replace");
-			replace.style.display = "none";
+			let replace = document.querySelectorAll(".replace > p");
 			let poop = document.querySelectorAll(".poop");
 			let piss = document.querySelectorAll(".piss");
 			for(let i = 0; i < poop.length; i++){
+				replace[i].style.display = "none";
 				$(piss[i]).on("click", function() 
 				{
-					console.log(piss[i], poop[i]);
 					if(poop[i].style.display != 'none')
 					{
-						gsap.to(poop[i],0.2,{rotationY:90,opacity:0.5,display:"none"});
-						replace.style.display = "block";
-
+						gsap.to(poop[i],0.3,{rotationY:-90,opacity:0.5,display:"none"});
+						gsap.to(replace[i],0.3,{delay:0.3,rotationY:0,opacity:1,display:"block"});
+						gsap.to(piss[i],{delay:0.1,boxShadow:"white 0px 0px 20px 0px, white 0px 0px 0px 0px, rgb(31 73 125 / 80%) 30px -5px 21px -27px, rgb(31 73 125 / 80%) -30px -5px 21px -27px"});
 					}
 					else
 					{
-						gsap.to(poop[i],0.2,{rotationY:0,opacity:1,display:"block"});
+						gsap.to(piss[i],0.1,{boxShadow:"none"});
+						gsap.to(replace[i],0.3,{rotationY:90,opacity:0,display:"none"});
+						gsap.to(poop[i],0.3,{delay:0.3,rotationY:0,opacity:1,display:"block"});
 					}
 				});
 			}
