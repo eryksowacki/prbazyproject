@@ -43,6 +43,7 @@
 	border-radius: 10px;
 	font-size: 130%;
 	transition: 0.3s;
+	margin: 1% 14%;
 }
 .contactButton:hover {
 	color: black;
@@ -325,6 +326,7 @@ label {
 	transition: width 0.25s ease-out;
 }
 .whole-page {
+	margin-top: 10%;
 	padding-bottom: 1000px;
 }
 .nav-item {
@@ -854,7 +856,7 @@ form.d-flex {
 	padding: 0.5rem 1rem !important;
 }
 .quicklog-input {
-	padding: 10px;
+	padding: 5px;
 }
 #carouselExampleCaptions {
 	width: 80%;
@@ -866,6 +868,17 @@ form.d-flex {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
-.dropdown-menu {
-	z-index: 99;
+nav.navbar-nav,.dropdown-menu{
+	z-index: 9999;
+} 
+.trainingPromotionPanel{
+	width: auto;
+	height: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.panelControl{
+	width:22%;
+	height:390px;
 }

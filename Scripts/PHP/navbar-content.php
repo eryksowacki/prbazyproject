@@ -68,7 +68,7 @@ REGISTER;
                                         <form action="Scripts\PHP\login.inc.php" method="post">    
                                             <li>
                                                 <div class="field">
-                                                <input type="email" name="email" id="email" class="navUserInput quicklog-input" placeholder=" " autocompleate='off'>
+                                                <input type="email" name="email" id="email" class="navUserInput quicklog-input" placeholder=" " autocomplete="off">
                                                 <label for="email" class="floating-label-ql">Email</label>
                                                 </div>
                                             </li>
@@ -93,7 +93,6 @@ NAVLOGIN;
                 if(isset($_SESSION['user_id']))
                 {
                     echo "</ul>";
-                    
                     echo <<< SESSION
                         <li class="nav-item sessionInfo">
                             <a class="nav-link linkSession" href="mojekonto.php?accountPer">Witaj $_SESSION[name]</a>
@@ -105,13 +104,12 @@ SESSION;
                             <script>
                                 tl = new gsap.timeline();
                                 let navItems = document.querySelectorAll(".nav-item");
-                            
-                                tl.from("nav.navbar-expand-lg.navbar-nav",1,{y:-30,opacity:0})
-                                .fromTo(navItems[0],1,{y:-30,opacity:0},{y:0,opacity:1})
-                                .fromTo(navItems[1],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-                                .fromTo(navItems[2],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-                                .fromTo(navItems[3],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-                                .fromTo(navItems[4],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1") 
+                                tl.from("nav.navbar-expand-lg.navbar-nav",0.75,{y:-30,opacity:0})
+                                .fromTo(navItems[0],0.5,{y:-30,opacity:0},{y:0,opacity:1})
+                                .fromTo(navItems[1],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5")
+                                .fromTo(navItems[2],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5")
+                                .fromTo(navItems[3],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5")
+                                .fromTo(navItems[4],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5");
                             </script>
 SCRIPT;
                     }
@@ -125,16 +123,15 @@ SCRIPT;
                     echo <<< SCRIPT
                         <script>
                             tl = new gsap.timeline();
-                            let navItems = document.querySelectorAll(".nav-item");
-
-                            tl.from("nav.navbar-expand-lg.navbar-nav",1,{y:-30,opacity:0})
-                            .fromTo(navItems[0],1,{y:-30,opacity:0},{y:0,opacity:1})
-                            .fromTo(navItems[1],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-                            .fromTo(navItems[navItems.length - 1],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")    
-
-                            .fromTo(navItems[2],1,{y:-30,opacity:0},{y:0,opacity:1})
-                            .fromTo(navItems[3],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-                            .fromTo(navItems[navItems.length - 2],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1") 
+                            const navItems = document.querySelectorAll(".nav-item");
+                            tl.from("nav.navbar-expand-lg.navbar-nav",0.75,{y:-30,opacity:0})
+                            .fromTo(navItems[0],0.5,{y:-30,opacity:0},{y:0,opacity:1})
+                            .fromTo(navItems[1],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5")
+                            .fromTo(navItems[navItems.length - 1],1,{y:-30,opacity:0},{y:0,opacity:1,zIndex:999},"-=0.5")
+                            
+                            .fromTo(navItems[2],0.5,{y:-30,opacity:0},{y:0,opacity:1})
+                            .fromTo(navItems[3],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5")
+                            .fromTo(navItems[navItems.length - 2],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5");
                         </script>
 SCRIPT;
                 }
@@ -142,14 +139,6 @@ SCRIPT;
         </div>
     </div>
 </nav>
-<!-- <script>
-    tl = new gsap.timeline();
-    let navItems = document.querySelectorAll(".nav-item");
-
-    tl.from("nav.navbar-expand-lg.navbar-nav",1,{y:-30,opacity:0})
-    .fromTo(navItems[0],1,{y:-30,opacity:0},{y:0,opacity:1})
-    .fromTo(navItems[1],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-    .fromTo(navItems[2],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-    .fromTo(navItems[3],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1")
-    .fromTo(navItems[4],1,{y:-30,opacity:0},{y:0,opacity:1},"-=1") 
-</script> -->
+<script>
+    
+</script>
