@@ -13,7 +13,6 @@
 	<?php
 		require_once 'Scripts\PHP\navbar-content.php';
 	?>	
-		
 	<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -109,57 +108,78 @@
 		<div class="trainingPromotionPanel">
 			<div class="panelControl piss">
 				<div class="replace">
+					<h3>Przyjazna kadra trenerska</h3>
 					<p>Popraw wytrzymałość, kondycję i zdolność do regeneracji dzięki najwyższej jakości sprzętowi jak bieżnie, orbitreki, steppery czy ergometry.</p>
 				</div>
-				<img src="Images/WEBSITE IMAGES/enterGymWorld.png" class="poop" alt="">
+				<button class="panelButton">Przyjazna kadra trenerska</button>
+				<img src="Images/WEBSITE IMAGES/enterGymWorld.png" class="panelImage" alt="">
 			</div>
 			<div class="panelControl piss">
 				<div class="replace">
-					<p>Trenuj wszystkie partie mięśniowe korzystając z 30 różnych typów maszyn najlepszej jakości.</p>
+					<h3>Maszyny</h3>
+					<p>Trenuj wszystkie partie mięśniowe korzystając z różnych typów maszyn najlepszej jakości.</p>
 				</div>
-				<img src="Images/WEBSITE IMAGES/mashinka.png" class="poop" alt="">
+				<button class="panelButton">Maszyny</button>
+				<img src="Images/WEBSITE IMAGES/mashinka.png" class="panelImage" alt="">
 			</div>
 			<div class="panelControl piss">
 				<div class="replace">
+					<h3>Zajęcia fitness w grupie</h3>
 					<p>Szlifuj formę z najlepszymi trenerami, poczuj autentyczną motywację i dynamikę w grupie.</p>
 				</div>
-				<img src="Images/WEBSITE IMAGES/groupWorkout.png" class="poop" alt="">
+				<button class="panelButton">Zajęcia fitness w grupie</button>
+				<img src="Images/WEBSITE IMAGES/groupWorkout.png" class="panelImage" alt="">
 			</div>
 			<div class="panelControl piss">
 				<div class="replace">
+					<h3>Wolne ciężary</h3>
 					<p>Uwolnij energię i popraw siłę dzięki hantlom, sztangom i wielu wariantom ćwiczeń na ławkach.</p>
 				</div>
-				<img src="Images/WEBSITE IMAGES/deadlifting.png" class="poop" alt="">
+				<button class="panelButton">Wolne ciężary</button>
+				<img src="Images/WEBSITE IMAGES/deadlifting.png" class="panelImage" alt="">
 			</div>
 		</div>
-		<script>
-			let replace = document.querySelectorAll(".replace > p");
-			let poop = document.querySelectorAll(".poop");
-			let piss = document.querySelectorAll(".piss");
-			for(let i = 0; i < poop.length; i++){
-				replace[i].style.display = "none";
-				$(piss[i]).on("click", function() 
+		<div class="trainersPresentation">
+			<?php
+				$connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
+				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),2) as `average_mark`, count(`review_id`) as `numberof_review`
+				FROM `trainer_reviews`
+				JOIN `trainers`
+				ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
+				JOIN `gyms`
+				ON `trainers`.`gym_id` = `gyms`.`gym_id`
+				GROUP BY `trainers`.`trainer_id`
+				ORDER BY `average_mark` DESC, `numberof_review` DESC LIMIT 6";
+				$result = $connect -> query($query);
+				while($currRow = $result -> fetch_assoc())
 				{
-					if(poop[i].style.display != 'none')
-					{
-						gsap.to(poop[i],0.3,{rotationY:-90,opacity:0.5,display:"none"});
-						gsap.to(replace[i],0.3,{delay:0.3,rotationY:0,opacity:1,display:"block"});
-						gsap.to(piss[i],{delay:0.1,boxShadow:"white 0px 0px 20px 0px, white 0px 0px 0px 0px, rgb(31 73 125 / 80%) 30px -5px 21px -27px, rgb(31 73 125 / 80%) -30px -5px 21px -27px"});
-					}
-					else
-					{
-						gsap.to(piss[i],0.1,{boxShadow:"none"});
-						gsap.to(replace[i],0.3,{rotationY:90,opacity:0,display:"none"});
-						gsap.to(poop[i],0.3,{delay:0.3,rotationY:0,opacity:1,display:"block"});
-					}
-				});
-			}
-		</script>
+					echo <<< TRAINERS
+						<div class="trainerBlock">
+							<div>
+								<img src='Images/TRAINERS IMAGES/$currRow[profile_picture]' class='trainerPfP' title='Zdjęcie profilowe trenera: $currRow[name]' alt='Zdjęcie profilowe trenera: $currRow[name]'>
+							</div>
+							<div>
+								<p>Imię: $currRow[name]</p>
+							</div>
+							<div>
+								<p>Nazwisko: $currRow[surname]</p>
+							</div>
+							<div>
+								<p>Specjalizacja: $currRow[specialization]</p>
+							</div>
+						</div>
+TRAINERS;
+				}
+			?>
+		</div>
     </div> 
+
     <?php
         require_once 'Scripts/PHP/page_look_footer.php';
     ?>
 </body>
 </html>
 <script src="Scripts/JS/progressionBarApp.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/gsap-panels-animations.js" crossorigin="anonymous"></script>
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/footer-icon-change.js" crossorigin="anonymous"></script>

@@ -2,8 +2,6 @@ const search = document.querySelector('.search');
 // document.querySelector("btn-outline-success")
 search.style.opacity = 0;
 $("#search-button").prop('disabled', true);
-
-
 $("#nvbrdrpdwn").on('click' ,function()
 {
     if(search.style.opacity !=  0)
@@ -19,9 +17,6 @@ $("#nvbrdrpdwn").on('click' ,function()
         gsap.to(search, 1, {autoAlpha:1,opacity:1});
     }
 });
-
-
-
 
 const drop = document.querySelector(".dropdown-menu");
 
