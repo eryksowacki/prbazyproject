@@ -1,6 +1,7 @@
 const progressBar = document.querySelector("#progress-bar");
 const section = document.querySelector("#page");
 let tmp = 0;
+let tmp2 = 0;
 const animateProgressBar = () => {
     let scrollDistance = -section.getBoundingClientRect().top;
     let progressWidth = 
@@ -14,9 +15,14 @@ const animateProgressBar = () => {
     }
     if(tmp == 0 && value >= -70)
     {
-        console.log("dupa");
         gsap.fromTo(".trainingPromotionPanel",2,{y:80,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});
         tmp++;
+    }
+    if(tmp2 == 0 &&value >= 20) 
+    {
+        gsap.fromTo(".trainersPresentation > h1",2,{y:80,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"block"});
+        gsap.fromTo(".trainerBlock",2,{delay:0.2,y:80,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"block"});
+        tmp2++;
     }
 }
 window.addEventListener("scroll", animateProgressBar);

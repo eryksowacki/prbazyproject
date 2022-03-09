@@ -140,9 +140,11 @@
 			</div>
 		</div>
 		<div class="trainersPresentation">
+			<h1>Wasi najbardziej cenieni trenerzy</h1>
+			<div class="izsdfghosazd">
 			<?php
 				$connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),2) as `average_mark`, count(`review_id`) as `numberof_review`
+				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),2) as `average_mark`, count(`review_id`) as `numberof_review`, `trainer_descript`
 				FROM `trainer_reviews`
 				JOIN `trainers`
 				ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
@@ -159,18 +161,22 @@
 								<img src='Images/TRAINERS IMAGES/$currRow[profile_picture]' class='trainerPfP' title='Zdjęcie profilowe trenera: $currRow[name]' alt='Zdjęcie profilowe trenera: $currRow[name]'>
 							</div>
 							<div>
-								<p>Imię: $currRow[name]</p>
+								<span>Średnia ocena użytkowników: <p>$currRow[average_mark]</p></span>
 							</div>
 							<div>
-								<p>Nazwisko: $currRow[surname]</p>
+								<span>$currRow[name] $currRow[surname]</span>
 							</div>
 							<div>
 								<p>Specjalizacja: $currRow[specialization]</p>
+							</div>
+							<div>
+								<p>$currRow[trainer_descript]</p>
 							</div>
 						</div>
 TRAINERS;
 				}
 			?>
+			</div>
 		</div>
     </div> 
 
