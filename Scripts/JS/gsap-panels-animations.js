@@ -12,11 +12,10 @@ for(let i = 0; i < panelImage.length; i++){
         if(panelImage[i].style.display != 'none')
         {
             gsap.to(imgButton[i],0.1,{autoAlpha:0,display:"none"});
-            gsap.to(panelImage[i],0.3,{delay:0.1,rotationX:-90,opacity:0.5,display:"none"});
+            gsap.to(panelImage[i],0.3,{delay:0.1,opacity:0.5,display:"none"});
             gsap.to(piss[i],0.2,{delay:0.4,boxShadow:"white 0px 0px 20px 0px, white 0px 0px 0px 0px, rgb(31 73 125 / 80%) 30px -5px 21px -27px, rgb(31 73 125 / 80%) -30px -5px 21px -27px"},"-=0.2");
-            gsap.to(replaceParagraph[i],0.2,{delay:0.4,rotationX:0,opacity:1,display:"block"});
-            gsap.to(replaceHeader[i],0.2,{delay:0.4,rotationX:0,opacity:1,display:"block"});
-
+            gsap.to(replaceParagraph[i],0.2,{delay:0.4,opacity:1,display:"block"});
+            gsap.to(replaceHeader[i],0.2,{delay:0.4,opacity:1,display:"block"});
             prev = imgButton[i].textContent;
             gsap.to(imgButton[i],0.1,{delay:0.6,zIndex:20,autoAlpha:1,display:"block"});
             setTimeout(() => {
@@ -30,9 +29,9 @@ for(let i = 0; i < panelImage.length; i++){
         {
             gsap.to(imgButton[i],0.1,{autoAlpha:0,display:"none"});
             gsap.to(piss[i],0.1,{boxShadow:"none"});
-            gsap.to(replaceParagraph[i],0.3,{rotationX:90,opacity:0,display:"none"});
-            gsap.to(replaceHeader[i],0.3,{rotationX:90,opacity:0,display:"none"});
-            gsap.to(panelImage[i],0.3,{delay:0.4,rotationX:0,opacity:1,display:"block"});
+            gsap.to(replaceParagraph[i],0.3,{opacity:0,display:"none"});
+            gsap.to(replaceHeader[i],0.3,{opacity:0,display:"none"});
+            gsap.to(panelImage[i],0.3,{delay:0.4,opacity:1,display:"block"});
             gsap.to(imgButton[i],0.1,{delay:0.6,zIndex:20,autoAlpha:1,display:"block"});
             setTimeout(() => {
                 $(imgButton[i]).unbind("click");

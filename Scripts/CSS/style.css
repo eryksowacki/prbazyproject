@@ -677,7 +677,7 @@ p.newWeight {
 	padding: 0px;
 	margin-left: 0.8rem;
 	padding-top: 8px;
-	padding-bottom: 7px;
+	margin-bottom: 7px;
 	outline: none;
 }
 .logInInputs {
@@ -716,7 +716,8 @@ p.newWeight {
 .navUserInput:not(:placeholder-shown) + label,
 .navUserInput:focus + label {
 	opacity: 1;
-	transform: translate(16rem, 2rem) scale(1);
+	transform: translate(1rem, 1rem) scale(1);
+	background: white;
 	cursor: default;
 	width: max-content;
 }
@@ -962,4 +963,71 @@ div > span > p {
 	text-align: center;
 	margin-bottom: 3rem;
 	opacity: 0;
+}
+.frequentQuestions {
+	display: flex;
+	flex-direction: column;
+}
+.question {
+	width: 34%;
+	padding: 1rem;
+	display: flex;
+	align-items: flex-start;
+	margin: 0 auto;
+}
+.question > h3 {
+	transition: 1s;
+	margin-right: 3rem;
+	padding: 0rem 1rem;
+	color: grey;
+	cursor: default;
+	border-right: 3px solid grey;
+}
+.question > h3:hover {
+	transition: 1s;
+	color: black;
+}
+hr {
+	width: 34%;
+	margin: 0 auto !important;
+}
+.answer {
+	margin-top: 1rem;
+}
+.loginPanel {
+	display: grid;
+	grid-auto-rows: 1fr;
+	grid-template-columns: 500px auto 315px;
+	grid-template-rows: auto;
+	gap: 0em 0em;
+	grid-template-areas: '. . .';
+	margin-top: 5%;
+	align-content: center;
+	justify-items: center;
+}
+.centerLogin {
+	height: 455px;
+	width: 900px;
+}
+.centerLogin > div > form > .input-containers {
+	margin-top: 20%;
+}
+.fitImg {
+	width: 60%;
+}
+.loginFormSt {
+	display: grid;
+	grid-auto-rows: 1fr;
+	grid-template-columns: auto;
+	grid-template-rows: repeat(2, auto);
+	gap: 0em 0em;
+	grid-template-areas:
+		'.'
+		'.';
+	justify-content: center;
+	justify-items: start;
+}
+.buttorson {
+	margin-top: 1rem;
+	margin-left: 3rem;
 }

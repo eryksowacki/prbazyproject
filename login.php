@@ -14,12 +14,34 @@
     <?php
         require_once 'Scripts/PHP/navbar-content.php';
     ?>
-    <form action="Scripts/PHP/login.inc.php" method="post">    
-        <input type="email" name="email" value="oskar.wichtowski3@gmail.com">
-        <input type="password" name="password" value="ppp">
-        <input type="text" name="token" value="<?php echo $_SESSION["token"];?>" hidden>
-        <input type="submit" value="Prześlij">
-    </form>  
+    <div class="loginPanel">
+        <div class="leftLogin">
+
+        </div>
+        <div class="centerLogin input-positions-fields">
+            <div style="text-align: center;">
+                <img src="Images/WEBSITE IMAGES/fitness-vertical-banner.jpg" class="fitImg" alt="">
+            </div>
+            <div>
+                <form action="Scripts/PHP/login.inc.php" class="loginFormSt" method="post">    
+                    <div class="input-containers">
+                        <div class="field">
+                            <input type="email" id="email" name="email" value="oskar.wichtowski3@gmail.com" class="a inputLogin" placeholder=" " autocomplete="off">
+                            <label for="email" class="floating-label">Email</label>
+                        </div>
+                        <div class="field">
+                            <input type="password" id="password" name="password" value="ppp" class="a inputLogin" placeholder=" " autocomplete="off">
+                            <label for="password" class="floating-label">Hasło</label>
+                            <input type="text" name="token" value="<?php echo $_SESSION["token"];?>" hidden>
+                        </div>
+                    </div>
+                    <input type="submit" class="button-19 buttorson" value="Prześlij">
+                </form>  
+            </div>
+        </div>
+        <div class="rightLogin">
+        </div>
+    </div>
     <?php
         require_once 'Scripts/PHP/page_look_footer.php';
     ?>    

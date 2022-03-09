@@ -34,9 +34,11 @@ function changeChartSwitch(switcher)
 
 const chartBtn = document.querySelector("#weightProggress");
 const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
+const myGymReviews = document.querySelector('#myGymReviews');
 
 // TRAINER REVIEWS
 $('#myTrainerReviews').on("click", function() {
+    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
     if(reviewsBlock.style.display != 'none')
@@ -52,9 +54,27 @@ $('#myTrainerReviews').on("click", function() {
     }
 });
 
+$(myGymReviews).on("click", function() {
+    gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
+    gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
+    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
+    if(gymReviewsBlock.style.display != 'none')
+    {
+        gsap.to(gymReviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
+    }
+    else
+    {
+        setTimeout(() => {
+            wholeChart.style.display = 'none';
+            gsap.fromTo(gymReviewsBlock,0.65,{y:-20},{y:0,autoAlpha:1,display:"block"}); 
+        },700);
+    }
+});
+
 
 // CHART
 $(chartBtn).on("click", function() {
+    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     if(wholeChart.style.display != 'none')
@@ -84,14 +104,15 @@ $(chartBtn).on("click", function() {
 
 // TRAINING SCHEDULE
 $(myTrainingSchedule).on('click', function (){
+    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
+    gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
+    gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
     if(mySchedual.style.display != 'none') 
     {
         gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});
     }
     else
     {
-        gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
-        gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
         setTimeout(() => {
             wholeChart.style.display = 'none';
             gsap.to(mySchedual,0.65,{y:20,autoAlpha:1,display:"block"});

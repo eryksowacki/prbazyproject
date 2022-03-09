@@ -49,10 +49,10 @@
                     <h2 class="nav-link">Menu</h2>
                 </li>
                 <li class="nav-item nav-item-list">
-                    <a class="nav-link my-gyms" href="#myGyms">Moje siłownie<b class="float-end">&raquo;</b> </a>
+                    <a class="nav-link my-gyms">Moje siłownie<b class="float-end">&raquo;</b> </a>
                     <ul class="submenu dropdown-menu submenu-dropdown-frst">
-                        <li><a class="nav-link link-text" href="#myGyms">Siłownie</a></li>
-                        <li><a class="nav-link link-text" href="#">Recenzje siłowni</a></li>
+                        <li><a class="nav-link link-text" id="myGyms">Siłownie</a></li>
+                        <li><a class="nav-link link-text" id="myGymReviews">Recenzje siłowni</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-list">
@@ -175,7 +175,7 @@
                             WHERE `trainer_reviews`.`user_id` = $_SESSION[user_id]
                             GROUP BY `trainers`.`trainer_id` ";
                         $result = $connect -> query($myTrainerReveiws);
-                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addReview.inc.php method=post>";
+                        echo "<div style='width: fit-content;margin: 0 auto;'><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addReview.inc.php method=post>";
                         echo "<select class=trainerSelect name=trainer_id>";
                         while($option =  $result -> fetch_assoc())
                         {
@@ -230,6 +230,78 @@
                     ?>
                 </div>
             </div>
+
+            <div class="gymReviewsBlock">
+                <div>
+                    <?php
+                        $myGymsRev = 
+                            "SELECT `user_id`, `trainer_id`, `training_date`, `training_descript`, `gyms`.`gym_id` as `asg`, `training_id`,`gym_name`
+                            FROM `usr_train` 
+                            JOIN `gyms`
+                            ON `usr_train`.`gym_id` = `gyms`.`gym_id`
+                            WHERE `usr_train`.`user_id` = $_SESSION[user_id]
+                            GROUP BY `gyms`.`gym_id`";
+                        $result = $connect -> query($myGymsRev);
+                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
+                        echo "<select class=trainerSelect name=trainer_id>";
+                        while($option =  $result -> fetch_assoc())
+                        {
+                            echo "<option value=$option[asg]>$option[gym_name]</option>";
+                        }
+                        echo "</select>";
+                        echo '<select name="mark" class="trainerSelect trainerMark">';
+                        for ($i=1; $i < 6; $i++) 
+                        { 
+                            echo "<option value=$i >$i</option>";
+                        }
+                        echo "</select><input type=submit id=reviewSubmit class=button-19 value='Prześlij nową recenzję'>
+                        <br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
+                        $myGymsRev = 
+                            "SELECT  `gym_mark`, `gym_review_descript`, `gym_reviews`.`user_id` as `user_id`, `gym_review_id` ,`gym_name`,`city`
+                            FROM `gym_reviews` 
+                            JOIN `users`
+                            ON `gym_reviews`.`user_id` = `users`.`user_id`
+                            JOIN `gyms`
+                            ON `gym_reviews`.`gym_id` = `gyms`.`gym_id`
+                            WHERE `users`.`user_id` = $_SESSION[user_id]";
+                        $result = $connect -> query($myGymsRev);
+                        while($currentRow = $result -> fetch_assoc())
+                        {
+                            echo <<< USERREVIEW
+                                <div class='trainer-show'>
+                                    <p>Ocena: <b class='hoverOnInfo'>$currentRow[gym_mark]</b></p>
+                                    <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
+                                    <p><a href="Scripts\PHP\delete_gym_review.inc.php?review_id=$currentRow[gym_review_id]">Usuń recenzję</a></p>
+                                </div>
+                            USERREVIEW;
+                        }
+                        if(isset($_GET['gym_reviews']) && count($_GET) === 1)
+                        {
+                            echo<<< REVIEWS
+                                <script>
+                                    const gymReviewsBlock = document.querySelector('.gymReviewsBlock');
+                                    gsap.fromTo(gymReviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"},{y:10,autoAlpha:1,display:"flex"});  
+                                </script> 
+                            REVIEWS;
+                        }
+                        else
+                        {
+                            echo<<< REVIEWS
+                                <script>
+                                    const gymReviewsBlock = document.querySelector('.gymReviewsBlock');
+                                    gymReviewsBlock.style.display = 'none';
+                                </script> 
+                            REVIEWS;
+                        }
+                    ?>
+                </div>
+            </div>
+                <script>
+                    
+
+                </script>
+                
+
             <div class="mySchedual">
                 <h4>Mój rozkład treningów</h4>
                 <?php
@@ -252,7 +324,7 @@
                     CALENDAR;
                 }
                 ?>
-                    
+                
                 <div class="gridInGrid">
                     <?php
                         date_default_timezone_set("Europe/Warsaw");

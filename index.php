@@ -57,54 +57,6 @@
 	</script>
 	
     <div id="page" class="whole-page">
-		<!-- <img src="Images/WEBSITE IMAGES/deadlifting.png" alt=""> -->
-        <!-- <div id="login">
-            <form action="Scripts/PHP/login.inc.php" method="post">
-                Login: <input type="text" name="login">
-                Hasło: <input type="password" name="password">
-                <input type="submit" name="submitSub" value="Zaloguj się">   
-            </form>
-            <a href="signup.php">Nie masz konta? Zarejestruj się!</a>
-        </div>
-        <div id="content" class="d-flex justify-content-center"> -->
-            <!-- <h2>Szukaj trenera personalnego</h2>
-            <form action="index.php" method="post" class="d-flex">
-                <h4>Miasto:</h4>
-				<select name="gymName">
-					<?php
-						// $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-						// $gymQuery = "SELECT DISTINCT `gym_name` FROM `gyms` ORDER BY `gym_id` ASC";
-						// $result = $connect -> query($gymQuery);
-						// while($currentRow =  mysqli_fetch_row($result))
-						// {
-						// 	echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
-						// }
-					?>
-				</select>
-				<select name="city">
-					<?php
-						// $cityQuery = "SELECT DISTINCT `city` FROM `gyms` ORDER BY `gym_id` ASC";
-						// $result = $connect -> query($cityQuery);
-						// while($currentRow =  mysqli_fetch_row($result))
-						// {
-						// 	echo "<option value='$currentRow[0]'>$currentRow[0]</option>";
-						// }
-					?>
-				</select>
-                <h4>Płeć trenera:</h4>
-                <select name="trainerSex">
-                    <option value="female">Kobieta</option>
-                    <option value="male">Mężczyzna</option>
-                </select>
-                <h4>Ocena:</h4>
-                <input type="text" placeholder="od:" name="minTrainerMark">
-                <input type="text" placeholder="do:" name="maxTrainerMark">
-                <h4>Cena:</h4>
-                <input type="text" placeholder="od" name="minPrize"> 
-                <input type="text" placeholder="do:" name="maxPrize">
-                <input type="submit" value="Szukaj">
-            </form>
-        </div> -->
 		<div class="trainingPromotionPanel">
 			<div class="panelControl piss">
 				<div class="replace">
@@ -140,7 +92,7 @@
 			</div>
 		</div>
 		<div class="trainersPresentation">
-			<h1>Wasi najbardziej cenieni trenerzy</h1>
+			<h1>Trenerzy najbardziej cenieni przez was</h1>
 			<div class="izsdfghosazd">
 			<?php
 				$connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
@@ -151,7 +103,7 @@
 				JOIN `gyms`
 				ON `trainers`.`gym_id` = `gyms`.`gym_id`
 				GROUP BY `trainers`.`trainer_id`
-				ORDER BY `average_mark` DESC, `numberof_review` DESC LIMIT 6";
+				ORDER BY  `numberof_review` DESC, `average_mark` DESC LIMIT 6";
 				$result = $connect -> query($query);
 				while($currRow = $result -> fetch_assoc())
 				{
