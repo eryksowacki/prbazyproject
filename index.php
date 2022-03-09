@@ -124,19 +124,19 @@
 			</div>
 			<div class="panelControl piss">
 				<div class="replace">
-					<h3>Zajęcia fitness w grupie</h3>
-					<p>Szlifuj formę z najlepszymi trenerami, poczuj autentyczną motywację i dynamikę w grupie.</p>
-				</div>
-				<button class="panelButton">Zajęcia fitness w grupie</button>
-				<img src="Images/WEBSITE IMAGES/groupWorkout.png" class="panelImage" alt="">
-			</div>
-			<div class="panelControl piss">
-				<div class="replace">
 					<h3>Wolne ciężary</h3>
 					<p>Uwolnij energię i popraw siłę dzięki hantlom, sztangom i wielu wariantom ćwiczeń na ławkach.</p>
 				</div>
 				<button class="panelButton">Wolne ciężary</button>
 				<img src="Images/WEBSITE IMAGES/deadlifting.png" class="panelImage" alt="">
+			</div>
+			<div class="panelControl piss">
+				<div class="replace">
+					<h3>Zajęcia fitness w grupie</h3>
+					<p>Szlifuj formę z najlepszymi trenerami, poczuj autentyczną motywację i dynamikę w grupie.</p>
+				</div>
+				<button class="panelButton">Zajęcia fitness w grupie</button>
+				<img src="Images/WEBSITE IMAGES/groupWorkout.png" class="panelImage" alt="">
 			</div>
 		</div>
 		<div class="trainersPresentation">
@@ -151,7 +151,7 @@
 				JOIN `gyms`
 				ON `trainers`.`gym_id` = `gyms`.`gym_id`
 				GROUP BY `trainers`.`trainer_id`
-				ORDER BY `average_mark` DESC, `numberof_review` DESC LIMIT 6";
+				ORDER BY `numberof_review` DESC,`average_mark` DESC LIMIT 6";
 				$result = $connect -> query($query);
 				while($currRow = $result -> fetch_assoc())
 				{
