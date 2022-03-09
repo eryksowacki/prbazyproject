@@ -487,6 +487,7 @@ a {
 	text-decoration: none;
 	color: black;
 	transition: 0.45s;
+	width: max-content;
 }
 .trainer-show > p:last-child {
 	margin-left: auto;
@@ -886,8 +887,11 @@ nav.navbar-nav,
 	width: 22%;
 	height: 450px;
 	cursor: pointer;
+	display: flex;
+	align-items: flex-end;
+    justify-content: space-around;
 }
-.panelControl > img {
+.panelImage{
 	height: -webkit-fill-available;
 	width: -webkit-fill-available;
 	margin: 0 auto;
@@ -903,7 +907,7 @@ nav.navbar-nav,
 	position: absolute;
 	width: 255px;
 	padding: 0.5rem 0.1rem;
-	transform: translateX(30%) translatey(330px);
+	margin-bottom: 2rem;
 	outline: none;
 	border-radius: 1rem;
 	border: none;
@@ -940,6 +944,7 @@ nav.navbar-nav,
 	opacity: 0;
 }
 .trainerPfP {
+	width: -webkit-fill-available;
 	width: -webkit-fill-available;
 	border-radius: 1rem;
 	margin: 1rem;
