@@ -94,7 +94,7 @@ NAVLOGIN;
                         <li class="nav-item sessionInfo">
                             <a class="nav-link linkSession" href="mojekonto.php?accountPer">Witaj $_SESSION[name]</a>
 SESSION;
-                    if($_SESSION['profile_picture'] != NULL)
+                    if($_SESSION['profile_picture'] != NULL && (strpos($_SESSION['profile_picture'],".jpg") || strpos($_SESSION['profile_picture'],".png") || strpos($_SESSION['profile_picture'],".gif")))
                     {
                         echo "<img class='userPfp' src='Images\USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
                         echo <<< SCRIPT

@@ -71,7 +71,7 @@
                     <a class="nav-link" >Moje BMI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Personalizacja konta</a>
+                    <a class="nav-link" id="accountPersonali">Personalizacja konta</a>
                 </li>
             </ul>
         </nav>
@@ -214,7 +214,7 @@
                             echo<<< REVIEWS
                                 <script>
                                     const reviewsBlock = document.querySelector('.review-block');
-                                    gsap.fromTo(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"},{y:10,autoAlpha:1,display:"flex"});  
+                                    gsap.fromTo(reviewsBlock,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
                                 </script> 
                             REVIEWS;
                         }
@@ -242,7 +242,7 @@
                             WHERE `usr_train`.`user_id` = $_SESSION[user_id]
                             GROUP BY `gyms`.`gym_id`";
                         $result = $connect -> query($myGymsRev);
-                        echo "<div><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
+                        echo "<div><h4>Dodaj recenzję swojej siłowni</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
                         echo "<select class=trainerSelect name=trainer_id>";
                         while($option =  $result -> fetch_assoc())
                         {
@@ -280,7 +280,7 @@
                             echo<<< REVIEWS
                                 <script>
                                     const gymReviewsBlock = document.querySelector('.gymReviewsBlock');
-                                    gsap.fromTo(gymReviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"},{y:10,autoAlpha:1,display:"flex"});  
+                                    gsap.fromTo(gymReviewsBlock,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
                                 </script> 
                             REVIEWS;
                         }
@@ -295,13 +295,63 @@
                         }
                     ?>
                 </div>
-            </div>
-                <script>
-                    
+            </div>                
+            <div class="personalInfo">
+                <?php
+                    $query = "SELECT `user_id`, `profile_picture`, `email`, `password`, `name`, `surname`, `age`, `bmi_id` 
+                    FROM `users` 
+                    WHERE `user_id` = $_SESSION[user_id]";
+                    $result =  mysqli_query($connect,$query);
+                    $tab = [];
+                    $row = mysqli_fetch_row($result);
+                ?>
+                <div>
+                    <img src="Images/USER IMAGES/<?php echo $row[1];?>">
+                    <form action="Scripts/PHP/changePFP.inc.php" method="post">
+                        <input type="file" name="file" id="">
+                        <input type="submit" >
+                    </form>
+                </div>
+                <div>
+                    <form action="Scripts/PHP/changeEmail.inc.php" method="post">
+                        <input type="email" name="" id="" placeholder="<?php echo $row[2];?>">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div>
+                    <form action="Scripts/PHP/change.inc.php">
+                        <input type="text" name="" id="">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div>
 
-                </script>
+                </div>
                 
-
+                
+                
+            </div>
+            <?php
+                if(isset($_GET['personalInfo']) && count($_GET) === 1)
+                {
+                    echo<<< REVIEWS
+                        <script>
+                            const personalInfo = document.querySelector('.personalInfo');
+                            gsap.fromTo(personalInfo,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
+                        </script> 
+                    REVIEWS;
+                }
+                else
+                {
+                    echo<<< REVIEWS
+                        <script>
+                            const personalInfo = document.querySelector('.personalInfo');
+                            personalInfo.style.display = 'none';
+                        </script> 
+                    REVIEWS;
+                }
+            ?>
+            
             <div class="mySchedual">
                 <h4>Mój rozkład treningów</h4>
                 <?php
@@ -381,7 +431,6 @@
                                 $assoc = [];
                             }
                             echo "</div>";
-                            // echo date("Y-m-d",strtotime($f)) == $currDay;
                             if(date("Y-m-d",strtotime($f)) == $currDay)
                             {
                                 $aposgh = date('d',strtotime($currDay));

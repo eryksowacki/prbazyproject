@@ -41,6 +41,8 @@ $('#myTrainerReviews').on("click", function() {
     gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
+    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
+
     if(reviewsBlock.style.display != 'none')
     {
         gsap.to(reviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
@@ -58,6 +60,8 @@ $(myGymReviews).on("click", function() {
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
     gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
+    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
+
     if(gymReviewsBlock.style.display != 'none')
     {
         gsap.to(gymReviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
@@ -77,6 +81,8 @@ $(chartBtn).on("click", function() {
     gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
+    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
+
     if(wholeChart.style.display != 'none')
     {
         gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // if displaying click again to peacefully turn off
@@ -101,12 +107,31 @@ $(chartBtn).on("click", function() {
     }
 });
 
+$("#accountPersonali").on('click', function (){
+    gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
+    gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
+    gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
+    gsap.to(gymReviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
 
+    if(personalInfo.style.display != 'none') 
+    {
+        gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
+    }
+    else
+    {
+        setTimeout(() => {
+            wholeChart.style.display = 'none';
+            gsap.to(personalInfo,0.65,{y:20,autoAlpha:1,display:"block"});
+        }, 700);
+    }
+});
 // TRAINING SCHEDULE
 $(myTrainingSchedule).on('click', function (){
     gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // chart
     gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
+    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
+
     if(mySchedual.style.display != 'none') 
     {
         gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});
