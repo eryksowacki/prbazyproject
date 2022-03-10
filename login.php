@@ -19,9 +19,6 @@
 
         </div>
         <div class="centerLogin input-positions-fields">
-            <div style="text-align: center;">
-                <img src="Images/WEBSITE IMAGES/fitness-vertical-banner.jpg" class="fitImg" alt="">
-            </div>
             <div>
                 <form action="Scripts/PHP/login.inc.php" class="loginFormSt" method="post">    
                     <div class="input-containers">
@@ -37,6 +34,9 @@
                     </div>
                     <input type="submit" class="button-19 buttorson" value="Prześlij">
                 </form>  
+            </div>
+            <div style="text-align: center;">
+                <img src="Images/WEBSITE IMAGES/fitness-vertical-banner.jpg" class="fitImg" alt="">
             </div>
         </div>
         <div class="rightLogin">

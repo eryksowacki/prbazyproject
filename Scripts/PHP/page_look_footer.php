@@ -1,9 +1,10 @@
 <footer class="footer"> 
     <div class="contact">
-        <a href="mailto: kontaktZN@znanytrener.gmail.com"><button class="contactButton">Kontakt</button></a>
+        <a href="mailto: kontaktZN@znanytrener.gmail.com" class="sgdButton"><button class="contactButton">Kontakt</button></a>
+        <a href="mailto: kontaktZN@znanytrener.gmail.com" class="sgdButton"><button class="gsfonsga">Regulamin</button></a>
     </div>
     <div class="authors">
-        <p class="footerText">Projekt Aplikacje internetowe / Bazy danych <i><a target="_blank" href="https://github.com/eryksowacki">Eryk Sowacki</a></i> & <i><a target="_blank" href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></p>
+        <p class="footerText">Projekt Aplikacje internetowe / Bazy danych <i>Maksymilian Mazurczak</i> <i><a target="_blank" href="https://github.com/eryksowacki">Eryk Sowacki</a></i> & <i><a target="_blank" href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></p>
     </div>
     <div class="wrapper">
         <div class="icon facebook">

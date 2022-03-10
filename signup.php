@@ -37,8 +37,8 @@
             </div>
             <form action="..\Scripts\PHP\register.inc.php" method="post">
                 <div class="input-positions-fields">
-                    <div class="">
-
+                    <div class="left-input-pos-field">
+                        <img src="Images/WEBSITE IMAGES/fitness-vertical-banner_2.png" class="vBanner" alt="fitness promotion vertical banner">
                     </div>
                     <div class="input-containers">
                         <div class="field">

@@ -8,9 +8,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="search_trainer.php">Trenerzy</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="regulamin.php">Regulamin</a>
-                </li>
                 <?php
                     if(isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
                     {
@@ -68,14 +65,14 @@ REGISTER;
                                         <form action="Scripts\PHP\login.inc.php" method="post">    
                                             <li>
                                                 <div class="field">
-                                                <input type="email" name="email" id="email" class="navUserInput quicklog-input" placeholder=" " autocomplete="off">
-                                                <label for="email" class="floating-label-ql">Email</label>
+                                                <input type="email" name="email" id="mail" class="navUserInput quicklog-input" placeholder=" " autocomplete="off">
+                                                <label for="mail" class="floating-label-ql">Email</label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="field">
-                                                <input type="password" name="password" id="password" class="navUserInput quicklog-input" placeholder=" " autocompleate='on'>
-                                                <label for="password" class="floating-label-ql">Hasło</label>
+                                                <input type="password" name="password" id="passwd" class="navUserInput quicklog-input" placeholder=" " autocompleate='on'>
+                                                <label for="passwd" class="floating-label-ql">Hasło</label>
                                                 </div>
                                             </li>
                                             <li>
@@ -117,6 +114,20 @@ SCRIPT;
                     {
                         echo "</li>";
                     }
+                }
+                elseif (strpos($_SERVER['REQUEST_URI'], "login.php") != 0) {
+                    echo <<< SCRIPT
+                        <script>
+                            tl = new gsap.timeline();
+                            const navItems = document.querySelectorAll(".nav-item");
+                            tl.from("nav.navbar-expand-lg.navbar-nav",0.75,{y:-30,opacity:0})
+                            .fromTo(navItems[0],0.5,{y:-30,opacity:0},{y:0,opacity:1})
+                            .fromTo(navItems[1],0.5,{y:-30,opacity:0},{y:0,opacity:1},"-=0.5")
+                            
+                            .fromTo(navItems[2],0.5,{y:-30,opacity:0},{y:0,opacity:1})
+                            .fromTo(navItems[navItems.length - 1],1,{y:-30,opacity:0},{y:0,opacity:1,zIndex:999},"-=0.5")
+                        </script>
+SCRIPT;
                 }
                 else
                 {
