@@ -17,7 +17,7 @@
     catch(PDOException $e) 
     {
         $connect = null;
-        header("Location: ..\..\mojekonto.php?Error=$e->getMessage()");
+        header("Location: ../../mojekonto.php?Error=$e->getMessage()");
     }   
 
     $newEntry = $connect->prepare("INSERT INTO `bmi`(`bmi_id`, `weight`) VALUES (:bmi_id, :weigght)");
@@ -26,6 +26,6 @@
     $newEntry -> execute();
     $connect = null;
     
-    header('Location: ..\..\mojekonto.php?progress');
+    header('Location: ../../mojekonto.php?progress');
     
 ?>

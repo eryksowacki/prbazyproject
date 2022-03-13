@@ -182,14 +182,14 @@
 	border-radius: 10px;
 	font-size: 130%;
 	transition: 0.3s;
-	}
-.contactButton:hover{
-	animation: floating 2s;
-    animation-iteration-count: infinite;
 }
-.gsfonsga{
+.contactButton:hover {
+	animation: floating 2s;
+	animation-iteration-count: infinite;
+}
+.gsfonsga {
 	background-color: #5de6de;
-background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
+	background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
 	color: whitesmoke;
 	padding: 1rem 3rem 1rem 3rem;
 	border-radius: 10px;
@@ -197,12 +197,12 @@ background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
 	transition: 0.3s;
 	margin: 1% 8%;
 }
-.gsfonsga:hover{
+.gsfonsga:hover {
 	color: black;
 	animation: floating 2s;
-    animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
 }
-.sgdButton{
+.sgdButton {
 	width: fit-content;
 }
 .button-29:focus,
@@ -690,7 +690,7 @@ p.newWeight {
 .userPfp {
 	height: 75px;
 	width: auto;
-    border-radius: 1rem;
+	border-radius: 1rem;
 	margin-right: 15px;
 	border: 2px solid var(--bs-blue);
 }
@@ -741,7 +741,6 @@ p.newWeight {
 .navUserInput:focus + label {
 	opacity: 1;
 	transform: translate(1rem, 1rem) scale(1);
-	background: white;
 	cursor: default;
 	width: max-content;
 }
@@ -913,9 +912,9 @@ nav.navbar-nav,
 	cursor: pointer;
 	display: flex;
 	align-items: flex-end;
-    justify-content: space-around;
+	justify-content: space-around;
 }
-.panelImage{
+.panelImage {
 	height: -webkit-fill-available;
 	width: -webkit-fill-available;
 	margin: 0 auto;
@@ -1062,16 +1061,14 @@ hr {
 	margin-top: 1rem;
 	margin-left: 3rem;
 }
-.vBanner{
-	height:450px;
+.vBanner {
+	height: 450px;
 	border-radius: 1rem;
 }
-.left-input-pos-field{
+.left-input-pos-field {
 	text-align: center;
 }
-.personalInfo{
+.personalInfo {
 	display: flex;
 	flex-direction: column;
-    
-
 }
