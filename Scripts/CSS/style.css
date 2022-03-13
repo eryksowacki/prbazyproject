@@ -909,6 +909,7 @@ nav.navbar-nav,
 .panelControl {
 	width: 22%;
 	height: 450px;
+	border-radius: 1rem;
 	cursor: pointer;
 	display: flex;
 	align-items: flex-end;
@@ -918,6 +919,8 @@ nav.navbar-nav,
 	height: -webkit-fill-available;
 	width: -webkit-fill-available;
 	margin: 0 auto;
+	border-radius: 1rem;
+
 }
 .replace {
 	position: absolute;

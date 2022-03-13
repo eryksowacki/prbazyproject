@@ -85,10 +85,6 @@
                 <p class="paragraph">Godzina</p>
                 <input type="time" name="time" id="time" value="12:00">
                 <?php
-                    $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-
-                    $_SESSION["user_id"] = 0;
-
                     $myGyms = "SELECT `gym_name`,`gyms`.`gym_id` as `g_id`,`city`
                     FROM `usr_train`
                     JOIN `gyms`

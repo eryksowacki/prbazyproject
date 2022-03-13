@@ -9,7 +9,7 @@
                     <a class="nav-link" href="search_trainer.php">Trenerzy</a>
                 </li>
                 <?php
-                    if(isset($_SESSION['user_id']) && empty($_SESSION['user_id']))
+                    if(isset($_SESSION['user_id']) && is_int($_SESSION['user_id']) && $_SESSION['user_id'] !== NULL)
                     {
                         echo <<< DROPDOWNUSER
                             <li class="nav-item dropdown">
@@ -150,6 +150,3 @@ SCRIPT;
         </div>
     </div>
 </nav>
-<script>
-    
-</script>
