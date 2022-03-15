@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
+    {
+        // header('Location: Scripts/PHP/logout.inc.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">

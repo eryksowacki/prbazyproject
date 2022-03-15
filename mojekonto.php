@@ -1,8 +1,8 @@
 <?php
     session_start();
-    if(!isset($_SESSION['user_id']) || !empty($_SESSION['user_id']))
+    if(!isset($_SESSION['user_id']) || !is_int($_SESSION['user_id']) || $_SESSION['user_id'] == NULL)
     {
-        header('Location: index.php');
+        header('Location: Scripts/PHP/logout.inc.php');
     }
     $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
     $sql = "SELECT `weight` as `w`, `date` as `d` FROM `bmi` `b` where `bmi_id` = $_SESSION[user_id] order by `d` asc;";
@@ -142,21 +142,21 @@
             <?php
                 if(isset($_GET['progress']) && count($_GET) === 1)
                 {
-                    echo<<< CHART
+                    echo <<< CHART
                         <script>
                             const wholeChart = document.querySelector(".chart");
                             wholeChart.style.display = 'block';
                         </script> 
-                    CHART;
+CHART;
                 }
                 else
                 {
-                    echo<<< CHART
+                    echo <<< CHART
                         <script>
                             const wholeChart = document.querySelector(".chart");
                             wholeChart.style.display = 'none';
                         </script>
-                    CHART;
+CHART;
                 }
             ?>
             
@@ -203,25 +203,25 @@
                                     <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[trainer_review_descript]</b></p>
                                     <p><a href="Scripts\PHP\delete_review.inc.php?review_id=$currentRow[review_ids]">Usuń recenzję</a></p>
                                 </div>
-                            USERREVIEW;
+USERREVIEW;
                         }
                         if(isset($_GET['reviews']) && count($_GET) === 1)
                         {
-                            echo<<< REVIEWS
+                            echo <<< REVIEWS
                                 <script>
                                     const reviewsBlock = document.querySelector('.review-block');
                                     gsap.fromTo(reviewsBlock,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
                                 </script> 
-                            REVIEWS;
+REVIEWS;
                         }
                         else
                         {
-                            echo<<< REVIEWS
+                            echo <<< REVIEWS
                                 <script>
                                     const reviewsBlock = document.querySelector('.review-block');
                                     reviewsBlock.style.display = 'none'; 
                                 </script> 
-                            REVIEWS;
+REVIEWS;
                         }
                     ?>
                 </div>
@@ -231,7 +231,7 @@
                 <div>
                     <?php
                         $myGymsRev = 
-                            "SELECT `user_id`, `trainer_id`, `training_date`, `training_descript`, `gyms`.`gym_id` as `asg`, `training_id`,`gym_name`
+                            "SELECT `user_id`, `trainer_id`, `training_date`, `training_descript`, `gyms`.`gym_id` as `asg`, `training_id`,`gym_name`,`city`
                             FROM `usr_train` 
                             JOIN `gyms`
                             ON `usr_train`.`gym_id` = `gyms`.`gym_id`
@@ -239,10 +239,10 @@
                             GROUP BY `gyms`.`gym_id`";
                         $result = $connect -> query($myGymsRev);
                         echo "<div><h4>Dodaj recenzję swojej siłowni</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
-                        echo "<select class=trainerSelect name=trainer_id>";
+                        echo "<select class=trainerSelect name=gym_id>";
                         while($option =  $result -> fetch_assoc())
                         {
-                            echo "<option value=$option[asg]>$option[gym_name]</option>";
+                            echo "<option value=$option[asg]>$option[gym_name] $option[city]</option>";
                         }
                         echo "</select>";
                         echo '<select name="mark" class="trainerSelect trainerMark">';
@@ -269,25 +269,25 @@
                                     <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
                                     <p><a href="Scripts\PHP\delete_gym_review.inc.php?review_id=$currentRow[gym_review_id]">Usuń recenzję</a></p>
                                 </div>
-                            USERREVIEW;
+USERREVIEW;
                         }
                         if(isset($_GET['gym_reviews']) && count($_GET) === 1)
                         {
-                            echo<<< REVIEWS
+                            echo <<< REVIEWS
                                 <script>
                                     const gymReviewsBlock = document.querySelector('.gymReviewsBlock');
                                     gsap.fromTo(gymReviewsBlock,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
                                 </script> 
-                            REVIEWS;
+REVIEWS;
                         }
                         else
                         {
-                            echo<<< REVIEWS
+                            echo <<< REVIEWS
                                 <script>
                                     const gymReviewsBlock = document.querySelector('.gymReviewsBlock');
                                     gymReviewsBlock.style.display = 'none';
                                 </script> 
-                            REVIEWS;
+REVIEWS;
                         }
                     ?>
                 </div>
@@ -302,10 +302,13 @@
                     $row = mysqli_fetch_row($result);
                 ?>
                 <div>
-                    <img src="Images/USER IMAGES/<?php echo $row[1];?>">
-                    <form action="Scripts/PHP/changePFP.inc.php" method="post">
+                    <?php
+                        if(!empty($row[1])){ echo "<img src='Images/USER IMAGES/$row[1]'>";};
+                    ?>
+                    
+                    <form action="Scripts/PHP/changePFP.inc.php" method="post" enctype="multipart/form-data">
                         <input type="file" name="file" id="">
-                        <input type="submit" >
+                        <input type="submit" name="submit" >
                     </form>
                 </div>
                 <div>
@@ -322,29 +325,29 @@
                 </div>
                 <div>
 
-                </div>
+            </div>
                 
                 
                 
             </div>
             <?php
-                if(isset($_GET['personalInfo']) && count($_GET) === 1)
+                if(isset($_GET['personalInfo']) || isset($_GET['imgSize']))
                 {
-                    echo<<< REVIEWS
+                    echo <<< REVIEWS
                         <script>
                             const personalInfo = document.querySelector('.personalInfo');
                             gsap.fromTo(personalInfo,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
                         </script> 
-                    REVIEWS;
+REVIEWS;
                 }
                 else
                 {
-                    echo<<< REVIEWS
+                    echo <<< REVIEWS
                         <script>
                             const personalInfo = document.querySelector('.personalInfo');
                             personalInfo.style.display = 'none';
                         </script> 
-                    REVIEWS;
+REVIEWS;
                 }
             ?>
             
@@ -353,21 +356,21 @@
                 <?php
                 if(isset($_GET['calendar']) && count($_GET) === 1) 
                 {
-                    echo<<< CALENDAR
+                    echo <<< CALENDAR
                         <script>
                             const mySchedual = document.querySelector('.mySchedual');
                             gsap.to(mySchedual,0.65,{y:30,autoAlpha:1,display:"block"});
                         </script>    
-                    CALENDAR; 
+CALENDAR; 
                 }
                 else
                 {
-                    echo<<< CALENDAR
+                    echo <<< CALENDAR
                         <script>
                             const mySchedual = document.querySelector('.mySchedual');
                             mySchedual.style.display = 'none';
                         </script>    
-                    CALENDAR;
+CALENDAR;
                 }
                 ?>
                 

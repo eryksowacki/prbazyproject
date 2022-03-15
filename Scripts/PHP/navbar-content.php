@@ -112,6 +112,7 @@ SCRIPT;
                     }
                     else
                     {
+                        echo "<img class='userPfp' src='Images\USER IMAGES/default.png' alt='Zdjęcie profilowe'></li>";
                         echo "</li>";
                     }
                 }

@@ -39,3 +39,17 @@
         </div>
     </div>
 </footer>
+<?php
+    
+    if(!isset($_COOKIE['cookieAccept']))
+    {
+        echo <<< COOKIEBAR
+            <div class="cookie">
+                <h1>asdasdasd</h1>
+            </div>
+            <script>
+                gsap.fromTo(".cookie",1.5,{y:90},{y:0,autoAlpha:1,display:"block"},5);
+            </script>
+COOKIEBAR;
+    }
+?>
