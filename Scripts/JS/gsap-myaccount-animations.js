@@ -31,7 +31,6 @@ function changeChartSwitch(switcher)
             break;    
     }
 }
-
 const chartBtn = document.querySelector("#weightProggress");
 const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
 const myGymReviews = document.querySelector('#myGymReviews');

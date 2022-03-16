@@ -40,15 +40,29 @@
     </div>
 </footer>
 <?php
-    
-    if(!isset($_COOKIE['cookieAccept']))
+    if(!isset($_COOKIE['acceptCookies']))
     {
         echo <<< COOKIEBAR
             <div class="cookie">
-                <h1>asdasdasd</h1>
+                <div class="cookieText">
+                    <p>Używamy ciasteczek, dzięki którym nasza strona jest dla Ciebie bardziej przyjazna i działa niezawodnie. Pozwalają one również dopasować treści i reklamy do Twoich zainteresowań. Jeśli się nie zgodzisz, reklamy nadal będą się wyświetlać, ale nie będą dopasowane do Ciebie.</p>
+                </div>
+                <div class="cookieButton">
+                    <button class="dfsia234">Akceptuje</button>
+                </div>
             </div>
             <script>
-                gsap.fromTo(".cookie",1.5,{y:90},{y:0,autoAlpha:1,display:"block"},5);
+                gsap.fromTo(".cookie",1.5,{y:90},{y:0,autoAlpha:1,display:"flex"},5);
+                $('.dfsia234').on('click', function()
+                {
+                    const d = new Date();
+                    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+                    let expires = "expires=" + d.toUTCString();
+                    const cookieName = "acceptCookies";
+                    const cvalue = 1;
+                    document.cookie = cookieName + "=" + cvalue + ";" + expires + ";path=/";
+                    gsap.fromTo(".cookie",1.5,{y:0},{y:90,autoAlpha:0,display:"none"});
+                });
             </script>
 COOKIEBAR;
     }

@@ -386,7 +386,7 @@ CALENDAR;
                         
                         $result = $connect -> query($sql);
                         $assoc= array();
-                        $dzien_tyg_pl = array('Monday' => 'Poniedziałek',
+                        $weekPl = array('Monday' => 'Poniedziałek',
                         'Tuesday' => 'Wtorek', 
                         'Wednesday' => 'Środa', 
                         'Thursday' => 'Czwartek', 
@@ -402,17 +402,32 @@ CALENDAR;
                             $p = $i+1;
                             $f = date("Y-m-d",strtotime("+$p day", strtotime($d)));
                             echo "<div class='calendar'>";
-                            $dzien_tyg = date("l",strtotime("+$i day", strtotime($d)));
-                            echo "<b>$f</b><b>$dzien_tyg_pl[$dzien_tyg]</b>";
-                        
+                            $dayPl = date("l",strtotime("+$i day", strtotime($d)));
+                            echo "<b>$f</b><b>$weekPl[$dayPl]</b>";
                             $tmp = 0;
                             $result = $connect -> query($sql);
-
                             while($row = $result -> fetch_assoc())
                             {   
                                 if($row['date'] === $f)
                                 {
-                                    echo "<h4 class=treningType>Typ treningu: <p class=trainingDesc>$row[training_descript]</p></h4>";
+                                    $train_id = $row['trainer_id'];
+                                    if($train_id == NULL)
+                                    {
+                                        echo "<h4 class=treningType>Typ treningu: <p class=trainingDesc>$row[training_descript]</p></h4>";
+
+                                    }
+                                    else
+                                    {
+                                        $trainerNameQuery = "SELECT DISTINCT concat(`name`,' ',`surname`) AS `NameSurname` 
+                                        FROM `trainers` 
+                                        JOIN `usr_train` 
+                                        ON `trainers`.`trainer_id` = `usr_train`.`trainer_id` 
+                                        WHERE `trainers`.`trainer_id` = $train_id;";
+                                        $result = $connect -> query($trainerNameQuery);
+                                        $trainerNameResult = mysqli_fetch_row($result)[0];
+                                        echo "<h4 class=treningType>Typ treningu: <p class=trainingDesc>$row[training_descript]</p><p class='trainerNameCalendar'>Trener: $trainerNameResult</p></h4>";
+                                    }
+
                                 }
                                 else
                                 {
