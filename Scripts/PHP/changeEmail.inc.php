@@ -45,4 +45,4 @@
             $connect = null;
             header('Location: ../../mojekonto.php?personalInfo=1');
         }
-    }
+    }`
