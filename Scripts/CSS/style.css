@@ -474,7 +474,6 @@ a {
 .trainer-Picture {
 	width: 100px;
 	border-radius: 100%;
-	border: 0.125rem solid black;
 	background-color: black;
 	opacity: 98%;
 }
@@ -1078,6 +1077,10 @@ hr {
 .personalInfo {
 	display: flex;
 	flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+	gap: 10px;
 }
 .cookie{
 	position: fixed;
@@ -1115,4 +1118,39 @@ hr {
 {
 	transform:scale(1.1);
 	transition:0.5s;
+}
+.errorParagraph{
+	color: #ff0060;
+}
+.errorParagraph:hover{
+	color: #ff0060;
+}
+.pfpForm{
+	margin-top: 1rem;
+	text-align: center;
+}
+.pfp{
+	padding: 2px;
+	border-radius: 1rem;
+	width: max-content;
+    height: inherit;
+}
+.inpt{
+	margin-right: 1rem;
+}
+.passCH{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pfpContainer{
+	width: auto;
+	height: 300px;
+}
+.personalInfo > .passCH > form > input[type="submit"]{
+	padding: 5px;
+	background-color: #b1bfd8;
+	background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);	border:2px inset inherit;
+	border-radius: 8px;
+	outline: none;
 }

@@ -327,15 +327,16 @@
     //     $connect -> query($currentReview);
 
     // }
-    // for ($i = 0; $i < 2750; $i++) 
+    // for ($i = 0; $i < 2760; $i++) 
     // { 
-        // $userTrain = "SELECT `trainer_id` FROM `usr_train` where `training_id` = $i ORDER BY `user_id` ASC";
-        // $row = mysqli_fetch_row($connect -> query($userTrain));
-        // $trainerGym = "SELECT `gym_id` FROM `trainers` where `trainer_id` = $row[0]";
-        // $result = $connect -> query($trainerGym);
-        // $row = mysqli_fetch_row($result);
-        // $update = "UPDATE `usr_train` SET `gym_id`=$row[0] WHERE `training_id` = $i";
-        // $result = $connect -> query($update);
+    //     $userTrain = "SELECT `trainer_id` FROM `usr_train` where `training_id` = $i ORDER BY `user_id` ASC";
+    //     $row = mysqli_fetch_row($connect -> query($userTrain));
+    //     $trainerGym = "SELECT `gym_id` FROM `trainers` where `trainer_id` = $row[0]";
+    //     $result = $connect -> query($trainerGym);
+    //     $row = mysqli_fetch_row($result);
+    //     echo $row[0]."<br>";
+    //     $update = "UPDATE `usr_train` SET `gym_id`=$row[0] WHERE `training_id` = $i";
+    //     // $result = $connect -> query($update);
     // }
     // for ($i = 0; $i < 550; $i++) 
     // { 

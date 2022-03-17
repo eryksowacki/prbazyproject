@@ -1,9 +1,12 @@
 <?php
     session_start();
     var_dump($_FILES);
+
+
+
     if(!isset($_FILES))
     {
-        header("location: ../../mojekonto.php?personalInfo=0");
+        header("location: ../../mojekonto.php?personalInfo=0errorNo=1");
     }
     else
     {
@@ -20,7 +23,7 @@
         }
         if(count($_POST) != $i)
         {   
-            header("Location: ../../mojekonto.php?personalInfo=0");
+            header("Location: ../../mojekonto.php?personalInfo&errorNo=1");
         }
         else
         {
@@ -28,6 +31,7 @@
             $target_file = $target_dir.basename($_FILES["file"]["name"]);
             $tmp = 1;
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        
             if(isset($_POST["submit"])) 
             {
                 $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
@@ -42,22 +46,23 @@
                 }
                 
                 $check = getimagesize($_FILES["file"]["tmp_name"]);
-
+                echo $check;
                 if($check !== false) 
                 {
                     $tmp = 1;
                 }
                 else 
                 {
-                    header('Location: ../../mojekonto.php?personalInfo=0&imgSize=1');
+                    header('Location: ../../mojekonto.php?personalInfo=0&errorNo=2');
                 }     
                 if($_FILES["file"]["size"] > 16000000) 
                 {
-                    header('Location: ../../mojekonto.php?personalInfo=0&imgSize=1');
+                    echo "ASD";
+                    header('Location: ../../mojekonto.php?personalInfo=0&errorNo=2');
                 }
                 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) 
                 {
-                    header('Location: ../../mojekonto.php?personalInfo=ext');
+                    header('Location: ../../mojekonto.php?personalInfo=0&errorNo=3');
                 } 
                 else 
                 {
@@ -77,7 +82,7 @@
                         catch(PDOException $e) 
                         {
                             $connect = null;
-                            header("Location: ../../mojekonto.php?personalInfo=0?Error=$e->getMessage()");
+                            header("Location: ../../mojekonto.php?personalInfo=0?PDOerror=$e->getMessage()");
 
                         }
                         $data = [
@@ -93,7 +98,7 @@
 
                     else 
                     {
-                        header('Location: ../../mojekonto.php?personalInfo=0');
+                        header('Location: ../../mojekonto.php?personalInfo=0errorNo=1');
                     }
                 }       
             }

@@ -108,8 +108,8 @@ $(chartBtn).on("click", function() {
 $("#accountPersonali").on('click', function (){
     gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(wholeChart,0.65,{y:-20,opacity:0}); // chart
-    gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
-    gsap.to(gymReviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
+    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
+    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
 
     if(personalInfo.style.display != 'none') 
     {
@@ -127,7 +127,7 @@ $("#accountPersonali").on('click', function (){
 $(myTrainingSchedule).on('click', function (){
     gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
     gsap.to(wholeChart,0.65,{y:-20,opacity:0}); // chart
-    gsap.to(reviewsBlock,0.65,{y:0,autoAlpha:0,display:"none"}); // rev
+    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
     gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
 
     if(mySchedual.style.display != 'none') 

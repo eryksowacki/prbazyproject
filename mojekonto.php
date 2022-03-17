@@ -164,12 +164,12 @@ CHART;
                 <div>
                     <?php
                         $myTrainerReveiws = 
-                            "SELECT `trainers`.`name` as `n`,`trainers`.`trainer_id` as `t_id`,`trainers`.`surname` as `s`,`trainer_mark`,`trainer_review_descript`, `profile_picture`,`trainer_reviews`.`review_id` as `review_ids` 
-                            FROM `trainer_reviews`
-                            JOIN `trainers`
-                            ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
-                            WHERE `trainer_reviews`.`user_id` = $_SESSION[user_id]
-                            GROUP BY `trainers`.`trainer_id` ";
+                            "SELECT `trainers`.`name` as `n`,`trainers`.`trainer_id` as `t_id`,`trainers`.`surname` as `s` 
+                            FROM `usr_train` 
+                            JOIN `trainers` 
+                            ON `usr_train`.`trainer_id` = `trainers`.`trainer_id` 
+                            WHERE `usr_train`.`user_id` = $_SESSION[user_id] 
+                            GROUP by `usr_train`.`trainer_id`;";
                         $result = $connect -> query($myTrainerReveiws);
                         echo "<div style='width: fit-content;margin: 0 auto;'><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addReview.inc.php method=post>";
                         echo "<select class=trainerSelect name=trainer_id>";
@@ -250,7 +250,7 @@ REVIEWS;
                         { 
                             echo "<option value=$i >$i</option>";
                         }
-                        echo "</select><input type=submit id=reviewSubmit class=button-19 value='Prześlij nową recenzję'>
+                        echo "</select><input type=submit id=reviewSubmiter class=button-19 value='Prześlij nową recenzję'>
                         <br><textarea name='userNewReview' cols='100' rows='10' placeholder='Tutaj możesz wpisać nową recenzję...'></textarea></form></div>";
                         $myGymsRev = 
                             "SELECT  `gym_mark`, `gym_review_descript`, `gym_reviews`.`user_id` as `user_id`, `gym_review_id` ,`gym_name`,`city`
@@ -267,7 +267,7 @@ REVIEWS;
                                 <div class='trainer-show'>
                                     <p>Ocena: <b class='hoverOnInfo'>$currentRow[gym_mark]</b></p>
                                     <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
-                                    <p><a href="Scripts\PHP\delete_gym_review.inc.php?review_id=$currentRow[gym_review_id]">Usuń recenzję</a></p>
+                                    <p><a href="Scripts\PHP\delete_gym_review.inc.php?gym_review_id=$currentRow[gym_review_id]">Usuń recenzję</a></p>
                                 </div>
 USERREVIEW;
                         }
@@ -301,50 +301,104 @@ REVIEWS;
                     $tab = [];
                     $row = mysqli_fetch_row($result);
                 ?>
-                <div>
+                <div class="passCH">
+                    <h3>Aktualizuj Zdjęcie Profilowe</h3> 
                     <?php
-                        if(!empty($row[1])){ echo "<img src='Images/USER IMAGES/$row[1]'>";};
+                        if(!empty($row[1])){ echo "<div class='pfpContainer'><img class='pfp' src='Images/USER IMAGES/$row[1]'></div>";};
                     ?>
-                    
-                    <form action="Scripts/PHP/changePFP.inc.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" id="">
-                        <input type="submit" name="submit" >
+                    <form action="Scripts/PHP/changePFP.inc.php" method="post" class="pfpForm" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input type="submit" name="submit" value="Prześlij nowe zdjęcie">
                     </form>
                 </div>
-                <div>
+                <div class="passCH">
+                    <h3>Aktualizuj Email</h3>
                     <form action="Scripts/PHP/changeEmail.inc.php" method="post">
-                        <input type="email" name="" id="" placeholder="<?php echo $row[2];?>">
-                        <input type="submit" value="">
+                        <input type="email" name="email" class="inpt" placeholder="<?php echo $row[2];?>">
+                        <input type="submit" value="Zaktualizuj email">
                     </form>
                 </div>
-                <div>
+                <div class="passCH">
+                    <h3>Aktualizuj Hasło</h3>
                     <form action="Scripts/PHP/change.inc.php">
-                        <input type="text" name="" id="">
-                        <input type="submit" value="">
+                        <input type="password" name="" class="inpt" placeholder="Hasło">
+                        <input type="password" name="" class="inpt" placeholder="Powtórz hasło">
+                        <input type="submit" value="Powtórz hasło">
                     </form>
                 </div>
                 <div>
-
+                <div class="errors">
+                    <p class="errorParagraph"></p>
+                </div>
             </div>
                 
                 
                 
             </div>
             <?php
-                if(isset($_GET['personalInfo']) || isset($_GET['imgSize']))
+                echo <<< SCRIPT
+                    <script>
+                        const error = document.querySelector('.errorParagraph');
+                        const personalInfo = document.querySelector('.personalInfo');
+                    </script>
+SCRIPT;
+                if(isset($_GET['errorNo'])) 
                 {
+                    switch ($_GET['errorNo']) 
+                    {
+                        case 1:
+                            echo <<< REVIEWS
+                                <script>
+                                    error.textContent = "Wystąpił błąd z przesyłaniem na serwer";
+                                </script> 
+REVIEWS;
+                            break;
+                        case 2:
+                            echo <<< REVIEWS
+                                <script>
+                                    error.textContent = "Twój plik jest za duży";
+                                </script>
+REVIEWS;
+                            break;
+                        case 3:
+                            echo <<< REVIEWS
+                                <script>
+                                    error.textContent = "Twój plik ma niedopuszczalne rozszerzenie";
+                                </script>
+REVIEWS;
+                            break;
+                        default:
+                            echo "<script>console.log('łotego');</script>";
+                            break;
+                    }
+                }
+                if(isset($_GET['PDOerror']))
+                {
+
+                    echo "<script>error.textContent = '$_GET[PDOerror]';</script>";
+                }
+                
+                if(isset($_GET['personalInfo']))
+                {
+                    if($_GET['personalInfo'] == 1)
+                    {
+                        echo <<< REVIEWS
+                            <script>
+                                error.textContent = "Pomyślnie zaktualizowanio dane";
+                                error.style.color = "black";
+                            </script>
+REVIEWS;
+                    }
                     echo <<< REVIEWS
                         <script>
-                            const personalInfo = document.querySelector('.personalInfo');
                             gsap.fromTo(personalInfo,0.65,{y:20,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});  
-                        </script> 
-REVIEWS;
+                        </script>
+REVIEWS;            
                 }
                 else
                 {
                     echo <<< REVIEWS
                         <script>
-                            const personalInfo = document.querySelector('.personalInfo');
                             personalInfo.style.display = 'none';
                         </script> 
 REVIEWS;
