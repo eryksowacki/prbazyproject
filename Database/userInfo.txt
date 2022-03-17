@@ -1,0 +1,5 @@
+CREATE USER `id18439949_znanytrenerusername`@`localhost` IDENTIFIED BY 'sy>[$Fo8]+!n^cVN'
+
+GRANT USAGE ON *.* TO `id18439949_znanytrenerusername`@`localhost`;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `id18439949_znanytrener`.* TO `id18439949_znanytrenerusername`@`localhost`;

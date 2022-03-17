@@ -3491,7 +3491,7 @@ CREATE TABLE IF NOT EXISTS `gym_reviews` (
 --
 
 INSERT INTO `gym_reviews` (`gym_review_id`, `gym_mark`, `gym_review_descript`, `user_id`, `gym_id`) VALUES
-(1, 5, 'Ładna, zadbana siłownia, dużo sprzętu, przemiła obsługa ?.', 1, 50),
+(1, 5, 'Ładna, zadbana siłownia, dużo sprzętu, przemiła obsługa.', 1, 50),
 (2, 2, 'Mega lans jeśli nie masz obcisłych ciuchów i nie napijesz sobie skarpety w kroku to będziesz poczegany za leszcza???', 2, 43),
 (3, 3, 'Szkoda ze tylko abonamenty....?', 3, 16),
 (4, 4, 'Fajna siłownia masa sprzętu i maszyn można konkretnie poćwiczyć choć w niektórych godzinach jest naprawdę tłoczno i trzeba czekać aż ktoś skończy lub ćwiczyć na zmianę.', 4, 67),

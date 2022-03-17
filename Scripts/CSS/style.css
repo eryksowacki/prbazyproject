@@ -471,6 +471,26 @@ a {
 	overflow-y: scroll;
 }
 
+.review-block::-webkit-scrollbar,
+.review-block::-webkit-scrollbar-thumb {
+	width: 0.75rem;
+	background-color: white;
+	padding: 1px;
+}
+.review-block::-webkit-scrollbar-thumb {
+	background-color: #212529;
+	border-radius: 7px;
+}
+.review-block::-webkit-scrollbar-track {
+	border-radius: 7px;
+}
+
+.gymReviewsBlock {
+	flex-direction: column;
+	justify-content: flex-start;
+	overflow-y: scroll;
+}
+
 .trainer-Picture {
 	width: 100px;
 	border-radius: 100%;
@@ -617,8 +637,7 @@ p.newWeight {
 	margin: 0px;
 	font-size: inherit;
 }
-.trainerNameCalendar
-{
+.trainerNameCalendar {
 	font-size: 70%;
 }
 .trainingDesc {
@@ -760,7 +779,6 @@ p.newWeight {
 	height: 68px;
 	outline: none;
 	overflow: hidden;
-
 }
 .chartTypes > option {
 	padding: 10px;
@@ -925,7 +943,6 @@ nav.navbar-nav,
 	width: -webkit-fill-available;
 	margin: 0 auto;
 	border-radius: 1rem;
-
 }
 .replace {
 	position: absolute;
@@ -1077,12 +1094,12 @@ hr {
 .personalInfo {
 	display: flex;
 	flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: nowrap;
 	gap: 10px;
 }
-.cookie{
+.cookie {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -1093,64 +1110,64 @@ hr {
 	display: flex;
 	/* display: none; */
 	flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+	justify-content: space-around;
+	align-items: center;
 }
-.cookie > *{
+.cookie > * {
 	color: white;
 	opacity: 1;
 }
-.cookieText{
+.cookieText {
 	font-size: 110%;
-	width: 70%;	
+	width: 70%;
 	text-align: justify;
 }
-.dfsia234{
-	padding:0.5rem;
-	border-radius:5px;
-	outline:none;
-	border:1px dotted black;
+.dfsia234 {
+	padding: 0.5rem;
+	border-radius: 5px;
+	outline: none;
+	border: 1px dotted black;
 	background-color: #90d5ec;
 	background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 80%);
-	transition:0.5s;
+	transition: 0.5s;
 }
-.dfsia234:hover
-{
-	transform:scale(1.1);
-	transition:0.5s;
+.dfsia234:hover {
+	transform: scale(1.1);
+	transition: 0.5s;
 }
-.errorParagraph{
+.errorParagraph {
 	color: #ff0060;
 }
-.errorParagraph:hover{
+.errorParagraph:hover {
 	color: #ff0060;
 }
-.pfpForm{
+.pfpForm {
 	margin-top: 1rem;
 	text-align: center;
 }
-.pfp{
+.pfp {
 	padding: 2px;
 	border-radius: 1rem;
 	width: max-content;
-    height: inherit;
+	height: inherit;
 }
-.inpt{
+.inpt {
 	margin-right: 1rem;
 }
-.passCH{
+.passCH {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
+	flex-direction: column;
+	align-items: center;
 }
-.pfpContainer{
+.pfpContainer {
 	width: auto;
 	height: 300px;
 }
-.personalInfo > .passCH > form > input[type="submit"]{
+.personalInfo > .passCH > form > input[type='submit'] {
 	padding: 5px;
 	background-color: #b1bfd8;
-	background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);	border:2px inset inherit;
+	background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
+	border: 2px inset inherit;
 	border-radius: 8px;
 	outline: none;
 }

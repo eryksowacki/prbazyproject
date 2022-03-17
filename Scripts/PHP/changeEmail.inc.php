@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_POST))
     {
-        // header("location: ../../mojekonto.php?errorNo=1");
+        header("location: ../../mojekonto.php?errorNo=1");
     }
     else
     {
@@ -17,10 +17,9 @@
                 $i++;
             }
         }
-        var_dump($_POST);
         if(count($_POST) != $i)
         {
-            // header("Location: ../../mojekonto.php?errorNo=1");
+            header("Location: ../../mojekonto.php?errorNo=1");
         }
         else
         {

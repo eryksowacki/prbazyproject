@@ -294,7 +294,7 @@ REVIEWS;
             </div>                
             <div class="personalInfo">
                 <?php
-                    $query = "SELECT `user_id`, `profile_picture`, `email`, `password`, `name`, `surname`, `age`, `bmi_id` 
+                    $query = "SELECT `user_id`, `profile_picture`, `email`, `password`, `name`, `surname`, `bmi_id` 
                     FROM `users` 
                     WHERE `user_id` = $_SESSION[user_id]";
                     $result =  mysqli_query($connect,$query);
@@ -308,22 +308,23 @@ REVIEWS;
                     ?>
                     <form action="Scripts/PHP/changePFP.inc.php" method="post" class="pfpForm" enctype="multipart/form-data">
                         <input type="file" name="file">
-                        <input type="submit" name="submit" value="Prześlij nowe zdjęcie">
+                        <input type="submit" name="submit" value="Aktualizuj zdjęcie profilowe">
                     </form>
                 </div>
                 <div class="passCH">
                     <h3>Aktualizuj Email</h3>
                     <form action="Scripts/PHP/changeEmail.inc.php" method="post">
                         <input type="email" name="email" class="inpt" placeholder="<?php echo $row[2];?>">
-                        <input type="submit" value="Zaktualizuj email">
+                        <input type="submit" value="Aktualizuj email">
                     </form>
                 </div>
                 <div class="passCH">
                     <h3>Aktualizuj Hasło</h3>
-                    <form action="Scripts/PHP/change.inc.php">
-                        <input type="password" name="" class="inpt" placeholder="Hasło">
-                        <input type="password" name="" class="inpt" placeholder="Powtórz hasło">
-                        <input type="submit" value="Powtórz hasło">
+                    <form action="Scripts/PHP/changePasswd.inc.php" method="post">
+                        <input type="password" name="oldPasswd" class="inpt" placeholder="Aktualne hasło">
+                        <input type="password" name="newPasswd" class="inpt" placeholder="Nowe hasło">
+                        <input type="password" name="newPasswdRepeat" class="inpt" placeholder="Powtórz hasło">
+                        <input type="submit" value="Aktualizuj hasło">
                     </form>
                 </div>
                 <div>
@@ -364,6 +365,18 @@ REVIEWS;
                             echo <<< REVIEWS
                                 <script>
                                     error.textContent = "Twój plik ma niedopuszczalne rozszerzenie";
+                                </script>
+REVIEWS;
+                        case 4:
+                            echo <<< REVIEWS
+                                <script>
+                                    error.textContent = "Nowe hasła się nie zgadzają";
+                                </script>
+REVIEWS;
+                        case 5:
+                            echo <<< REVIEWS
+                                <script>
+                                    error.textContent = "Aktualne hasło jest niepoprawne";
                                 </script>
 REVIEWS;
                             break;
@@ -556,6 +569,13 @@ CALENDAR;
     $(".chartTypes > option").on("dblclick", function() {
         changeChartSwitch(document.querySelector(".chartTypes").value);
     });
+    function setCookie(cname, cvalue)
+        {
+        const d = new Date();
+        d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
     function change(newType) 
     {
         let canvas = document.getElementById("myChart").getContext("2d");
@@ -572,6 +592,8 @@ CALENDAR;
         {
             userProgressChart.options.scales.y.min = Math.min(weight);
         }
+        setCookie("favChart", newType);
+
         let temp = jQuery.extend(true, {}, userProgressChart);
         temp.type = newType;
         myChart = new Chart(canvas, temp);
@@ -596,7 +618,7 @@ CALENDAR;
         return "";
     }
     const cookieChartChange = getCookie('favChart');
-    changeChartSwitch(cookieChartChange)
+    changeChartSwitch(cookieChartChange);
     
     
     
