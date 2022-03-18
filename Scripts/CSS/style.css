@@ -1171,3 +1171,15 @@ hr {
 	border-radius: 8px;
 	outline: none;
 }
+.divChangeColor {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.garsdfnjop {
+	padding: 0.5rem;
+}

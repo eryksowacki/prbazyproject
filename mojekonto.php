@@ -128,6 +128,10 @@
                         <input type="submit" class='weightInput' value="Prześlij">
                     </form>
                 </div>
+                <div class="divChangeColor">
+                    <button class="saveColor garsdfnjop">Zmień kolor wykresu</button>
+                    <button class="changeGenColor garsdfnjop">Zmień wygenerowany kolor</button>
+                </div>
                 <div class="typesContainer">
                     <select class="chartTypes" multiple>
                         <option value="line" class="horizontalOption">Liniowy</option>
@@ -321,9 +325,9 @@ REVIEWS;
                 <div class="passCH">
                     <h3>Aktualizuj Hasło</h3>
                     <form action="Scripts/PHP/changePasswd.inc.php" method="post">
-                        <input type="password" name="oldPasswd" class="inpt" placeholder="Aktualne hasło">
-                        <input type="password" name="newPasswd" class="inpt" placeholder="Nowe hasło">
-                        <input type="password" name="newPasswdRepeat" class="inpt" placeholder="Powtórz hasło">
+                        <input type="password" name="oldPasswd" class="inpt" placeholder="Aktualne hasło" autocomplete="on">
+                        <input type="password" name="newPasswd" class="inpt" placeholder="Nowe hasło" autocomplete="on">
+                        <input type="password" name="newPasswdRepeat" class="inpt" placeholder="Powtórz hasło" autocomplete="on">
                         <input type="submit" value="Aktualizuj hasło">
                     </form>
                 </div>
@@ -618,11 +622,34 @@ CALENDAR;
         return "";
     }
     const cookieChartChange = getCookie('favChart');
-    changeChartSwitch(cookieChartChange);
-    
-    
-    
+    const saveColor = document.querySelector('.saveColor');
+    const diffColorRanodom = document.querySelector('.changeGenColor');
+
+    saveColor.style.border = "2px solid "+ myChart.config._config.data.datasets[0].borderColor;
+    saveColor.style.background = "linear-gradient("+ frstStop + ","+ secndStop +")";
+    $(saveColor).on("click",function(){
+        let tab = saveColor.style.background.slice(16,-1).split(",");
+        tab = [tab[0] + "," + tab[1] + "," + tab[2] + "," + tab[3], tab[4] + "," + tab[5] + "," + tab[6] + "," + tab[7]];
+        setCookie("colorChartBorder",saveColor.style.border.substr(10));
+        setCookie("colorChartInsideFirst",tab[0]);
+        setCookie("colorChartInsideSecond",tab[1]);
+        let gradior = canvas.createLinearGradient(0, 0, 0, 400);
+        gradior.addColorStop(0, tab[0]);
+        gradior.addColorStop(1, tab[1]);
+        myChart.config._config.data.datasets[0].borderColor = saveColor.style.border.substr(10);
+        myChart.config._config.data.datasets[0].backgroundColor = gradior;
+        changeChartSwitch(cookieChartChange);
+    });
+    $(diffColorRanodom).on("click",function()
+    {
+        let uno = getRandomFillColor();
+        let dos = getRandomFillColor();
+        let tres = getRandomFillColor();
+        saveColor.style.border = "2px solid "+ uno;
+        saveColor.style.background = "linear-gradient("+ dos + ","+ tres +")";
+    });
 </script>
+
 
 <script>
     const dayBlock = document.querySelectorAll(".calendar > b");
@@ -655,9 +682,27 @@ CALENDAR;
             document.querySelector("#dateInput").value = dayOfNewTraining;
 
             
-        });
-        
+        }); 
     }
     
 </script>
 <script src="Scripts/JS/gsap-myaccount-animations.js" crossorigin="anonymous"></script>
+<?php
+    if(isset($_COOKIE['colorChartBorder']) && isset($_COOKIE['colorChartInsideFirst']))
+    {
+        echo <<< SCRIPT
+            <script>
+                let gradient = canvas.createLinearGradient(0, 0, 0, 400);
+                let asdgf = '$_COOKIE[colorChartInsideFirst]';
+                let hsgfdr = '$_COOKIE[colorChartInsideSecond]';
+                console.log(asdgf,hsgfdr);
+                gradient.addColorStop(0, asdgf);
+                gradient.addColorStop(1, hsgfdr);
+                let coc = '$_COOKIE[colorChartBorder]';
+                myChart.config._config.data.datasets[0].borderColor = coc;
+                myChart.config._config.data.datasets[0].backgroundColor = gradient;
+                changeChartSwitch(cookieChartChange);
+            </script>
+SCRIPT;
+    }
+?>

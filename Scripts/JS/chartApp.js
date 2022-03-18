@@ -14,8 +14,10 @@ function addData(chart, label, data) {
 let delayed;
 const canvas = document.getElementById('myChart').getContext('2d');
 let gradiant = canvas.createLinearGradient(0, 0, 0, 400);
-gradiant.addColorStop(0, getRandomFillColor());
-gradiant.addColorStop(1, getRandomFillColor());
+let frstStop = getRandomFillColor();
+let secndStop = getRandomFillColor();
+gradiant.addColorStop(0, frstStop);
+gradiant.addColorStop(1, secndStop);
 
 const userProgressChart = {
 	type: 'line',
