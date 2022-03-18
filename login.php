@@ -19,8 +19,8 @@
 
         </div>
         <div class="centerLogin input-positions-fields">
-            <div>
-                <form action="Scripts/PHP/login.inc.php" class="loginFormSt" method="post">    
+            <div class="loginFormSt">
+                <form action="Scripts/PHP/login.inc.php" class="formGridManip" method="post">    
                     <div class="input-containers">
                         <div class="field">
                             <input type="email" id="email" name="email" value="oskar.wichtowski3@gmail.com" class="a inputLogin" placeholder=" " autocomplete="off">
@@ -33,7 +33,10 @@
                         </div>
                     </div>
                     <input type="submit" class="button-19 buttorson" value="Prześlij">
-                </form>  
+                    <div>
+                        <p class="errorParagraph parMar"></p>
+                    </div>
+                </form> 
             </div>
             <div style="text-align: center;">
                 <img src="Images/WEBSITE IMAGES/fitness-vertical-banner.jpg" class="fitImg" alt="">
@@ -48,3 +51,4 @@
 </body>
 </html>
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/login-js-module.js" crossorigin="anonymous"></script>

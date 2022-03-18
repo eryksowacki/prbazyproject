@@ -19,13 +19,13 @@
         }
         if(count($_POST) != $i)
         {   
-            header("Location: ../../login.php?email=$_POST[email]&emptyInput=");
+            header("Location: ../../login.php?errorNo=5");
         }
         else
         {
             if($_POST['token'] !== $_SESSION['token'])
             {
-                header("Location: ../../login.php?nonAuthorizedToken=1");
+                header("Location: ../../login.php?errorNo=4");
             }
             else
             {
@@ -39,7 +39,7 @@
                 catch(PDOException $e) 
                 {
                     $connect = null;
-                    header("Location: ../../login.php?Error=$e->getMessage()");
+                    header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
                 }
     
                 $email = $_POST["email"];
@@ -51,7 +51,7 @@
                 if($rowCount !== 1)
                 {
                     $connect = null;
-                    header('Location: ../../login.php?noEmail=1');
+                    header('Location: ../../login.php?errorNo=1');
                 }
                 else
                 {
@@ -59,7 +59,7 @@
                     if($userPassword !== $result -> password)
                     {
                         $connect = null;
-                        header('Location: ../../login.php?wrongPasswd=1');
+                        header('Location: ../../login.php?errorNo=2');
                     }
                     else
                     {             

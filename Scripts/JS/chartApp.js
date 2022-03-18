@@ -1,6 +1,6 @@
 function getRandomFillColor() {
 	let o = Math.round, r = Math.random, s = 255;
-	return ('rgba(' +o(r() * s) +',' +o(r() * s) +',' +o(r() * s) +',' +r().toFixed(1) +')');
+	return ('rgba(' +o(r() * s) +',' +o(r() * s) +',' +o(r() * s) +',' +(o(r() * 100) / 100) +')');
 }
 function addData(chart, label, data) {
 	chart.data.datasets.forEach((dataset) => {

@@ -223,7 +223,6 @@
 }
 .input-containers {
 	width: fit-content;
-	margin-left: 30px;
 }
 .input-positions-fields {
 	border-radius: 10px;
@@ -470,18 +469,25 @@ a {
 	justify-content: flex-start;
 	overflow-y: scroll;
 }
-
+.parMar{
+	margin-top: 3rem;
+	text-align: center;
+}
 .review-block::-webkit-scrollbar,
-.review-block::-webkit-scrollbar-thumb {
+.review-block::-webkit-scrollbar-thumb
+.gymReviewsBlock::-webkit-scrollbar,
+.gymReviewsBlock::-webkit-scrollbar-thumb {
 	width: 0.75rem;
 	background-color: white;
 	padding: 1px;
 }
-.review-block::-webkit-scrollbar-thumb {
+.review-block::-webkit-scrollbar-thumb,
+.gymReviewsBlock::-webkit-scrollbar-thumb {
 	background-color: #212529;
 	border-radius: 7px;
 }
-.review-block::-webkit-scrollbar-track {
+.review-block::-webkit-scrollbar-track,
+.gymReviewsBlock::-webkit-scrollbar-track {
 	border-radius: 7px;
 }
 
@@ -557,7 +563,7 @@ p.myTrainers {
 	display: inline;
 }
 
-.trainerSelect {
+.trainerSelect,.gymName{
 	display: inline-block;
 	margin-bottom: 1rem;
 	margin-top: 0.5rem;
@@ -623,12 +629,13 @@ p.newWeight {
 
 .calendar {
 	display: grid;
-	height: 120px;
+	height: -webkit-fill-available;
 	width: 180px;
 	background-color: #6a93cb;
 	background-image: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
 	border-radius: 16px;
 	padding: 1em;
+	font-size: 85%;
 }
 
 .treningType {
@@ -1055,15 +1062,21 @@ hr {
 	gap: 0em 0em;
 	grid-template-areas: '. . .';
 	margin-top: 5%;
-	align-content: center;
-	justify-items: center;
+	justify-content: center;
+    justify-items: center;
 }
 .centerLogin {
 	height: 455px;
 	width: 900px;
 }
-.centerLogin > div > form > .input-containers {
-	margin-top: 20%;
+.buttorson{
+	margin-top: 4rem;
+}
+.formGridManip{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .fitImg {
 	width: 60%;
@@ -1080,10 +1093,7 @@ hr {
 	justify-content: center;
 	justify-items: start;
 }
-.buttorson {
-	margin-top: 1rem;
-	margin-left: 3rem;
-}
+
 .vBanner {
 	height: 450px;
 	border-radius: 1rem;
@@ -1182,4 +1192,35 @@ hr {
 
 .garsdfnjop {
 	padding: 0.5rem;
+}
+.calendar > b:nth-child(2){
+	padding: 0px;
+    margin: 0;
+    width: min-content;
+    height: min-content;
+}
+.calendar > b:nth-child(1){
+	height: min-content;
+}
+.trainPfP{
+	height: 50px;
+}
+.wholeTrainersBlock
+{
+	display: grid;
+	grid-template-columns: repeat(4, auto); 
+	grid-template-rows: repeat(3, auto); 
+	gap: 2rem 3rem; 
+	grid-template-areas: 
+		". . . ."
+		". . . ."
+		". . . .";
+	justify-items: stretch;
+	justify-content: center;
+}
+.trainersBlock{
+	display: flex;
+	align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }

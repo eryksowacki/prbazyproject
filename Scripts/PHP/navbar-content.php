@@ -6,7 +6,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="search_trainer.php">Trenerzy</a>
+                    <a class="nav-link" href="trainers.php">Trenerzy</a>
                 </li>
                 <?php
                     if(isset($_SESSION['user_id']) && is_int($_SESSION['user_id']) && $_SESSION['user_id'] !== NULL)

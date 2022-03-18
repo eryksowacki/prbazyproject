@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_GET['gym_review_id'] = (int) $_GET['gym_review_id'];
     if(!$id = filter_input(INPUT_GET, 'gym_review_id', FILTER_VALIDATE_INT)) 
     {
         header("HTTP/2.0 400 Bad Request");
@@ -21,7 +22,6 @@
     $userTrainersId -> execute(['user_id' => $_SESSION['user_id']]);
     $gymReviewId = $userTrainersId -> fetchAll(PDO::FETCH_ASSOC);
     $i = 0;
-    var_dump($gymReviewId);
     foreach ($gymReviewId as $key => $value) 
     {
         if($value['gym_review_id'] !== $id)
@@ -36,7 +36,7 @@
             $reviewId = $result[0]['gym_review_id'];
             $userTrainersId = $connect -> prepare("DELETE FROM `gym_reviews` WHERE `gym_review_id` = :gym_review_id");
             $userTrainersId -> execute(['gym_review_id' => $reviewId]);
-            header('Location: ../../mojekonto.php?gymReviewsBlock');
+            header('Location: ../../mojekonto.php?gym_reviews');
         }
     }
     $connect = null;

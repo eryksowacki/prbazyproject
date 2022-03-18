@@ -243,13 +243,13 @@ REVIEWS;
                             GROUP BY `gyms`.`gym_id`";
                         $result = $connect -> query($myGymsRev);
                         echo "<div><h4>Dodaj recenzję swojej siłowni</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
-                        echo "<select class=trainerSelect name=gym_id>";
+                        echo "<select class='gymName' name=gym_id>";
                         while($option =  $result -> fetch_assoc())
                         {
                             echo "<option value=$option[asg]>$option[gym_name] $option[city]</option>";
                         }
                         echo "</select>";
-                        echo '<select name="mark" class="trainerSelect trainerMark">';
+                        echo '<select name="mark" class="gymName trainerMark">';
                         for ($i=1; $i < 6; $i++) 
                         { 
                             echo "<option value=$i >$i</option>";
@@ -270,7 +270,9 @@ REVIEWS;
                             echo <<< USERREVIEW
                                 <div class='trainer-show'>
                                     <p>Ocena: <b class='hoverOnInfo'>$currentRow[gym_mark]</b></p>
-                                    <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
+                                    <p>Siłownia: <b class='hoverOnInfo'>$currentRow[gym_name] w $currentRow[city]</b></p>
+                                    <p>Twoja recezja siłowni: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
+
                                     <p><a href="Scripts\PHP\delete_gym_review.inc.php?gym_review_id=$currentRow[gym_review_id]">Usuń recenzję</a></p>
                                 </div>
 USERREVIEW;
@@ -633,12 +635,6 @@ CALENDAR;
         setCookie("colorChartBorder",saveColor.style.border.substr(10));
         setCookie("colorChartInsideFirst",tab[0]);
         setCookie("colorChartInsideSecond",tab[1]);
-        let gradior = canvas.createLinearGradient(0, 0, 0, 400);
-        gradior.addColorStop(0, tab[0]);
-        gradior.addColorStop(1, tab[1]);
-        myChart.config._config.data.datasets[0].borderColor = saveColor.style.border.substr(10);
-        myChart.config._config.data.datasets[0].backgroundColor = gradior;
-        changeChartSwitch(cookieChartChange);
     });
     $(diffColorRanodom).on("click",function()
     {
@@ -695,7 +691,6 @@ CALENDAR;
                 let gradient = canvas.createLinearGradient(0, 0, 0, 400);
                 let asdgf = '$_COOKIE[colorChartInsideFirst]';
                 let hsgfdr = '$_COOKIE[colorChartInsideSecond]';
-                console.log(asdgf,hsgfdr);
                 gradient.addColorStop(0, asdgf);
                 gradient.addColorStop(1, hsgfdr);
                 let coc = '$_COOKIE[colorChartBorder]';
@@ -704,5 +699,9 @@ CALENDAR;
                 changeChartSwitch(cookieChartChange);
             </script>
 SCRIPT;
+    }
+    else
+    {
+        echo "<script>changeChartSwitch(cookieChartChange);</script>";
     }
 ?>
