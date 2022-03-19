@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Czas generowania: 17 Mar 2022, 15:07
+-- Czas generowania: 19 Mar 2022, 12:30
 -- Wersja serwera: 8.0.27
 -- Wersja PHP: 7.4.26
 
@@ -3491,7 +3491,7 @@ CREATE TABLE IF NOT EXISTS `gym_reviews` (
 --
 
 INSERT INTO `gym_reviews` (`gym_review_id`, `gym_mark`, `gym_review_descript`, `user_id`, `gym_id`) VALUES
-(1, 5, 'Ładna, zadbana siłownia, dużo sprzętu, przemiła obsługa.', 1, 50),
+(1, 5, 'Ładna, zadbana siłownia, dużo sprzętu, przemiła obsługa ?.', 1, 50),
 (2, 2, 'Mega lans jeśli nie masz obcisłych ciuchów i nie napijesz sobie skarpety w kroku to będziesz poczegany za leszcza???', 2, 43),
 (3, 3, 'Szkoda ze tylko abonamenty....?', 3, 16),
 (4, 4, 'Fajna siłownia masa sprzętu i maszyn można konkretnie poćwiczyć choć w niektórych godzinach jest naprawdę tłoczno i trzeba czekać aż ktoś skończy lub ćwiczyć na zmianę.', 4, 67),
@@ -4039,7 +4039,10 @@ INSERT INTO `gym_reviews` (`gym_review_id`, `gym_mark`, `gym_review_descript`, `
 (545, 2, 'Pod prysznicem brudno, w saunie smród, a jeśli chodzi o sprzęt to część jest zepsuta ??', 545, 48),
 (546, 4, 'Pomieszczenia podzielone na sekcje siłownia cardio stretching itd. Przestronne szatnie prysznice niestety brak sauny. No i minus za sprzęt uszkodzony który długo bywa naprawiany. I za to 4 a nie 5 gwiazdek', 546, 38),
 (547, 5, 'Bardzo czysto, przyjemnie, sprzęt zadbany, miła obsługa', 547, 89),
-(548, 2, 'Śmierdzi zdechłym szczurem', 548, 16);
+(548, 2, 'Śmierdzi zdechłym szczurem', 548, 16),
+(550, 5, 'Rotefseaf', 999, 39),
+(551, 3, 'Watego dkmksfamlafgln', 999, 83),
+(552, 2, 'nklfaglng;lasngvl;svd', 999, 7);
 
 -- --------------------------------------------------------
 
@@ -5081,7 +5084,7 @@ CREATE TABLE IF NOT EXISTS `usr_train` (
   KEY `user_id` (`user_id`,`trainer_id`,`gym_id`),
   KEY `trainer_id` (`trainer_id`),
   KEY `gym_id` (`gym_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2778 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2779 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `usr_train`
@@ -7847,7 +7850,8 @@ INSERT INTO `usr_train` (`user_id`, `trainer_id`, `training_date`, `training_des
 (999, NULL, '2022-02-28 04:00:00', 'Relaksacyjny', 7, 2773),
 (999, NULL, '2022-03-10 03:00:00', 'Interwałowy', 7, 2774),
 (999, NULL, '2022-03-11 12:00:00', 'Kondycyjny', 7, 2776),
-(2, NULL, '2022-03-17 06:00:00', 'O stałej intensywności', 43, 2777);
+(2, NULL, '2022-03-17 06:00:00', 'O stałej intensywności', 43, 2777),
+(999, NULL, '2022-03-04 12:00:00', 'Pilates', 7, 2778);
 
 --
 -- Ograniczenia dla zrzutów tabel
