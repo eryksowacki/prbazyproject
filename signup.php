@@ -35,7 +35,7 @@
                     <p>Relaksuj się i odpoczywaj trenując</p>
                 </div>
             </div>
-            <form action="..\Scripts\PHP\register.inc.php" method="post">
+            <form action="Scripts/PHP/register.inc.php" class="registerFormPogu" method="post">
                 <div class="input-positions-fields">
                     <div class="left-input-pos-field">
                         <img src="Images/WEBSITE IMAGES/fitness-vertical-banner_2.png" class="vBanner" alt="fitness promotion vertical banner">
@@ -50,30 +50,9 @@
                             <label for="surname" class="floating-label">Nazwisko</label>
                         </div>
                         <div class="field">
-                            <input type="number" name="age" id="age" class="a inputLogin" placeholder=" "  autocomplete="off"> 
-                            <label for="age" class="floating-label">Wiek</label>
-                        </div>
-                        <div class="field">
                             <input type="email" name="email" id="email" class="a inputLogin" placeholder=" "> 
                             <label for="email" class="floating-label">E-mail</label>
                         </div>
-                        <?php
-                            if(isset($_GET['takenEmail']) && isset($_GET['emailValidateError']))
-                            {
-                                echo "<p class='invalidInput' >Podany e-mail istnieje już w bazie!</p>";
-                            }
-                            else
-                            {
-                                if(isset($_GET['takenEmail']))
-                                {
-                                    echo "<p class='invalidInput' >Podany e-mail istnieje już w bazie!</p>";
-                                }
-                                if(isset($_GET['emailValidateError']))
-                                {
-                                    echo "<p class='invalidInput' >Podany e-mail nie przeszedł wymaganych oczekiwań spróbuj ponownie</p>";
-                                }
-                            }
-                        ?>
                         <div class="field">
                             <input type="password" name="password" id="password" class="inputLogin" placeholder=" " autocomplete="on">
                             <label for="password" class="floating-label">Hasło</label>
@@ -81,16 +60,11 @@
                         <div class="field">
                             <input type="password" name="checkPassword" id="chckpassword" class="inputLogin" placeholder=" " autocomplete="on">
                             <label for="chckpassword" class="floating-label">Potwierdź hasło</label>
-                            <?php
-                                if(isset($_GET['invalidPasswd']) )
-                                {
-                                    echo "<p class='invalidInput' >Hasła się nie zgadzją!</p>";
-                                }
-                            ?>
                         </div>
                         <input type="text" name="token" value="<?php echo $_SESSION["token"];?>" hidden>
-                        <input type="checkbox" name="tos" checked><p class="tos">Akceptuję <a href="Regulamin.php">regulamin</a> sklepu</p>
+                        <div><input type="checkbox" name="tos"><p class="tos">Akceptuję <a href="Regulamin.php">regulamin</a> sklepu</p></div>
                         <input type="submit" name="submitSub" class="button-29 floating" value="Zarejestruj się">
+                        <div class="errParContainer"><p class="errorParagraph"></p></div>
                     </div>
                 </div>
             </form>
@@ -102,6 +76,7 @@
 </body>
 </html>
 <script src="Scripts/JS/gsap-search-animation.js" crossorigin="anonymous"></script>
+<script src="Scripts/JS/login-js-module.js" crossorigin="anonymous"></script>
 <?php
     if(empty($_GET))
     {

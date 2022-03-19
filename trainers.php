@@ -29,19 +29,23 @@
             $_GET['limiter'] = 0;
         }
         $connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-        $sql = "SELECT `specialization`, `email`, `password`, `gym_id`, `name`, `surname`, `prize_per_hour`, `profile_picture`, `trainer_descript`
+        $sql = "SELECT `trainer_id`,`specialization`, `email`, `password`, `gym_id`, `name`, `surname`, `prize_per_hour`, `profile_picture`, `trainer_descript`
                 FROM `trainers`
-                limit $limiter, 16 ";
+                limit $limiter, 16";
         $result = $connect -> query($sql);
-        echo "<div class='wholeTrainersBlock'>";
 
+        echo "<div class='wholeTrainersBlock'>";
         while($currRow = $result -> fetch_assoc())
         {
+            $avg = "SELECT round(avg(`trainer_mark`),2) FROM `trainer_reviews` WHERE `trainer_id` = $currRow[trainer_id]";
+            $avgRev = mysqli_fetch_row($connect -> query($avg))[0];
             echo <<< TRAINER
                 <div class='trainersBlock'>
                     <p><img src='Images/TRAINERS IMAGES/$currRow[profile_picture]' class='trainPfP'></p>
                     <p>$currRow[name] $currRow[surname]</p>
                     <p>$currRow[specialization]</p>
+                    <p>Cena za trening: $currRow[prize_per_hour]</p>
+                    <p>Średnia ocen trenera: $avgRev</p>
                 </div>
 TRAINER;
         }

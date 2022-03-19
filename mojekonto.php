@@ -9,6 +9,7 @@
     $result = $connect -> query($sql);
     echo "<script> const weight = [];const date = [];";
     $i = 0;
+    $dater = [];
     while($row = $result -> fetch_assoc())
     {
         if($i == 0){
@@ -17,16 +18,19 @@
         echo "weight.push(".$row['w']."); date.push('".substr($row['d'], 0, 10)."');";
         $i++;
         $nextDate = $row['d'];
+        array_push($dater, $row['d']);
     }
     echo "</script>";
-    
 
 ?>
 <?php
-    $origin = new DateTime($date);
-    $target = new DateTime($nextDate);
-    $interval = $origin->diff($target);
-    $dayDiff =  $interval -> format('%a dni');
+    if (isset($date) && count($dater) > 2) 
+    {
+        $origin = new DateTime($dater[count($dater) - 1]);
+        $target = new DateTime($nextDate);
+        $interval = $origin->diff($target);
+        $dayDiff =  $interval -> format('%a dni');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -116,7 +120,7 @@
         </script>
         <div class="userMain">
             <div class="chart">
-                <h4>Mój progress na przestrzeni <?php echo $dayDiff;?></h4>
+                <?php if(isset($date) && count($dater) > 2){echo "<h4>Mój progress na przestrzeni: ",$dayDiff,"</h4>";}else{echo "<h4></h4>";}?>
                 <div style="width: 800px; height:400px;">
                     <canvas id="myChart"></canvas>
                 </div>

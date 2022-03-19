@@ -85,6 +85,7 @@
 	grid-auto-rows: minmax(550px, auto);
 	gap: 15px;
 	align-items: center;
+	margin-top: 2rem;
 }
 .floating {
 	margin-top: 15px;
@@ -226,7 +227,8 @@
 }
 .input-positions-fields {
 	border-radius: 10px;
-	height: 475px;
+	height: fit-content;
+	padding: 0rem 1rem 0rem 1rem;
 	filter: none;
 	display: grid;
 	justify-content: end;
@@ -469,13 +471,12 @@ a {
 	justify-content: flex-start;
 	overflow-y: scroll;
 }
-.parMar{
+.parMar {
 	margin-top: 3rem;
 	text-align: center;
 }
 .review-block::-webkit-scrollbar,
-.review-block::-webkit-scrollbar-thumb
-.gymReviewsBlock::-webkit-scrollbar,
+.review-block::-webkit-scrollbar-thumb .gymReviewsBlock::-webkit-scrollbar,
 .gymReviewsBlock::-webkit-scrollbar-thumb {
 	width: 0.75rem;
 	background-color: white;
@@ -563,7 +564,8 @@ p.myTrainers {
 	display: inline;
 }
 
-.trainerSelect,.gymName{
+.trainerSelect,
+.gymName {
 	display: inline-block;
 	margin-bottom: 1rem;
 	margin-top: 0.5rem;
@@ -942,6 +944,7 @@ nav.navbar-nav,
 	border-radius: 1rem;
 	cursor: pointer;
 	display: flex;
+	opacity: 0;
 	align-items: flex-end;
 	justify-content: space-around;
 }
@@ -1006,9 +1009,13 @@ nav.navbar-nav,
 }
 .trainerBlock > div {
 	margin-left: 1rem;
+	margin-right: 1rem;
 }
 .trainerBlock > div:first-child {
 	margin-left: 0rem;
+}
+.smallPar {
+	font-size: 90%;
 }
 div > span > p {
 	padding: 0.2rem;
@@ -1063,20 +1070,20 @@ hr {
 	grid-template-areas: '. . .';
 	margin-top: 5%;
 	justify-content: center;
-    justify-items: center;
+	justify-items: center;
 }
 .centerLogin {
 	height: 455px;
 	width: 900px;
 }
-.buttorson{
+.buttorson {
 	margin-top: 4rem;
 }
-.formGridManip{
+.formGridManip {
 	display: flex;
 	flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 .fitImg {
 	width: 60%;
@@ -1095,12 +1102,17 @@ hr {
 }
 
 .vBanner {
-	height: 450px;
+	height: 95%;
 	border-radius: 1rem;
+	margin: 1rem;
 }
 .left-input-pos-field {
+	display: flex;
 	text-align: center;
+	flex-direction: column;
+	align-items: center;
 }
+
 .personalInfo {
 	display: flex;
 	flex-direction: column;
@@ -1193,34 +1205,46 @@ hr {
 .garsdfnjop {
 	padding: 0.5rem;
 }
-.calendar > b:nth-child(2){
+.calendar > b:nth-child(2) {
 	padding: 0px;
-    margin: 0;
-    width: min-content;
-    height: min-content;
-}
-.calendar > b:nth-child(1){
+	margin: 0;
+	width: min-content;
 	height: min-content;
 }
-.trainPfP{
+.calendar > b:nth-child(1) {
+	height: min-content;
+}
+.trainPfP {
 	height: 50px;
 }
-.wholeTrainersBlock
-{
+.wholeTrainersBlock {
 	display: grid;
-	grid-template-columns: repeat(4, auto); 
-	grid-template-rows: repeat(3, auto); 
-	gap: 2rem 3rem; 
-	grid-template-areas: 
-		". . . ."
-		". . . ."
-		". . . .";
+	grid-template-columns: repeat(4, auto);
+	grid-template-rows: repeat(3, auto);
+	gap: 2rem 3rem;
+	grid-template-areas:
+		'. . . .'
+		'. . . .'
+		'. . . .';
 	justify-items: stretch;
 	justify-content: center;
 }
-.trainersBlock{
+.trainersBlock {
 	display: flex;
 	align-items: center;
-    flex-direction: column;
-    justify-content: center;
+	flex-direction: column;
+	justify-content: center;
+}
+.input-containers {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+.button-29 {
+	width: fit-content;
+}
+.errParContainer {
+	text-align: center;
+	width: 300px;
 }

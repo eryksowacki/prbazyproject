@@ -23,6 +23,21 @@ if(typeof $_GET['errorNo'] !== 'undefined')
         case "4":
             errorField.textContent = "Wprowadzono błędne dane.";
             break;
+        case "6":
+            errorField.textContent = "Pozostawiono puste pola. Wypełnij jeszcze raz wszystkie pola.";
+            break;
+        case "7":
+            errorField.textContent = "Niezaakceptowano regulaminu sklepu.";
+            break;
+        case "8":
+            errorField.textContent = "Hasła nie są zgodne. Wprowadź hasła ponownie.";
+            break;
+        case "9":
+            errorField.textContent = "Ten email jest używany przez innego użytkownika.";
+            break;
+        case "10":
+            errorField.textContent = "Email nie spełnił oczekiwanych wymagań.";
+            break;
         default:
             errorField.textContent = "Wystąpił nieoczekiwany błąd.";
             break;

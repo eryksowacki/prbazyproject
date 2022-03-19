@@ -96,7 +96,7 @@
 			</div>
 		</div>
 		<div class="trainersPresentation">
-			<h1>Trenerzy najbardziej cenieni przez was</h1>
+			<h1>Najbardziej cenieni przez was trenerzy</h1>
 			<div class="izsdfghosazd">
 			<?php
 				$connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
@@ -126,7 +126,7 @@
 								<p>Specjalizacja: $currRow[specialization]</p>
 							</div>
 							<div>
-								<p>$currRow[trainer_descript]</p>
+								<p class="smallPar">$currRow[trainer_descript]</p>
 							</div>
 						</div>
 TRAINERS;
