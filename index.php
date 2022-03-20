@@ -100,7 +100,7 @@
 			<div class="izsdfghosazd">
 			<?php
 				$connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),2) as `average_mark`, count(`review_id`) as `numberof_review`, `trainer_descript`
+				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),2) * 2 as `average_mark`, count(`review_id`) as `numberof_review`, `trainer_descript`
 				FROM `trainer_reviews`
 				JOIN `trainers`
 				ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`
@@ -116,16 +116,16 @@
 							<div>
 								<img src='Images/TRAINERS IMAGES/$currRow[profile_picture]' class='trainerPfP' title='Zdjęcie profilowe trenera: $currRow[name]' alt='Zdjęcie profilowe trenera: $currRow[name]'>
 							</div>
-							<div>
+							<div class="ldusb">
 								<span>Średnia ocena użytkowników: <p>$currRow[average_mark]</p></span>
 							</div>
-							<div>
+							<div class="ldusb">
 								<span>$currRow[name] $currRow[surname]</span>
 							</div>
-							<div>
+							<div class="ldusb">
 								<p>Specjalizacja: $currRow[specialization]</p>
 							</div>
-							<div>
+							<div class="ldusb">
 								<p class="smallPar">$currRow[trainer_descript]</p>
 							</div>
 						</div>

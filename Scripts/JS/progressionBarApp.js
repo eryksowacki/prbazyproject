@@ -19,9 +19,7 @@ const animateProgressBar = () => {
     if(tmp == 0 && value >= -50)
     {
         gsap.fromTo(".trainingPromotionPanel",2,{y:80,autoAlpha:0,display:"none"},{y:0,autoAlpha:1,display:"flex"});
-        setTimeout(() => {
-            gsap.fromTo(panelControl[4],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
-        }, 200);
+
         setTimeout(() => {
             gsap.fromTo(panelControl[3],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
         }, 400);
@@ -43,25 +41,25 @@ const animateProgressBar = () => {
     {
         gsap.fromTo(".trainersPresentation > h1",2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
         setTimeout(() => {
-            gsap.fromTo(trainerBlock[0],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
+            gsap.fromTo(trainerBlock[0],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
         }, 200);
         setTimeout(() => {
-            gsap.fromTo(trainerBlock[1],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
+            gsap.fromTo(trainerBlock[1],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
             
         }, 400);
         setTimeout(() => {
-            gsap.fromTo(trainerBlock[2],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
+            gsap.fromTo(trainerBlock[2],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
         }, 600);
         setTimeout(() => {
-            gsap.fromTo(trainerBlock[3],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
+            gsap.fromTo(trainerBlock[3],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
             
         }, 800);
         setTimeout(() => {
-            gsap.fromTo(trainerBlock[4],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
+            gsap.fromTo(trainerBlock[4],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
             
         }, 1000);
         setTimeout(() => {
-            gsap.fromTo(trainerBlock[5],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"block"});
+            gsap.fromTo(trainerBlock[5],2,{y:80,autoAlpha:0},{y:0,autoAlpha:1,display:"flex"});
             
         }, 1200);
         tmp2++;

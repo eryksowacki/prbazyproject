@@ -476,7 +476,8 @@ a {
 	text-align: center;
 }
 .review-block::-webkit-scrollbar,
-.review-block::-webkit-scrollbar-thumb .gymReviewsBlock::-webkit-scrollbar,
+.review-block::-webkit-scrollbar-thumb, 
+.gymReviewsBlock::-webkit-scrollbar,
 .gymReviewsBlock::-webkit-scrollbar-thumb {
 	width: 0.75rem;
 	background-color: white;
@@ -490,8 +491,13 @@ a {
 .review-block::-webkit-scrollbar-track,
 .gymReviewsBlock::-webkit-scrollbar-track {
 	border-radius: 7px;
+	background-color: white;
 }
-
+.onfids{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .gymReviewsBlock {
 	flex-direction: column;
 	justify-content: flex-start;
@@ -996,26 +1002,28 @@ nav.navbar-nav,
 	height: max-content;
 	background-image: linear-gradient(64deg, #4c89b898 0%, #20a4f3 74%);
 	display: flex;
-	flex-direction: column;
 	margin: 0px auto;
 	border-radius: 1rem;
 	opacity: 0;
+	flex-direction: column;
+    align-content: stretch;
 }
 .trainerPfP {
-	width: -webkit-fill-available;
-	width: -webkit-fill-available;
+	width: 100%;
 	border-radius: 1rem;
-	margin: 1rem;
 }
-.trainerBlock > div {
+.ldusb {
 	margin-left: 1rem;
 	margin-right: 1rem;
 }
-.trainerBlock > div:first-child {
-	margin-left: 0rem;
-}
 .smallPar {
 	font-size: 90%;
+}
+.gym_na{
+	width: -webkit-fill-available;
+}
+.descript{
+	text-align: justify;
 }
 div > span > p {
 	padding: 0.2rem;
@@ -1215,7 +1223,8 @@ hr {
 	height: min-content;
 }
 .trainPfP {
-	height: 50px;
+	height: 150px;
+	border-radius: 100%;
 }
 .wholeTrainersBlock {
 	display: grid;
@@ -1228,6 +1237,7 @@ hr {
 		'. . . .';
 	justify-items: stretch;
 	justify-content: center;
+	margin-top: 2.5rem;
 }
 .trainersBlock {
 	display: flex;
@@ -1247,4 +1257,29 @@ hr {
 .errParContainer {
 	text-align: center;
 	width: 300px;
+}
+.pageNumaration{
+	display: inline;
+}
+.pageNumaration{
+	text-align: center;
+}
+.pageNumaration > p > span > a{
+	text-decoration: none;
+	padding: 0rem 1rem;
+}
+.pageNumaration > p{
+	margin-top: 3rem;
+}
+.trainerSearch, .trainerSearchForm{
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.sort > div{
+	display: inline;
+} 
+div.trainerSearch > form > div > p:nth-child(1){
+	margin-right: 3rem;
 }

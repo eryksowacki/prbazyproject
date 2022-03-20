@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_POST))
     {
-        // header("location: ../../signup.php?errorNo=45");
+        header("location: ../../signup.php?errorNo=45");
     }
     else
     {
@@ -18,23 +18,23 @@
         }
         if(count($_POST) != $i)
         { 
-            // header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=6");
+            header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=6");
         }
         else
         {
             if(!isset($_POST['tos']))
             {
-                // header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=7");
+                header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=7");
             }
             if($_POST["token"] !== $_SESSION["token"])
             {
-                // header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=45");
+                header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=45");
             }
             else
             {
                 if($_POST['password'] !== $_POST['checkPassword'])
                 {
-                    // header('Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=8');
+                    header('Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=$_POST[email]&emptyInput=&errorNo=8');
                 }
                 else
                 {
@@ -49,25 +49,25 @@
                     catch(PDOException $e)
                     {
                         $connect = null;
-                        // header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
+                        header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
                     }
                     $stmt = $connect -> prepare("SELECT `email` FROM `users` WHERE `email` LIKE :email");
                     $stmt -> execute(['email' => $_POST['email']]);
                     $rowCount = $stmt -> rowCount();
                     if($rowCount !== 0)
                     {
-                        // header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=&emptyInput=&errorNo=9");
+                        header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=&emptyInput=&errorNo=9");
                     }
                     else
                     {   
                         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
                         {
-                            // header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=&emptyInput=&errorNo=10");
+                            header("Location: ../../signup.php?name=$_POST[name]&surname=$_POST[surname]&email=&emptyInput=&errorNo=10");
                         }
                         else
                         {
                             $asf = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-                            $result = mysqli_fetch_row($asf -> query("SELECT max(`bmi_id`)+1 FROM `users`;"))[0];
+                            $result = mysqli_fetch_row($asf -> query("SELECT max(`user_id`) + 1 FROM `users`;"))[0];
                             $data = [
                                 'usr_id' => $result,
                                 'nme' => $_POST['name'],

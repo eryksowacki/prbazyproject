@@ -179,7 +179,7 @@ CHART;
                             WHERE `usr_train`.`user_id` = $_SESSION[user_id] 
                             GROUP by `usr_train`.`trainer_id`;";
                         $result = $connect -> query($myTrainerReveiws);
-                        echo "<div style='width: fit-content;margin: 0 auto;'><h4>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addReview.inc.php method=post>";
+                        echo "<div style='width: fit-content;margin: 0 auto;'><h4 style='text-align: center;'>Dodaj recenzję swojemu trenerowi</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addReview.inc.php method=post>";
                         echo "<select class=trainerSelect name=trainer_id>";
                         while($option =  $result -> fetch_assoc())
                         {
@@ -208,7 +208,7 @@ CHART;
                                     <p>Imię: <b class='hoverOnInfo'>$currentRow[n]</b></p>                                
                                     <p>Nazwisko: <b class='hoverOnInfo'>$currentRow[s]</b></p>
                                     <p>Ocena: <b class='hoverOnInfo'>$currentRow[trainer_mark]</b></p>
-                                    <p>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[trainer_review_descript]</b></p>
+                                    <p class='descript'>Twoja recezja trenera: <b class='hoverOnInfo'>$currentRow[trainer_review_descript]</b></p>
                                     <p><a href="Scripts\PHP\delete_review.inc.php?review_id=$currentRow[review_ids]">Usuń recenzję</a></p>
                                 </div>
 USERREVIEW;
@@ -246,7 +246,7 @@ REVIEWS;
                             WHERE `usr_train`.`user_id` = $_SESSION[user_id]
                             GROUP BY `gyms`.`gym_id`";
                         $result = $connect -> query($myGymsRev);
-                        echo "<div><h4>Dodaj recenzję swojej siłowni</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
+                        echo "<div class='onfids'><h4>Dodaj recenzję swojej siłowni</h4><p class=myTrainers>Moi trenerzy:</p><form action=Scripts/PHP/addGymReview.inc.php method=post>";
                         echo "<select class='gymName' name=gym_id>";
                         while($option =  $result -> fetch_assoc())
                         {
@@ -274,8 +274,8 @@ REVIEWS;
                             echo <<< USERREVIEW
                                 <div class='trainer-show'>
                                     <p>Ocena: <b class='hoverOnInfo'>$currentRow[gym_mark]</b></p>
-                                    <p>Siłownia: <b class='hoverOnInfo'>$currentRow[gym_name] w $currentRow[city]</b></p>
-                                    <p>Twoja recezja siłowni: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
+                                    <p class='gym_na'>Siłownia: <b class='hoverOnInfo'>$currentRow[gym_name] w $currentRow[city]</b></p>
+                                    <p class='gym_na descript'>Twoja recezja siłowni: <b class='hoverOnInfo'>$currentRow[gym_review_descript]</b></p>
 
                                     <p><a href="Scripts\PHP\delete_gym_review.inc.php?gym_review_id=$currentRow[gym_review_id]">Usuń recenzję</a></p>
                                 </div>
