@@ -100,7 +100,7 @@
 			<div class="izsdfghosazd">
 			<?php
 				$connect = new mysqli("localhost","id18439949_znanytrenerusername",'sy>[$Fo8]+!n^cVN',"id18439949_znanytrener");
-				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),2) * 2 as `average_mark`, count(`review_id`) as `numberof_review`, `trainer_descript`
+				$query = "SELECT `name`,`surname`,`specialization`,`profile_picture`,`gym_name`,`city` ,round(avg(`trainer_mark`),1) * 2 as `average_mark`, count(`review_id`) as `numberof_review`, `trainer_descript`
 				FROM `trainer_reviews`
 				JOIN `trainers`
 				ON `trainer_reviews`.`trainer_id` = `trainers`.`trainer_id`

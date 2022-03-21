@@ -476,7 +476,7 @@ a {
 	text-align: center;
 }
 .review-block::-webkit-scrollbar,
-.review-block::-webkit-scrollbar-thumb, 
+.review-block::-webkit-scrollbar-thumb,
 .gymReviewsBlock::-webkit-scrollbar,
 .gymReviewsBlock::-webkit-scrollbar-thumb {
 	width: 0.75rem;
@@ -493,10 +493,10 @@ a {
 	border-radius: 7px;
 	background-color: white;
 }
-.onfids{
+.onfids {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
+	flex-direction: column;
+	align-items: center;
 }
 .gymReviewsBlock {
 	flex-direction: column;
@@ -654,6 +654,8 @@ p.newWeight {
 }
 .trainerNameCalendar {
 	font-size: 70%;
+	margin: 0px;
+	margin-top: 6px;
 }
 .trainingDesc {
 	transition: 0.3s;
@@ -944,6 +946,9 @@ nav.navbar-nav,
 	align-items: center;
 	justify-content: space-around;
 }
+.ldusb:nth-child(2) {
+	margin-top: 1rem;
+}
 .panelControl {
 	width: 22%;
 	height: 450px;
@@ -962,9 +967,12 @@ nav.navbar-nav,
 }
 .replace {
 	position: absolute;
-	width: inherit;
+	width: -webkit-fill-available;
 	height: inherit;
 	text-align: center;
+}
+.trainingPromotionPanel > .panelControl > div.replace > h3 {
+	margin-top: 4rem;
 }
 .panelButton {
 	transform-origin: center;
@@ -1006,7 +1014,7 @@ nav.navbar-nav,
 	border-radius: 1rem;
 	opacity: 0;
 	flex-direction: column;
-    align-content: stretch;
+	align-content: stretch;
 }
 .trainerPfP {
 	width: 100%;
@@ -1019,10 +1027,10 @@ nav.navbar-nav,
 .smallPar {
 	font-size: 90%;
 }
-.gym_na{
+.gym_na {
 	width: -webkit-fill-available;
 }
-.descript{
+.descript {
 	text-align: justify;
 }
 div > span > p {
@@ -1224,7 +1232,10 @@ hr {
 }
 .trainPfP {
 	height: 150px;
-	border-radius: 100%;
+	border-radius: 1rem;
+	margin-top: 1rem;
+	border: 2px ridge;
+	padding: 2px;
 }
 .wholeTrainersBlock {
 	display: grid;
@@ -1244,6 +1255,16 @@ hr {
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
+	background-color: #7f53ac;
+	background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+	color: white;
+	border-radius: 1rem;
+	padding: 0.8rem;
+	transition: 0.3s;
+}
+.trainersBlock > p:hover {
+	color: #c2c2c2;
+	transition: 0.3s;
 }
 .input-containers {
 	display: flex;
@@ -1258,28 +1279,30 @@ hr {
 	text-align: center;
 	width: 300px;
 }
-.pageNumaration{
+.pageNumaration {
 	display: inline;
 }
-.pageNumaration{
+.pageNumaration {
 	text-align: center;
 }
-.pageNumaration > p > span > a{
+.pageNumaration > p > span > a {
 	text-decoration: none;
-	padding: 0rem 1rem;
+	padding: 0.5rem 1rem;
+	border: 2px dotted;
 }
-.pageNumaration > p{
+.pageNumaration > p {
 	margin-top: 3rem;
 }
-.trainerSearch, .trainerSearchForm{
+.trainerSearch,
+.trainerSearchForm {
 	margin-top: 2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.sort > div{
+.sort > div {
 	display: inline;
-} 
-div.trainerSearch > form > div > p:nth-child(1){
+}
+div.trainerSearch > form > div > p:nth-child(1) {
 	margin-right: 3rem;
 }

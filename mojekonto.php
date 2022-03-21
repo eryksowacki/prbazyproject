@@ -24,11 +24,11 @@
 
 ?>
 <?php
-    if (isset($date) && count($dater) > 2) 
+    if(isset($date) && count($dater) > 2) 
     {
         $origin = new DateTime($dater[count($dater) - 1]);
-        $target = new DateTime($nextDate);
-        $interval = $origin->diff($target);
+        $target = new DateTime($dater[0]);
+        $interval = $origin -> diff($target);
         $dayDiff =  $interval -> format('%a dni');
     }
 ?>
@@ -479,7 +479,7 @@ CALENDAR;
                             $p = $i+1;
                             $f = date("Y-m-d",strtotime("+$p day", strtotime($d)));
                             echo "<div class='calendar'>";
-                            $dayPl = date("l",strtotime("+$i day", strtotime($d)));
+                            $dayPl = date("l",strtotime("+$p day", strtotime($d)));
                             echo "<b>$f</b><b>$weekPl[$dayPl]</b>";
                             $tmp = 0;
                             $result = $connect -> query($sql);
@@ -522,7 +522,7 @@ CALENDAR;
                                 $assoc = [];
                             }
                             echo "</div>";
-                            if(date("Y-m-d",strtotime($f)) == $currDay)
+                            if((string) date("Y-m-d",strtotime($f)) === (string) $currDay)
                             {
                                 $aposgh = date('d',strtotime($currDay));
                                 $aposgh += 1;

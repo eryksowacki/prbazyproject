@@ -37,7 +37,7 @@
             }
             if($_POST['newPasswd'] !== $_POST['newPasswdRepeat'])
             {
-                header("Location: ../../mojekonto.php?personalInfo=0&errorNo=4"); // Do zrobienia case 4 różne nowe hasła
+                header("Location: ../../mojekonto.php?personalInfo=0&errorNo=4");
             }
             var_dump($_POST);
             $oldData = [
@@ -48,7 +48,7 @@
             $result = $stmt -> fetch();
             if(sha1($_POST['oldPasswd']) !== $result -> password)
             {
-                header('Location: ../../mojekonto.php?personalInfo=0errorNo=5'); // Do zrobienia case 5 stare hasła różnią się
+                header('Location: ../../mojekonto.php?personalInfo=0errorNo=5');
             }
             else
             {   

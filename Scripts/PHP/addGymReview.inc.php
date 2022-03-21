@@ -26,7 +26,7 @@
     {
         try
         {
-            $connect = $connect = new PDO("mysql:dbname=id18439949_znanytrener;host=localhost;", "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
+            $connect = new PDO("mysql:dbname=id18439949_znanytrener;host=localhost;", "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
             $connect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             $connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -34,7 +34,7 @@
         catch(PDOException $e) 
         {
             $connect = null;
-            header("Location: ..\..\mojekonto.php?Error=$e->getMessage()");
+            header("Location: ../../mojekonto.php?Error=$e->getMessage()");
         }
         $lastIds = $connect -> prepare("SELECT `gym_review_id` FROM `gym_reviews` order by `gym_review_id` DESC limit 1");
         $lastIds -> execute();
