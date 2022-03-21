@@ -967,12 +967,12 @@ nav.navbar-nav,
 }
 .replace {
 	position: absolute;
-	width: -webkit-fill-available;
+	width: auto;
 	height: inherit;
 	text-align: center;
 }
 .trainingPromotionPanel > .panelControl > div.replace > h3 {
-	margin-top: 4rem;
+	margin-top: 2rem;
 }
 .panelButton {
 	transform-origin: center;
