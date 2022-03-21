@@ -21,7 +21,7 @@ $("#nvbrdrpdwn").on('click' ,function()
 const drop = document.querySelector(".dropdown-menu");
 
 $(".dropdown-toggler").on('mouseenter',function(){
-    gsap.to(drop, 0.5, {y:-5,autoAlpha:1,display:"block"});
+    gsap.fromTo(drop, 0.5,{y:10},{y:0,autoAlpha:1,display:"block"});
 });
 $(".dropdown").on('mouseleave',function(){
     gsap.to(drop, 0.5, {y:10,autoAlpha:0,display:"none"});

@@ -65,7 +65,7 @@
 			<div class="panelControl piss">
 				<div class="replace">
 					<h3>Przyjazna kadra trenerska</h3>
-					<p>Popraw wytrzymałość, kondycję i zdolność do regeneracji dzięki najwyższej jakości sprzętowi jak bieżnie, orbitreki, steppery czy ergometry.</p>
+					<p class="replaceParagraph">Popraw wytrzymałość, kondycję i zdolność do regeneracji dzięki najwyższej jakości sprzętowi jak bieżnie, orbitreki, steppery czy ergometry.</p>
 				</div>
 				<button class="panelButton">Przyjazna kadra trenerska</button>
 				<img src="Images/WEBSITE IMAGES/enterGymWorld.png" class="panelImage" alt="">
@@ -73,7 +73,7 @@
 			<div class="panelControl piss">
 				<div class="replace">
 					<h3>Maszyny</h3>
-					<p>Trenuj wszystkie partie mięśniowe korzystając z różnych typów maszyn najlepszej jakości.</p>
+					<p class="replaceParagraph">Trenuj wszystkie partie mięśniowe korzystając z różnych typów maszyn najlepszej jakości.</p>
 				</div>
 				<button class="panelButton">Maszyny</button>
 				<img src="Images/WEBSITE IMAGES/mashinka.png" class="panelImage" alt="">
@@ -81,7 +81,7 @@
 			<div class="panelControl piss">
 				<div class="replace">
 					<h3>Wolne ciężary</h3>
-					<p>Uwolnij energię i popraw siłę dzięki hantlom, sztangom i wielu wariantom ćwiczeń na ławkach.</p>
+					<p class="replaceParagraph">Uwolnij energię i popraw siłę dzięki hantlom, sztangom i wielu wariantom ćwiczeń na ławkach.</p>
 				</div>
 				<button class="panelButton">Wolne ciężary</button>
 				<img src="Images/WEBSITE IMAGES/deadlifting.png" class="panelImage" alt="">
@@ -89,7 +89,7 @@
 			<div class="panelControl piss">
 				<div class="replace">
 					<h3>Zajęcia fitness w grupie</h3>
-					<p>Szlifuj formę z najlepszymi trenerami, poczuj autentyczną motywację i dynamikę w grupie.</p>
+					<p class="replaceParagraph">Szlifuj formę z najlepszymi trenerami, poczuj autentyczną motywację i dynamikę w grupie.</p>
 				</div>
 				<button class="panelButton">Zajęcia fitness w grupie</button>
 				<img src="Images/WEBSITE IMAGES/groupWorkout.png" class="panelImage" alt="">

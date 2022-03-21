@@ -75,7 +75,7 @@ REGISTER;
                                                 <label for="passwd" class="floating-label-ql">Hasło</label>
                                                 </div>
                                             </li>
-                                            <li>
+                                            <li class="submiterLol">
                                                 <input type="submit" value="Prześlij">
                                             </li>
                                         </form>

@@ -19,11 +19,12 @@
         $connect = null;
         header("Location: ../../mojekonto.php?Error=$e->getMessage()");
     }   
-
+    $data = [
+        'bmi_id' =>  $_SESSION['user_id'],
+        'weigght' => $newWeight,
+    ];
     $newEntry = $connect->prepare("INSERT INTO `bmi`(`bmi_id`, `weight`) VALUES (:bmi_id, :weigght)");
-    $newEntry->bindParam(':bmi_id', $_SESSION['user_id'], PDO::PARAM_INT);
-    $newEntry->bindParam(':weigght', $newWeight);
-    $newEntry -> execute();
+    $newEntry -> execute($data);
     $connect = null;
     
     header('Location: ../../mojekonto.php?progress');

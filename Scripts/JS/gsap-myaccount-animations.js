@@ -34,14 +34,16 @@ function changeChartSwitch(switcher)
 const chartBtn = document.querySelector("#weightProggress");
 const myTrainingSchedule = document.querySelector('#myTrainingSchedule');
 const myGymReviews = document.querySelector('#myGymReviews');
-
+const good = document.querySelectorAll("body > div > .userMain > div")
+function flushUserMain() {
+    for (let i = 0; i < good.length; i++) 
+    {
+        gsap.to(good[i],0.65,{y:-20,autoAlpha:0,display:"none"});
+    }
+}
 // TRAINER REVIEWS
 $('#myTrainerReviews').on("click", function() {
-    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
-    gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-    gsap.to(wholeChart,0.65,{y:-20,opacity:0}); // chart
-    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
-
+    flushUserMain();
     if(reviewsBlock.style.display != 'none')
     {
         gsap.to(reviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
@@ -56,11 +58,7 @@ $('#myTrainerReviews').on("click", function() {
 });
 
 $(myGymReviews).on("click", function() {
-    gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-    gsap.to(wholeChart,0.65,{y:-20,opacity:0}); // chart
-    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
-
+    flushUserMain();
     if(gymReviewsBlock.style.display != 'none')
     {
         gsap.to(gymReviewsBlock,0.65,{y:-10,autoAlpha:0,display:"none"}); // rev
@@ -77,10 +75,7 @@ $(myGymReviews).on("click", function() {
 
 // CHART
 $(chartBtn).on("click", function() {
-    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
-    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-    gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // rev
-    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
+    flushUserMain();
     if(wholeChart.style.display != 'none')
     {
         gsap.to(wholeChart,0.5,{y:-10,opacity:0}); // if displaying click again to peacefully turn off
@@ -106,11 +101,7 @@ $(chartBtn).on("click", function() {
 });
 
 $("#accountPersonali").on('click', function (){
-    gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
-    gsap.to(wholeChart,0.65,{y:-20,opacity:0}); // chart
-    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
-    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
-
+    flushUserMain();
     if(personalInfo.style.display != 'none') 
     {
         gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
@@ -125,11 +116,7 @@ $("#accountPersonali").on('click', function (){
 });
 // TRAINING SCHEDULE
 $(myTrainingSchedule).on('click', function (){
-    gsap.to(gymReviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"});    // gym rev
-    gsap.to(wholeChart,0.65,{y:-20,opacity:0}); // chart
-    gsap.to(reviewsBlock,0.65,{y:-20,autoAlpha:0,display:"none"}); // rev
-    gsap.to(personalInfo,0.65,{y:-20,autoAlpha:0,display:"none"});
-
+    flushUserMain();
     if(mySchedual.style.display != 'none') 
     {
         gsap.to(mySchedual,0.65,{y:-20,autoAlpha:0,display:"none"});
