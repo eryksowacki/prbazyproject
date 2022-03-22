@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_POST))
     {
-        header("location: ../../login.php?unauthorizedAccess=1");
+        // header("location: ../../login.php?unauthorizedAccess=1");
     }
     else
     {
@@ -19,13 +19,13 @@
         }
         if(count($_POST) != $i)
         {   
-            header("Location: ../../login.php?errorNo=5");
+            // header("Location: ../../login.php?errorNo=5");
         }
         else
         {
             if($_POST['token'] !== $_SESSION['token'])
             {
-                header("Location: ../../login.php?errorNo=4");
+                // header("Location: ../../login.php?errorNo=4");
             }
             else
             {
@@ -39,19 +39,31 @@
                 catch(PDOException $e) 
                 {
                     $connect = null;
-                    header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
+                    // header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
                 }
     
                 $email = $_POST["email"];
                 $userPassword = sha1($_POST['password']);                
-                $sqlQuery = 'SELECT * FROM `users` WHERE `email` = :email';
-                $stmt = $connect -> prepare($sqlQuery);
+                $sqlQueryUsers = 'SELECT * FROM `users` WHERE `email` LIKE :email';
+                $stmt = $connect -> prepare($sqlQueryUsers);
                 $stmt -> execute(['email' => $email]);
+
+                $sqlQueryTrainers = 'SELECT * FROM `trainers` WHERE `email` LIKE :email';
+                $stmtTrainers = $connect -> prepare($sqlQueryTrainers);
+                $stmtTrainers -> execute(['email' => $email]);
+
+                $resgsd = $stmtTrainers -> fetch(PDO::FETCH_ASSOC);
+                var_dump($resgsd);
+                foreach ($resgsd as $key => $value) {
+                    echo $resgsd[$key],"<br>";
+                }
+
+
                 $rowCount = $stmt -> rowCount();
                 if($rowCount !== 1)
                 {
                     $connect = null;
-                    header('Location: ../../login.php?errorNo=1');
+                    // header('Location: ../../login.php?errorNo=1');
                 }
                 else
                 {
@@ -59,7 +71,7 @@
                     if($userPassword !== $result -> password)
                     {
                         $connect = null;
-                        header('Location: ../../login.php?errorNo=2');
+                        // header('Location: ../../login.php?errorNo=2');
                     }
                     else
                     {             
@@ -67,7 +79,7 @@
                         $_SESSION['profile_picture']= $result -> profile_picture;
                         $_SESSION['user_id'] = $result -> user_id;
                         $connect = null;
-                        header('Location: ../../index.php');
+                        // header('Location: ../../index.php');
                         
                     }
                 }

@@ -78,10 +78,26 @@ saveColor.style.background = "linear-gradient("+ frstStop + ","+ secndStop +")";
 $(saveColor).on("click",function(){
     let tab = saveColor.style.background.slice(16,-1).split(",");
     tab = [tab[0] + "," + tab[1] + "," + tab[2] + "," + tab[3], tab[4] + "," + tab[5] + "," + tab[6] + "," + tab[7]];
+    let border = saveColor.style.border;
+    border = saveColor.style.border.slice(10);
     setCookie("colorChartBorder",saveColor.style.border.substr(10));
     setCookie("colorChartInsideFirst",tab[0]);
     setCookie("colorChartInsideSecond",tab[1]);
-    window.location.assign("mojekonto.php?progress"); 
+    let canvas = document.getElementById("myChart").getContext("2d");
+    let gradier = canvas.createLinearGradient(0, 0, 0, 400);
+    gradier.addColorStop(0, tab[0]);
+    gradier.addColorStop(1, tab[1]);
+    myChart.config._config.data.datasets[0].borderColor = border;
+    myChart.config._config.data.datasets[0].backgroundColor = gradier;
+    // window.location.assign("mojekonto.php?progress");
+    if(myChart instanceof Chart) 
+    {
+        setTimeout(() => {
+            myChart.destroy();
+            let temp = userProgressChart;
+            myChart = new Chart(canvas, temp);
+        }, 200);
+    }
 });
 $(diffColorRanodom).on("click",function()
 {
