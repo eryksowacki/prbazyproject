@@ -79,7 +79,7 @@
 .dropdown-toggle {
 	outline: none;
 	background: none;
-	border: none;
+	border-style: none;
 }
 .inputPosition {
 	display: grid;
@@ -96,6 +96,7 @@
 .submiterLol {
 	text-align: end;
 	margin-top: 1rem;
+	border: none;
 }
 .submiterLol > input[type='submit'] {
 	padding: 4px 8px;
@@ -720,6 +721,42 @@ p.newWeight {
 	position: fixed;
 	top: 0;
 	left: 0;
+	display: none;
+}
+.passCH > h3 {
+	cursor: pointer;
+	padding: 1.125rem;
+	margin-bottom: 3rem;
+}
+.showBlock {
+	display: none;
+	opacity: 0;
+	position: absolute;
+	z-index: 20;
+	padding: 1.2rem 3.5rem;
+	border-radius: 1rem;
+	width: max-content;
+	height: max-content;
+	background-color: #0652c5;
+}
+.personalInfo > hr {
+	width: 100%;
+}
+.showBlock > form > input[type='password'],
+.showBlock > form > input[type='email'] {
+	border-radius: 1rem;
+}
+.showBlock > form > input {
+	padding: 4px 8px;
+}
+
+.showBlock > form {
+	margin: 0;
+}
+.showBlock > form > input[type='submit'] {
+	border-radius: 5px;
+	border: 0;
+	background: #f4f4f4;
 }
 .addTraining > form {
 	display: grid;

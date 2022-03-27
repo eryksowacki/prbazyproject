@@ -116,7 +116,6 @@
         </div>
         <script>
             document.querySelector('.addTraining').style.display = 'none';
-            document.querySelector('.overlay').style.display = 'none';
         </script>
         <div class="userMain">
             <div class="chart">
@@ -311,41 +310,80 @@ REVIEWS;
                     $tab = [];
                     $row = mysqli_fetch_row($result);
                 ?>
-                <div class="passCH">
-                    <h3>Aktualizuj Zdjęcie Profilowe</h3> 
-                    <?php
-                        if(!empty($row[1])){ echo "<div class='pfpContainer'><img class='pfp' src='Images/USER IMAGES/$row[1]'></div>";};
-                    ?>
-                    <form action="Scripts/PHP/changePFP.inc.php" method="post" class="pfpForm" enctype="multipart/form-data">
-                        <input type="file" name="file">
-                        <input type="submit" name="submit" value="Aktualizuj zdjęcie profilowe">
-                    </form>
-                </div>
-                <div class="passCH">
-                    <h3>Aktualizuj Email</h3>
-                    <form action="Scripts/PHP/changeEmail.inc.php" method="post">
-                        <input type="email" name="email" class="inpt" placeholder="<?php echo $row[2];?>">
-                        <input type="submit" value="Aktualizuj email">
-                    </form>
-                </div>
-                <div class="passCH">
-                    <h3>Aktualizuj Hasło</h3>
-                    <form action="Scripts/PHP/changePasswd.inc.php" method="post">
-                        <input type="password" name="oldPasswd" class="inpt" placeholder="Aktualne hasło" autocomplete="on">
-                        <input type="password" name="newPasswd" class="inpt" placeholder="Nowe hasło" autocomplete="on">
-                        <input type="password" name="newPasswdRepeat" class="inpt" placeholder="Powtórz hasło" autocomplete="on">
-                        <input type="submit" value="Aktualizuj hasło">
-                    </form>
-                </div>
+                    <div class="passCH">
+                        <h3>Aktualizuj Zdjęcie Profilowe</h3> 
+                        <div class="showBlock" style='flex-direction: column;'>
+                            <?php
+                                if(!empty($row[1])){ echo "<div class='pfpContainer'><img class='pfp' src='Images/USER IMAGES/$row[1]'></div>";};
+                            ?>
+                            <form action="Scripts/PHP/changePFP.inc.php" method="post" class="pfpForm" enctype="multipart/form-data">
+                                <input type="file" name="file">
+                                <input type="submit" name="submit" value="Aktualizuj zdjęcie profilowe">
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="passCH">
+                        <h3>Aktualizuj Email</h3>
+                        <div class="showBlock">
+                            <form action="Scripts/PHP/changeEmail.inc.php" method="post">
+                                <input type="email" name="email" class="inpt" placeholder="<?php echo $row[2];?>">
+                                <input type="submit" value="Aktualizuj email">
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="passCH">
+                        <h3>Aktualizuj Hasło</h3>
+                        <div class="showBlock">
+                            <form action="Scripts/PHP/changePasswd.inc.php" method="post">
+                                <input type="password" name="oldPasswd" class="inpt" placeholder="Aktualne hasło" autocomplete="on">
+                                <input type="password" name="newPasswd" class="inpt" placeholder="Nowe hasło" autocomplete="on">
+                                <input type="password" name="newPasswdRepeat" class="inpt" placeholder="Powtórz hasło" autocomplete="on">
+                                <input type="submit" value="Aktualizuj hasło">
+                            </form>
+                        </div>
+                    </div>
                 <div>
-                <div class="errors">
-                    <p class="errorParagraph"></p>
+                    <div class="errors">
+                        <p class="errorParagraph"></p>
+                    </div>
                 </div>
+                <script>
+                    const passCH = document.querySelectorAll('.passCH');
+                    const passCHeader = document.querySelectorAll('.passCH > h3');
+                    const showBlock = document.querySelectorAll('.showBlock');
+                    let checked = [];
+                    
+                    $(passCHeader).on("click", function(n) 
+                    {
+                        if(n.currentTarget.nextSibling.nextSibling.style.display !== 'flex')
+                        {
+                            
+                            gsap.to(".overlay",0.55,{autoAlpha:1,display:"block"});
+                            if(checked.length != 0)
+                            {
+                                gsap.to(checked[0],0.5,{y:-45,autoAlpha:0,display:'none'});
+                                checked = [];
+                            }
+                            checked.push(n.currentTarget.nextSibling.nextSibling);
+                            $('.overlay').on('click',function(e)
+                            {
+                                gsap.to('.overlay',1.5,{autoAlpha:0,display:'none'});
+                                gsap.to(n.currentTarget.nextSibling.nextSibling,0.55,{y:-45,autoAlpha:0,display:'none'});
+                            });   
+                            gsap.to(n.currentTarget.nextSibling.nextSibling,0.7,{y:55,autoAlpha:1,display:'flex'});
+                        }
+                        else
+                        {
+                            gsap.to(n.currentTarget.nextSibling.nextSibling,0.55,{y:-45,autoAlpha:0,display:'none'});
+                            // gsap.to('.overlay',1.5,{autoAlpha:0,display:'none'});
+                        }
+                    });
+
+                </script>
             </div>
                 
-                
-                
-            </div>
             <?php
                 echo <<< SCRIPT
                     <script>

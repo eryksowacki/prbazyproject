@@ -96,7 +96,7 @@ NAVLOGIN;
 SESSION;
                     if($_SESSION['profile_picture'] != NULL && (strpos($_SESSION['profile_picture'],".jpg") || strpos($_SESSION['profile_picture'],".png") || strpos($_SESSION['profile_picture'],".gif")))
                     {
-                        echo "<img class='userPfp' src='Images\USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
+                        echo "<img class='userPfp' src='Images/USER IMAGES/$_SESSION[profile_picture]' alt='Zdjęcie profilowe'></li>";
                         echo <<< SCRIPT
                             <script>
                                 tl = new gsap.timeline();

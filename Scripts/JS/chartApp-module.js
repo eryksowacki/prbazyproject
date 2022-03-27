@@ -126,7 +126,7 @@ for (let i = 0; i < amountDays; i++)
         {   
             if(training.contains(e.target))
             {
-                console.log(dayOfNewTraining);
+                // asdasd
             } 
             else
             {

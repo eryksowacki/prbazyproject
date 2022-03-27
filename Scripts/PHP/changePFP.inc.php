@@ -1,9 +1,5 @@
 <?php
     session_start();
-    var_dump($_FILES);
-
-
-
     if(!isset($_FILES))
     {
         header("location: ../../mojekonto.php?personalInfo=0errorNo=1");
@@ -46,7 +42,6 @@
                 }
                 
                 $check = getimagesize($_FILES["file"]["tmp_name"]);
-                echo $check;
                 if($check !== false) 
                 {
                     $tmp = 1;
@@ -57,7 +52,6 @@
                 }     
                 if($_FILES["file"]["size"] > 16000000) 
                 {
-                    echo "ASD";
                     header('Location: ../../mojekonto.php?personalInfo=0&errorNo=2');
                 }
                 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) 
