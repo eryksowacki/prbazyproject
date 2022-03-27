@@ -132,6 +132,7 @@
 TRAINERS;
 				}
 			?>
+			
 			</div>
 		</div>
     </div> 

@@ -718,6 +718,28 @@ p.newWeight {
 	position: fixed;
 	top: 0;
 	left: 0;
+	display: none;
+}
+.passCH > h3{
+	cursor: pointer;
+}
+.showBlock{
+	display: none;
+	opacity: 0;
+	position: absolute;
+	z-index: 20;
+	padding: 1rem 4rem;
+	border-radius: 1rem;
+	width: max-content;
+	height: max-content;
+	background-color: #0652c5;
+}
+.showBlock > form > input[type='password'],
+.showBlock > form > input[type='email']{
+	border-radius: 1rem;
+}
+.showBlock > form{
+	margin: 0;
 }
 .addTraining > form {
 	display: grid;

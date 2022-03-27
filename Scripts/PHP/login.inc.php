@@ -2,14 +2,16 @@
     session_start();
     if(!isset($_POST))
     {
-        // header("location: ../../login.php?unauthorizedAccess=1");
+        header("location: ../../login.php?unauthorizedAccess=1");
     }
     else
     {
         $i = 0;
+        $connect  = new mysqli('localhost',"id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN', 'id18439949_znanytrener');
+
         foreach($_POST as $key => $value) 
         {
-            $_POST[$key] = htmlspecialchars(trim($value));
+            $_POST[$key] = mysqli_real_escape_string($connect, htmlspecialchars(trim($value)));
             $value = trim($value);
 
             if(isset($value) && !empty($value))
@@ -17,29 +19,30 @@
                 $i++;
             }
         }
+        mysqli_close($connect);
         if(count($_POST) != $i)
         {   
-            // header("Location: ../../login.php?errorNo=5");
+            header("Location: ../../login.php?errorNo=5");
         }
         else
         {
             if($_POST['token'] !== $_SESSION['token'])
             {
-                // header("Location: ../../login.php?errorNo=4");
+                header("Location: ../../login.php?errorNo=4");
             }
             else
             {
                 try
                 {
-                    $connect = $connect = new PDO("mysql:dbname=id18439949_znanytrener;host=localhost;", "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
-                    $connect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-                    $connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $connect = new PDO("mysql:dbname=id18439949_znanytrener;host=localhost;", "id18439949_znanytrenerusername", 'sy>[$Fo8]+!n^cVN');
+                    $connect -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+                    $connect -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                    $connect -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }
                 catch(PDOException $e) 
                 {
                     $connect = null;
-                    // header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
+                    header("Location: ../../login.php?errorNo=3&PDOexept=$e->getMessage()");
                 }
     
                 $email = $_POST["email"];
@@ -52,18 +55,11 @@
                 $stmtTrainers = $connect -> prepare($sqlQueryTrainers);
                 $stmtTrainers -> execute(['email' => $email]);
 
-                $resgsd = $stmtTrainers -> fetch(PDO::FETCH_ASSOC);
-                var_dump($resgsd);
-                foreach ($resgsd as $key => $value) {
-                    echo $resgsd[$key],"<br>";
-                }
-
-
                 $rowCount = $stmt -> rowCount();
                 if($rowCount !== 1)
                 {
                     $connect = null;
-                    // header('Location: ../../login.php?errorNo=1');
+                    header('Location: ../../login.php?errorNo=1');
                 }
                 else
                 {
@@ -71,7 +67,7 @@
                     if($userPassword !== $result -> password)
                     {
                         $connect = null;
-                        // header('Location: ../../login.php?errorNo=2');
+                        header('Location: ../../login.php?errorNo=2');
                     }
                     else
                     {             
@@ -79,7 +75,7 @@
                         $_SESSION['profile_picture']= $result -> profile_picture;
                         $_SESSION['user_id'] = $result -> user_id;
                         $connect = null;
-                        // header('Location: ../../index.php');
+                        header('Location: ../../index.php');
                         
                     }
                 }
