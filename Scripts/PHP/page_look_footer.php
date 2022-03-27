@@ -1,7 +1,7 @@
 <footer class="footer"> 
     <div class="contact">
         <a href="mailto: kontaktZN@znanytrener.gmail.com" class="sgdButton"><button class="contactButton">Kontakt</button></a>
-        <a href="mailto: kontaktZN@znanytrener.gmail.com" class="sgdButton"><button class="gsfonsga">Regulamin</button></a>
+        <a href="regulamin.php" class="sgdButton"><button class="gsfonsga">Regulamin</button></a>
     </div>
     <div class="authors">
         <p class="footerText">Projekt Aplikacje internetowe / Bazy danych <i>Maksymilian Mazurczak</i> <i><a target="_blank" class="github" href="https://github.com/eryksowacki">Eryk Sowacki</a></i> & <i><a target="_blank" class="github" href="https://github.com/Wichtowski">Oskar Wichtowski</a></i></p>

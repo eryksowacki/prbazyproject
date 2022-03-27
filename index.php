@@ -109,15 +109,29 @@
 				GROUP BY `trainers`.`trainer_id`
 				ORDER BY  `numberof_review` DESC, `average_mark` DESC LIMIT 6";
 				$result = $connect -> query($query);
+				echo "<script> const trainerDictionary = [];";
 				while($currRow = $result -> fetch_assoc())
 				{
 					echo <<< TRAINERS
-						<div class="trainerBlock">
+						trainerDictionary.push({
+							'profile_picture':'$currRow[profile_picture]',
+							'average_mark':'$currRow[average_mark]',
+							'name':'$currRow[name]',
+							'surname':'$currRow[surname]',
+							'specialization':'$currRow[specialization]',
+							'trainer_descript':'$currRow[trainer_descript]'});
+TRAINERS;
+				}
+				echo "</script>";
+
+			?>
+				
+					<div class="trainerBlock">
 							<div>
-								<img src='Images/TRAINERS IMAGES/$currRow[profile_picture]' class='trainerPfP' title='Zdjęcie profilowe trenera: $currRow[name]' alt='Zdjęcie profilowe trenera: $currRow[name]'>
+								<img src='Images/TRAINERS IMAGES/' class='trainerPfP' title='Zdjęcie profilowe trenera: $currRow[name]' alt='Zdjęcie profilowe trenera: $currRow[name]'>
 							</div>
 							<div class="ldusb">
-								<span>Średnia ocena użytkowników: <p>$currRow[average_mark]</p></span>
+								<span>Średnia ocena użytkowników: <p></p></span>
 							</div>
 							<div class="ldusb">
 								<span>$currRow[name] $currRow[surname]</span>
@@ -129,13 +143,13 @@
 								<p class="smallPar">$currRow[trainer_descript]</p>
 							</div>
 						</div>
-TRAINERS;
-				}
-			?>
+
 			</div>
 		</div>
     </div> 
-
+	<script>
+		console.log(trainerDictionary);
+	</script>
     <?php
         require_once 'Scripts/PHP/page_look_footer.php';
     ?>
